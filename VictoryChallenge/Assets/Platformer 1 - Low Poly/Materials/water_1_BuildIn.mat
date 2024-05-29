@@ -1,0 +1,156 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: water_1_BuildIn
+  m_Shader: {fileID: 4800000, guid: 6dd50b929c4aac54b9e1561452b88903, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  - _EMISSION
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 2800000, guid: 5c1b812b7905f0a45b97938395d00998, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 5c1b812b7905f0a45b97938395d00998, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Pattern:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.5
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _Depth: 4.43
+    - _DepthMultiply: 0.86
+    - _DetailNormalMapScale: 1
+    - _DisplacementAmount: 0.2
+    - _DistortionScale: 0
+    - _DistortionStr: 0
+    - _DstBlend: 10
+    - _EdgeLength: 9
+    - _EnvironmentReflections: 1
+    - _FoamDistortionAmount: 0.03
+    - _FoamDistortionScale: 4
+    - _FoamDistortionSpeed: 1.5
+    - _FoamScale: 1.12
+    - _FoamWidth: 2.44
+    - _FresnelBias: 0
+    - _FresnelPower: 0
+    - _FresnelScale: 0.13
+    - _GlossMapScale: 1
+    - _Glossiness: 0.139
+    - _GlossyReflections: 1
+    - _Gradient: 0
+    - _Lighten: 0
+    - _Metallic: 0.152
+    - _Mode: 2
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _PatternBlend: 0
+    - _PatternNormalStr: 0
+    - _PatternScale: 1
+    - _QueueControl: -1
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _RefractionScale: 2
+    - _RefractionSpeed: 1
+    - _RefractionStr: 0.1
+    - _Rough: 0
+    - _ShoreWaveScale: 2.4
+    - _ShoreWaveSpeed: -1.8
+    - _ShoreWaveWidth: -20.14
+    - _ShoreWidth: 1
+    - _Smoothness: 0.372
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 5
+    - _TessEdgeLength: 16
+    - _TessMaxDisp: 25
+    - _UVSec: 0
+    - _UsePattern: 0
+    - _WaveBigPower: 1.39
+    - _WaveBigScale: 0.39
+    - _WaveBigSpeed: 1
+    - _WaveSmallPower: 4
+    - _WaveSmallScale: -0.39
+    - _WaveSmallSpeed: 0
+    - _WavesMultiply: 1.25
+    - _WavesNormalStr: -2.46
+    - _ZWrite: 0
+    - __dirty: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 0.050980393}
+    - _ColorDepth: {r: 0.12893075, g: 0.5616077, b: 1, a: 1}
+    - _ColorSurface: {r: 0.4119496, g: 0.7947589, b: 1, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HSV: {r: 1, g: 1, b: 1, a: 0}
+    - _RefractionDirection: {r: 0, g: 1, b: 0, a: 0}
+    - _RefractionTillingNoise: {r: 0.3, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []
