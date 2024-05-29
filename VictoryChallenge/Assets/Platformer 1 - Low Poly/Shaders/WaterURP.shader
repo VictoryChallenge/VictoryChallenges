@@ -391,7 +391,7 @@ Shader "Water"
 				int _PassValue;
 			#endif
 
-			//uniform float4 _CameraDepthTexture_TexelSize;
+			uniform float4 _CameraDepthTexture_TexelSize;
 
 
 					float2 voronoihash130( float2 p )
@@ -1209,7 +1209,7 @@ Shader "Water"
 				int _PassValue;
 			#endif
 
-			//uniform float4 _CameraDepthTexture_TexelSize;
+			uniform float4 _CameraDepthTexture_TexelSize;
 
 
 					float2 voronoihash130( float2 p )
@@ -1631,7 +1631,7 @@ Shader "Water"
 				int _PassValue;
 			#endif
 
-			//uniform float4 _CameraDepthTexture_TexelSize;
+			uniform float4 _CameraDepthTexture_TexelSize;
 
 
 					float2 voronoihash130( float2 p )
@@ -2175,7 +2175,7 @@ Shader "Water"
 				int _PassValue;
 			#endif
 
-			//uniform float4 _CameraDepthTexture_TexelSize;
+			uniform float4 _CameraDepthTexture_TexelSize;
 
 
 					float2 voronoihash130( float2 p )
@@ -2711,7 +2711,7 @@ Shader "Water"
 				int _PassValue;
 			#endif
 
-			//uniform float4 _CameraDepthTexture_TexelSize;
+			uniform float4 _CameraDepthTexture_TexelSize;
 
 
 					float2 voronoihash130( float2 p )
@@ -3272,7 +3272,7 @@ Shader "Water"
 				int _PassValue;
 			#endif
 
-			//uniform float4 _CameraDepthTexture_TexelSize;
+			uniform float4 _CameraDepthTexture_TexelSize;
 
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl"
@@ -3937,7 +3937,7 @@ Shader "Water"
 				int _PassValue;
 			#endif
 
-			//uniform float4 _CameraDepthTexture_TexelSize;
+			uniform float4 _CameraDepthTexture_TexelSize;
 
 
 					float2 voronoihash130( float2 p )
@@ -4325,7 +4325,7 @@ Shader "Water"
 				int _PassValue;
 			#endif
 
-			//uniform float4 _CameraDepthTexture_TexelSize;
+			uniform float4 _CameraDepthTexture_TexelSize;
 
 
 					float2 voronoihash130( float2 p )

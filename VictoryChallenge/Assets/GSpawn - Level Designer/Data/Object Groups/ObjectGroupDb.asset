@@ -1,0 +1,506 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8957267203869161190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: log
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 08aec281-ee2a-417f-9f8c-e983737f823b
+  _objectGroupName: log
+  _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1133520014-0
+  _uiSelected: 0
+--- !u!114 &-8604946886281035299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: water
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: d88af9fc-3022-4a46-bac4-d1d55005b3ef
+  _objectGroupName: water
+  _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-585082048-0
+  _uiSelected: 0
+--- !u!114 &-8102035667555546039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Floor
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: ad93a887-b340-4c28-9220-48926fb30479
+  _objectGroupName: Floor
+  _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-939297865-0
+  _uiSelected: 0
+--- !u!114 &-7522930646198567116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: grass
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: d7a017d8-5ea7-476d-8c40-b62efec3009c
+  _objectGroupName: grass
+  _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-111587394-0
+  _uiSelected: 1
+--- !u!114 &-7415429098833550420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Rock
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 59b02a3f-bc31-4a40-802a-cb05c5c58fa8
+  _objectGroupName: Rock
+  _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-249119310-0
+  _uiSelected: 1
+--- !u!114 &-6899142982012744621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Flower
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 03cb120c-f00b-4fda-b3e8-f0f91a13c835
+  _objectGroupName: Flower
+  _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1504677469-0
+  _uiSelected: 0
+--- !u!114 &-6784285739266170366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Rock
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: aed52433-a6a0-47a8-8402-d197a178e90f
+  _objectGroupName: Rock
+  _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-191571013-0
+  _uiSelected: 0
+--- !u!114 &-6137928954960009520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Floor
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 43a974cd-4c1b-4a6f-aa9e-72fe498ad6a0
+  _objectGroupName: Floor
+  _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-1287046749-0
+  _uiSelected: 0
+--- !u!114 &-4540785700576365603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: wall
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: cd837d45-5841-4a18-a823-5f9bf7ed7fed
+  _objectGroupName: wall
+  _globalObjectIdString: GlobalObjectId_V1-2-7d47a22b6cee9a34b92b76e6a3d0fca6-1021104694-0
+  _uiSelected: 0
+--- !u!114 &-4467641449896382770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: grass
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 513a7752-01ef-4710-81eb-070df597c069
+  _objectGroupName: grass
+  _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-227046284-0
+  _uiSelected: 0
+--- !u!114 &-3131682881395382547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Stone
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 8c8d379e-85cf-41e0-ba81-246018b3903b
+  _objectGroupName: Stone
+  _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1616411629-0
+  _uiSelected: 0
+--- !u!114 &-1735305301273866831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Rock
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 0810f5ef-0aa5-4626-a8a7-2dc6cc80a732
+  _objectGroupName: Rock
+  _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-588286685-0
+  _uiSelected: 0
+--- !u!114 &-1657736203980220434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Obstacle
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: dea6c93e-7c2a-4251-a94c-831d515a718f
+  _objectGroupName: Obstacle
+  _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-986057127-0
+  _uiSelected: 0
+--- !u!114 &-1392662643205979743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: obstacle
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: c3d74b15-9b95-4f7f-8371-28d5f69242c8
+  _objectGroupName: obstacle
+  _globalObjectIdString: GlobalObjectId_V1-2-7d47a22b6cee9a34b92b76e6a3d0fca6-360791245-0
+  _uiSelected: 1
+--- !u!114 &-1192510029913028461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d78f77521bb1424d90dc20b0de9cee3, type: 3}
+  m_Name: ObjectGroupDbUI_ObjectGroupViewState
+  m_EditorClassIdentifier: 
+  selectedItems:
+    _serializedList:
+    - _guidString: 56e9a2b9-424b-4b42-94f1-f61f0ffc78e8
+  collapsedItems:
+    _serializedList: []
+  selectRangeBeginId:
+    _guidString: 56e9a2b9-424b-4b42-94f1-f61f0ffc78e8
+  selectRangeEndId:
+    _guidString: 56e9a2b9-424b-4b42-94f1-f61f0ffc78e8
+  hasSelectRange: 1
+  scrollOffset: {x: 0, y: 0}
+  vertScrollHighValue: 0
+  vertScrollLowValue: 0
+--- !u!114 &-809468024947650827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: log
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 56e9a2b9-424b-4b42-94f1-f61f0ffc78e8
+  _objectGroupName: log
+  _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-219031428-0
+  _uiSelected: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cdc5f1e3ddab65418bb342193ece696, type: 3}
+  m_Name: ObjectGroupDb
+  m_EditorClassIdentifier: 
+  _actionFilters: {fileID: 1078004175485843022}
+  _sceneToObjectGroups:
+    _serializedKeys:
+    - 99c9720ab356a0642a771bea13969a05
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - 8396bb939a95a0245b2656546d865710
+    - e39e3ca2ec52d764da7ae63a1a648fcf
+    _serializedValues:
+    - _serializedList:
+      - {fileID: -8102035667555546039}
+      - {fileID: 4166992544322044760}
+      - {fileID: 1595733064626144845}
+      - {fileID: -6784285739266170366}
+      - {fileID: -3131682881395382547}
+      - {fileID: -8957267203869161190}
+      - {fileID: -6899142982012744621}
+      - {fileID: -7522930646198567116}
+    - _serializedList:
+      - {fileID: -4540785700576365603}
+      - {fileID: -1392662643205979743}
+    - _serializedList:
+      - {fileID: 5274929535151896507}
+      - {fileID: 1578579157117131913}
+      - {fileID: -1657736203980220434}
+      - {fileID: -7415429098833550420}
+    - _serializedList:
+      - {fileID: -6137928954960009520}
+      - {fileID: -8604946886281035299}
+      - {fileID: 3219400065927564872}
+      - {fileID: -4467641449896382770}
+      - {fileID: -809468024947650827}
+      - {fileID: -1735305301273866831}
+      - {fileID: 5015475579273488647}
+      - {fileID: 8448463068924354150}
+      - {fileID: 3511448482691847517}
+  _sceneToDefaultObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+--- !u!114 &1078004175485843022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e65aff9267f84c04e9ceb3f9b5e44777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _belowGrid: 1
+  _aboveGrid: 1
+  _onGrid: 1
+--- !u!114 &1578579157117131913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Fence
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 3ff1c060-dec4-4d6b-8032-914cb9e0d8c5
+  _objectGroupName: Fence
+  _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-523488692-0
+  _uiSelected: 0
+--- !u!114 &1595733064626144845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Tree
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: fcac77e8-8d88-4e57-815a-42a9570ce24f
+  _objectGroupName: Tree
+  _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1504201421-0
+  _uiSelected: 0
+--- !u!114 &3219400065927564872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Tree
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 8f06c178-6b21-4fa2-9e86-f7d0647aba78
+  _objectGroupName: Tree
+  _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-231388692-0
+  _uiSelected: 0
+--- !u!114 &3511448482691847517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Stone
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: f3de02d5-8bdf-408d-a444-50278ecda033
+  _objectGroupName: Stone
+  _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-1696959481-0
+  _uiSelected: 0
+--- !u!114 &4166992544322044760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: water
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: c5a6c899-336d-43d0-b3b5-47a5c22f810f
+  _objectGroupName: water
+  _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-497870239-0
+  _uiSelected: 0
+--- !u!114 &5015475579273488647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Bridge
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 6345efd1-a691-40aa-bfef-3c9f49a1ca1a
+  _objectGroupName: Bridge
+  _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-1693598587-0
+  _uiSelected: 0
+--- !u!114 &5274929535151896507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Land
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 63bf3c7d-2d24-4c49-a5f7-94e52026c3de
+  _objectGroupName: Land
+  _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-1415535552-0
+  _uiSelected: 0
+--- !u!114 &8448463068924354150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Flower
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: c1393ba0-8d2a-4027-a261-cee488127626
+  _objectGroupName: Flower
+  _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-1689045168-0
+  _uiSelected: 0

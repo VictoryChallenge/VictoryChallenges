@@ -1,0 +1,196 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5732832335366189779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fd0c34ebc5e2f4bb376f0d8a5bcf72, type: 3}
+  m_Name: rock_001
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 9629defc-f4f4-42e4-a3a6-ab79df3b0b77
+  _pluginPrefab: {fileID: -1703442462730115438, guid: 4487868ff6c39f041a826ff67a5eea54,
+    type: 2}
+  _preview:
+    _prefabAsset: {fileID: 7005347189837259289, guid: aa3e0e2eac1b2ff40bf76183d57e0537,
+      type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+  _used: 1
+  _spawnChance: 1
+  _volumeRadius: 5.6645103
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _offsetFromSurface: 0
+  _embedInSurface: 1
+  _alignToStroke: 0
+  _strokeAlignmentAxis: 3
+  _invertStrokeAlignmentAxis: 0
+  _randomizeRotation: 1
+  _rotationRandomizationAxis: 3
+  _minRandomRotation: 0
+  _maxRandomRotation: 360
+  _randomizeScale: 1
+  _minRandomScale: 0.8
+  _maxRandomScale: 1
+  _enableSlopeCheck: 0
+  _minSlope: 0
+  _maxSlope: 45
+--- !u!114 &-4743078953164140866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fd0c34ebc5e2f4bb376f0d8a5bcf72, type: 3}
+  m_Name: rock_004
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: f4200759-a188-4238-806d-b1f9c88ecd80
+  _pluginPrefab: {fileID: -2501587857399849527, guid: 4487868ff6c39f041a826ff67a5eea54,
+    type: 2}
+  _preview:
+    _prefabAsset: {fileID: 293146770355181459, guid: 1b039e6434fac7142ad10dbc7e3d1240,
+      type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+  _used: 1
+  _spawnChance: 1
+  _volumeRadius: 4.2471504
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _offsetFromSurface: 0
+  _embedInSurface: 1
+  _alignToStroke: 0
+  _strokeAlignmentAxis: 3
+  _invertStrokeAlignmentAxis: 0
+  _randomizeRotation: 1
+  _rotationRandomizationAxis: 3
+  _minRandomRotation: 0
+  _maxRandomRotation: 360
+  _randomizeScale: 1
+  _minRandomScale: 0.8
+  _maxRandomScale: 1
+  _enableSlopeCheck: 0
+  _minSlope: 0
+  _maxSlope: 45
+--- !u!114 &-3803826643538879050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fd0c34ebc5e2f4bb376f0d8a5bcf72, type: 3}
+  m_Name: rock_002
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: bdd39664-4e8b-4089-8d41-19c6151bfe00
+  _pluginPrefab: {fileID: 8694836352946690100, guid: 4487868ff6c39f041a826ff67a5eea54,
+    type: 2}
+  _preview:
+    _prefabAsset: {fileID: 2285338535803176589, guid: e1f1595064328804588d3a5c2a770839,
+      type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+  _used: 1
+  _spawnChance: 1
+  _volumeRadius: 5.543346
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _offsetFromSurface: 0
+  _embedInSurface: 1
+  _alignToStroke: 0
+  _strokeAlignmentAxis: 3
+  _invertStrokeAlignmentAxis: 0
+  _randomizeRotation: 1
+  _rotationRandomizationAxis: 3
+  _minRandomRotation: 0
+  _maxRandomRotation: 360
+  _randomizeScale: 1
+  _minRandomScale: 0.8
+  _maxRandomScale: 1
+  _enableSlopeCheck: 0
+  _minSlope: 0
+  _maxSlope: 45
+--- !u!114 &-1886597828510265512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fd0c34ebc5e2f4bb376f0d8a5bcf72, type: 3}
+  m_Name: rock_003
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 66059ea4-51eb-4991-afec-36e5836c2ef6
+  _pluginPrefab: {fileID: -7624693081019411972, guid: 4487868ff6c39f041a826ff67a5eea54,
+    type: 2}
+  _preview:
+    _prefabAsset: {fileID: 5869493280844326479, guid: c49dea69b090d694aa509224f4f5abb0,
+      type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+  _used: 1
+  _spawnChance: 1
+  _volumeRadius: 3.3517501
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _offsetFromSurface: 0
+  _embedInSurface: 1
+  _alignToStroke: 0
+  _strokeAlignmentAxis: 3
+  _invertStrokeAlignmentAxis: 0
+  _randomizeRotation: 1
+  _rotationRandomizationAxis: 3
+  _minRandomRotation: 0
+  _maxRandomRotation: 360
+  _randomizeScale: 1
+  _minRandomScale: 0.8
+  _maxRandomScale: 1
+  _enableSlopeCheck: 0
+  _minSlope: 0
+  _maxSlope: 45
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c2d635ec171c94e9505a455a32bc3e, type: 3}
+  m_Name: Rock
+  m_EditorClassIdentifier: 
+  _profileName: Rock
+  _prefabs:
+  - {fileID: -5732832335366189779}
+  - {fileID: -3803826643538879050}
+  - {fileID: -1886597828510265512}
+  - {fileID: -4743078953164140866}

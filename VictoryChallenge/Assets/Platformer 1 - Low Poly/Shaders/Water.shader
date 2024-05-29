@@ -71,7 +71,7 @@ Shader "Water"
 		uniform float _WaveBigSpeed;
 		uniform float _DisplacementAmount;
 		UNITY_DECLARE_DEPTH_TEXTURE( _CameraDepthTexture );
-		//uniform float4 _CameraDepthTexture_TexelSize;
+		uniform float4 _CameraDepthTexture_TexelSize;
 		uniform float _WavesNormalStr;
 		ASE_DECLARE_SCREENSPACE_TEXTURE( _GrabTexture )
 		uniform float _RefractionSpeed;

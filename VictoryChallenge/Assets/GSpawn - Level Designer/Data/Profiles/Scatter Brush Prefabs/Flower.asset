@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3461350708914608058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fd0c34ebc5e2f4bb376f0d8a5bcf72, type: 3}
+  m_Name: flower_002
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 173762a8-29f9-4b17-ab5a-8ab87f77997f
+  _pluginPrefab: {fileID: 1114862674174252520, guid: 4487868ff6c39f041a826ff67a5eea54,
+    type: 2}
+  _preview:
+    _prefabAsset: {fileID: 2120575675659737372, guid: 6413e65116d95ab40a90fdba8233a5ab,
+      type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+  _used: 1
+  _spawnChance: 1
+  _volumeRadius: 0.47642982
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _offsetFromSurface: 0
+  _embedInSurface: 1
+  _alignToStroke: 0
+  _strokeAlignmentAxis: 3
+  _invertStrokeAlignmentAxis: 0
+  _randomizeRotation: 1
+  _rotationRandomizationAxis: 3
+  _minRandomRotation: 0
+  _maxRandomRotation: 360
+  _randomizeScale: 1
+  _minRandomScale: 0.8
+  _maxRandomScale: 1
+  _enableSlopeCheck: 0
+  _minSlope: 0
+  _maxSlope: 45
+--- !u!114 &-2623851187911139190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fd0c34ebc5e2f4bb376f0d8a5bcf72, type: 3}
+  m_Name: flower_003
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 0f6a2401-1f4e-4739-9668-bcb934efe40c
+  _pluginPrefab: {fileID: -7076712596699166219, guid: 4487868ff6c39f041a826ff67a5eea54,
+    type: 2}
+  _preview:
+    _prefabAsset: {fileID: 5845305755680202292, guid: c68ffeba734aa9c4f8782fca72651520,
+      type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+  _used: 1
+  _spawnChance: 1
+  _volumeRadius: 0.4373195
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _offsetFromSurface: 0
+  _embedInSurface: 1
+  _alignToStroke: 0
+  _strokeAlignmentAxis: 3
+  _invertStrokeAlignmentAxis: 0
+  _randomizeRotation: 1
+  _rotationRandomizationAxis: 3
+  _minRandomRotation: 0
+  _maxRandomRotation: 360
+  _randomizeScale: 1
+  _minRandomScale: 0.8
+  _maxRandomScale: 1
+  _enableSlopeCheck: 0
+  _minSlope: 0
+  _maxSlope: 45
+--- !u!114 &-532078999420559511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fd0c34ebc5e2f4bb376f0d8a5bcf72, type: 3}
+  m_Name: flower_001
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: c0b0f2b7-fc67-43ae-a4c5-d8ae0d539bd2
+  _pluginPrefab: {fileID: 7314982211288698386, guid: 4487868ff6c39f041a826ff67a5eea54,
+    type: 2}
+  _preview:
+    _prefabAsset: {fileID: 2906556176675040764, guid: e713f7148f306a04e8607b4e2c773921,
+      type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+  _used: 1
+  _spawnChance: 1
+  _volumeRadius: 0.41573516
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _offsetFromSurface: 0
+  _embedInSurface: 1
+  _alignToStroke: 0
+  _strokeAlignmentAxis: 3
+  _invertStrokeAlignmentAxis: 0
+  _randomizeRotation: 1
+  _rotationRandomizationAxis: 3
+  _minRandomRotation: 0
+  _maxRandomRotation: 360
+  _randomizeScale: 1
+  _minRandomScale: 0.8
+  _maxRandomScale: 1
+  _enableSlopeCheck: 0
+  _minSlope: 0
+  _maxSlope: 45
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c2d635ec171c94e9505a455a32bc3e, type: 3}
+  m_Name: Flower
+  m_EditorClassIdentifier: 
+  _profileName: Flower
+  _prefabs:
+  - {fileID: -532078999420559511}
+  - {fileID: -2623851187911139190}
+  - {fileID: -3461350708914608058}

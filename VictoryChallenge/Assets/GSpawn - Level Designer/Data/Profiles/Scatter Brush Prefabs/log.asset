@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1804367276012832924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fd0c34ebc5e2f4bb376f0d8a5bcf72, type: 3}
+  m_Name: log_002
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 2bec4cca-4750-4461-89d2-8c1f0ad5b6ce
+  _pluginPrefab: {fileID: -5303462646187167850, guid: 4487868ff6c39f041a826ff67a5eea54,
+    type: 2}
+  _preview:
+    _prefabAsset: {fileID: 6765971213883427444, guid: 207923d1b25df1442ad9772c2fb2cc9f,
+      type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+  _used: 1
+  _spawnChance: 1
+  _volumeRadius: 1.5907125
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _offsetFromSurface: 0
+  _embedInSurface: 1
+  _alignToStroke: 0
+  _strokeAlignmentAxis: 3
+  _invertStrokeAlignmentAxis: 0
+  _randomizeRotation: 1
+  _rotationRandomizationAxis: 3
+  _minRandomRotation: 0
+  _maxRandomRotation: 360
+  _randomizeScale: 1
+  _minRandomScale: 0.8
+  _maxRandomScale: 1
+  _enableSlopeCheck: 0
+  _minSlope: 0
+  _maxSlope: 45
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c2d635ec171c94e9505a455a32bc3e, type: 3}
+  m_Name: log
+  m_EditorClassIdentifier: 
+  _profileName: log
+  _prefabs:
+  - {fileID: 7427284353995605728}
+  - {fileID: -1804367276012832924}
+--- !u!114 &7427284353995605728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fd0c34ebc5e2f4bb376f0d8a5bcf72, type: 3}
+  m_Name: log_001
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: ad39e563-a8ac-4cf7-adc5-a9c46f476619
+  _pluginPrefab: {fileID: -8144285939773258997, guid: 4487868ff6c39f041a826ff67a5eea54,
+    type: 2}
+  _preview:
+    _prefabAsset: {fileID: 8169462129592854588, guid: a77f1b32665bf014a97f04bba4400fee,
+      type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+  _used: 1
+  _spawnChance: 1
+  _volumeRadius: 1.6242311
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _offsetFromSurface: 0
+  _embedInSurface: 1
+  _alignToStroke: 0
+  _strokeAlignmentAxis: 3
+  _invertStrokeAlignmentAxis: 0
+  _randomizeRotation: 1
+  _rotationRandomizationAxis: 3
+  _minRandomRotation: 0
+  _maxRandomRotation: 360
+  _randomizeScale: 1
+  _minRandomScale: 0.8
+  _maxRandomScale: 1
+  _enableSlopeCheck: 0
+  _minSlope: 0
+  _maxSlope: 45
