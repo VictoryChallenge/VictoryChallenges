@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 1759816007420712212}
   - component: {fileID: 8784450804441039908}
   - component: {fileID: 681305739828112634}
+  - component: {fileID: -8091582575479907746}
   m_Layer: 5
   m_Name: RoomListItem
   m_TagString: Untagged
@@ -254,4 +255,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8784450804441039908}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -8091582575479907746}
+        m_TargetAssemblyTypeName: VictoryChallenge.KJ.Room.RoomListItem, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-8091582575479907746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8035010637738643026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d4ce96c8f31124e900e6d3e1bb62a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 4234551443193384149}

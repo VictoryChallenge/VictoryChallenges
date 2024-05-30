@@ -1,19 +1,23 @@
 using UnityEngine;
 
-public class Menu : MonoBehaviour
+namespace VictoryChallenge.KJ.Menu
 {
-    public string menuName;      // 메뉴 이름
-    public bool open;            // Open bool 값
-
-    public void Open()
+    public class Menu : MonoBehaviour
     {
-        open = true;
-        gameObject.SetActive(true);
-    }
+        public string menuName;      // 메뉴 이름
+        public bool open;            // Open bool 값
 
-    public void Close()
-    {
-        open = false;
-        gameObject.SetActive(false);
+        public void Open()
+        {
+            open = true;
+            gameObject.SetActive(true);
+        }
+
+        public void Close()
+        {
+            open = false;
+            gameObject.SetActive(false);
+        }
     }
 }
+

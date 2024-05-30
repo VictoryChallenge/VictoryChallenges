@@ -1,9 +1,11 @@
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using VictoryChallenge.KJ.Menu;
+using VictoryChallenge.KJ.Room;
 
 namespace VictoryChallenge.KJ.Photon
 {
@@ -13,16 +15,8 @@ namespace VictoryChallenge.KJ.Photon
 
         /* Room */
         [SerializeField] TMP_InputField roomNameInputField;     // 방 이름 입력 필드
-        [SerializeField] TMP_Text roomNameText;                 // 방 이름 표시 텍스트
         [SerializeField] Transform roomListcontent;             // 방 목록
         [SerializeField] GameObject roomListPrefab;             // 방 프리팹
-
-        /* Player */
-        [SerializeField] Transform playerListContent;           // 플레이어 목록
-        [SerializeField] GameObject playerListPrefab;           // 플레이어 프리팹
-
-        /* Game Start */
-        [SerializeField] GameObject startGameButton;            // 게임 시작 버튼
 
         /* Error Message */
         [SerializeField] TMP_Text errorText;                    // 에러 표시 텍스트
@@ -40,15 +34,15 @@ namespace VictoryChallenge.KJ.Photon
 
         public override void OnConnectedToMaster()
         {
-            Debug.Log("연결 성공");
+            Debug.Log("OnConnectedToMaster");
             PhotonNetwork.JoinLobby();
             PhotonNetwork.AutomaticallySyncScene = true;
         }
 
         public override void OnJoinedLobby()
         {
-            MenuManager.Instance.OpenMenu("title");
-            Debug.Log("로비에 들어옴");
+            Menu.MenuManager.Instance.OpenMenu("title");
+            Debug.Log("로비");
             PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
         }
 
@@ -59,21 +53,48 @@ namespace VictoryChallenge.KJ.Photon
                 return;
             }
 
+            Debug.Log("방 생성 시도");
             PhotonNetwork.CreateRoom(roomNameInputField.text);
-            MenuManager.Instance.OpenMenu("loading");
+            Menu.MenuManager.Instance.OpenMenu("loading");
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
         {
             errorText.text = "Room Creation Failed" + message;
-            MenuManager.Instance.OpenMenu("error");
+            Menu.MenuManager.Instance.OpenMenu("error");
         }
 
         public void JoinRoom(RoomInfo info)
         {
+            Debug.Log("방 진입 " + info.Name);
             PhotonNetwork.JoinRoom(info.Name);
+            Menu.MenuManager.Instance.OpenMenu("loading");
         }
 
+        public override void OnJoinedRoom()
+        {
+            Debug.Log("방 들어가는 중");
+            MenuManager.Instance.OpenMenu("loading");
+        }
+
+        public override void OnRoomListUpdate(List<RoomInfo> roomList)
+        {
+            foreach (Transform trans in roomListcontent)
+            {
+                Destroy(trans.gameObject);
+            }
+            for (int i = 0; i < roomList.Count; i++)
+            {
+                if (roomList[i].RemovedFromList)
+                    continue;
+                Instantiate(roomListPrefab, roomListcontent).GetComponent<RoomListItem>().Setup(roomList[i]);
+            }
+        }
+
+        public void StartLobby()
+        {
+            PhotonNetwork.LoadLevel(1);
+        }
     }
 
 }

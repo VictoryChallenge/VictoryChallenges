@@ -876,7 +876,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 400417775}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1631426942}
+        m_TargetAssemblyTypeName: VictoryChallenge.KJ.Photon.PhotonLauncher, Assembly-CSharp
+        m_MethodName: StartLobby
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &400417775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1846,7 +1858,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 856834252}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1631426941}
+        m_TargetAssemblyTypeName: VictoryChallenge.KJ.Menu.MenuManager, Assembly-CSharp
+        m_MethodName: OpenMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 369933856}
+          m_ObjectArgumentAssemblyTypeName: VictoryChallenge.KJ.Menu.Menu, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &856834252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3584,6 +3608,9 @@ GameObject:
   - component: {fileID: 1631426939}
   - component: {fileID: 1631426938}
   - component: {fileID: 1631426937}
+  - component: {fileID: 1631426942}
+  - component: {fileID: 1631426941}
+  - component: {fileID: 1631426943}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3678,6 +3705,55 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1631426941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631426936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53085b59b8397ea4985b58b92659bda0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menus:
+  - {fileID: 429207336}
+  - {fileID: 893679042}
+  - {fileID: 369933856}
+  - {fileID: 1717877437}
+  - {fileID: 1363036863}
+--- !u!114 &1631426942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631426936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed31da7ca0d06fd41a080d986494eef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomNameInputField: {fileID: 359369917}
+  roomListcontent: {fileID: 975510724}
+  roomListPrefab: {fileID: 8035010637738643026, guid: 2e9236fa6aea58b428d646c6bff18278,
+    type: 3}
+  errorText: {fileID: 518855504}
+--- !u!114 &1631426943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631426936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e590564a09f31440a0c71b4a1a4f4b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c_playerNameInput: {fileID: 1125794457}
+  f_playerNameInput: {fileID: 1364002070}
 --- !u!1 &1686349991
 GameObject:
   m_ObjectHideFlags: 0
@@ -4102,7 +4178,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1823668144}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1631426941}
+        m_TargetAssemblyTypeName: VictoryChallenge.KJ.Menu.MenuManager, Assembly-CSharp
+        m_MethodName: OpenMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1717877437}
+          m_ObjectArgumentAssemblyTypeName: VictoryChallenge.KJ.Menu.Menu, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1823668144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4327,6 +4415,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865347846}
   m_CullTransparentMesh: 1
+--- !u!1 &2016430776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016430779}
+  - component: {fileID: 2016430778}
+  - component: {fileID: 2016430777}
+  m_Layer: 0
+  m_Name: RoomManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2016430777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016430776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &2016430778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016430776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e6b2282ccabc34e925f61d8ddd4bd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2016430779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016430776}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 880.18915, y: 673.28296, z: 4.8111706}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4335,3 +4490,4 @@ SceneRoots:
   - {fileID: 749815260}
   - {fileID: 1631426940}
   - {fileID: 878979609}
+  - {fileID: 2016430779}

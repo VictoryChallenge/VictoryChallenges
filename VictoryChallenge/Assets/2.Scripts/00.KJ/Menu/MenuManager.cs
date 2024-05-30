@@ -1,46 +1,49 @@
 using UnityEngine;
 
-public class MenuManager : MonoBehaviour
+namespace VictoryChallenge.KJ.Menu
 {
-    public static MenuManager Instance;     // ΩÃ±€≈Ê
-
-    [SerializeField] Menu[] menus;          // ∏ﬁ¥∫ ∏ÆΩ∫∆Æ
-
-    void Awake()
+    public class MenuManager : MonoBehaviour
     {
-        Instance = this;
-    }
+        public static MenuManager Instance;     // ΩÃ±€≈Ê
 
-    public void OpenMenu(string menuName)
-    {
-        for (int i = 0; i < menus.Length; i++)
+        [SerializeField] Menu[] menus;          // ∏ﬁ¥∫ ∏ÆΩ∫∆Æ
+
+        void Awake()
         {
-            if (menus[i].menuName == menuName)
-            {
-                menus[i].Open();
-            }
-            else if (menus[i].open)
-            {
-                CloseMenu(menus[i]);
-            }
+            Instance = this;
         }
-    }
 
-    public void OpenMenu(Menu menu)
-    {
-        for (int i = 0; i < menus.Length; i++)
+        public void OpenMenu(string menuName)
         {
-            if (menus[i].open)
+            for (int i = 0; i < menus.Length; i++)
             {
-                CloseMenu(menus[i]);
+                if (menus[i].menuName == menuName)
+                {
+                    menus[i].Open();
+                }
+                else if (menus[i].open)
+                {
+                    CloseMenu(menus[i]);
+                }
             }
         }
 
-        menu.Open();
-    }
+        public void OpenMenu(Menu menu)
+        {
+            for (int i = 0; i < menus.Length; i++)
+            {
+                if (menus[i].open)
+                {
+                    CloseMenu(menus[i]);
+                }
+            }
 
-    public void CloseMenu(Menu menu)
-    {
-        menu.Close();
+            menu.Open();
+        }
+
+        public void CloseMenu(Menu menu)
+        {
+            menu.Close();
+        }
     }
 }
