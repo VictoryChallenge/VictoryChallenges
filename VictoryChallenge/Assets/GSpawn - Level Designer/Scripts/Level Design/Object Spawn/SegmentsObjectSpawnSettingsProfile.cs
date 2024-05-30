@@ -373,10 +373,10 @@ namespace GSpawn
             ctrl = UI.createFloatField("_objectSkipChance", serializedObject, "Object skip chance", "Specifies the probability of an object being skipped during the spawn process.", 0.0f, 1.0f, parent);
             ctrl.setChildLabelWidth(labelWidth);
 
-            ctrl = UI.createFloatField("_horizontalPadding", serializedObject, "Horizontal padding", "The amount of padding applied horizontally (i.e. along the extension plane).", parent);
+            ctrl = UI.createFloatField("_horizontalPadding", serializedObject, "horizontal padding", "The amount of padding applied horizontally (i.e. along the extension plane).", parent);
             ctrl.setChildLabelWidth(labelWidth);
 
-            ctrl = UI.createFloatField("_verticalPadding", serializedObject, "Vertical padding", "The amount of padding applied vertically (i.e. perpendicular to the extension plane).", parent);
+            ctrl = UI.createFloatField("_verticalPadding", serializedObject, "vertical padding", "The amount of padding applied vertically (i.e. perpendicular to the extension plane).", parent);
             ctrl.setChildLabelWidth(labelWidth);
 
             ctrl = UI.createFloatField("_volumelessObjectSize", serializedObject, "Volumeless object size", "The size that should be used for objects that don't have a volume.", 1e-1f, parent);
