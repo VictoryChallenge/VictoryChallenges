@@ -28,6 +28,10 @@ namespace VictoryChallenge.StateMachine.Player
                 {
                     return Input.GetKeyDown(KeyCode.LeftControl);
                 }},
+                { State.Dance, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.C);
+                }},
             };
         }
     }
