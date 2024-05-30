@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,7 +36,12 @@ namespace VictoryChallenge.KJ.Lobby
             Debug.Log("방에 성공적으로 들어옴");
             if (SceneManager.GetActiveScene().buildIndex == 1)
             {
-                Menu.MenuManager.Instance.OpenMenu("lobby");
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+
+                if (Menu.MenuManager.Instance != null)
+                {
+                    Menu.MenuManager.Instance.OpenMenu("lobby");
+                }
                 InitializeRoom();
             }
         }

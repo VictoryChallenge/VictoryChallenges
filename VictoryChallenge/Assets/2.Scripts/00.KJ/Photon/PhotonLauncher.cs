@@ -75,6 +75,7 @@ namespace VictoryChallenge.KJ.Photon
         {
             Debug.Log("방 들어가는 중");
             MenuManager.Instance.OpenMenu("loading");
+            PhotonNetwork.LoadLevel(1);
         }
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -89,11 +90,6 @@ namespace VictoryChallenge.KJ.Photon
                     continue;
                 Instantiate(roomListPrefab, roomListcontent).GetComponent<RoomListItem>().Setup(roomList[i]);
             }
-        }
-
-        public void StartLobby()
-        {
-            PhotonNetwork.LoadLevel(1);
         }
     }
 

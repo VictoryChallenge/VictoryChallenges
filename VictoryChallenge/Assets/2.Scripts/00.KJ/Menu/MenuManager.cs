@@ -38,12 +38,18 @@ namespace VictoryChallenge.KJ.Menu
                 }
             }
 
-            menu.Open();
+            if (menu != null)
+            {
+                menu.Open();
+            }
         }
 
         public void CloseMenu(Menu menu)
         {
-            menu.Close();
+            if (menu != null)
+            {
+                menu.Close();
+            }
         }
     }
 }
