@@ -11,9 +11,9 @@ namespace VictoryChallenge.KJ.Room
 
         void Awake()
         {
-            if (Instance)
+            if (Instance != null && Instance != this)
             {
-                Destroy(Instance);
+                Destroy(gameObject);
                 return;
             }
 
@@ -35,7 +35,6 @@ namespace VictoryChallenge.KJ.Room
 
         void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            Debug.Log($"Scene loaded: {scene.name}, Build Index: {scene.buildIndex}, In Room: {PhotonNetwork.InRoom}");
             if (scene.buildIndex == 1)
             {
                 if (PhotonNetwork.InRoom)
