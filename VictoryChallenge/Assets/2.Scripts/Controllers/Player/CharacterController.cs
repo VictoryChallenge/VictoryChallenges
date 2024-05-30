@@ -24,6 +24,11 @@ namespace VictoryChallenge.Controllers.Player
             set => _velocity = value;
         }
         private Vector3 _velocity;
+
+        public virtual Transform camTransform { get; set; }
+
+        private float turnSmoothVelocity;
+        public float turnSmoothTime = 0.1f;
         #endregion
 
         #region 애니메이션
@@ -70,14 +75,19 @@ namespace VictoryChallenge.Controllers.Player
         void ManualMove()
         {
             // 이동
-            if(_velocity.z > 0)
-                transform.position += transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
-            if(_velocity.z < 0)
-                transform.position -= transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
-            if (_velocity.x > 0)
-                transform.position += transform.right * _velocity.magnitude * Time.fixedDeltaTime;
-            if (_velocity.x < 0)
-                transform.position -= transform.right * _velocity.magnitude * Time.fixedDeltaTime;
+            float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+
+            Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+            transform.Translate(moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
+
+            if (_velocity != Vector3.zero)
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 0.35f);
+
+            //transform.position += transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
+
+            //if (_velocity != Vector3.zero)
+            //    _rigidBody.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_velocity), 0.35f);
         }
 
         protected virtual void InitAnimatorBehaviours()

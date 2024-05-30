@@ -16,6 +16,10 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
+                { State.Move, (animator) =>
+                {
+                    return (controller.velocity.magnitude > 0.01f);
+                }},
             };
         }
     }
