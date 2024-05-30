@@ -16,10 +16,6 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
-                { State.Idle, (animator) =>
-                {
-                    return (controller.velocity.magnitude < 0.01f);
-                }},
                 { State.Jump, (animator) =>
                 {
                     return Input.GetKeyDown(KeyCode.Space);

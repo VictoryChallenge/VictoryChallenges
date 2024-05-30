@@ -11,7 +11,7 @@ namespace VictoryChallenge.StateMachine.Player
     public class PlayerAttack : StateMachineBehaviourBase
     {
         private int _attackComboStack;
-        private int _attackComboStackLimit = 2;
+        private int _attackComboStackLimit = 1;
         private float _comboStackResetTime = 0.5f;
 
 
@@ -21,14 +21,6 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
-                { State.Idle, (animator) =>
-                {
-                    return (controller.velocity.magnitude < 0.01f);
-                }},
-                { State.Move, (animator) =>
-                {
-                    return (controller.velocity.magnitude > 0.01f);
-                }},
                 { State.Attack, (animator) =>
                 {
                     if(!Input.GetMouseButtonDown(0))

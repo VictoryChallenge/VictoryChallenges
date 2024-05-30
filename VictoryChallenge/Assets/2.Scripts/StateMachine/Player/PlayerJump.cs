@@ -21,13 +21,9 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
-                { State.Idle, (animator) =>
-                {
-                    return controller.IsGrounded() && (controller.velocity.magnitude < 0.01f);
-                }},
                 { State.Move, (animator) =>
                 {
-                    return (controller.velocity.magnitude > 0.01f);
+                    return controller.IsGrounded()/* && (controller.velocity.magnitude > 0.01f)*/;
                 }},
             };
         }

@@ -61,22 +61,23 @@ namespace VictoryChallenge.Controllers.Player
             vertical = Input.GetAxis("Vertical");
 
             _velocity = new Vector3(horizontal, 0f, vertical).normalized * speedGain;
-
+            
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);
         }
 
-        // Player 이동 공식
+        // Player 이동 
         void ManualMove()
         {
             // 이동
-            transform.position += _velocity * Time.fixedDeltaTime;
-
-            // 회전
-            //if(_velocity != Vector3.zero)
-            //{
-            //    _rigidBody.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_velocity), 0.15f);
-            //}
+            if(_velocity.z > 0)
+                transform.position += transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
+            if(_velocity.z < 0)
+                transform.position -= transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
+            if (_velocity.x > 0)
+                transform.position += transform.right * _velocity.magnitude * Time.fixedDeltaTime;
+            if (_velocity.x < 0)
+                transform.position -= transform.right * _velocity.magnitude * Time.fixedDeltaTime;
         }
 
         protected virtual void InitAnimatorBehaviours()
