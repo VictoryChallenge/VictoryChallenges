@@ -413,11 +413,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerWithCam
       objectReference: {fileID: 0}
-    - target: {fileID: 5150085039482460906, guid: eff94884336048d45ac472b0468b8ef0,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5681717699174676740, guid: eff94884336048d45ac472b0468b8ef0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,11 +461,6 @@ PrefabInstance:
     - target: {fileID: 5681717699174676740, guid: eff94884336048d45ac472b0468b8ef0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8852810740117384120, guid: eff94884336048d45ac472b0468b8ef0,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8923491666957335003, guid: eff94884336048d45ac472b0468b8ef0,
