@@ -43,7 +43,8 @@ namespace VictoryChallenge.KJ.Photon
         {
             Menu.MenuManager.Instance.OpenMenu("title");
             Debug.Log("·Îºñ");
-            PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
+            Debug.Log(PhotonNetwork.NickName);
+            //PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
         }
 
         public void CreateRoom()

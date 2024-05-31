@@ -13,26 +13,33 @@ namespace VictoryChallenge.KJ.Name
         {
             InitializePlayerName(c_playerNameInput);
             InitializePlayerName(f_playerNameInput);
+
+            c_playerNameInput.onValueChanged.AddListener(delegate { OnPlayerInputValueChange(c_playerNameInput); });
+            f_playerNameInput.onValueChanged.AddListener(delegate { OnPlayerInputValueChange(f_playerNameInput); });
         }
 
         private void InitializePlayerName(TMP_InputField inputField)
         {
             if (PlayerPrefs.HasKey("username"))
             {
-                inputField.text = PlayerPrefs.GetString("username");
-                PhotonNetwork.NickName = PlayerPrefs.GetString("username");
+                string username = PlayerPrefs.GetString("username");
+                inputField.text = username;
+                PhotonNetwork.NickName = username;
             }
             else
             {
-                inputField.text = "Player " + Random.Range(0, 10000).ToString("0000");
-                OnPlayerInputValueChange(inputField);
+                string randomname = "Player " + Random.Range(0, 10000).ToString("0000");
+                inputField.text = randomname;
+                PhotonNetwork.NickName = randomname;
+                PlayerPrefs.SetString("username", randomname);
             }
         }
 
         public void OnPlayerInputValueChange(TMP_InputField inputField)
         {
-            PhotonNetwork.NickName = inputField.text;
-            PlayerPrefs.GetString("username", inputField.text);
+            string newUsername = inputField.text;
+            PhotonNetwork.NickName = newUsername;
+            PlayerPrefs.SetString("username", newUsername);
         }
     }
 }
