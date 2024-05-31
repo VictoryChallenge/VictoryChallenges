@@ -27,10 +27,16 @@ namespace VictoryChallenge.KJ.Photon
 
         void Start()
         {
-            if (!PhotonNetwork.IsConnected)
+            Debug.Log("Start() 호출됨. 연결 상태 확인 - PhotonNetwork.NetworkClientState: " + PhotonNetwork.NetworkClientState);
+            if (PhotonNetwork.NetworkClientState == ClientState.Disconnected)
             {
-                Debug.Log("ConnectUsingSettings On");
+                Debug.Log("PhotonNetwork.ConnectUsingSettings 호출");
                 PhotonNetwork.ConnectUsingSettings();
+            }
+            else if (PhotonNetwork.NetworkClientState == ClientState.ConnectedToMasterServer)
+            {
+                Debug.Log("이미 마스터 서버에 연결된 상태, 로비로 직접 참가");
+                PhotonNetwork.JoinLobby();
             }
         }
 
