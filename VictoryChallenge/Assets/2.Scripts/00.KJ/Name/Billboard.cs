@@ -4,12 +4,12 @@ namespace VictoryChallenge.KJ.Name
 {
     public class Billboard : MonoBehaviour
     {
-        Camera cam;     // 카메라
+        UnityEngine.Camera cam;     // 카메라
 
         void Update()
         {
             if (cam == null)
-                cam = FindObjectOfType<Camera>();
+                cam = FindObjectOfType<UnityEngine.Camera>();
             if (cam == null)
                 return;
 
