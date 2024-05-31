@@ -23,8 +23,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -56,8 +58,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -7415429098833550420, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -65,7 +69,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 6.5775867, y: 5.458251, z: 8.92469}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-8749336337965507923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,8 +95,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - d3278be2888ac72428ed3f1a42e3291a
+    - 8396bb939a95a0245b2656546d865710
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -190,8 +196,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -223,8 +231,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -355,8 +365,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -7415429098833550420, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -364,7 +376,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 6.202256, y: 7.2355676, z: 5.8038917}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-6880108848864714242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,8 +468,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - d3278be2888ac72428ed3f1a42e3291a
+    - 8396bb939a95a0245b2656546d865710
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 24.598469, y: 24.700052, z: -8.95486}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -557,8 +571,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - d3278be2888ac72428ed3f1a42e3291a
+    - 8396bb939a95a0245b2656546d865710
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -10.435603, y: 17.00002, z: -2.7455702}
     _rotation: {x: -0, y: 0.76040393, z: -0, w: -0.6494504}
@@ -788,8 +804,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -823,8 +841,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - d3278be2888ac72428ed3f1a42e3291a
+    - 8396bb939a95a0245b2656546d865710
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -891,8 +911,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - d3278be2888ac72428ed3f1a42e3291a
+    - 8396bb939a95a0245b2656546d865710
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 12.150885, y: 0, z: 1.0487232}
     _rotation: {x: -0, y: 1, z: -0, w: 0}
@@ -1056,8 +1078,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1089,8 +1113,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1155,8 +1181,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1188,8 +1216,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1381,8 +1411,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1414,8 +1446,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: 1578579157117131913, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1480,8 +1514,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1513,8 +1549,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1546,8 +1584,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1579,8 +1619,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1647,8 +1689,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - d3278be2888ac72428ed3f1a42e3291a
+    - 8396bb939a95a0245b2656546d865710
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1746,8 +1790,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -7415429098833550420, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1755,7 +1801,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 7.8860373, y: 7.8083215, z: 8.133702}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-2101256333118448652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1911,8 +1957,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2043,8 +2091,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2076,8 +2126,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2109,8 +2161,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2190,8 +2244,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: 1578579157117131913, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2256,8 +2312,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2291,8 +2349,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - d3278be2888ac72428ed3f1a42e3291a
+    - 8396bb939a95a0245b2656546d865710
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2489,14 +2549,16 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
-    _position: {x: -0, y: 0, z: 0}
+    _position: {x: -98.25489, y: -0.9080002, z: -34.572075}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
-    _scale: {x: 1, y: 1, z: 1}
+    _scale: {x: 0.64769995, y: 0.64769995, z: 0.64769995}
   _modularSnapVerticalStep: 0
-  _surfaceSnapAppliedOffsetFromSurface: 0
+  _surfaceSnapAppliedOffsetFromSurface: -0.8000001
   _modelSize: {x: 7.519444, y: 5.237529, z: 7.5194445}
   _uiSelected: 0
 --- !u!114 &3173224190682657908
@@ -2687,8 +2749,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2753,8 +2817,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 0, y: 0, z: 0}
     _rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2995,7 +3061,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 7.3937035, y: 5.40363, z: 7.9611707}
-  _uiSelected: 1
+  _uiSelected: 0
 --- !u!114 &6463046721819415838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3120,8 +3186,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: 1578579157117131913, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -3155,8 +3223,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - d3278be2888ac72428ed3f1a42e3291a
+    - 8396bb939a95a0245b2656546d865710
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0.8357601, y: 0, z: -5.388693}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -3254,8 +3324,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -86.1315, y: 0, z: -1.7608852}
     _rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
@@ -3485,8 +3557,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -3518,8 +3592,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -7415429098833550420, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -3527,7 +3603,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 4.9132395, y: 4.6868286, z: 4.5603724}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &8740591213172980637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3551,8 +3627,10 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys: []
-    _serializedValues: []
+    _serializedKeys:
+    - 8396bb939a95a0245b2656546d865710
+    _serializedValues:
+    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}

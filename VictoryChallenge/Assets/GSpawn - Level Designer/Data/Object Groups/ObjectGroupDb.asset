@@ -89,7 +89,7 @@ MonoBehaviour:
     _guidString: 59b02a3f-bc31-4a40-802a-cb05c5c58fa8
   _objectGroupName: Rock
   _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-249119310-0
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-6899142982012744621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,14 +266,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedItems:
     _serializedList:
-    - _guidString: ce212a35-384e-4247-8ff3-80f60632f474
+    - _guidString: 59b02a3f-bc31-4a40-802a-cb05c5c58fa8
   collapsedItems:
     _serializedList: []
   selectRangeBeginId:
-    _guidString: 56e9a2b9-424b-4b42-94f1-f61f0ffc78e8
+    _guidString: 59b02a3f-bc31-4a40-802a-cb05c5c58fa8
   selectRangeEndId:
-    _guidString: 56e9a2b9-424b-4b42-94f1-f61f0ffc78e8
-  hasSelectRange: 0
+    _guidString: 59b02a3f-bc31-4a40-802a-cb05c5c58fa8
+  hasSelectRange: 1
   scrollOffset: {x: 0, y: 0}
   vertScrollHighValue: 0
   vertScrollLowValue: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
     _guidString: 0f56cb36-388a-4628-936b-9fa030cdcc81
   _objectGroupName: Box
   _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-1129084643-0
-  _uiSelected: 1
+  _uiSelected: 0
 --- !u!114 &3219400065927564872
 MonoBehaviour:
   m_ObjectHideFlags: 0

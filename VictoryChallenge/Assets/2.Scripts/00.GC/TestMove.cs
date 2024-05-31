@@ -7,6 +7,8 @@ public class TestMove : MonoBehaviour
     public float speed = 3;
     public float jumpForce = 5;
     private Rigidbody rb;
+    bool isReverse = false;
+    
 
     void Start()
     {
@@ -22,6 +24,12 @@ public class TestMove : MonoBehaviour
 
         Vector3 move = new Vector3(h, 0, v);
 
+        if (isReverse)
+        {
+            move = -move;
+        }
+        
+
         transform.Translate(move * speed * Time.deltaTime);
 
         if(Input.GetKeyDown(KeyCode.Space))
@@ -36,5 +44,10 @@ public class TestMove : MonoBehaviour
         {
             enabled = true;
         }
+    }
+
+    public void Reverse(bool reverse)
+    {
+        isReverse = reverse;
     }
 }
