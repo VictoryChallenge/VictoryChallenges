@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace RiskOfRain2.Managers
+namespace VictoryChallenge.Managers
 {
     /// <summary>
     /// MonoBehaviour를 상속받는 싱글톤

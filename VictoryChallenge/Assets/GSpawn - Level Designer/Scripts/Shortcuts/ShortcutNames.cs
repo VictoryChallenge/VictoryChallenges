@@ -6,8 +6,8 @@ namespace GSpawn
         public static string objectSpawn                                { get { return "Object Spawn"; } }
         public static string objectSelection                            { get { return "Object Selection"; } }
         public static string objectErase                                { get { return "Object Erase"; } }
-        public static string grid_VerticalStepUp                        { get { return "Grid/Vertical Step Up"; } }
-        public static string grid_VerticalStepDown                      { get { return "Grid/Vertical Step Down"; } }
+        public static string grid_VerticalStepUp                        { get { return "Grid/vertical Step Up"; } }
+        public static string grid_VerticalStepDown                      { get { return "Grid/vertical Step Down"; } }
         public static string grid_SnapToPickedObject                    { get { return "Grid/Snap to Picked Object"; } }
         public static string transform_RotateAroundX                    { get { return "Transform/Rotate Around X"; } }
         public static string transform_RotateAroundY                    { get { return "Transform/Rotate Around Y"; } }
@@ -26,10 +26,10 @@ namespace GSpawn
 
     public static class ObjectTransformSessionsShortcutNames
     {
-        public static string modularSnap_VerticalStepUp                 { get { return "Modular Snap/Vertical Step Up"; } }
-        public static string modularSnap_VerticalStepDown               { get { return "Modular Snap/Vertical Step Down"; } }
-        public static string modularSnap_ResetVerticalStep              { get { return "Modular Snap/Reset Vertical Step"; } }
-        public static string modularSnap_ResetVerticalStepToOriginal    { get { return "Modular Snap/Reset Vertical Step to Original"; } }
+        public static string modularSnap_VerticalStepUp                 { get { return "Modular Snap/vertical Step Up"; } }
+        public static string modularSnap_VerticalStepDown               { get { return "Modular Snap/vertical Step Down"; } }
+        public static string modularSnap_ResetVerticalStep              { get { return "Modular Snap/Reset vertical Step"; } }
+        public static string modularSnap_ResetVerticalStepToOriginal    { get { return "Modular Snap/Reset vertical Step to Original"; } }
         public static string modularSnap_ToggleHalfSpace                { get { return "Modular Snap/Toggle Half-Space"; } }
         public static string modularSnap_ToggleObject2ObjectSnap        { get { return "Modular Snap/Toggle Object-to-Object Snap"; } }
         public static string modularSnap_ToggleGridSnapClimb            { get { return "Modular Snap/Toggle Grid Snap Climb"; } }
