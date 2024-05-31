@@ -102,7 +102,6 @@ namespace VictoryChallenge.Controllers.Player
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-moveDir), 0.35f);
             }
 
-            Debug.Log("reverseKey" + isReverseKey);
 
             //transform.position += transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
 
