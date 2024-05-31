@@ -8,6 +8,7 @@ namespace VictoryChallenge.Controllers.Player
     /// <summary>
     /// Player를 제어하기 위한 스크립트
     /// </summary>
+    /// 
     public class CharacterController : MonoBehaviour
     {
         #region 이동
