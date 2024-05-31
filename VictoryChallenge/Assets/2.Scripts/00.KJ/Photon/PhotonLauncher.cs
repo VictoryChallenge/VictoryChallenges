@@ -3,6 +3,7 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VictoryChallenge.KJ.Menu;
 using VictoryChallenge.KJ.Room;
 
@@ -27,17 +28,8 @@ namespace VictoryChallenge.KJ.Photon
 
         void Start()
         {
-            Debug.Log("Start() 호출됨. 연결 상태 확인 - PhotonNetwork.NetworkClientState: " + PhotonNetwork.NetworkClientState);
-            if (PhotonNetwork.NetworkClientState == ClientState.Disconnected)
-            {
-                Debug.Log("PhotonNetwork.ConnectUsingSettings 호출");
-                PhotonNetwork.ConnectUsingSettings();
-            }
-            else if (PhotonNetwork.NetworkClientState == ClientState.ConnectedToMasterServer)
-            {
-                Debug.Log("이미 마스터 서버에 연결된 상태, 로비로 직접 참가");
-                PhotonNetwork.JoinLobby();
-            }
+            Debug.Log("연결");
+            PhotonNetwork.ConnectUsingSettings();
         }
 
         public override void OnConnectedToMaster()
@@ -49,7 +41,7 @@ namespace VictoryChallenge.KJ.Photon
 
         public override void OnJoinedLobby()
         {
-            MenuManager.Instance.OpenMenu("title");
+            Menu.MenuManager.Instance.OpenMenu("title");
             Debug.Log("로비");
             PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
         }
@@ -63,20 +55,20 @@ namespace VictoryChallenge.KJ.Photon
 
             Debug.Log("방 생성 시도");
             PhotonNetwork.CreateRoom(roomNameInputField.text);
-            MenuManager.Instance.OpenMenu("loading");
+            Menu.MenuManager.Instance.OpenMenu("loading");
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
         {
             errorText.text = "Room Creation Failed" + message;
-            MenuManager.Instance.OpenMenu("error");
+            Menu.MenuManager.Instance.OpenMenu("error");
         }
 
         public void JoinRoom(RoomInfo info)
         {
             Debug.Log("방 진입 " + info.Name);
             PhotonNetwork.JoinRoom(info.Name);
-            MenuManager.Instance.OpenMenu("loading");
+            Menu.MenuManager.Instance.OpenMenu("loading");
         }
 
         public override void OnJoinedRoom()
@@ -100,4 +92,5 @@ namespace VictoryChallenge.KJ.Photon
             }
         }
     }
+
 }

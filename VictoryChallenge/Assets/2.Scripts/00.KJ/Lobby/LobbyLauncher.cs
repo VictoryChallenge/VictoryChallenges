@@ -59,14 +59,12 @@ namespace VictoryChallenge.KJ.Lobby
 
         public void LeaveRoom()
         {
-            Debug.Log("방을 떠나고 로비로 돌아감");
             PhotonNetwork.LeaveRoom();
+            PhotonNetwork.LoadLevel(0);
         }
 
         public override void OnLeftRoom()
         {
-            Debug.Log("메뉴로 돌아감");
-            CleanUpPhotonView();
             PhotonNetwork.LoadLevel(0);
         }
 
@@ -86,17 +84,6 @@ namespace VictoryChallenge.KJ.Lobby
             for (int i = 0; i < players.Count(); i++)
             {
                 Instantiate(playerListPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(players[i]);
-            }
-        }
-
-        void CleanUpPhotonView()
-        {
-            foreach (PhotonView pv in FindObjectsOfType<PhotonView>())
-            {
-                if (pv.IsMine && pv.ViewID > 0)
-                {
-                    Destroy(pv.gameObject);
-                }
             }
         }
     }
