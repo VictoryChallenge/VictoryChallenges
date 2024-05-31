@@ -8,6 +8,7 @@ namespace VictoryChallenge.StateMachine
         Attack,
         KickAttack,
         Dance,
+        Grab,
     }
 }
 

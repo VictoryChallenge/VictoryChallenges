@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e274abca131fad848bd2231018f40c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _offsetY: 2
 --- !u!1 &619141498479098944
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +99,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619141498479098944}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00699949, y: -0.000000017208057, z: 1.204506e-10, w: 0.9999755}
+  m_LocalRotation: {x: 0.006999501, y: -0.000000017208057, z: 1.2045077e-10, w: 0.9999755}
   m_LocalPosition: {x: -0.20470306, y: 2.0235279, z: -4.9911366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -303,15 +304,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5681717699174676740}
     m_Modifications:
+    - target: {fileID: 2894367931040886591, guid: f999d3d438d8bea48bd8e16f0ae35732,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5710167326655869943, guid: f999d3d438d8bea48bd8e16f0ae35732,
         type: 3}
       propertyPath: _vCamPerspective
       value: 
       objectReference: {fileID: 4614789386768927874}
+    - target: {fileID: 6569543407055876314, guid: f999d3d438d8bea48bd8e16f0ae35732,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6764369822637894888, guid: f999d3d438d8bea48bd8e16f0ae35732,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764369822637894888, guid: f999d3d438d8bea48bd8e16f0ae35732,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7549520871249774953, guid: f999d3d438d8bea48bd8e16f0ae35732,
         type: 3}

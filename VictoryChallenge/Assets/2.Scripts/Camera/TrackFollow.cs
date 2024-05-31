@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace VictoryChallenge.Camera
 {
-    public class CameraFollow : MonoBehaviour
+    public class TrackFollow : MonoBehaviour
     {
-        private float _offsetY = 2f;
+        [SerializeField] private float _offsetY = 2f;
         private Transform _playerTransform;
 
 

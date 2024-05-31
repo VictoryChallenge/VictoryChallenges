@@ -26,8 +26,8 @@ namespace VictoryChallenge.Controllers.Player
         }
         private Vector3 _velocity;
 
-        public virtual bool isReverseKey { get; set; }
 
+        // 카메라 회전
         public virtual Transform camTransform { get; set; }
 
         private float turnSmoothVelocity;
@@ -45,6 +45,15 @@ namespace VictoryChallenge.Controllers.Player
 
         #region 코루틴
         public Coroutine comboStackResetCoroutine;
+        #endregion
+
+        #region 상호 작용
+        // Grab
+        public virtual bool isGrabbable { get; set; }
+        public virtual Transform grabbableTransform { get; set; }
+
+        // Object
+        public virtual bool isReverseKey { get; set; }
         #endregion
 
         protected virtual void Start()
@@ -101,8 +110,6 @@ namespace VictoryChallenge.Controllers.Player
                 if (_velocity != Vector3.zero)
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-moveDir), 0.35f);
             }
-
-            Debug.Log("reverseKey" + isReverseKey);
 
             //transform.position += transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
 
