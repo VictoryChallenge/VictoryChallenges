@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VictoryChallenge.Controllers.Player;
 
 public class Ring : MonoBehaviour
 {
@@ -8,19 +9,21 @@ public class Ring : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            TestMove testMove = other.GetComponent<TestMove>();
-            if(testMove != null )
+            PlayerController pc = other.gameObject.GetComponent<PlayerController>();
+            if(pc != null )
             {
-                Destroy(gameObject);
-                StartCoroutine(ReverseMove(testMove, 2f));
+                GetComponent<MeshRenderer>().enabled = false;
+                GetComponent<MeshCollider>().enabled = false;
+                StartCoroutine(ReverseMove(pc, 2f));
+                Destroy(gameObject, 2.5f);
             }
         }
     }
 
-    private IEnumerator ReverseMove(TestMove player, float duration)
+    private IEnumerator ReverseMove(PlayerController player, float duration)
     {
-        player.Reverse(true);
+        player.isReverseKey = true;
         yield return new WaitForSeconds(duration);
-        player.Reverse(false);
+        player.isReverseKey = false;
     }
 }

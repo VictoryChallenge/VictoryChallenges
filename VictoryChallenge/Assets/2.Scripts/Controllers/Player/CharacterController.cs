@@ -26,6 +26,8 @@ namespace VictoryChallenge.Controllers.Player
         }
         private Vector3 _velocity;
 
+        public virtual bool isReverseKey { get; set; }
+
         public virtual Transform camTransform { get; set; }
 
         private float turnSmoothVelocity;
@@ -75,15 +77,32 @@ namespace VictoryChallenge.Controllers.Player
         // Player 이동 
         void ManualMove()
         {
-            // 이동
-            float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            if(!isReverseKey)
+            {
+                // 이동
+                float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
-            Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-            transform.Translate(moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
+                Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+                transform.Translate(moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
 
-            if (_velocity != Vector3.zero)
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 0.35f);
+                if (_velocity != Vector3.zero)
+                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 0.35f);
+            }
+            else
+            {
+                // 이동
+                float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+
+                Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+                transform.Translate(-moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
+
+                if (_velocity != Vector3.zero)
+                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-moveDir), 0.35f);
+            }
+
+            Debug.Log("reverseKey" + isReverseKey);
 
             //transform.position += transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
 
