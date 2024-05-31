@@ -57,7 +57,7 @@ namespace VictoryChallenge.KJ.Lobby
             startGameButton.SetActive(PhotonNetwork.IsMasterClient);
         }
 
-        public void LeaveRoom()
+        public void ReaveRoom()
         {
             Debug.Log("방을 떠나고 로비로 돌아감");
             PhotonNetwork.LeaveRoom();
