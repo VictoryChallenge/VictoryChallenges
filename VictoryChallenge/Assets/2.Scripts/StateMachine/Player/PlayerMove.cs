@@ -32,7 +32,7 @@ namespace VictoryChallenge.StateMachine.Player
                 {
                     return Input.GetKeyDown(KeyCode.C);
                 }},
-                { State.Grab, (animator) =>
+                { State.GrabStart, (animator) =>
                 {
                     return controller.isGrabbable && Input.GetMouseButton(0);
                 }},

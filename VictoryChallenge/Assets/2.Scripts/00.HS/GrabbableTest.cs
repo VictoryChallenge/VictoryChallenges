@@ -20,6 +20,8 @@ public class GrabbableTest : MonoBehaviour
             _characterController.isGrabbable = true;
 
             _characterController.grabbableTransform = other.gameObject.GetComponent<Transform>();
+            _characterController.grabbableRigid = other.gameObject.GetComponent<Rigidbody>();
+            
         }
     }
 

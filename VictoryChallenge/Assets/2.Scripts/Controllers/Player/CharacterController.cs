@@ -2,6 +2,7 @@ using VictoryChallenge.StateMachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -51,8 +52,11 @@ namespace VictoryChallenge.Controllers.Player
         // Grab
         public virtual bool isGrabbable { get; set; }
         public virtual Transform grabbableTransform { get; set; }
+        public virtual Rigidbody grabbableRigid { get; set; }
 
         // Object
+        public Vector3 moveDirection { get => _moveDirection; }
+        private Vector3 _moveDirection;
         public virtual bool isReverseKey { get; set; }
         #endregion
 
@@ -93,6 +97,7 @@ namespace VictoryChallenge.Controllers.Player
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
                 Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+                _moveDirection = moveDir;
                 transform.Translate(moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
 
                 if (_velocity != Vector3.zero)
@@ -102,9 +107,10 @@ namespace VictoryChallenge.Controllers.Player
             {
                 // 이동
                 float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
                 Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+                _moveDirection = moveDir;
                 transform.Translate(-moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
 
                 if (_velocity != Vector3.zero)
