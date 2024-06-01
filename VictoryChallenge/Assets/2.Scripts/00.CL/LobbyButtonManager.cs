@@ -1,3 +1,4 @@
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -80,9 +81,9 @@ namespace VictoryChallenge.Scripts.CL
         void GameScene()
         {
             if (mapName == "Marathon")
-                SceneManager.LoadScene(2);
+                PhotonNetwork.LoadLevel(2);
             //if (mapName == "OnlyOne")
-              //SceneManager.LoadScene(3); // 최후의1인맵ㄴ
+                //PhotonNetwork.LoadLevel(3);
         }
     }
 }
