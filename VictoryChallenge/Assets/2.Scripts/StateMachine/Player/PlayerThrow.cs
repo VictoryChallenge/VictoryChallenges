@@ -50,6 +50,7 @@ namespace VictoryChallenge.StateMachine.Player
         {
             base.OnStateExit(animator, stateInfo, layerIndex);
 
+            controller.grabbableCollider.enabled = true;
             controller.grabbableRigid.useGravity = true;
         }
     }

@@ -53,10 +53,13 @@ namespace VictoryChallenge.Controllers.Player
         public virtual bool isGrabbable { get; set; }
         public virtual Transform grabbableTransform { get; set; }
         public virtual Rigidbody grabbableRigid { get; set; }
+        public virtual CapsuleCollider grabbableCollider { get; set; }
+
+        // Hit
+        public virtual bool isHit { get; set; }
+        public virtual bool isDizzy { get; set; }
 
         // Object
-        public Vector3 moveDirection { get => _moveDirection; }
-        private Vector3 _moveDirection;
         public virtual bool isReverseKey { get; set; }
         #endregion
 
@@ -97,7 +100,6 @@ namespace VictoryChallenge.Controllers.Player
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
                 Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-                _moveDirection = moveDir;
                 transform.Translate(moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
 
                 if (_velocity != Vector3.zero)
@@ -110,7 +112,6 @@ namespace VictoryChallenge.Controllers.Player
                 //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
                 Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-                _moveDirection = moveDir;
                 transform.Translate(-moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
 
                 if (_velocity != Vector3.zero)

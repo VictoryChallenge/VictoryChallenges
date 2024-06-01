@@ -54,6 +54,7 @@ namespace VictoryChallenge.StateMachine.Player
             if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1f)
             {
                 //controller.grabbableTransform.parent = _grabTransform;
+                controller.grabbableCollider.enabled = false;
                 controller.grabbableTransform.position = Vector3.Lerp(controller.grabbableTransform.position, _grabTransform.position, Time.deltaTime);
 
                 //controller.grabbableTransform.position = new Vector3(controller.grabbableTransform.position.x, controller.grabbableTransform.position.y + 2.5f * Time.deltaTime, controller.grabbableTransform.position.z);

@@ -11,6 +11,9 @@ namespace VictoryChallenge.StateMachine
         GrabStart,
         Grabbing,
         Throw,
+        Sliding,
+        Hit,
+        Dizzy,
     }
 }
 

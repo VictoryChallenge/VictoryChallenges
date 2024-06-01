@@ -36,6 +36,14 @@ namespace VictoryChallenge.StateMachine.Player
                 {
                     return controller.isGrabbable && Input.GetMouseButton(0);
                 }},
+                { State.Sliding, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.Z);
+                }},
+                { State.Hit, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.X);
+                }},
             };
         }
     }

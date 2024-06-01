@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using VictoryChallenge.Controllers.Player;
 
@@ -21,7 +22,7 @@ public class GrabbableTest : MonoBehaviour
 
             _characterController.grabbableTransform = other.gameObject.GetComponent<Transform>();
             _characterController.grabbableRigid = other.gameObject.GetComponent<Rigidbody>();
-            
+            _characterController.grabbableCollider = other.gameObject.GetComponent<CapsuleCollider>();
         }
     }
 
