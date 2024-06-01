@@ -6,9 +6,9 @@ using CharacterController = VictoryChallenge.Controllers.Player.CharacterControl
 namespace VictoryChallenge.StateMachine.Player
 {
     /// <summary>
-    /// Player Dizzy 상태 애니메이션 
+    /// Player Die 상태 애니메이션 
     /// </summary>
-    public class PlayerDizzy : StateMachineBehaviourBase
+    public class PlayerDie : StateMachineBehaviourBase
     {
         public override void Init(CharacterController controller)
         {
@@ -16,19 +16,7 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
-                { State.Die, (animator) =>
-                {
-                    return controller.isDeath;
-                }},
             };
-        }
-
-        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-        {
-            base.OnStateEnter(animator, stateInfo, layerIndex);
-
-            controller.dizzyCount++;
-            controller.hitCount = 0;
         }
     }
 }

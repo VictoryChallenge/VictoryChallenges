@@ -14,6 +14,7 @@ namespace VictoryChallenge.StateMachine
         Sliding,
         Hit,
         Dizzy,
+        Die,
     }
 }
 
