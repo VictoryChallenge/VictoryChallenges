@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VictoryChallenge.KJ.Menu;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.Scripts.CL
 {
@@ -15,13 +17,16 @@ namespace VictoryChallenge.Scripts.CL
 
     public class ButtonManager : MonoBehaviour
     {
-        public TMP_Dropdown resolutionDropdown;
-        public Toggle screenMode;
-
         public Button joinButton;
+        public Button createRoomButton;
+        public Button findRoomButton;
+        public Button setRoomButton;
         public Button settingsButton;
         public Button[] exitButtons; // 여러 exitButton을 담을 배열
         public Button exitGameButton;
+
+        public TMP_Dropdown resolutionDropdown;
+        public Toggle screenMode;
 
         private GameObject joinPopup;
         private GameObject settingsPopup;
@@ -30,19 +35,25 @@ namespace VictoryChallenge.Scripts.CL
 
         void Start()
         {
-            resolutionDropdown.onValueChanged.AddListener(OnResolutionChange);
-            Screen.SetResolution(2560, 1440, true);
+            // Dropdown 해상도 옵션 초기화 및 관리
+            InitializeResolutionOptions();
 
+            // 해상도 변경 dropdown 값 변화에 따른 addlistener
+            resolutionDropdown.onValueChanged.AddListener(OnResolutionChange);
+            Screen.SetResolution(2560, 1440, true);    // 초기 값 2560x1440, 전체화면
+
+            // 전체화면 or 창화면 토글 값 변화에 따른 addlistener
             screenMode.onValueChanged.AddListener(ScreenModeUpdate);
             screenMode.isOn = (Screen.fullScreenMode == FullScreenMode.FullScreenWindow);
 
-            InitializeResolutionOptions();
+            joinButton.onClick.AddListener(JoinRoom);  // 방 관련 팝업 띄우기
+            createRoomButton.onClick.AddListener(() => MenuManager.Instance.OpenMenu("CreateRoom"));  // CreateRoom 메뉴 띄우기
+            findRoomButton.onClick.AddListener(() => MenuManager.Instance.OpenMenu("FindRoom"));  // FindRoom 메뉴 띄우기
+            setRoomButton.onClick.AddListener(() => PhotonLauncher.Instance.OnJoinedRoom());  // 로비이동.
+            settingsButton.onClick.AddListener(SettingOptions);  // Create Room or FindRoom 팝업 띄우기, 메뉴매니저로 관리 안 함
+            exitGameButton.onClick.AddListener(ExitGame);  // Settings 팝업 띄우기, 메뉴매니저로 관리 안 함
 
-            joinButton.onClick.AddListener(JoinRoom);
-            settingsButton.onClick.AddListener(SettingOptions);
-            exitGameButton.onClick.AddListener(ExitGame);
-
-            // exitButtons 배열에 있는 모든 버튼에 리스너 추가
+            // exitButtons 배열에 있는 모든 버튼에 리스너 추가 (창닫기)
             foreach (Button exitButton in exitButtons)
             {
                 exitButton.onClick.AddListener(() => ExitMenu(exitButton));
@@ -50,8 +61,17 @@ namespace VictoryChallenge.Scripts.CL
 
             joinPopup = GameObject.Find("JoinGame");
             joinPopup.SetActive(false);
+
             settingsPopup = GameObject.Find("Settings");
             settingsPopup.SetActive(false);
+        }
+
+        private void Update()
+        {
+            if (true && Input.GetKeyDown(KeyCode.Escape))
+            {
+
+            }
         }
 
         void JoinRoom()
@@ -84,9 +104,9 @@ namespace VictoryChallenge.Scripts.CL
             resolutionDropdown.ClearOptions();
             List<string> options = new List<string>();
 
-            foreach (var res in resolutions)
+            foreach (var resolution in resolutions)
             {
-                string option = res.width + " x " + res.height;
+                string option = resolution.width + " x " + resolution.height;
                 options.Add(option);
             }
 

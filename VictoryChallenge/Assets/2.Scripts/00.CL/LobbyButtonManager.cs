@@ -1,34 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VictoryChallenge.KJ.Lobby;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.Scripts.CL
 {
     public class LobbyButtonManager : MonoBehaviour
     {
-        public Button stageSelect;
-        public Button gameStart;
+        public Button stageSelectButton;
+        public Button gameStartButton;
+        public Button leaveLobbyButton;
         public Button[] selectedMapButton;
-        public Image stageSelectImage;
 
         private GameObject stageSelectPanel;
         private TextMeshProUGUI stageName;
         private string mapName;
+        private Image stageSelectImage;
 
         void Start()
         {
             stageSelectPanel = GameObject.Find("StageSelect");
             stageName = GameObject.Find("StageName").GetComponent<TextMeshProUGUI>();
-            stageSelectImage = stageSelect.GetComponent<Image>();
+            stageSelectImage = stageSelectButton.GetComponent<Image>();
             mapName = "Ç÷¾Ð ¸¶¶óÅæ";
 
             stageSelectPanel.SetActive(false);
-            stageSelect.onClick.AddListener(StageSelect);
+            stageSelectButton.onClick.AddListener(StageSelect);
 
             foreach (var mapbutton in selectedMapButton)
             {
@@ -60,7 +59,9 @@ namespace VictoryChallenge.Scripts.CL
                 });
 
             }
-            gameStart.onClick.AddListener(GameScene);
+
+            gameStartButton.onClick.AddListener(GameScene);
+            leaveLobbyButton.onClick.AddListener(() => LobbyLauncher.Instance.LeaveRoom());
         }
 
         private void Update()
