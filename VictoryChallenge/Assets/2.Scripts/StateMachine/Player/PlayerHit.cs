@@ -19,7 +19,11 @@ namespace VictoryChallenge.StateMachine.Player
             {
                 { State.Dizzy, (animator) =>
                 {
-                    return controller.isDizzy;
+                    return !controller.isDie && controller.isDizzy;
+                }},
+                { State.Die, (animator) =>
+                {
+                    return controller.isDie;
                 }},
             };
         }

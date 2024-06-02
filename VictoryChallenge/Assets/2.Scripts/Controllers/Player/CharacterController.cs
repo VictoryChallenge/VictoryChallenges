@@ -58,7 +58,7 @@ namespace VictoryChallenge.Controllers.Player
         // Hit
         public virtual bool isHit { get; set; }
         public virtual bool isDizzy { get; set; }
-        public virtual bool isDeath { get; set; }
+        public virtual bool isDie { get; set; }
 
         public virtual int hitCount { get; set; }
         public virtual int dizzyCount { get; set; }
@@ -93,18 +93,25 @@ namespace VictoryChallenge.Controllers.Player
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);
 
-            if(hitCount > 2)
+            if(dizzyCount > 2)
             {
-                isDizzy = true;
+                isDie = true;
+            }
+
+            if (!isDie)
+            {
+                if (hitCount > 2)
+                {
+                    isDizzy = true;
+                }
+                else
+                {
+                    isDizzy = false;
+                }
             }
             else
             {
                 isDizzy = false;
-            }
-
-            if(dizzyCount > 2)
-            {
-                isDeath = true;
             }
         }
 

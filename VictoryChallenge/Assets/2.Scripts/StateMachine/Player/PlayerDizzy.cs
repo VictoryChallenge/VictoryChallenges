@@ -18,7 +18,7 @@ namespace VictoryChallenge.StateMachine.Player
             {
                 { State.Die, (animator) =>
                 {
-                    return controller.isDeath;
+                    return controller.isDie;
                 }},
             };
         }
@@ -28,7 +28,10 @@ namespace VictoryChallenge.StateMachine.Player
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
             controller.dizzyCount++;
-            controller.hitCount = 0;
+            if(!controller.isDie) 
+            {
+                controller.hitCount = 0;
+            }
         }
     }
 }
