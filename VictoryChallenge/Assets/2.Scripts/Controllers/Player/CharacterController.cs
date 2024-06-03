@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Photon.Pun;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -49,6 +50,7 @@ namespace VictoryChallenge.Controllers.Player
         #region 컴포넌트
         private Rigidbody _rigidBody;
         protected Animator _animator;
+        private PhotonView _pv;
         #endregion
 
         #region 코루틴
@@ -82,6 +84,14 @@ namespace VictoryChallenge.Controllers.Player
 
             // 애니메이션 상태머신 등록
             InitAnimatorBehaviours();
+            
+            // 포톤뷰 캐싱
+            _pv = GetComponent<PhotonView>();
+
+            if (!_pv.IsMine)
+            {
+                return;
+            }
         }
 
         private void FixedUpdate()
@@ -91,6 +101,11 @@ namespace VictoryChallenge.Controllers.Player
 
         protected virtual void Update()
         {
+            if (!_pv.IsMine)
+            {
+                return;
+            }
+
             // 키 입력에 따른 이동값 설정
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
@@ -128,7 +143,12 @@ namespace VictoryChallenge.Controllers.Player
         // Player 이동 
         void ManualMove()
         {
-            if(!isReverseKey)
+            if (!_pv.IsMine)
+            {
+                return;
+            }
+
+            if (!isReverseKey)
             {
                 // 이동
                 float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;

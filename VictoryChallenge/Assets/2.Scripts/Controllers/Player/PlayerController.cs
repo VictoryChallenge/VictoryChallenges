@@ -14,19 +14,12 @@ namespace VictoryChallenge.Controllers.Player
         private float _walkSpeed = 3f;
 
         [SerializeField] CinemachineVirtualCamera _vCamPerspective;
-        private PhotonView _pv;
 
         protected override void Start()
         {
             camTransform = _vCamPerspective.gameObject.GetComponent<Transform>();
-            _pv = GetComponent<PhotonView>();
 
             base.Start();
-
-            if(!_pv.IsMine)
-            {
-                return;
-            }
 
             // Idle -> Walk, Jump, Attack, KickAttack 가능한 상태
             inputCommands = new Dictionary<State, bool>()

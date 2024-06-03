@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VictoryChallenge.Controllers.Player;
 
 namespace VictoryChallenge.Camera
 {
@@ -12,7 +13,8 @@ namespace VictoryChallenge.Camera
 
         void Start()
         {
-            _playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+            _playerTransform = FindObjectOfType<PlayerController>().GetComponent<Transform>();
+                //GameObject.Find("Player").GetComponent<Transform>();
         }
 
         void Update()
