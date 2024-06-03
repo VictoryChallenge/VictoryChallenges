@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scenes/00.CL/MainSceneCL.unity
     guid: 94a06fe2460eb22459ce90816a620f86
+  - enabled: 1
+    path: Assets/1.Scenes/00.CL/LobbyCL.unity
+    guid: 2b55214986bb5e145ab400d56eb22bce
+  - enabled: 1
+    path: Assets/1.Scenes/00.GC/SSAP maraton.unity
+    guid: 8396bb939a95a0245b2656546d865710
   m_configObjects: {}
