@@ -27,6 +27,13 @@ namespace VictoryChallenge.Controllers.Player
         }
         private Vector3 _velocity;
 
+        public bool isKeyActive 
+        { 
+            get => _isKeyActive; 
+            set => _isKeyActive = value; 
+        }
+
+        private bool _isKeyActive = true;
 
         // 카메라 회전
         public virtual Transform camTransform { get; set; }
@@ -88,7 +95,10 @@ namespace VictoryChallenge.Controllers.Player
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
 
-            _velocity = new Vector3(horizontal, 0f, vertical).normalized * speedGain;
+            if(_isKeyActive)
+            {
+                _velocity = new Vector3(horizontal, 0f, vertical).normalized * speedGain;
+            }
             
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);

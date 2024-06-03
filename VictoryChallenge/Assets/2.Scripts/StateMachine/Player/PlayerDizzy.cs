@@ -28,10 +28,20 @@ namespace VictoryChallenge.StateMachine.Player
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
             controller.dizzyCount++;
+            
             if(!controller.isDie) 
             {
                 controller.hitCount = 0;
             }
+            
+            controller.isKeyActive = false;
+        }
+
+        public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            base.OnStateExit(animator, stateInfo, layerIndex);
+
+            controller.isKeyActive = true;
         }
     }
 }
