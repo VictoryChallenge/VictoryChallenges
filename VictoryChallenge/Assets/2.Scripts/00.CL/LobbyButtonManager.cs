@@ -28,7 +28,8 @@ namespace VictoryChallenge.Scripts.CL
             mapName = "Ç÷¾Ð ¸¶¶óÅæ";
 
             stageSelectPanel.SetActive(false);
-            stageSelectButton.onClick.AddListener(StageSelect);
+            if (PhotonNetwork.IsMasterClient)
+                stageSelectButton.onClick.AddListener(StageSelect);
 
             foreach (var mapbutton in selectedMapButton)
             {
@@ -49,8 +50,8 @@ namespace VictoryChallenge.Scripts.CL
                         case "Zombie":
                             stageName.text = "Á»ºñ";
                             break;
-                        case "KimHyeongDon":
-                            stageName.text = "±èÇüµ·";
+                        case "OnlyUp":
+                            stageName.text = "¿Â¸®¾÷";
                             break;
                         default:
                             break;
@@ -58,7 +59,6 @@ namespace VictoryChallenge.Scripts.CL
                     stageSelectImage.sprite = localimage.sprite;
                     stageSelectPanel.SetActive(false);
                 });
-
             }
 
             gameStartButton.onClick.AddListener(GameScene);
