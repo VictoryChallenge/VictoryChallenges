@@ -13,10 +13,10 @@ TagManager:
   - UI
   - Ground
   - 
-  - 
-  - 
+  - Grabbable
+  - PlayerAttack
   - Player
-  - Ground
+  - 
   - 
   - 
   - 

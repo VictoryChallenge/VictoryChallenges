@@ -2,6 +2,8 @@ using VictoryChallenge.StateMachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using Photon.Pun;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -26,8 +28,15 @@ namespace VictoryChallenge.Controllers.Player
         }
         private Vector3 _velocity;
 
-        public virtual bool isReverseKey { get; set; }
+        public bool isKeyActive 
+        { 
+            get => _isKeyActive; 
+            set => _isKeyActive = value; 
+        }
 
+        private bool _isKeyActive = true;
+
+        // 카메라 회전
         public virtual Transform camTransform { get; set; }
 
         private float turnSmoothVelocity;
@@ -41,10 +50,30 @@ namespace VictoryChallenge.Controllers.Player
         #region 컴포넌트
         private Rigidbody _rigidBody;
         protected Animator _animator;
+        private PhotonView _pv;
         #endregion
 
         #region 코루틴
         public Coroutine comboStackResetCoroutine;
+        #endregion
+
+        #region 상호 작용
+        // Grab
+        public virtual bool isGrabbable { get; set; }
+        public virtual Transform grabbableTransform { get; set; }
+        public virtual Rigidbody grabbableRigid { get; set; }
+        public virtual CapsuleCollider grabbableCollider { get; set; }
+
+        // Hit
+        public virtual bool isHit { get; set; }
+        public virtual bool isDizzy { get; set; }
+        public virtual bool isDie { get; set; }
+
+        public virtual int hitCount { get; set; }
+        public virtual int dizzyCount { get; set; }
+
+        // Object
+        public virtual bool isReverseKey { get; set; }
         #endregion
 
         protected virtual void Start()
@@ -55,6 +84,14 @@ namespace VictoryChallenge.Controllers.Player
 
             // 애니메이션 상태머신 등록
             InitAnimatorBehaviours();
+            
+            // 포톤뷰 캐싱
+            _pv = GetComponent<PhotonView>();
+
+            if (!_pv.IsMine)
+            {
+                return;
+            }
         }
 
         private void FixedUpdate()
@@ -64,20 +101,54 @@ namespace VictoryChallenge.Controllers.Player
 
         protected virtual void Update()
         {
+            if (!_pv.IsMine)
+            {
+                return;
+            }
+
             // 키 입력에 따른 이동값 설정
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
 
-            _velocity = new Vector3(horizontal, 0f, vertical).normalized * speedGain;
+            if(_isKeyActive)
+            {
+                _velocity = new Vector3(horizontal, 0f, vertical).normalized * speedGain;
+            }
             
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);
+
+            if(dizzyCount > 2)
+            {
+                isDie = true;
+            }
+
+            if (!isDie)
+            {
+                if (hitCount > 2)
+                {
+                    isDizzy = true;
+                }
+                else
+                {
+                    isDizzy = false;
+                }
+            }
+            else
+            {
+                isDizzy = false;
+            }
         }
 
         // Player 이동 
         void ManualMove()
         {
-            if(!isReverseKey)
+            if (!_pv.IsMine)
+            {
+                return;
+            }
+
+            if (!isReverseKey)
             {
                 // 이동
                 float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
@@ -93,7 +164,7 @@ namespace VictoryChallenge.Controllers.Player
             {
                 // 이동
                 float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
                 Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
                 transform.Translate(-moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
@@ -101,8 +172,6 @@ namespace VictoryChallenge.Controllers.Player
                 if (_velocity != Vector3.zero)
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-moveDir), 0.35f);
             }
-
-            Debug.Log("reverseKey" + isReverseKey);
 
             //transform.position += transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
 
