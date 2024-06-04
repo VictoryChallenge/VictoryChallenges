@@ -11,7 +11,7 @@ namespace VictoryChallenge.Controllers.Player
     /// Player를 제어하기 위한 스크립트
     /// </summary>
     /// 
-    public class CharacterController : MonoBehaviour
+    public class CharacterController : MonoBehaviourPunCallbacks/*, IPunObservable*/
     {
         #region 이동
         // 키 값
@@ -50,7 +50,6 @@ namespace VictoryChallenge.Controllers.Player
         #region 컴포넌트
         private Rigidbody _rigidBody;
         protected Animator _animator;
-        private PhotonView _pv;
         #endregion
 
         #region 코루틴
@@ -76,22 +75,29 @@ namespace VictoryChallenge.Controllers.Player
         public virtual bool isReverseKey { get; set; }
         #endregion
 
-        protected virtual void Start()
-        {
-            // 컴포넌트 캐싱
-            _rigidBody = GetComponent<Rigidbody>();
-            _animator = GetComponent<Animator>();
+        #region 포톤
+        private PhotonView _pv;
 
-            // 애니메이션 상태머신 등록
-            InitAnimatorBehaviours();
-            
+        #endregion
+        private void Awake()
+        {
             // 포톤뷰 캐싱
             _pv = GetComponent<PhotonView>();
 
-            if (!_pv.IsMine)
-            {
-                return;
-            }
+            // 컴포넌트 캐싱
+            _rigidBody = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
+        }
+
+        protected virtual void Start()
+        {
+            // 애니메이션 상태머신 등록
+            InitAnimatorBehaviours();
+            
+            //if (!_pv.IsMine)
+            //{
+            //    return;
+            //}
         }
 
         private void FixedUpdate()
@@ -101,78 +107,73 @@ namespace VictoryChallenge.Controllers.Player
 
         protected virtual void Update()
         {
-            if (!_pv.IsMine)
+            if (_pv.IsMine)
             {
-                return;
-            }
+                // 키 입력에 따른 이동값 설정
+                horizontal = Input.GetAxis("Horizontal");
+                vertical = Input.GetAxis("Vertical");
 
-            // 키 입력에 따른 이동값 설정
-            horizontal = Input.GetAxis("Horizontal");
-            vertical = Input.GetAxis("Vertical");
-
-            if(_isKeyActive)
-            {
-                _velocity = new Vector3(horizontal, 0f, vertical).normalized * speedGain;
-            }
-            
-            _animator.SetFloat("Horizontal", _velocity.x);
-            _animator.SetFloat("Vertical", _velocity.z);
-
-            if(dizzyCount > 2)
-            {
-                isDie = true;
-            }
-
-            if (!isDie)
-            {
-                if (hitCount > 2)
+                if (_isKeyActive)
                 {
-                    isDizzy = true;
+                    _velocity = new Vector3(horizontal, 0f, vertical).normalized * speedGain;
+                }
+
+                _animator.SetFloat("Horizontal", _velocity.x);
+                _animator.SetFloat("Vertical", _velocity.z);
+
+                if (dizzyCount > 2)
+                {
+                    isDie = true;
+                }
+
+                if (!isDie)
+                {
+                    if (hitCount > 2)
+                    {
+                        isDizzy = true;
+                    }
+                    else
+                    {
+                        isDizzy = false;
+                    }
                 }
                 else
                 {
                     isDizzy = false;
                 }
             }
-            else
-            {
-                isDizzy = false;
-            }
         }
 
         // Player 이동 
         void ManualMove()
         {
-            if (!_pv.IsMine)
+            if (_pv.IsMine)
             {
-                return;
+                if (!isReverseKey)
+                {
+                    // 이동
+                    float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
+                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+
+                    Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+                    transform.Translate(moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
+
+                    if (_velocity != Vector3.zero)
+                        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 0.35f);
+                }
+                else
+                {
+                    // 이동
+                    float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
+                    //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+
+                    Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+                    transform.Translate(-moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
+
+                    if (_velocity != Vector3.zero)
+                        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-moveDir), 0.35f);
+                }
             }
-
-            if (!isReverseKey)
-            {
-                // 이동
-                float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-
-                Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-                transform.Translate(moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
-
-                if (_velocity != Vector3.zero)
-                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 0.35f);
-            }
-            else
-            {
-                // 이동
-                float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
-                //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-
-                Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-                transform.Translate(-moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
-
-                if (_velocity != Vector3.zero)
-                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-moveDir), 0.35f);
-            }
-
             //transform.position += transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
 
             //if (_velocity != Vector3.zero)
@@ -188,5 +189,30 @@ namespace VictoryChallenge.Controllers.Player
                 behaviour.Init(this);
             }
         }
+
+        [PunRPC]
+        public void ChangeStateClientRpc(State newState)
+        {
+            if(_pv.IsMine)
+            { 
+                Debug.Log("State : " + newState);
+                _animator.SetInteger("State", (int)newState);
+                _animator.SetBool("IsDirty", true);
+            }
+        }
+
+        //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        //{
+        //    if(stream.IsWriting)
+        //    {
+        //        stream.SendNext(transform.position);
+        //        stream.SendNext(transform.rotation);
+        //    }
+        //    else if(stream.IsReading)
+        //    {
+        //        transform.position = (Vector3)stream.ReceiveNext();
+        //        transform.rotation = (Quaternion)stream.ReceiveNext();
+        //    }
+        //}
     }
 }

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace VictoryChallenge.StateMachine
         public Dictionary<State, Func<Animator, bool>> transitions;
         protected CharacterController controller;
         private bool _inTransition = false;
+
 
         public virtual void Init(CharacterController controller)
         {
@@ -52,9 +54,16 @@ namespace VictoryChallenge.StateMachine
             if (transitions[newState].Invoke(animator) == false)
                 return false;
 
-            animator.SetInteger("State", (int)newState);
-            animator.SetBool("IsDirty", true);
+            if (controller.GetComponent<PhotonView>() != null)
+            {
+                controller.GetComponent<PhotonView>().RPC("ChangeStateClientRpc", RpcTarget.All, newState);
+            }
+
+            //animator.SetInteger("State", (int)newState);
+            //animator.SetBool("IsDirty", true);
             return true;
         }
+
+
     }
 }

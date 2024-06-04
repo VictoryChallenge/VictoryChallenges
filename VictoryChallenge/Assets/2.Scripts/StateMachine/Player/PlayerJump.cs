@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VictoryChallenge.ComponentExtensions;
@@ -12,7 +13,6 @@ namespace VictoryChallenge.StateMachine.Player
     public class PlayerJump : StateMachineBehaviourBase
     {
         [SerializeField] private float _jumpForce = 5.0f;
-
 
 
         public override void Init(CharacterController controller)
