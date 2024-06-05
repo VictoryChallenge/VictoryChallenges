@@ -38,9 +38,9 @@ namespace VictoryChallenge.KJ.Lobby
             {
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
 
-                if (Menu.MenuManager.Instance != null)
+                if (Menu.MenuManager2.Instance != null)
                 {
-                    Menu.MenuManager.Instance.OpenMenu("lobby");
+                    Menu.MenuManager2.Instance.OpenMenu("lobby");
                 }
                 InitializeRoom();
             }
