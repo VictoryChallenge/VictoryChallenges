@@ -23,6 +23,7 @@ namespace VictoryChallenge.StateMachine
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
             // 상태 진입을 제대로 했으니 IsDirty 초기화
+
             animator.SetBool("IsDirty", false);
             _inTransition = false;
         }
@@ -43,6 +44,7 @@ namespace VictoryChallenge.StateMachine
 
         protected bool ChangeState(Animator animator, State newState)
         {
+            // 상태가 전이 중인 상태인지 체크
             if (_inTransition)
                 return false;
 
@@ -54,16 +56,15 @@ namespace VictoryChallenge.StateMachine
             if (transitions[newState].Invoke(animator) == false)
                 return false;
 
-            if (controller.GetComponent<PhotonView>() != null)
-            {
-                controller.GetComponent<PhotonView>().RPC("ChangeStateClientRpc", RpcTarget.All, newState);
-            }
+            //if (controller.GetComponent<PhotonView>() != null)
+            //{
+            //    Debug.Log("호출");
+            //    controller.GetComponent<PhotonView>().RPC("ChangeStateClientRpc", RpcTarget.All, newState);
+            //}
 
-            //animator.SetInteger("State", (int)newState);
-            //animator.SetBool("IsDirty", true);
+            animator.SetInteger("State", (int)newState);
+            animator.SetBool("IsDirty", true);
             return true;
         }
-
-
     }
 }

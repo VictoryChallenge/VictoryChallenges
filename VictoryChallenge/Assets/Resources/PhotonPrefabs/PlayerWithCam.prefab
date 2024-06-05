@@ -504,14 +504,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 489885623646611680}
-    - targetCorrespondingSourceObject: {fileID: 6764369822637894888, guid: f999d3d438d8bea48bd8e16f0ae35732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2554568467433796909}
-    - targetCorrespondingSourceObject: {fileID: 6764369822637894888, guid: f999d3d438d8bea48bd8e16f0ae35732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3732898229915490847}
   m_SourcePrefab: {fileID: 100100000, guid: f999d3d438d8bea48bd8e16f0ae35732, type: 3}
 --- !u!1 &5311161899013948628 stripped
 GameObject:
@@ -538,60 +530,22 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 2554568467433796909}
-  - {fileID: 3732898229915490847}
+  - {fileID: 6580957483563064267}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2554568467433796909
+--- !u!114 &6580957483563064267 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5710167326655869943, guid: f999d3d438d8bea48bd8e16f0ae35732,
+    type: 3}
+  m_PrefabInstance: {fileID: 1471224729739520060}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5311161899013948628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Script: {fileID: 11500000, guid: b70e21468adefd44c8cdbc86c7e7daf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 3
-    SynchronizeType: 2
-    Name: State
-  - Type: 4
-    SynchronizeType: 2
-    Name: IsDirty
-  - Type: 1
-    SynchronizeType: 2
-    Name: Horizontal
-  - Type: 1
-    SynchronizeType: 2
-    Name: Vertical
-  - Type: 3
-    SynchronizeType: 0
-    Name: AttackComboStack
-  m_SynchronizeLayers:
-  - SynchronizeType: 2
-    LayerIndex: 0
---- !u!114 &3732898229915490847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5311161899013948628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!4 &7795260543966357441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8666195830222311421, guid: f999d3d438d8bea48bd8e16f0ae35732,

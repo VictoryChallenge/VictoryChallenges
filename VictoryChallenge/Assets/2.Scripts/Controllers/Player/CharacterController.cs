@@ -11,7 +11,7 @@ namespace VictoryChallenge.Controllers.Player
     /// Player를 제어하기 위한 스크립트
     /// </summary>
     /// 
-    public class CharacterController : MonoBehaviourPunCallbacks/*, IPunObservable*/
+    public class CharacterController : MonoBehaviourPunCallbacks , IPunObservable
     {
         #region 이동
         // 키 값
@@ -190,29 +190,41 @@ namespace VictoryChallenge.Controllers.Player
             }
         }
 
-        [PunRPC]
-        public void ChangeStateClientRpc(State newState)
-        {
-            if(_pv.IsMine)
-            { 
-                Debug.Log("State : " + newState);
-                _animator.SetInteger("State", (int)newState);
-                _animator.SetBool("IsDirty", true);
-            }
-        }
-
-        //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        //[PunRPC]
+        //public void ChangeStateClientRpc(State newState)
         //{
-        //    if(stream.IsWriting)
+        //    if (_pv.IsMine)
         //    {
-        //        stream.SendNext(transform.position);
-        //        stream.SendNext(transform.rotation);
-        //    }
-        //    else if(stream.IsReading)
-        //    {
-        //        transform.position = (Vector3)stream.ReceiveNext();
-        //        transform.rotation = (Quaternion)stream.ReceiveNext();
+        //        _animator.SetInteger("State", (int)newState);
+        //        _animator.SetBool("IsDirty", true);
+        //        Debug.Log("State : " + newState + "(" + (int)newState + ")" );
+        //        Debug.Log("IsDirty : " + _animator.GetBool("IsDirty"));
         //    }
         //}
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if(stream.IsWriting)
+            {
+                stream.SendNext(transform.position);
+                stream.SendNext(transform.rotation);
+                stream.SendNext(_animator.GetInteger("State"));
+                stream.SendNext(_animator.GetBool("IsDirty"));
+                Debug.Log("Send State : " + _animator.GetInteger("State"));
+                Debug.Log("Send IsDirty : " + _animator.GetBool("IsDirty"));
+            }
+            else if(stream.IsReading)
+            {
+                transform.position = (Vector3)stream.ReceiveNext();
+                transform.rotation = (Quaternion)stream.ReceiveNext();
+                int state = (int)stream.ReceiveNext();
+                bool isDirty = (bool)stream.ReceiveNext();
+                Debug.Log("Receive State : " + state);
+                Debug.Log("Receive IsDirty : " + isDirty);
+                //_animator.SetBool("IsDirty", true)
+                _animator.SetInteger("State", state);
+                _animator.SetBool("IsDirty", isDirty);
+            }
+        }
     }
 }

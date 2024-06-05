@@ -40,6 +40,8 @@ namespace VictoryChallenge.StateMachine.Player
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
+            
+            animator.SetInteger("State", (int)State.KickAttack);
 
             _colLeftFoot.enabled = true;
             _colRightFoot.enabled = true;

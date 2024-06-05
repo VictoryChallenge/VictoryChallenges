@@ -509,6 +509,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6866579444082649813, guid: eff94884336048d45ac472b0468b8ef0,
+        type: 3}
+      propertyPath: m_SynchronizeLayers.Array.data[0].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866579444082649813, guid: eff94884336048d45ac472b0468b8ef0,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[0].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866579444082649813, guid: eff94884336048d45ac472b0468b8ef0,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[1].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866579444082649813, guid: eff94884336048d45ac472b0468b8ef0,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[2].SynchronizeType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866579444082649813, guid: eff94884336048d45ac472b0468b8ef0,
+        type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[3].SynchronizeType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8923491666957335003, guid: eff94884336048d45ac472b0468b8ef0,
         type: 3}
       propertyPath: m_LocalRotation.x

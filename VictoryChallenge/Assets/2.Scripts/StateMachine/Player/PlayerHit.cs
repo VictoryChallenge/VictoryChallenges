@@ -32,6 +32,8 @@ namespace VictoryChallenge.StateMachine.Player
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
+            animator.SetInteger("State", (int)State.Hit);
+            
             controller.hitCount++;
         }
     }
