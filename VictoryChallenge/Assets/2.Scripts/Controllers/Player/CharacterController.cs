@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Photon.Pun;
+using System.IO;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -77,7 +78,8 @@ namespace VictoryChallenge.Controllers.Player
 
         #region 포톤
         private PhotonView _pv;
-
+        private bool _receiveIsDirty;
+        private int _receiveState;
         #endregion
         private void Awake()
         {
@@ -120,6 +122,10 @@ namespace VictoryChallenge.Controllers.Player
 
                 _animator.SetFloat("Horizontal", _velocity.x);
                 _animator.SetFloat("Vertical", _velocity.z);
+                
+                _receiveState = _animator.GetInteger("State");
+                _receiveIsDirty = _animator.GetBool("IsDirty");
+                Debug.Log("State?" + _animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
 
                 if (dizzyCount > 2)
                 {
@@ -208,22 +214,23 @@ namespace VictoryChallenge.Controllers.Player
             {
                 stream.SendNext(transform.position);
                 stream.SendNext(transform.rotation);
-                stream.SendNext(_animator.GetInteger("State"));
-                stream.SendNext(_animator.GetBool("IsDirty"));
-                Debug.Log("Send State : " + _animator.GetInteger("State"));
-                Debug.Log("Send IsDirty : " + _animator.GetBool("IsDirty"));
+                stream.SendNext(_receiveState);
+                stream.SendNext(_receiveIsDirty);
+                //Debug.Log("Send State : " + _receiveState);
+                //Debug.Log("Send IsDirty : " + _receiveIsDirty);
             }
-            else if(stream.IsReading)
+            else
             {
                 transform.position = (Vector3)stream.ReceiveNext();
                 transform.rotation = (Quaternion)stream.ReceiveNext();
-                int state = (int)stream.ReceiveNext();
-                bool isDirty = (bool)stream.ReceiveNext();
-                Debug.Log("Receive State : " + state);
-                Debug.Log("Receive IsDirty : " + isDirty);
+                _receiveState = (int)stream.ReceiveNext();
+                _receiveIsDirty = (bool)stream.ReceiveNext();
+                //Debug.Log("Receive State : " + _receiveState);
+                //Debug.Log("Receive IsDirty : " + _receiveIsDirty);
                 //_animator.SetBool("IsDirty", true)
-                _animator.SetInteger("State", state);
-                _animator.SetBool("IsDirty", isDirty);
+                _animator.SetInteger("State", _receiveState);
+                _animator.SetBool("IsDirty", _receiveIsDirty);
+                
             }
         }
     }
