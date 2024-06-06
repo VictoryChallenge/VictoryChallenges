@@ -27,8 +27,6 @@ namespace VictoryChallenge.KJ.Photon
 
         void Awake()
         {
-            PhotonNetwork.ConnectUsingSettings();
-
             if (PhotonNetwork.IsConnected == false)
             {
                 bool isConnected = PhotonNetwork.ConnectUsingSettings();
@@ -36,9 +34,18 @@ namespace VictoryChallenge.KJ.Photon
             }
         }
         #region Photon Connect
-        public override void OnConnectedToMaster()
+
+        public override void OnConnected()
         {
             base.OnConnected();
+            Debug.Log("OnConnected");
+        }
+
+        public override void OnConnectedToMaster()
+        {
+            base.OnConnectedToMaster();
+            Debug.Log("OnConnectedToMaster");
+
             PhotonNetwork.GameVersion = gameVersion;
             Debug.Log(PhotonNetwork.GameVersion);
 
@@ -49,7 +56,6 @@ namespace VictoryChallenge.KJ.Photon
             }
 
             PhotonNetwork.AutomaticallySyncScene = true;
-            Debug.Log("OnConnectedToMaster ");
 
             MenuManager.Instance.OpenMenu("title");
         }
