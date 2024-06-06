@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Photon.Pun;
+using VictoryChallenge.ComponentExtensions;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -36,6 +37,8 @@ namespace VictoryChallenge.Controllers.Player
 
         private bool _isKeyActive = true;
 
+        public bool _isGround;
+
         // 카메라 회전
         public virtual Transform camTransform { get; set; }
 
@@ -50,7 +53,7 @@ namespace VictoryChallenge.Controllers.Player
         #region 컴포넌트
         private Rigidbody _rigidBody;
         protected Animator _animator;
-        private PhotonView _pv;
+        public PhotonView _pv;
         #endregion
 
         #region 코루틴
@@ -101,8 +104,25 @@ namespace VictoryChallenge.Controllers.Player
 
         protected virtual void Update()
         {
+
+            if (transform.IsGrounded())
+            {
+                Debug.Log("Master Ground Collision");
+                _animator.SetBool("IsGround", true);
+                _isGround = true;
+            }
+            else
+            {
+                _animator.SetBool("IsGround", false);
+                _isGround = false;
+            }
+
             if (!_pv.IsMine)
             {
+                //if (transform.IsGrounded())
+                //{
+                //    Debug.Log("Client Ground Collision");
+                //}
                 return;
             }
 
@@ -188,5 +208,12 @@ namespace VictoryChallenge.Controllers.Player
                 behaviour.Init(this);
             }
         }
+
+        //[PunRPC]
+        //public void ChangeStateRPC(State newState)
+        //{
+        //    _animator.SetInteger("State", (int)newState);
+        //    _animator.SetBool("IsDirty", true);
+        //}
     }
 }

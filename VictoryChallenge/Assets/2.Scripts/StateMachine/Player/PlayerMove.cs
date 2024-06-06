@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VictoryChallenge.ComponentExtensions;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
 
 namespace VictoryChallenge.StateMachine.Player
@@ -18,7 +19,7 @@ namespace VictoryChallenge.StateMachine.Player
             {
                 { State.Jump, (animator) =>
                 {
-                    return Input.GetKeyDown(KeyCode.Space);
+                    return /*animator.IsGrounded()*/controller._isGround && Input.GetKeyDown(KeyCode.Space);
                 }},
                 { State.Attack, (animator) =>
                 {
@@ -49,9 +50,9 @@ namespace VictoryChallenge.StateMachine.Player
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            base.OnStateEnter(animator, stateInfo, layerIndex);
-
             animator.SetInteger("State", (int)State.Move);
+
+            base.OnStateEnter(animator, stateInfo, layerIndex);
         }
     }
 }

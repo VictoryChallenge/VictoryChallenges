@@ -343,7 +343,7 @@ AnimatorStateMachine:
     m_Position: {x: 130, y: 80, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -2256866405566313804}
-    m_Position: {x: 130, y: 130, z: 0}
+    m_Position: {x: 130, y: 140, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -4529159696431048286}
     m_Position: {x: -70, y: -140, z: 0}
@@ -388,14 +388,6 @@ AnimatorStateMachine:
   - first: {fileID: -2256866405566313804}
     second:
     - {fileID: -5486713017831254521}
-  - first: {fileID: 4058212854610779444}
-    second:
-    - {fileID: -3225894315796982720}
-  - first: {fileID: -5385622346037178262}
-    second: []
-  - first: {fileID: -6584494182331691371}
-    second:
-    - {fileID: -1823455091794290020}
   - first: {fileID: -8275154086796803969}
     second:
     - {fileID: 8369672670738534504}
@@ -405,6 +397,14 @@ AnimatorStateMachine:
   - first: {fileID: 6038905715938311664}
     second:
     - {fileID: -478662715055744461}
+  - first: {fileID: 4058212854610779444}
+    second:
+    - {fileID: -3225894315796982720}
+  - first: {fileID: -5385622346037178262}
+    second: []
+  - first: {fileID: -6584494182331691371}
+    second:
+    - {fileID: -1823455091794290020}
   - first: {fileID: -8140743530270599735}
     second: []
   m_StateMachineBehaviours: []
@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32585bc3f7fc3ad4cb1f92ad012bad35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 3
+  _jumpForce: 5
 --- !u!1107 &-1918108988735600228
 AnimatorStateMachine:
   serializedVersion: 6
@@ -1060,31 +1060,37 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: IsDirty
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Horizontal
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Vertical
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: AttackComboStack
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: IsGround
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1266,6 +1272,9 @@ AnimatorStateTransition:
     m_EventTreshold: 2
   - m_ConditionMode: 1
     m_ConditionEvent: IsDirty
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsGround
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 7682140211786312230}
   m_DstState: {fileID: 0}
