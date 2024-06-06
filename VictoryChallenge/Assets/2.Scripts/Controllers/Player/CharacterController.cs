@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Photon.Pun;
 using System.IO;
+using VictoryChallenge.ComponentExtensions;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -12,7 +13,7 @@ namespace VictoryChallenge.Controllers.Player
     /// Player를 제어하기 위한 스크립트
     /// </summary>
     /// 
-    public class CharacterController : MonoBehaviourPunCallbacks , IPunObservable
+    public class CharacterController : MonoBehaviour/*PunCallbacks*/ /*, IPunObservable*/
     {
         #region 이동
         // 키 값
@@ -80,7 +81,15 @@ namespace VictoryChallenge.Controllers.Player
         private PhotonView _pv;
         private bool _receiveIsDirty;
         private int _receiveState;
+
+        private float _localNormalizeTime;
+        private float _remoteNormalizeTime;
+        [SerializeField] private float _lerpTime = 0.1f;
+
+        private bool _isGround;
         #endregion
+
+
         private void Awake()
         {
             // 포톤뷰 캐싱
@@ -96,10 +105,10 @@ namespace VictoryChallenge.Controllers.Player
             // 애니메이션 상태머신 등록
             InitAnimatorBehaviours();
             
-            //if (!_pv.IsMine)
-            //{
-            //    return;
-            //}
+            if (!_pv.IsMine)
+            {
+                return;
+            }
         }
 
         private void FixedUpdate()
@@ -123,9 +132,11 @@ namespace VictoryChallenge.Controllers.Player
                 _animator.SetFloat("Horizontal", _velocity.x);
                 _animator.SetFloat("Vertical", _velocity.z);
                 
-                _receiveState = _animator.GetInteger("State");
-                _receiveIsDirty = _animator.GetBool("IsDirty");
-                Debug.Log("State?" + _animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
+                //_receiveState = _animator.GetInteger("State");
+                //_receiveState = _animator.GetCurrentAnimatorStateInfo(0).GetHashCode();
+                //_receiveIsDirty = _animator.GetBool("IsDirty");
+                //_isGround = transform.IsGrounded();
+                //Debug.Log("State?" + _animator.GetCurrentAnimatorStateInfo(0).fullPathHash);
 
                 if (dizzyCount > 2)
                 {
@@ -148,6 +159,11 @@ namespace VictoryChallenge.Controllers.Player
                     isDizzy = false;
                 }
             }
+            //else
+            //{
+                //_localNormalizeTime = Mathf.Lerp(_localNormalizeTime, _remoteNormalizeTime, Time.deltaTime / _lerpTime);
+                //_animator.Play(_receiveState, 0, _localNormalizeTime);
+            //}
         }
 
         // Player 이동 
@@ -196,42 +212,50 @@ namespace VictoryChallenge.Controllers.Player
             }
         }
 
-        //[PunRPC]
-        //public void ChangeStateClientRpc(State newState)
-        //{
-        //    if (_pv.IsMine)
-        //    {
-        //        _animator.SetInteger("State", (int)newState);
-        //        _animator.SetBool("IsDirty", true);
-        //        Debug.Log("State : " + newState + "(" + (int)newState + ")" );
-        //        Debug.Log("IsDirty : " + _animator.GetBool("IsDirty"));
-        //    }
-        //}
-
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        [PunRPC]
+        public void ChangeStateClientRpc(State newState)
         {
-            if(stream.IsWriting)
+            if (_pv.IsMine)
             {
-                stream.SendNext(transform.position);
-                stream.SendNext(transform.rotation);
-                stream.SendNext(_receiveState);
-                stream.SendNext(_receiveIsDirty);
-                //Debug.Log("Send State : " + _receiveState);
-                //Debug.Log("Send IsDirty : " + _receiveIsDirty);
-            }
-            else
-            {
-                transform.position = (Vector3)stream.ReceiveNext();
-                transform.rotation = (Quaternion)stream.ReceiveNext();
-                _receiveState = (int)stream.ReceiveNext();
-                _receiveIsDirty = (bool)stream.ReceiveNext();
-                //Debug.Log("Receive State : " + _receiveState);
-                //Debug.Log("Receive IsDirty : " + _receiveIsDirty);
-                //_animator.SetBool("IsDirty", true)
-                _animator.SetInteger("State", _receiveState);
-                _animator.SetBool("IsDirty", _receiveIsDirty);
-                
+                _animator.SetInteger("State", (int)newState);
+                _animator.SetBool("IsDirty", true);
+                //Debug.Log("State : " + newState + "(" + (int)newState + ")");
+                //Debug.Log("IsDirty : " + _animator.GetBool("IsDirty"));
             }
         }
+
+        //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        //{
+        //    if(stream.IsWriting)
+        //    {
+        //        //stream.SendNext(transform.position);
+        //        //stream.SendNext(transform.rotation);
+        //        stream.SendNext(_receiveState);
+        //        stream.SendNext(_receiveIsDirty);
+        //        //stream.
+        //        //stream.SendNext(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        //        //Debug.Log("Send State : " + _receiveState);
+        //        //Debug.Log("Send IsDirty : " + _receiveIsDirty);
+        //    }
+        //    else
+        //    {
+        //        //transform.position = (Vector3)stream.ReceiveNext();
+        //        //transform.rotation = (Quaternion)stream.ReceiveNext();
+        //        _receiveState = (int)stream.ReceiveNext();
+        //        _receiveIsDirty = (bool)stream.ReceiveNext();
+        //        //_remoteNormalizeTime = (float)stream.ReceiveNext();
+        //        //Debug.Log("Receive State : " + _receiveState);
+        //        //Debug.Log("Receive IsDirty : " + _receiveIsDirty);
+
+        //        //PhotonAnimatorView anim = GetComponent<PhotonAnimatorView>();
+        //        //anim.SetLayerSynchronized(0, PhotonAnimatorView.SynchronizeType.Continuous);
+
+        //        //float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.timestamp));
+        //        //Debug.Log("지연시간 : " + lag);
+
+        //        //_animator.SetInteger("State", _receiveState);
+        //        //_animator.SetBool("IsDirty", _receiveIsDirty);
+        //    }
+        //}
     }
 }
