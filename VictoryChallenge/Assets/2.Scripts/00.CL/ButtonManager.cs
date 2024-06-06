@@ -49,7 +49,7 @@ namespace VictoryChallenge.Scripts.CL
             joinButton.onClick.AddListener(JoinRoom);  // 방 관련 팝업 띄우기
             createRoomButton.onClick.AddListener(() => MenuManager.Instance.OpenMenu("CreateRoom"));  // CreateRoom 메뉴 띄우기
             findRoomButton.onClick.AddListener(() => MenuManager.Instance.OpenMenu("FindRoom"));  // FindRoom 메뉴 띄우기
-            setRoomButton.onClick.AddListener(() => PhotonLauncher.Instance.CreateRoom());  // 로비이동.
+            //setRoomButton.onClick.AddListener(() => PhotonLauncher.Instance.CreateRoom());  // 로비이동.
             settingsButton.onClick.AddListener(SettingOptions);  // Create Room or FindRoom 팝업 띄우기, 메뉴매니저로 관리 안 함
             exitGameButton.onClick.AddListener(ExitGame);  // Settings 팝업 띄우기, 메뉴매니저로 관리 안 함
 
