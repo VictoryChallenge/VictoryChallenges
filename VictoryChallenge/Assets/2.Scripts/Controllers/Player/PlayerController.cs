@@ -5,6 +5,7 @@ using UnityEngine;
 using VictoryChallenge.StateMachine;
 using VictoryChallenge.ComponentExtensions;
 using GSpawn;
+using Photon.Pun;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -13,7 +14,6 @@ namespace VictoryChallenge.Controllers.Player
         private float _walkSpeed = 3f;
 
         [SerializeField] CinemachineVirtualCamera _vCamPerspective;
-
 
         protected override void Start()
         {

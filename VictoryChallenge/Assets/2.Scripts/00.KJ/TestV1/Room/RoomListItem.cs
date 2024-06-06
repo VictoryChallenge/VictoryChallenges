@@ -21,7 +21,7 @@ namespace VictoryChallenge.KJ.Room
 
         public void OnClick()
         {
-            PhotonLauncher.Instance.JoinRoom(info);
+            PhotonLauncher.instance.JoinRoom(info);
         }
     }
 }

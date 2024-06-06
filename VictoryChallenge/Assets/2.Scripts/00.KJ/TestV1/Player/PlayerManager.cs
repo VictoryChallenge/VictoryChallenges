@@ -28,7 +28,7 @@ namespace VictoryChallenge.KJ.Manager
         void CreateController()
         {
             Transform spawnPoint = Spawn.SpawnManager.Instance.GetSpawnPoint();
-            controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
+            controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
         }
 
         public void Die()

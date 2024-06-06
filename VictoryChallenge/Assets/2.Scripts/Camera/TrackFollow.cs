@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VictoryChallenge.Controllers.Player;
 
 namespace VictoryChallenge.Camera
 {
-    public class CameraFollow : MonoBehaviour
+    public class TrackFollow : MonoBehaviour
     {
-        private float _offsetY = 2f;
+        [SerializeField] private float _offsetY = 2f;
         private Transform _playerTransform;
 
 
         void Start()
         {
-            _playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+            _playerTransform = FindObjectOfType<PlayerController>().GetComponent<Transform>();
+                //GameObject.Find("Player").GetComponent<Transform>();
         }
 
         void Update()

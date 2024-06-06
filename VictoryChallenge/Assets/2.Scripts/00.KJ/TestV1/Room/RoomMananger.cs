@@ -35,12 +35,10 @@ namespace VictoryChallenge.KJ.Room
 
         void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            Debug.Log($"Scene loaded: {scene.name}, Build Index: {scene.buildIndex}, In Room: {PhotonNetwork.InRoom}");
             if (scene.buildIndex == 1)
             {
                 if (PhotonNetwork.InRoom)
                 {
-                    Debug.Log("플레이어 매니저 생성");
                     PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
                 }
             }
