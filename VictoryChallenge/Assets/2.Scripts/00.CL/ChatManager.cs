@@ -4,7 +4,6 @@ using Photon.Chat;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 namespace VictoryChallenge.Scripts.CL
@@ -25,9 +24,7 @@ namespace VictoryChallenge.Scripts.CL
         {
             PhotonNetwork.IsMessageQueueRunning = true;
 
-            userName = "¸»¶ûÀÌ";
-            chatClient = new ChatClient(this);
-            chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat, "1.0", new AuthenticationValues(userName));
+            InitializeChat("¸»¶ûÀÌ");
         }
 
         void Update()
@@ -139,6 +136,7 @@ namespace VictoryChallenge.Scripts.CL
             if (chatMessages.Count > 30)
             {
                 chatMessages.RemoveRange(0, chatMessages.Count - 30);
+                Debug.Log("dd");
             }
 
             chatDisplay.text = string.Join("\n", chatMessages.ToArray());
