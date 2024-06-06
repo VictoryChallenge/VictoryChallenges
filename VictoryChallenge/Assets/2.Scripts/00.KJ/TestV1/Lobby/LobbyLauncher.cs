@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VictoryChallenge.KJ.Menu;
 
 namespace VictoryChallenge.KJ.Lobby
 {
@@ -38,9 +39,9 @@ namespace VictoryChallenge.KJ.Lobby
             {
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
 
-                if (Menu.MenuManager2.Instance != null)
+                if (MenuManager.Instance != null)
                 {
-                    Menu.MenuManager2.Instance.OpenMenu("lobby");
+                    MenuManager.Instance.OpenMenu("lobby");
                 }
                 InitializeRoom();
             }

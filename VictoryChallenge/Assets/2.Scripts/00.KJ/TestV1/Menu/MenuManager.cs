@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace VictoryChallenge.KJ.Menu
 {
-    public class MenuManager2 : MonoBehaviour
+    public class MenuManager : MonoBehaviour
     {
-        public static MenuManager2 Instance;     // ΩÃ±€≈Ê
+        public static MenuManager Instance;     // ΩÃ±€≈Ê
 
         [SerializeField] Menu[] menus;          // ∏ﬁ¥∫ ∏ÆΩ∫∆Æ
 

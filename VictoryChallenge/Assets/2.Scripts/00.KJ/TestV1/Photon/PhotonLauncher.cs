@@ -39,6 +39,8 @@ namespace VictoryChallenge.KJ.Photon
 
         void Awake()
         {
+            PhotonNetwork.ConnectUsingSettings();
+
             if (PhotonNetwork.IsConnected == false)
             {
                 bool isConnected = PhotonNetwork.ConnectUsingSettings();
@@ -58,7 +60,7 @@ namespace VictoryChallenge.KJ.Photon
             Debug.Log("로비");
             base.OnJoinedLobby();
             Debug.Log(PhotonNetwork.NickName);
-            Menu.MenuManager2.Instance.OpenMenu("title");
+            MenuManager.Instance.OpenMenu("title");
             //PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
         }
 
@@ -71,26 +73,26 @@ namespace VictoryChallenge.KJ.Photon
 
             Debug.Log("방 생성 시도");
             PhotonNetwork.CreateRoom(roomNameInputField.text);
-            Menu.MenuManager2.Instance.OpenMenu("loading");
+            MenuManager.Instance.OpenMenu("loading");
         }
 
         public override void OnCreateRoomFailed(short returnCode, string message)
         {
             errorText.text = "Room Creation Failed" + message;
-            Menu.MenuManager2.Instance.OpenMenu("error");
+            MenuManager.Instance.OpenMenu("error");
         }
 
         public void JoinRoom(RoomInfo info)
         {
             Debug.Log("방 진입 " + info.Name);
             PhotonNetwork.JoinRoom(info.Name);
-            Menu.MenuManager2.Instance.OpenMenu("loading");
+            MenuManager.Instance.OpenMenu("loading");
         }
 
         public override void OnJoinedRoom()
         {
             Debug.Log("방 들어가는 중");
-            MenuManager2.Instance.OpenMenu("loading");
+            MenuManager.Instance.OpenMenu("loading");
             PhotonNetwork.LoadLevel(1);
         }
 

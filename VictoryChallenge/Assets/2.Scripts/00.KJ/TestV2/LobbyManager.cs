@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
+using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class LobbyManager : MonoBehaviour
+namespace VictoryChallenge.KJ.Lobby
 {
-    // Start is called before the first frame update
-    void Start()
+    public class LobbyManager : MonoBehaviourPunCallbacks
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void OnJoinedRoom()
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                Debug.Log("플레이어 매니저 생성");
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+            }
+        }
     }
 }
+
