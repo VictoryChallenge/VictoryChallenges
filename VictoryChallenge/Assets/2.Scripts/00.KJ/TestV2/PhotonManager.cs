@@ -27,8 +27,6 @@ namespace VictoryChallenge.KJ.Photon
 
         void Awake()
         {
-            PhotonNetwork.ConnectUsingSettings();
-
             if (PhotonNetwork.IsConnected == false)
             {
                 bool isConnected = PhotonNetwork.ConnectUsingSettings();

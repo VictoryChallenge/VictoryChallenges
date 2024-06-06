@@ -41,6 +41,7 @@ namespace VictoryChallenge.StateMachine.Player
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
+            animator.SetInteger("State", (int)State.KickAttack);
             _colLeftFoot.enabled = true;
             _colRightFoot.enabled = true;
         }

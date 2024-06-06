@@ -35,6 +35,8 @@ namespace VictoryChallenge.StateMachine.Player
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
+            animator.SetInteger("State", (int)State.Attack);
+        
             _attackComboStack = _attackComboStack < _attackComboStackLimit ? _attackComboStack + 1 : 0;
 
             animator.SetInteger("AttackComboStack", _attackComboStack);
