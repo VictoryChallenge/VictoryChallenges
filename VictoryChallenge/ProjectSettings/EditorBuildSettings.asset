@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/1.Scenes/00.KJ/Menu(T).unity
-    guid: 495031d9cb5fd71458e8da7c6e5e567a
+    path: Assets/1.Scenes/00.KJ/TestV2/MainMenu.unity
+    guid: 32f4d939194e7b4429475ee685020491
   - enabled: 1
-    path: Assets/1.Scenes/00.KJ/Lobby(T).unity
-    guid: 2cbe4ba06ac620245b1980db9f5e676f
+    path: Assets/1.Scenes/00.KJ/TestV2/Lobby.unity
+    guid: 22dc013e5f8f4db459d6f4fbc8cafb32
   m_configObjects: {}
