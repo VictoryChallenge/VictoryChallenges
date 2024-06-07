@@ -36,5 +36,12 @@ namespace VictoryChallenge.StateMachine.Player
 
             controller.hitCount++;
         }
+
+        public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            base.OnStateExit(animator, stateInfo, layerIndex);
+            controller.isHit = false;
+
+        }
     }
 }

@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 6273155763609557480}
   - component: {fileID: 2988324205723689218}
   - component: {fileID: 7007496972145319816}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: GrabDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,6 +433,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4685939182248452530, guid: f999d3d438d8bea48bd8e16f0ae35732,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5218321160957434009, guid: f999d3d438d8bea48bd8e16f0ae35732,
         type: 3}
       propertyPath: m_IsActive
@@ -477,6 +482,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986226677824704297, guid: f999d3d438d8bea48bd8e16f0ae35732,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7073815708853260552, guid: f999d3d438d8bea48bd8e16f0ae35732,
         type: 3}
@@ -625,6 +635,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5587406853721122881}
+    - targetCorrespondingSourceObject: {fileID: 6986226677824704297, guid: f999d3d438d8bea48bd8e16f0ae35732,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6308839210177233216}
+    - targetCorrespondingSourceObject: {fileID: 4685939182248452530, guid: f999d3d438d8bea48bd8e16f0ae35732,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1866692238053494712}
   m_SourcePrefab: {fileID: 100100000, guid: f999d3d438d8bea48bd8e16f0ae35732, type: 3}
 --- !u!1 &5311161899013948628 stripped
 GameObject:
@@ -725,6 +743,35 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!1 &6155606790653610382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4685939182248452530, guid: f999d3d438d8bea48bd8e16f0ae35732,
+    type: 3}
+  m_PrefabInstance: {fileID: 1471224729739520060}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1866692238053494712
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6155606790653610382}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.24859571
+  m_Height: 0.5461731
+  m_Direction: 1
+  m_Center: {x: 0.053135507, y: 0.024139816, z: 0.007557014}
 --- !u!4 &7795260543966357441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8666195830222311421, guid: f999d3d438d8bea48bd8e16f0ae35732,
@@ -737,6 +784,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1471224729739520060}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8403373027395217173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6986226677824704297, guid: f999d3d438d8bea48bd8e16f0ae35732,
+    type: 3}
+  m_PrefabInstance: {fileID: 1471224729739520060}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &6308839210177233216
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403373027395217173}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.24273902
+  m_Height: 0.5223613
+  m_Direction: 1
+  m_Center: {x: -0.06474412, y: -0.0033049502, z: -0.02440636}
 --- !u!4 &8984573656732098901 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7549520871249774953, guid: f999d3d438d8bea48bd8e16f0ae35732,

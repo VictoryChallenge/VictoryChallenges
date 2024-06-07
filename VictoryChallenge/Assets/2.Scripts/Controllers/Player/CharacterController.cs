@@ -37,8 +37,6 @@ namespace VictoryChallenge.Controllers.Player
 
         private bool _isKeyActive = true;
 
-        public bool _isGround;
-
         // 카메라 회전
         public virtual Transform camTransform { get; set; }
 
@@ -68,12 +66,27 @@ namespace VictoryChallenge.Controllers.Player
         public virtual CapsuleCollider grabbableCollider { get; set; }
 
         // Hit
-        public virtual bool isHit { get; set; }
         public virtual bool isDizzy { get; set; }
         public virtual bool isDie { get; set; }
 
         public virtual int hitCount { get; set; }
         public virtual int dizzyCount { get; set; }
+
+        // Attack
+        public bool isAttacking
+        {
+            get => _isAttacking;
+            set => _isAttacking = value;
+        }
+
+        private bool _isAttacking;
+
+        public bool isHit 
+        { 
+            get => _isHit;
+            set => _isHit = value;
+        }
+        private bool _isHit;
 
         // Object
         public virtual bool isReverseKey { get; set; }
@@ -104,19 +117,6 @@ namespace VictoryChallenge.Controllers.Player
 
         protected virtual void Update()
         {
-
-            if (transform.IsGrounded())
-            {
-                Debug.Log("Master Ground Collision");
-                _animator.SetBool("IsGround", true);
-                _isGround = true;
-            }
-            else
-            {
-                _animator.SetBool("IsGround", false);
-                _isGround = false;
-            }
-
             if (!_pv.IsMine)
             {
                 //if (transform.IsGrounded())
@@ -215,5 +215,20 @@ namespace VictoryChallenge.Controllers.Player
         //    _animator.SetInteger("State", (int)newState);
         //    _animator.SetBool("IsDirty", true);
         //}
+
+        #region 충돌체크
+        private void OnTriggerEnter(Collider other)
+        {
+            // Attack Check
+            if(_isAttacking)
+            {
+                if(other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
+                {
+                    Debug.Log("나 맞았어 엄마한테 이를거야");
+                    _isHit = true;
+                }
+            }
+        }
+        #endregion
     }
 }

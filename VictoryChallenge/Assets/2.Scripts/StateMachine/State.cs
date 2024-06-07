@@ -15,6 +15,9 @@ namespace VictoryChallenge.StateMachine
         Hit,
         Dizzy,
         Die,
+        JumpStart,
+        Jumping,
+        JumpEnd,
     }
 }
 

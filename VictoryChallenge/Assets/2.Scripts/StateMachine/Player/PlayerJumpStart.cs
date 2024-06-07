@@ -9,7 +9,7 @@ namespace VictoryChallenge.StateMachine.Player
     /// <summary>
     /// Player Jump 상태 애니메이션 
     /// </summary>
-    public class PlayerJump : StateMachineBehaviourBase
+    public class PlayerJumpStart : StateMachineBehaviourBase
     {
         [SerializeField] private float _jumpForce = 5.0f;
 
@@ -21,18 +21,14 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
-                { State.Move, (animator) =>
-                {
-                    return animator.IsGrounded()/* && (controller.velocity.magnitude > 0.01f)*/;
-                }},
             };
         }
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animator.SetInteger("State", (int)State.Jump);
-            
             base.OnStateEnter(animator, stateInfo, layerIndex);
+
+            animator.SetInteger("State", (int)State.JumpStart);
             
             animator.transform.position += Vector3.up * 0.4f;
             controller.velocity = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z);

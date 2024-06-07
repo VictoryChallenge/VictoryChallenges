@@ -19,8 +19,12 @@ namespace VictoryChallenge.StateMachine.Player
             {
                 { State.Jump, (animator) =>
                 {
-                    return /*animator.IsGrounded()*/controller._isGround && Input.GetKeyDown(KeyCode.Space);
+                    return animator.IsGrounded() && Input.GetKeyDown(KeyCode.Space);
                 }},
+                //{ State.JumpStart, (animator) =>
+                //{
+                //    return animator.IsGrounded() && Input.GetKeyDown(KeyCode.Space);
+                //}},
                 { State.Attack, (animator) =>
                 {
                     return !controller.isGrabbable && Input.GetMouseButtonDown(0);
@@ -43,16 +47,18 @@ namespace VictoryChallenge.StateMachine.Player
                 }},
                 { State.Hit, (animator) =>
                 {
-                    return Input.GetKeyDown(KeyCode.X);
+                    return controller.isHit/*Input.GetKeyDown(KeyCode.X)*/;
                 }},
             };
         }
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animator.SetInteger("State", (int)State.Move);
-
             base.OnStateEnter(animator, stateInfo, layerIndex);
+
+            animator.SetInteger("State", (int)State.Move);
         }
+
+        
     }
 }
