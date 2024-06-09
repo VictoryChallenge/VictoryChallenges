@@ -17,20 +17,22 @@ namespace VictoryChallenge.Scripts.CL
 
     public class ButtonManager : MonoBehaviour
     {
-        public Button joinButton;
+        [Header("버튼")]
+        [Tooltip("게임시작버튼")] public Button joinButton;
         public Button createRoomButton;
-        public Button findRoomButton;
+        //public Button findRoomButton;
         public Button setRoomButton;
         public Button settingsButton;
         public Button[] exitButtons; // 여러 exitButton을 담을 배열
         public Button exitGameButton;
 
+        [Header("UI")]
         public TMP_Dropdown resolutionDropdown;
         public Toggle screenMode;
 
+        // 팝업창, 해상도
         private GameObject joinPopup;
         private GameObject settingsPopup;
-
         private List<Resolution> resolutions;
 
         void Start()
@@ -48,7 +50,7 @@ namespace VictoryChallenge.Scripts.CL
 
             joinButton.onClick.AddListener(JoinRoom);  // 방 관련 팝업 띄우기
             createRoomButton.onClick.AddListener(() => MenuManager.Instance.OpenMenu("CreateRoom"));  // CreateRoom 메뉴 띄우기
-            findRoomButton.onClick.AddListener(() => MenuManager.Instance.OpenMenu("FindRoom"));  // FindRoom 메뉴 띄우기
+            //findRoomButton.onClick.AddListener(() => MenuManager.Instance.OpenMenu("FindRoom"));  // FindRoom 메뉴 띄우기
             //setRoomButton.onClick.AddListener(() => PhotonLauncher.Instance.CreateRoom());  // 로비이동.
             settingsButton.onClick.AddListener(SettingOptions);  // Create Room or FindRoom 팝업 띄우기, 메뉴매니저로 관리 안 함
             exitGameButton.onClick.AddListener(ExitGame);  // Settings 팝업 띄우기, 메뉴매니저로 관리 안 함
