@@ -7,7 +7,7 @@ namespace VictoryChallenge.KJ.Lobby
 {
     public class LobbyManager : MonoBehaviourPunCallbacks
     {
-        public override void OnJoinedRoom()
+        public override void OnJoinedRoom()                     // 로비(룸) 씬으로 넘어오면 플레이어 매니저 생성
         {
             if (SceneManager.GetActiveScene().buildIndex == 1)
             {
