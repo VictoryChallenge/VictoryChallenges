@@ -16,7 +16,7 @@ public class GrabbableTest : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Grabbable"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             _characterController.isGrabbable = true;
 
@@ -28,7 +28,7 @@ public class GrabbableTest : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Grabbable"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             _characterController.isGrabbable = false;
         }

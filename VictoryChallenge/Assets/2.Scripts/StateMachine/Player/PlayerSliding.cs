@@ -25,5 +25,12 @@ namespace VictoryChallenge.StateMachine.Player
 
             animator.SetInteger("State", (int)State.Sliding);
         }
+
+        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            base.OnStateUpdate(animator, stateInfo, layerIndex);
+
+            controller.transform.position += controller.transform.forward * 3f * Time.deltaTime;
+        }
     }
 }

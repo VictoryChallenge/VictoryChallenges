@@ -25,6 +25,10 @@ namespace VictoryChallenge.StateMachine.Player
                 {
                     return animator.IsGrounded()/* && (controller.velocity.magnitude > 0.01f)*/;
                 }},
+                { State.Sliding, (animator) =>
+                {
+                    return Input.GetMouseButton(0);
+                }},
             };
         }
 
@@ -34,7 +38,7 @@ namespace VictoryChallenge.StateMachine.Player
             
             base.OnStateEnter(animator, stateInfo, layerIndex);
             
-            animator.transform.position += Vector3.up * 0.4f;
+            animator.transform.position += Vector3.up * 0.2f;
             controller.velocity = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z);
             controller.GetComponent<Rigidbody>().AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }

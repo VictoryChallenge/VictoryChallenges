@@ -216,19 +216,31 @@ namespace VictoryChallenge.Controllers.Player
         //    _animator.SetBool("IsDirty", true);
         //}
 
-        #region 충돌체크
-        private void OnTriggerEnter(Collider other)
+        [PunRPC]
+        public void HitCheckRPC(bool isCheck)
         {
-            // Attack Check
-            if(_isAttacking)
-            {
-                if(other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
-                {
-                    Debug.Log("나 맞았어 엄마한테 이를거야");
-                    _isHit = true;
-                }
-            }
+            //if(!_pv.IsMine)
+            //{
+                _isHit = isCheck;
+                //_animator.SetInteger("State", (int)State.Hit);
+                //_animator.SetBool("IsDirty", true);
+                //Debug.Log("isHit : " + _isHit);
+            //}
         }
+
+        #region 충돌체크
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    // Attack Check
+        //    if(_isAttacking)
+        //    {
+        //        if(other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
+        //        {
+        //            Debug.Log("나 맞았어 엄마한테 이를거야");
+        //            _isHit = true;
+        //        }
+        //    }
+        //}
         #endregion
     }
 }

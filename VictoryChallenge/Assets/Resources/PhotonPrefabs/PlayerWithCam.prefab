@@ -403,6 +403,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5681717699174676740}
     m_Modifications:
+    - target: {fileID: 2227205651915822877, guid: f999d3d438d8bea48bd8e16f0ae35732,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2894367931040886591, guid: f999d3d438d8bea48bd8e16f0ae35732,
         type: 3}
       propertyPath: m_Layer
@@ -631,18 +636,22 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3732898229915490847}
-    - targetCorrespondingSourceObject: {fileID: 6764369822637894888, guid: f999d3d438d8bea48bd8e16f0ae35732,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5587406853721122881}
     - targetCorrespondingSourceObject: {fileID: 6986226677824704297, guid: f999d3d438d8bea48bd8e16f0ae35732,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6308839210177233216}
+    - targetCorrespondingSourceObject: {fileID: 6986226677824704297, guid: f999d3d438d8bea48bd8e16f0ae35732,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6293525696058574118}
     - targetCorrespondingSourceObject: {fileID: 4685939182248452530, guid: f999d3d438d8bea48bd8e16f0ae35732,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1866692238053494712}
+    - targetCorrespondingSourceObject: {fileID: 4685939182248452530, guid: f999d3d438d8bea48bd8e16f0ae35732,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8992814589701092358}
   m_SourcePrefab: {fileID: 100100000, guid: f999d3d438d8bea48bd8e16f0ae35732, type: 3}
 --- !u!1 &5311161899013948628 stripped
 GameObject:
@@ -671,7 +680,6 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2554568467433796909}
   - {fileID: 3732898229915490847}
-  - {fileID: 5587406853721122881}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -703,11 +711,8 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Vertical
   - Type: 3
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: AttackComboStack
-  - Type: 4
-    SynchronizeType: 2
-    Name: IsGround
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -727,22 +732,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &5587406853721122881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5311161899013948628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &6155606790653610382 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4685939182248452530, guid: f999d3d438d8bea48bd8e16f0ae35732,
@@ -772,6 +761,18 @@ CapsuleCollider:
   m_Height: 0.5461731
   m_Direction: 1
   m_Center: {x: 0.053135507, y: 0.024139816, z: 0.007557014}
+--- !u!114 &8992814589701092358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6155606790653610382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145baa958eefdd04e868b2829ab8dde4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7795260543966357441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8666195830222311421, guid: f999d3d438d8bea48bd8e16f0ae35732,
@@ -813,6 +814,18 @@ CapsuleCollider:
   m_Height: 0.5223613
   m_Direction: 1
   m_Center: {x: -0.06474412, y: -0.0033049502, z: -0.02440636}
+--- !u!114 &6293525696058574118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403373027395217173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145baa958eefdd04e868b2829ab8dde4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8984573656732098901 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7549520871249774953, guid: f999d3d438d8bea48bd8e16f0ae35732,

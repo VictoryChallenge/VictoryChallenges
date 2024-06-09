@@ -45,7 +45,7 @@ namespace VictoryChallenge.StateMachine.Player
 
             if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
             {
-                controller.grabbableTransform.parent = null;
+                //controller.grabbableTransform.parent = null;
 
                 Vector3 newPos = -_grabTransform.up * throwPower * Time.deltaTime; 
 

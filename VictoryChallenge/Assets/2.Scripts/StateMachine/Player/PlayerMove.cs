@@ -27,7 +27,7 @@ namespace VictoryChallenge.StateMachine.Player
                 //}},
                 { State.Attack, (animator) =>
                 {
-                    return !controller.isGrabbable && Input.GetMouseButtonDown(0);
+                    return !controller.isGrabbable && !controller.isHit && Input.GetMouseButtonDown(0);
                 }},
                 { State.KickAttack, (animator) =>
                 {
@@ -41,10 +41,7 @@ namespace VictoryChallenge.StateMachine.Player
                 {
                     return controller.isGrabbable && Input.GetMouseButton(0);
                 }},
-                { State.Sliding, (animator) =>
-                {
-                    return Input.GetKeyDown(KeyCode.Z);
-                }},
+
                 { State.Hit, (animator) =>
                 {
                     return controller.isHit/*Input.GetKeyDown(KeyCode.X)*/;

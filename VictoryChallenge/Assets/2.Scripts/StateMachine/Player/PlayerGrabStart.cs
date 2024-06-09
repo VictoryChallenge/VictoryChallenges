@@ -65,6 +65,7 @@ namespace VictoryChallenge.StateMachine.Player
                 controller.grabbableTransform.position = Vector3.Lerp(controller.grabbableTransform.position, _grabTransform.position, Time.deltaTime);
 
                 //controller.grabbableTransform.position = new Vector3(controller.grabbableTransform.position.x, controller.grabbableTransform.position.y + 2.5f * Time.deltaTime, controller.grabbableTransform.position.z);
+                
                 controller.grabbableRigid.useGravity = false;
             }
         }
