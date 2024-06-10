@@ -17,7 +17,6 @@ namespace VictoryChallenge.Scripts.CL
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log("zz;;");
             // 클릭 이벤트 핸들러가 등록되어있다면 등록된 이벤트를 실행
             if (OnClickHandler != null)
                 OnClickHandler.Invoke(eventData);

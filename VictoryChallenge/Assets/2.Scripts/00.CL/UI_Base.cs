@@ -70,6 +70,11 @@ namespace VictoryChallenge.Scripts.CL
         protected Text GetText(int idx) { return Get<Text>(idx); }
         protected Button GetButton(int idx) { return Get<Button>(idx); }
         protected Image GetImage(int idx) { return Get<Image>(idx); }
+        protected Slider GetSlider(int idx) { return Get<Slider>(idx); }
+        protected TMP_Dropdown GetDropdown(int idx) { return Get<TMP_Dropdown>(idx); }
+        protected Toggle GetToggle(int idx) { return Get<Toggle>(idx); }
+        protected TMP_InputField GetInputField(int idx) { return Get<TMP_InputField>(idx);}
+        protected ScrollRect GetScrollRect(int idx) { return Get<ScrollRect>(idx); }
 
         /// <summary>
         /// UI 이벤트를 추가하는 함수
@@ -77,43 +82,23 @@ namespace VictoryChallenge.Scripts.CL
         /// <param name="go"> UI 이벤트를 추가할 게임오브젝트 </param>
         /// <param name="action"> 이벤트 핸들러로 등록할 PointerEventData를 매개변수로 받는 Action </param>
         /// <param name="type"> 기본 값은 Click이며, 추가할 UI 이벤트의 종류 (Define에 정의) </param>
-        //public static void AddUIEvent(GameObject go, Action<PointerEventData> action, Define.UIEvent type = Define.UIEvent.Click)
-        //{
-        //    // 게임오브젝트에 UI_EventHandler 컴포넌트를 가져오거나 추가함.
-        //    UI_EventHandler evt = Util.GetOrAddComponent<UI_EventHandler>(go);
-
-        //    // UI 이벤트의 종류에 따라 액션을 해당 이벤트 핸들러에 등록
-        //    switch (type)
-        //    {
-        //        // Click인 경우, 기존의 클릭핸들러를 제거하고 새로운 action을 등록
-        //        case Define.UIEvent.Click:
-        //            evt.OnClickHandler -= action;
-        //            evt.OnClickHandler += action;
-        //            break;
-        //        // Drag인 경우, 기존의 드래그핸들러를 제거하고 새로운 action을 등록
-        //        case Define.UIEvent.Drag:
-        //            evt.OnDragHandler -= action;
-        //            evt.OnDragHandler += action;
-        //            break;
-        //    }
-        //}
-
         public static void AddUIEvent(GameObject go, Action<PointerEventData> action, Define.UIEvent type = Define.UIEvent.Click)
         {
+            // 게임오브젝트에 UI_EventHandler 컴포넌트를 가져오거나 추가함.
             UI_EventHandler evt = Util.GetOrAddComponent<UI_EventHandler>(go);
-            Debug.Log($"Adding UI Event to {go.name}");
 
+            // UI 이벤트의 종류에 따라 액션을 해당 이벤트 핸들러에 등록
             switch (type)
             {
+                // Click인 경우, 기존의 클릭핸들러를 제거하고 새로운 action을 등록
                 case Define.UIEvent.Click:
                     evt.OnClickHandler -= action;
                     evt.OnClickHandler += action;
-                    Debug.Log("Added Click Event");
                     break;
+                // Drag인 경우, 기존의 드래그핸들러를 제거하고 새로운 action을 등록
                 case Define.UIEvent.Drag:
                     evt.OnDragHandler -= action;
                     evt.OnDragHandler += action;
-                    Debug.Log("Added Drag Event");
                     break;
             }
         }
