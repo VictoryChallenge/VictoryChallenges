@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace VictoryChallenge.Scripts.CL
 {
@@ -41,6 +42,7 @@ namespace VictoryChallenge.Scripts.CL
         {
             // 게임오브젝트에 Canvas 컴포넌트를 붙이거나 가져옴
             Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
+            GraphicRaycaster GR = Util.GetOrAddComponent<GraphicRaycaster>(go);
             // Rednermode는 ScreenSpaceOverlay로 설정
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.overrideSorting = true;

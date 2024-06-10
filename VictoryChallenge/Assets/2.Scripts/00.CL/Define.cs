@@ -25,5 +25,13 @@ namespace VictoryChallenge.Scripts.CL
         {
             Quarterview,
         }
+
+        public enum Scene
+        {
+            Unknown, // 디폴트
+            Login, // 로그인 화면 씬
+            Lobby, // 로비 씬
+            Game, // 인게임 씬
+        }
     }
 }

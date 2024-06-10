@@ -5,15 +5,15 @@ using UnityEngine;
 using VictoryChallenge.Scripts.CL;
 
 namespace VictoryChallenge.Scripts.CL
-{ 
+{
     public class UI_Popup : UI_Base
     {
-        public virtual void init()
+        public override void Init()
         {
             Managers.UI.SetCanvas(gameObject, true);
         }
 
-        public virtual void ClosePopupUI()
+        public virtual void ClosePopupUI()  // 팝업이니까 고정 캔버스(Scene)과 다르게 닫는게 필요
         {
             Managers.UI.ClosePopupUI(this);
         }

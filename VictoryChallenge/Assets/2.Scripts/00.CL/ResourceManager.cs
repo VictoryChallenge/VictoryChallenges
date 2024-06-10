@@ -8,7 +8,16 @@ namespace VictoryChallenge.Scripts.CL
     {
         public T Load<T>(string path) where T : Object
         {
-            return Resources.Load<T>(path);
+            T resource = Resources.Load<T>(path);
+            if (resource == null)
+            {
+                Debug.LogError($"Failed to load resource at path: {path}");
+            }
+            else
+            {
+                Debug.Log($"Successfully loaded resource at path: {path}");
+            }
+            return resource;
         }
 
         public GameObject Instantiate(string path, Transform parent = null)
@@ -20,7 +29,12 @@ namespace VictoryChallenge.Scripts.CL
                 return null;
             }
 
-            return Object.Instantiate(prefab, parent);
+            GameObject go = Object.Instantiate(prefab, parent);
+            int index = go.name.IndexOf("(Clone)");
+            if (index > 0)
+                go.name = go.name.Substring(0, index);
+
+            return go;
         }
 
         public void Destroy(GameObject go)

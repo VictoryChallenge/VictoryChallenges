@@ -6,7 +6,7 @@ namespace VictoryChallenge.Scripts.CL
 {
     public class UI_Scene : UI_Base
     {
-        public virtual void init()
+        public override void Init()
         {
             Managers.UI.SetCanvas(gameObject, false);
         }
