@@ -35,16 +35,27 @@ namespace VictoryChallenge.StateMachine.Player
                 }},
                 { State.Dance, (animator) =>
                 {
-                    return Input.GetKeyDown(KeyCode.C);
+                    return Input.GetKeyDown(KeyCode.T);
                 }},
                 { State.GrabStart, (animator) =>
                 {
                     return controller.isGrabbable && Input.GetMouseButton(0);
                 }},
-
                 { State.Hit, (animator) =>
                 {
                     return controller.isHit/*Input.GetKeyDown(KeyCode.X)*/;
+                }},
+                { State.Sliding, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.C);
+                }},                
+                { State.Push, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.F);
+                }},
+                { State.Holding, (animator) =>
+                {
+                    return controller.isHolding;
                 }},
             };
         }

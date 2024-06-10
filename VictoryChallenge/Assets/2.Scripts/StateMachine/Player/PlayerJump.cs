@@ -27,7 +27,7 @@ namespace VictoryChallenge.StateMachine.Player
                 }},
                 { State.Sliding, (animator) =>
                 {
-                    return Input.GetMouseButton(0);
+                    return Input.GetKeyDown(KeyCode.C);
                 }},
             };
         }

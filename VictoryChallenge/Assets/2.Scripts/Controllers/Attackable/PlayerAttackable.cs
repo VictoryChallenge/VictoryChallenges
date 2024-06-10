@@ -12,7 +12,7 @@ namespace VictoryChallenge.Controllers.Attackable
 
         private void Start()
         {
-            _characterController = GetComponentInParent<CharacterController>();
+            _characterController = GetComponent<CharacterController>();
         }
 
         private void Update()
@@ -33,6 +33,19 @@ namespace VictoryChallenge.Controllers.Attackable
                         // 맞은 캐릭터의 hit 애니메이션 조건 = true 설정
                         other.gameObject.GetComponent<PhotonView>().RPC("HitCheckRPC", RpcTarget.All, true);
                     }
+                }
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            // Attack Check
+            if (_characterController.isAttacking)
+            {
+                if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+                {
+                    // 맞은 캐릭터의 hit 애니메이션 조건 = false 설정
+                    other.gameObject.GetComponent<PhotonView>().RPC("HitCheckRPC", RpcTarget.All, false);
                 }
             }
         }

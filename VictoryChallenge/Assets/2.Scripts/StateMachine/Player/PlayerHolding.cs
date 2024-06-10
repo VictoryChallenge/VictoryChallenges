@@ -6,9 +6,9 @@ using CharacterController = VictoryChallenge.Controllers.Player.CharacterControl
 namespace VictoryChallenge.StateMachine.Player
 {
     /// <summary>
-    /// Player Sliding 상태 애니메이션 
+    /// Player Holding 상태 애니메이션 
     /// </summary>
-    public class PlayerSliding : StateMachineBehaviourBase
+    public class PlayerHolding : StateMachineBehaviourBase
     {
         public override void Init(CharacterController controller)
         {
@@ -16,6 +16,14 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
+                { State.Move, (animator) =>
+                {
+                    return !controller.isHolding;
+                }},
+                { State.Push, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.F);
+                }},
             };
         }
 
@@ -23,16 +31,7 @@ namespace VictoryChallenge.StateMachine.Player
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
-            animator.SetInteger("State", (int)State.Sliding);
-        }
-
-        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-        {
-            base.OnStateUpdate(animator, stateInfo, layerIndex);
-
-            controller.transform.position += controller.transform.forward * 3f * Time.deltaTime;
-
-            controller.velocity = Vector3.zero;
+            animator.SetInteger("State", (int)State.Holding);
         }
     }
 }

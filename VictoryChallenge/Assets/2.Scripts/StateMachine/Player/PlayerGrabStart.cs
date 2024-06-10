@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
@@ -52,6 +53,10 @@ namespace VictoryChallenge.StateMachine.Player
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
             animator.SetInteger("State", (int)State.GrabStart);
+
+            controller.isGrabbing = true;
+
+            controller.holdingObject.GetComponent<PhotonView>().RPC("HoldingCheckRPC", RpcTarget.All, true);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -60,10 +60,27 @@ namespace VictoryChallenge.Controllers.Player
 
         #region 상호 작용
         // Grab
+        public bool isGrabbing
+        {
+            get => _isGrabbing;
+            set => _isGrabbing = value;
+        }
+
+        private bool _isGrabbing;
         public virtual bool isGrabbable { get; set; }
         public virtual Transform grabbableTransform { get; set; }
         public virtual Rigidbody grabbableRigid { get; set; }
         public virtual CapsuleCollider grabbableCollider { get; set; }
+        public virtual GameObject holdingObject { get; set; }
+
+        // Holding
+        public bool isHolding
+        {
+            get => _isHolding;
+            set => _isHolding = value;
+        }
+
+        private bool _isHolding;
 
         // Hit
         public virtual bool isDizzy { get; set; }
@@ -219,13 +236,14 @@ namespace VictoryChallenge.Controllers.Player
         [PunRPC]
         public void HitCheckRPC(bool isCheck)
         {
-            //if(!_pv.IsMine)
-            //{
-                _isHit = isCheck;
-                //_animator.SetInteger("State", (int)State.Hit);
-                //_animator.SetBool("IsDirty", true);
-                //Debug.Log("isHit : " + _isHit);
-            //}
+            _isHit = isCheck;
+            Debug.Log("호출");
+        }
+
+        [PunRPC]
+        public void HoldingCheckRPC(bool isCheck)
+        {
+            _isHolding = isCheck;
         }
 
         #region 충돌체크

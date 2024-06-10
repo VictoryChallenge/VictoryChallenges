@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
@@ -59,6 +60,9 @@ namespace VictoryChallenge.StateMachine.Player
 
             controller.grabbableCollider.enabled = true;
             controller.grabbableRigid.useGravity = true;
+            controller.isGrabbing = false;
+
+            controller.holdingObject.GetComponent<PhotonView>().RPC("HoldingCheckRPC", RpcTarget.All, false);
         }
     }
 }
