@@ -1,7 +1,6 @@
 using Photon.Pun;
 using UnityEngine.SceneManagement;
-using System.IO;
-using UnityEngine;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.KJ.Room
 {
@@ -13,7 +12,7 @@ namespace VictoryChallenge.KJ.Room
         {
             if (Instance)
             {
-                Destroy(Instance);
+                Destroy(gameObject);
                 return;
             }
 
@@ -35,11 +34,13 @@ namespace VictoryChallenge.KJ.Room
 
         void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (scene.buildIndex == 1)
+            if (scene.buildIndex == 1 && PhotonNetwork.InRoom)
             {
-                if (PhotonNetwork.InRoom)
+                PhotonSub.Instance.AssignButtonAndText();
+
+                if (PhotonManager.Instance != null)
                 {
-                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+                    PhotonSub.Instance.OnSceneLoadedForAllPlayers();
                 }
             }
         }

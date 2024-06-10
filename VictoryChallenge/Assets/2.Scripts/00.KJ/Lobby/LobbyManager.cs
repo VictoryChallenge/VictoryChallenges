@@ -1,20 +1,40 @@
 using Photon.Pun;
+using Photon.Realtime;
+using System.Collections;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace VictoryChallenge.KJ.Lobby
 {
     public class LobbyManager : MonoBehaviourPunCallbacks
     {
-        public override void OnJoinedRoom()                     // 로비(룸) 씬으로 넘어오면 플레이어 매니저 생성
+        #region Lobby
+        public override void OnLeftRoom()                   // 로비(룸)에서 떠났으면 호출
         {
-            if (SceneManager.GetActiveScene().buildIndex == 1)
+            base.OnLeftRoom();
+            CleanUpPhotonView();
+            PhotonNetwork.LoadLevel(0);                     // 메뉴 씬으로 이동
+        }
+
+        public void LeaveRoom()
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+
+        void CleanUpPhotonView()                            // Photon 오브젝트 삭제
+        {
+            foreach (PhotonView pv in FindObjectsOfType<PhotonView>())
             {
-                Debug.Log("플레이어 매니저 생성");
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+                if (pv.IsMine && pv.ViewID > 0)
+                {
+                    Destroy(pv.gameObject);
+                }
             }
         }
+        #endregion
     }
 }
 
