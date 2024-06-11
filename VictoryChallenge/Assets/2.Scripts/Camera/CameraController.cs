@@ -22,6 +22,8 @@ namespace VictoryChallenge.Camera
         {
             _vCam = GetComponent<CinemachineVirtualCamera>();
             _settingCam = _vCam.GetCinemachineComponent<CinemachineTrackedDolly>();
+
+            transform.parent = null;
         }
 
         void Update()

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Photon.Pun;
 using VictoryChallenge.ComponentExtensions;
+using Cinemachine;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -109,7 +110,7 @@ namespace VictoryChallenge.Controllers.Player
         public virtual bool isReverseKey { get; set; }
         #endregion
 
-        protected virtual void Start()
+        private void Awake()
         {
             // 컴포넌트 캐싱
             _rigidBody = GetComponent<Rigidbody>();
@@ -117,12 +118,17 @@ namespace VictoryChallenge.Controllers.Player
 
             // 애니메이션 상태머신 등록
             InitAnimatorBehaviours();
-            
+
             // 포톤뷰 캐싱
             _pv = GetComponent<PhotonView>();
+        }
 
+        protected virtual void Start()
+        {
             if (!_pv.IsMine)
             {
+                CinemachineVirtualCamera otherCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
+                otherCam.enabled = false; 
                 return;
             }
         }
