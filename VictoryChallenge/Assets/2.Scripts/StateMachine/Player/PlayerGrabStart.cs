@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
@@ -47,6 +48,17 @@ namespace VictoryChallenge.StateMachine.Player
             };
         }
 
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            base.OnStateEnter(animator, stateInfo, layerIndex);
+
+            animator.SetInteger("State", (int)State.GrabStart);
+
+            controller.isGrabbing = true;
+
+            controller.holdingObject.GetComponent<PhotonView>().RPC("HoldingCheckRPC", RpcTarget.All, true);
+        }
+
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateUpdate(animator, stateInfo, layerIndex);
@@ -58,6 +70,7 @@ namespace VictoryChallenge.StateMachine.Player
                 controller.grabbableTransform.position = Vector3.Lerp(controller.grabbableTransform.position, _grabTransform.position, Time.deltaTime);
 
                 //controller.grabbableTransform.position = new Vector3(controller.grabbableTransform.position.x, controller.grabbableTransform.position.y + 2.5f * Time.deltaTime, controller.grabbableTransform.position.z);
+                
                 controller.grabbableRigid.useGravity = false;
             }
         }

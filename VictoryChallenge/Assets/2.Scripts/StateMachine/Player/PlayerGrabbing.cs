@@ -47,13 +47,20 @@ namespace VictoryChallenge.StateMachine.Player
             };
         }
 
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            base.OnStateEnter(animator, stateInfo, layerIndex);
+
+            animator.SetInteger("State", (int)State.Grabbing);
+        }
+
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateUpdate(animator, stateInfo, layerIndex);
 
             //controller.grabbableTransform.parent = _grabTransform;
             controller.grabbableTransform.position = _grabTransform.position;
-            controller.grabbableTransform.forward = controller.transform.forward;
+            controller.grabbableTransform.forward = -controller.transform.forward;
 
             //controller.grabbableTransform.position = new Vector3(controller.grabbableTransform.position.x + controller.moveDirection.normalized.x * controller.velocity.magnitude * Time.deltaTime, 
             //                                                     controller.grabbableTransform.position.y/* + 9.8f * Time.deltaTime*/, 

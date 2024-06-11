@@ -23,6 +23,8 @@ namespace VictoryChallenge.StateMachine.Player
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
+            animator.SetInteger("State", (int)State.Die);
+
             controller.isKeyActive = false;
         }
 

@@ -18,5 +18,21 @@ namespace VictoryChallenge.StateMachine.Player
             {
             };
         }
+
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            base.OnStateEnter(animator, stateInfo, layerIndex);
+
+            animator.SetInteger("State", (int)State.Sliding);
+        }
+
+        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            base.OnStateUpdate(animator, stateInfo, layerIndex);
+
+            controller.transform.position += controller.transform.forward * 3f * Time.deltaTime;
+
+            controller.velocity = Vector3.zero;
+        }
     }
 }
