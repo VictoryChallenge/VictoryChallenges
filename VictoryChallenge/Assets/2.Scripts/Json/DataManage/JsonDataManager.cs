@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using Unity.VisualScripting;
 
 /// 데이터를 저장하는 방법
 /// 1. 저장할 데이터가 존재
@@ -23,11 +25,26 @@ namespace VictoryChallenge.Json.DataManage
         public int item;
     }
 
+    [System.Serializable]
+    public class MeshData
+    {
+        public Vector3[] vertices;
+        public int[] triangles;
+        public Vector2[] uv;
+    }
+
     public class JsonDataManager : MonoBehaviour
     {
         public static JsonDataManager instance;
 
         PlayerData playerData = new PlayerData();
+
+        string path;
+        string filename = "save";
+
+        MeshData meshData = new MeshData();
+        public Material meshMaterial; // 메시를 렌더링할 때 사용할 Material
+        public Mesh testMesh;
 
         private void Awake()
         {
@@ -42,12 +59,16 @@ namespace VictoryChallenge.Json.DataManage
             }
 
             DontDestroyOnLoad(this.gameObject);
+
+            // Unity가 생성해주는 경로
+            path = Application.persistentDataPath + "/";
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            playerData.name = "테스트플레이어";
+            MeshToMeshData(testMesh);
+            SaveMeshToJson(testMesh, path + filename);
         }
 
         // Update is called once per frame
@@ -55,6 +76,96 @@ namespace VictoryChallenge.Json.DataManage
         {
         
         }
-    }
 
+        /// <summary>
+        /// Json Data로 저장
+        /// </summary>
+        public void SaveData()
+        {
+            // Json Data로 변환
+            string data = JsonUtility.ToJson(playerData);
+            
+            // print(path);
+
+            // using System.IO
+            // WriteAllTest(경로, 내용)
+            File.WriteAllText(path + filename, data);
+        }
+
+        /// <summary>
+        /// Json Data를 불러오기
+        /// </summary>
+        public void LoadData()
+        {
+            string data = File.ReadAllText(path + filename);
+            playerData = JsonUtility.FromJson<PlayerData>(data);
+        }
+
+        public void SaveMeshToJsonButton()
+        {
+            SaveMeshToJson(testMesh, path + filename);
+        }
+
+        public void LoadMeshFromJsonButton()
+        {
+            Mesh loadedMesh = LoadMeshFromJson(path + filename);
+            // 불러온 Mesh를 사용하는 로직 추가 (예: meshToSave = loadedMesh)
+            CreateMeshObject(loadedMesh);
+            //loadedMesh.GetComponent<Transform>().position = Vector3.zero;
+        }
+
+        private void CreateMeshObject(Mesh mesh)
+        {
+            GameObject meshObject = new GameObject("LoadedMesh");
+            MeshFilter meshFilter = meshObject.AddComponent<MeshFilter>();
+            MeshRenderer meshRenderer = meshObject.AddComponent<MeshRenderer>();
+
+            meshFilter.mesh = mesh;
+            meshRenderer.material = meshMaterial; // 필요한 Material을 할당
+
+            // 필요시 meshObject의 Transform 설정 (위치, 회전, 스케일)
+            meshObject.transform.position = Vector3.zero;
+            meshObject.transform.rotation = Quaternion.Euler(-90, 0, 0);
+            meshObject.transform.localScale = Vector3.one;
+        }
+
+        public MeshData MeshToMeshData(Mesh mesh)
+        {
+            MeshData meshData = new MeshData();
+            meshData.vertices = mesh.vertices;
+            meshData.triangles = mesh.triangles;
+            meshData.uv = mesh.uv;
+            return meshData;
+        }
+
+        public void SaveMeshToJson(Mesh mesh, string path)
+        {
+            MeshData meshData = MeshToMeshData(mesh);
+            string json = JsonUtility.ToJson(meshData);
+            File.WriteAllText(path, json);
+        }
+
+        public Mesh LoadMeshFromJson(string path)
+        {
+            MeshData meshData = JsonToMeshData(path);
+            return MeshDataToMesh(meshData);
+        }
+
+        public MeshData JsonToMeshData(string path)
+        {
+            string json = File.ReadAllText(path);
+            MeshData meshData = JsonUtility.FromJson<MeshData>(json);
+            return meshData;
+        }
+
+        public Mesh MeshDataToMesh(MeshData meshData)
+        {
+            Mesh mesh = new Mesh();
+            mesh.vertices = meshData.vertices;
+            mesh.triangles = meshData.triangles;
+            mesh.uv = meshData.uv;
+            mesh.RecalculateNormals(); // 필요시 Normals 재계산
+            return mesh;
+        }
+    }
 }
