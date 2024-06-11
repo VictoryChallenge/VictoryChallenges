@@ -13,6 +13,10 @@ namespace VictoryChallenge.Controllers.Attackable
         private void Start()
         {
             _characterController = GetComponent<CharacterController>();
+            if( _characterController != null )
+            {
+                Debug.Log("character isn't null");
+            }
         }
 
         private void Update()
@@ -22,10 +26,10 @@ namespace VictoryChallenge.Controllers.Attackable
 
         private void OnTriggerEnter(Collider other)
         {
-            // Attack Check
-            if (_characterController.isAttacking)
+            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+                // Attack Check
+                if (_characterController.isAttacking)
                 {
                     // 중복 hit체크 방지
                     if(other.gameObject.GetComponent<CharacterController>().isHit == false)
@@ -39,10 +43,10 @@ namespace VictoryChallenge.Controllers.Attackable
 
         private void OnTriggerExit(Collider other)
         {
-            // Attack Check
-            if (_characterController.isAttacking)
+            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+                // Attack Check
+                if (_characterController.isAttacking)
                 {
                     // 맞은 캐릭터의 hit 애니메이션 조건 = false 설정
                     other.gameObject.GetComponent<PhotonView>().RPC("HitCheckRPC", RpcTarget.All, false);
