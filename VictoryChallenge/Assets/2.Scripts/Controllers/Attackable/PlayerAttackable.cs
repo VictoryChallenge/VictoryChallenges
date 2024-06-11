@@ -15,7 +15,7 @@ namespace VictoryChallenge.Controllers.Attackable
             _characterController = GetComponent<CharacterController>();
             if( _characterController != null )
             {
-                Debug.Log("character isn't null");
+                //Debug.Log("character isn't null");
             }
         }
 

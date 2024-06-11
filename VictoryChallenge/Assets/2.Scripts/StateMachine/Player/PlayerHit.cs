@@ -36,7 +36,7 @@ namespace VictoryChallenge.StateMachine.Player
 
             controller.hitCount++;
 
-            Debug.Log("hit Count : " + controller.hitCount);
+            //Debug.Log("hit Count : " + controller.hitCount);
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -237,7 +237,7 @@ namespace VictoryChallenge.Controllers.Player
         public void HitCheckRPC(bool isCheck)
         {
             _isHit = isCheck;
-            Debug.Log("호출");
+            //Debug.Log("호출");
         }
 
         [PunRPC]
