@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -26,10 +27,18 @@ namespace VictoryChallenge.Scripts.CL
             ChatInput,
         }
 
+        enum TMPs
+        { 
+            StageName,
+            ReadyOrStart,
+        }
+
         enum Images
         { 
             PlayerListContent,
         }
+
+        private Image stageSelectButtonImage;
 
         void Start()
         {
@@ -43,9 +52,18 @@ namespace VictoryChallenge.Scripts.CL
             Bind<ScrollRect>(typeof(ScrollViews));
             Bind<TMP_InputField>(typeof(InputFields));
             Bind<Image>(typeof(Images));
+            Bind<TextMeshProUGUI>(typeof(TMPs));
 
-            GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
-            GetButton((int)Buttons.GameStart).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
+            stageSelectButtonImage = GetButton((int)Buttons.StageSelectButton).GetComponent<Image>();
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                GetTextMeshPro((int)TMPs.ReadyOrStart).text = "Start";
+                GetButton((int)Buttons.GameStart).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
+            }
+            else GetTextMeshPro((int)TMPs.ReadyOrStart).text = "Ready";
+
+            GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
             GetButton((int)Buttons.LeaveLobby).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
         }
 
@@ -55,11 +73,11 @@ namespace VictoryChallenge.Scripts.CL
             {
                 case 1:
                     Debug.Log("1");
-                    // stageselect popup 띄우기
+                    // PhotonNetwork.LoadLevel로 GameStart 넘기기
                     break;
                 case 2:
-                    Debug.Log("2");
-                    // PhotonNetwork.LoadLevel로 GameStart 넘기기
+                    var stageSelectPopup = Managers.UI.ShowPopupUI<StageSelectPopup>();
+                    stageSelectPopup.OnStageSelected += UpdateStageSelectTextSprite; // 이벤트 구독
                     break;
                 case 3:
                     Debug.Log("3");
@@ -69,6 +87,14 @@ namespace VictoryChallenge.Scripts.CL
                     Debug.LogWarning("Unhandled action: " + a);
                     break;
             }
+        }
+
+        private void UpdateStageSelectTextSprite(Sprite newSprite, string name)
+        {
+            if (newSprite != null)
+                stageSelectButtonImage.sprite = newSprite;
+            if (name != null)
+                GetTextMeshPro((int)TMPs.StageName).text = name;
         }
     }
 }

@@ -68,6 +68,7 @@ namespace VictoryChallenge.Scripts.CL
         // Get 함수들로 해당 타입의 인덱스(idx)에 해당하는 요소를 가져옴.
         protected TextMeshProUGUI GetTextMeshPro(int idx) { return Get<TextMeshProUGUI>(idx); }
         protected Text GetText(int idx) { return Get<Text>(idx); }
+        protected Sprite GetSprite(int idx) { return Get<Sprite>(idx); }
         protected Button GetButton(int idx) { return Get<Button>(idx); }
         protected Image GetImage(int idx) { return Get<Image>(idx); }
         protected Slider GetSlider(int idx) { return Get<Slider>(idx); }
