@@ -62,7 +62,7 @@ namespace VictoryChallenge.Scripts.CL
             }
 
             gameStartButton.onClick.AddListener(GameScene);
-            leaveLobbyButton.onClick.AddListener(() => LobbyLauncher.Instance.LeaveRoom());
+            leaveLobbyButton.onClick.AddListener(() => LobbyManager.Instance.LeaveRoom());
         }
 
         private void Update()

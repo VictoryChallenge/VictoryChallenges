@@ -19,8 +19,11 @@ namespace VictoryChallenge.Camera
 
         void Update()
         {
-            Vector3 newPos = new Vector3(_playerTransform.position.x, _playerTransform.position.y + _offsetY, _playerTransform.position.z);
-            transform.position = newPos;
+            if( _playerTransform != null )
+            {
+                Vector3 newPos = new Vector3(_playerTransform.position.x, _playerTransform.position.y + _offsetY, _playerTransform.position.z);
+                transform.position = newPos;
+            }
         }
     }
 }

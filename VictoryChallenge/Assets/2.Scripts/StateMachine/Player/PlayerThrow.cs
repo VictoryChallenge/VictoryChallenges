@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
@@ -45,7 +46,7 @@ namespace VictoryChallenge.StateMachine.Player
 
             if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f)
             {
-                controller.grabbableTransform.parent = null;
+                //controller.grabbableTransform.parent = null;
 
                 Vector3 newPos = -_grabTransform.up * throwPower * Time.deltaTime; 
 
@@ -59,6 +60,9 @@ namespace VictoryChallenge.StateMachine.Player
 
             controller.grabbableCollider.enabled = true;
             controller.grabbableRigid.useGravity = true;
+            controller.isGrabbing = false;
+
+            controller.holdingObject.GetComponent<PhotonView>().RPC("HoldingCheckRPC", RpcTarget.All, false);
         }
     }
 }

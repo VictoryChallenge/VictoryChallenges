@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Photon.Pun;
+using VictoryChallenge.ComponentExtensions;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -50,7 +51,7 @@ namespace VictoryChallenge.Controllers.Player
         #region 컴포넌트
         private Rigidbody _rigidBody;
         protected Animator _animator;
-        private PhotonView _pv;
+        public PhotonView _pv;
         #endregion
 
         #region 코루틴
@@ -59,18 +60,50 @@ namespace VictoryChallenge.Controllers.Player
 
         #region 상호 작용
         // Grab
+        public bool isGrabbing
+        {
+            get => _isGrabbing;
+            set => _isGrabbing = value;
+        }
+
+        private bool _isGrabbing;
         public virtual bool isGrabbable { get; set; }
         public virtual Transform grabbableTransform { get; set; }
         public virtual Rigidbody grabbableRigid { get; set; }
         public virtual CapsuleCollider grabbableCollider { get; set; }
+        public virtual GameObject holdingObject { get; set; }
+
+        // Holding
+        public bool isHolding
+        {
+            get => _isHolding;
+            set => _isHolding = value;
+        }
+
+        private bool _isHolding;
 
         // Hit
-        public virtual bool isHit { get; set; }
         public virtual bool isDizzy { get; set; }
         public virtual bool isDie { get; set; }
 
         public virtual int hitCount { get; set; }
         public virtual int dizzyCount { get; set; }
+
+        // Attack
+        public bool isAttacking
+        {
+            get => _isAttacking;
+            set => _isAttacking = value;
+        }
+
+        private bool _isAttacking;
+
+        public bool isHit 
+        { 
+            get => _isHit;
+            set => _isHit = value;
+        }
+        private bool _isHit;
 
         // Object
         public virtual bool isReverseKey { get; set; }
@@ -103,6 +136,10 @@ namespace VictoryChallenge.Controllers.Player
         {
             if (!_pv.IsMine)
             {
+                //if (transform.IsGrounded())
+                //{
+                //    Debug.Log("Client Ground Collision");
+                //}
                 return;
             }
 
@@ -188,5 +225,40 @@ namespace VictoryChallenge.Controllers.Player
                 behaviour.Init(this);
             }
         }
+
+        //[PunRPC]
+        //public void ChangeStateRPC(State newState)
+        //{
+        //    _animator.SetInteger("State", (int)newState);
+        //    _animator.SetBool("IsDirty", true);
+        //}
+
+        [PunRPC]
+        public void HitCheckRPC(bool isCheck)
+        {
+            _isHit = isCheck;
+            //Debug.Log("호출");
+        }
+
+        [PunRPC]
+        public void HoldingCheckRPC(bool isCheck)
+        {
+            _isHolding = isCheck;
+        }
+
+        #region 충돌체크
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    // Attack Check
+        //    if(_isAttacking)
+        //    {
+        //        if(other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
+        //        {
+        //            Debug.Log("나 맞았어 엄마한테 이를거야");
+        //            _isHit = true;
+        //        }
+        //    }
+        //}
+        #endregion
     }
 }

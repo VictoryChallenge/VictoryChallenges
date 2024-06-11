@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VictoryChallenge.ComponentExtensions;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
 
 namespace VictoryChallenge.StateMachine.Player
@@ -18,11 +19,15 @@ namespace VictoryChallenge.StateMachine.Player
             {
                 { State.Jump, (animator) =>
                 {
-                    return Input.GetKeyDown(KeyCode.Space);
+                    return animator.IsGrounded() && Input.GetKeyDown(KeyCode.Space);
                 }},
+                //{ State.JumpStart, (animator) =>
+                //{
+                //    return animator.IsGrounded() && Input.GetKeyDown(KeyCode.Space);
+                //}},
                 { State.Attack, (animator) =>
                 {
-                    return !controller.isGrabbable && Input.GetMouseButtonDown(0);
+                    return !controller.isGrabbable && !controller.isHit && Input.GetMouseButtonDown(0);
                 }},
                 { State.KickAttack, (animator) =>
                 {
@@ -30,19 +35,27 @@ namespace VictoryChallenge.StateMachine.Player
                 }},
                 { State.Dance, (animator) =>
                 {
-                    return Input.GetKeyDown(KeyCode.C);
+                    return Input.GetKeyDown(KeyCode.T);
                 }},
                 { State.GrabStart, (animator) =>
                 {
                     return controller.isGrabbable && Input.GetMouseButton(0);
                 }},
-                { State.Sliding, (animator) =>
-                {
-                    return Input.GetKeyDown(KeyCode.Z);
-                }},
                 { State.Hit, (animator) =>
                 {
-                    return Input.GetKeyDown(KeyCode.X);
+                    return controller.isHit/*Input.GetKeyDown(KeyCode.X)*/;
+                }},
+                { State.Sliding, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.C);
+                }},                
+                { State.Push, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.F);
+                }},
+                { State.Holding, (animator) =>
+                {
+                    return controller.isHolding;
                 }},
             };
         }
@@ -53,5 +66,7 @@ namespace VictoryChallenge.StateMachine.Player
 
             animator.SetInteger("State", (int)State.Move);
         }
+
+        
     }
 }

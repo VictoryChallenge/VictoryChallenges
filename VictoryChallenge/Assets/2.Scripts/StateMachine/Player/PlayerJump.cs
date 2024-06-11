@@ -23,16 +23,20 @@ namespace VictoryChallenge.StateMachine.Player
             {
                 { State.Move, (animator) =>
                 {
-                    return controller.IsGrounded()/* && (controller.velocity.magnitude > 0.01f)*/;
+                    return animator.IsGrounded()/* && (controller.velocity.magnitude > 0.01f)*/;
+                }},
+                { State.Sliding, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.C);
                 }},
             };
         }
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            base.OnStateEnter(animator, stateInfo, layerIndex);
-
             animator.SetInteger("State", (int)State.Jump);
+            
+            base.OnStateEnter(animator, stateInfo, layerIndex);
             
             animator.transform.position += Vector3.up * 0.2f;
             controller.velocity = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z);
