@@ -24,7 +24,7 @@ namespace VictoryChallenge.Scripts.CL
         {
             PhotonNetwork.IsMessageQueueRunning = true;
 
-            InitializeChat("¸»¶ûÀÌ");
+            InitializeChat(PhotonNetwork.NickName);
         }
 
         void Update()
