@@ -30,8 +30,8 @@ namespace VictoryChallenge.Scripts.CL
             GetButton((int)Buttons.JoinRoomButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
             //GetButton((int)Buttons.CustomizeButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
             //GetButton((int)Buttons.ShopButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
-            //GetButton((int)Buttons.SettingsButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 4));
-            //GetButton((int)Buttons.ExitGameButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 5));
+            GetButton((int)Buttons.SettingsButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 4));
+            GetButton((int)Buttons.ExitGameButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 5));
         }
 
         public void OnButtonClicked(PointerEventData data, int a)
@@ -51,8 +51,8 @@ namespace VictoryChallenge.Scripts.CL
                     Managers.UI.ShowPopupUI<SettingsPopup>();
                     break;
                 case 5:
-                    // 게임나가기
-                    // Application.Quit();
+                    //게임나가기
+                     Application.Quit();
                     break;
                 default:
                     Debug.LogWarning("Unhandled action: " + a);

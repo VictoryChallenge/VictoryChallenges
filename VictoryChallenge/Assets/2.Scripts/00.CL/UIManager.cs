@@ -43,9 +43,13 @@ namespace VictoryChallenge.Scripts.CL
             // 게임오브젝트에 Canvas 컴포넌트를 붙이거나 가져옴
             Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
             GraphicRaycaster GR = Util.GetOrAddComponent<GraphicRaycaster>(go);
+            CanvasScaler CS = Util.GetOrAddComponent<CanvasScaler>(go);
             // Rednermode는 ScreenSpaceOverlay로 설정
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.overrideSorting = true;
+            CS.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            CS.referenceResolution = new Vector2(1920, 1080);
+            CS.matchWidthOrHeight = 0.5f;
 
             // sort가 true라면
             if (sort)
