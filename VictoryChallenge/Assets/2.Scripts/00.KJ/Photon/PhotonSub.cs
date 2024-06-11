@@ -17,7 +17,7 @@ namespace VictoryChallenge.KJ.Photon
         [SerializeField] private TMP_Text _text;
 
         private bool _isReady = false;
-        private bool _isControllerCreated = false;
+        //private bool _isControllerCreated = false;
 
         #region Singleton
         public static PhotonSub Instance;
@@ -49,13 +49,19 @@ namespace VictoryChallenge.KJ.Photon
             if (SceneManager.GetActiveScene().buildIndex == 1)
             {
                 Debug.Log("클라이언트 플레이어 매니저 생성");
-                if (!_isControllerCreated)
-                {
-                    GameObject playerManager = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
-                    DontDestroyOnLoad(playerManager);
-                    playerManager.GetComponent<PlayerManager>().CreateController();
-                    _isControllerCreated = true;
-                }
+                //if (!_isControllerCreated)
+                //{
+                //    GameObject playerManager = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+                //    DontDestroyOnLoad(playerManager);
+                //    playerManager.GetComponent<PlayerManager>().CreateController();
+                //    _isControllerCreated = true;
+                //}
+
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
             }
         }
 

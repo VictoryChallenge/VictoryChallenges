@@ -5,6 +5,7 @@ using Photon.Realtime;
 using UnityEngine;
 using VictoryChallenge.Controllers.Player;
 using VictoryChallenge.Camera;
+using VictoryChallenge.KJ.Spawn;
 
 namespace VictoryChallenge.KJ.Manager
 {
@@ -29,38 +30,20 @@ namespace VictoryChallenge.KJ.Manager
 
         public void CreateController()
         {
-            if (controller == null)
+            //if (controller == null)
+            //{
+            //    Transform spawnPoint = SpawnManager.Instance.GetSpawnPoint();
+            //    controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
+                
+            //}
+            
+            Transform spawnPoint = SpawnManager.Instance.GetSpawnPoint();
+            if (spawnPoint == null)
             {
-                Transform spawnPoint = Spawn.SpawnManager.Instance.GetSpawnPoint();
-                controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
-                controller.transform.SetParent(this.transform);
-                DontDestroyOnLoad(controller);
-
-                PhotonView controllerPv = controller.GetComponent<PhotonView>();
-                if (controllerPv != null && controllerPv.IsMine)
-                {
-                    EnablePlayerControllers(controller);
-                }
-                else
-                {
-                    DisablePlayerControllers(controller);
-                }
+                return;
             }
-        }
-
-        private void EnablePlayerControllers(GameObject player)
-        {
-            var playerController = player.GetComponent<PlayerController>();
-            player.GetComponent<PlayerController>().enabled = true;
-            player.GetComponent<CameraController>().enabled = true;
-            player.GetComponent<TrackFollow>().enabled = true;
-        }
-
-        private void DisablePlayerControllers(GameObject player)
-        {
-            player.GetComponent<PlayerController>().enabled = false;
-            player.GetComponent<CameraController>().enabled = false;
-            player.GetComponent<TrackFollow>().enabled = false;
+            Debug.Log("스폰 포인트 " + spawnPoint);
+            controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
         }
 
         public void Die()

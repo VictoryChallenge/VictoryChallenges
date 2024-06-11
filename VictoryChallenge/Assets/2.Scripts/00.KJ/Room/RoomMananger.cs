@@ -38,7 +38,14 @@ namespace VictoryChallenge.KJ.Room
             {
                 PhotonSub.Instance.AssignButtonAndText();
 
-                if (PhotonManager.Instance != null)
+                if (PhotonSub.Instance != null)
+                {
+                    PhotonSub.Instance.OnSceneLoadedForAllPlayers();
+                }
+            }
+            else if (scene.buildIndex == 2)
+            {
+                if (PhotonSub.Instance != null)
                 {
                     PhotonSub.Instance.OnSceneLoadedForAllPlayers();
                 }

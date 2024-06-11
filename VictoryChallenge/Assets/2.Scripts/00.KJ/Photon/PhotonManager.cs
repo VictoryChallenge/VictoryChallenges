@@ -37,8 +37,6 @@ namespace VictoryChallenge.KJ.Photon
         }
         #endregion
 
-        
-
         #region Photon Connect
 
         public override void OnConnected()                  // 연결에 성공
