@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "246326661540",
+    "project_id": "victorychallenge-b8854",
+    "storage_bucket": "victorychallenge-b8854.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246326661540:android:40c2f544c0baa8b656b131",
+        "android_client_info": {
+          "package_name": "com.company.VictoryChallenge"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDklGzIx5gYLyPYJm_8I3yo8FJnMTOokIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
