@@ -12,11 +12,9 @@ namespace VictoryChallenge.Scripts.CL
 
         ResourceManager _resource = new ResourceManager();
         UIManager _ui = new UIManager();
-        ChatManager _chat = new ChatManager();
 
         public static ResourceManager Resource { get { return Instance._resource; } }
         public static UIManager UI { get { return Instance._ui; } }
-        public static ChatManager Chat { get { return Instance._chat; } }
 
         void Start()
         {
