@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static VictoryChallenge.Customize.PlayerCharacterChangeMesh;
 
 namespace VictoryChallenge.Customize
 {
@@ -9,7 +10,8 @@ namespace VictoryChallenge.Customize
     {
         private const string PLAYER_PREFS_SAVE = "PlayerCustomization";
 
-        [SerializeField] private BodyPartData[] _bodyPartDataArray;
+        [SerializeField] private SkinnedBodyPartData[] _skinnedBodyPartDataArray;
+        [SerializeField] private MeshBodyPartData[] _meshBodyPartDataArray;
 
         public enum BodyPartType
         {
@@ -20,28 +22,73 @@ namespace VictoryChallenge.Customize
             HeadParts,
             Mouth,
             Tails,
+            Ear,
+            Eyes2,
+            Hat,
         }
 
         [System.Serializable]
-        public class BodyPartData
+        public class SkinnedBodyPartData
         {
             public BodyPartType bodyPartType;
             public Mesh[] meshArray;
             public SkinnedMeshRenderer skinnedMeshRenderer;
         }
 
-        public void ChangeBodyPart(BodyPartType bodyPartType)
+        [System.Serializable]
+        public class MeshBodyPartData
         {
-            BodyPartData bodyPartData = GetBodyPartData(bodyPartType);
+            public BodyPartType bodyPartType;
+            public Mesh[] meshArray;
+            public MeshFilter meshFilter;
+            public Transform[] transformArray;
+        }
+
+        public void ChangeSkinnedBodyPart(BodyPartType bodyPartType)
+        {
+            SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartType);
             int meshIndex = System.Array.IndexOf(bodyPartData.meshArray, bodyPartData.skinnedMeshRenderer.sharedMesh);
             bodyPartData.skinnedMeshRenderer.sharedMesh = bodyPartData.meshArray[(meshIndex + 1) % bodyPartData.meshArray.Length];
         }
 
-        private BodyPartData GetBodyPartData(BodyPartType bodyPartType)
+        public void ChangeMeshBodyPart(BodyPartType bodyPartType)
         {
-            foreach(BodyPartData bodyPartData in _bodyPartDataArray)
+            MeshBodyPartData bodyPartData = GetMeshBodyPartData(bodyPartType);
+            int meshIndex = System.Array.IndexOf(bodyPartData.meshArray, bodyPartData.meshFilter.sharedMesh);
+            bodyPartData.meshFilter.sharedMesh = bodyPartData.meshArray[(meshIndex + 1) % bodyPartData.meshArray.Length];
+
+            if(meshIndex + 1 == bodyPartData.meshArray.Length - 1)
+            {
+                bodyPartData.meshFilter.transform.position = bodyPartData.transformArray[meshIndex].position;
+                bodyPartData.meshFilter.transform.rotation = bodyPartData.transformArray[meshIndex].rotation;
+            }
+            else
+            {
+                bodyPartData.meshFilter.transform.position = bodyPartData.transformArray[(meshIndex + 1) % bodyPartData.meshArray.Length].position;
+                bodyPartData.meshFilter.transform.rotation = bodyPartData.transformArray[(meshIndex + 1) % bodyPartData.meshArray.Length].rotation;
+            }
+
+
+            Debug.Log("index" + (meshIndex + 1) % bodyPartData.meshArray.Length);
+        }
+
+        private SkinnedBodyPartData GetSkinnedBodyPartData(BodyPartType bodyPartType)
+        {
+            foreach(SkinnedBodyPartData bodyPartData in _skinnedBodyPartDataArray)
             {
                 if(bodyPartData.bodyPartType == bodyPartType)
+                {
+                    return bodyPartData;
+                }
+            }
+            return null;
+        }
+
+        private MeshBodyPartData GetMeshBodyPartData(BodyPartType bodyPartType)
+        {
+            foreach (MeshBodyPartData bodyPartData in _meshBodyPartDataArray)
+            {
+                if (bodyPartData.bodyPartType == bodyPartType)
                 {
                     return bodyPartData;
                 }
@@ -67,7 +114,7 @@ namespace VictoryChallenge.Customize
 
             foreach(BodyPartType bodyPartType in Enum.GetValues(typeof(BodyPartType)))
             {
-                BodyPartData bodyPartData = GetBodyPartData(bodyPartType);
+                SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartType);
                 int meshIndex = Array.IndexOf(bodyPartData.meshArray, bodyPartData.skinnedMeshRenderer.sharedMesh);
 
                 bodyPartTypeIndexList.Add(new BodyPartTypeIndex
@@ -94,7 +141,7 @@ namespace VictoryChallenge.Customize
 
             foreach(BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
             {
-                BodyPartData bodyPartData = GetBodyPartData(bodyPartTypeIndex.bodyPartType);
+                SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
                 bodyPartData.skinnedMeshRenderer.sharedMesh = bodyPartData.meshArray[bodyPartTypeIndex.index];
             }
         }
