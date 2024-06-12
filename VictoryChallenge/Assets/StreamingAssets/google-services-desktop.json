@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "246326661540",
+    "firebase_url": "https://victorychallenge-b8854-default-rtdb.firebaseio.com",
     "project_id": "victorychallenge-b8854",
     "storage_bucket": "victorychallenge-b8854.appspot.com"
   },
@@ -12,7 +13,12 @@
           "package_name": "com.company.VictoryChallenge"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "246326661540-1fmseoastbamg4cdsmulo6ispqbar7i4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDklGzIx5gYLyPYJm_8I3yo8FJnMTOokIA"
@@ -20,7 +26,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246326661540-1fmseoastbamg4cdsmulo6ispqbar7i4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "246326661540-9jp9pd8rlicgg4a5g321as1458evnvi6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.company.VictoryChallenge"
+              }
+            }
+          ]
         }
       }
     }
