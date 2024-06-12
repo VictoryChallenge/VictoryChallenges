@@ -56,19 +56,8 @@ namespace VictoryChallenge.Customize
             MeshBodyPartData bodyPartData = GetMeshBodyPartData(bodyPartType);
             int meshIndex = System.Array.IndexOf(bodyPartData.meshArray, bodyPartData.meshFilter.sharedMesh);
             bodyPartData.meshFilter.sharedMesh = bodyPartData.meshArray[(meshIndex + 1) % bodyPartData.meshArray.Length];
-
-            if(meshIndex + 1 == bodyPartData.meshArray.Length - 1)
-            {
-                bodyPartData.meshFilter.transform.position = bodyPartData.transformArray[meshIndex].position;
-                bodyPartData.meshFilter.transform.rotation = bodyPartData.transformArray[meshIndex].rotation;
-            }
-            else
-            {
-                bodyPartData.meshFilter.transform.position = bodyPartData.transformArray[(meshIndex + 1) % bodyPartData.meshArray.Length].position;
-                bodyPartData.meshFilter.transform.rotation = bodyPartData.transformArray[(meshIndex + 1) % bodyPartData.meshArray.Length].rotation;
-            }
-
-
+            bodyPartData.meshFilter.transform.position = bodyPartData.transformArray[(meshIndex + 1) % bodyPartData.transformArray.Length].position;
+            bodyPartData.meshFilter.transform.rotation = bodyPartData.transformArray[(meshIndex + 1) % bodyPartData.transformArray.Length].rotation;
             Debug.Log("index" + (meshIndex + 1) % bodyPartData.meshArray.Length);
         }
 

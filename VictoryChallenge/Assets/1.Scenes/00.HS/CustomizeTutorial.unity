@@ -9174,7 +9174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &3693436915031976319
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10218,7 +10218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4509031055244426001
 Transform:
   m_ObjectHideFlags: 0
@@ -16861,8 +16861,6 @@ MonoBehaviour:
     - {fileID: 3716190317216020241}
   - bodyPartType: 9
     meshArray:
-    - {fileID: -3370502006796632997, guid: 503415fc3fea44f7bb0eebf41e58e8be, type: 3}
-    - {fileID: -980565089025030376, guid: 503415fc3fea44f7bb0eebf41e58e8be, type: 3}
     - {fileID: -2153779550561457093, guid: 503415fc3fea44f7bb0eebf41e58e8be, type: 3}
     - {fileID: 8223234799111853433, guid: 503415fc3fea44f7bb0eebf41e58e8be, type: 3}
     - {fileID: 6751716303782002784, guid: 503415fc3fea44f7bb0eebf41e58e8be, type: 3}
@@ -16874,10 +16872,8 @@ MonoBehaviour:
     - {fileID: 949370747968876860, guid: 503415fc3fea44f7bb0eebf41e58e8be, type: 3}
     - {fileID: 5385854414038977039, guid: 503415fc3fea44f7bb0eebf41e58e8be, type: 3}
     - {fileID: 0}
-    meshFilter: {fileID: 578063448222825408}
+    meshFilter: {fileID: 4513353793811104983}
     transformArray:
-    - {fileID: 2352193399522697354}
-    - {fileID: 787338426994448024}
     - {fileID: 1097972719303826749}
     - {fileID: 3825470184184860726}
     - {fileID: 7013929571454818243}
