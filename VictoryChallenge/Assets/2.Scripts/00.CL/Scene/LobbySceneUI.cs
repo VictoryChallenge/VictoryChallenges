@@ -17,16 +17,6 @@ namespace VictoryChallenge.Scripts.CL
             LeaveLobby,
         }
 
-        enum ScrollViews
-        { 
-            ChatScrollView,
-        }
-
-        enum InputFields
-        { 
-            ChatInput,
-        }
-
         enum TMPs
         { 
             StageName,
@@ -43,14 +33,13 @@ namespace VictoryChallenge.Scripts.CL
         void Start()
         {
             Init();
+            Managers.UI.ShowSceneUI<UI_Scene>("ChatPrefabs");
         }
 
         public override void Init()
         {
             base.Init();
             Bind<Button>(typeof(Buttons));
-            Bind<ScrollRect>(typeof(ScrollViews));
-            Bind<TMP_InputField>(typeof(InputFields));
             Bind<Image>(typeof(Images));
             Bind<TextMeshProUGUI>(typeof(TMPs));
 

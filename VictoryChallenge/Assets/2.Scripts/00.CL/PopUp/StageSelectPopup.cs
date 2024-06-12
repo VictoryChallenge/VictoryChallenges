@@ -92,7 +92,7 @@ namespace VictoryChallenge.Scripts.CL
                     break;
             }
 
-            OnStageSelected?.Invoke(selectedSprite, _mapname); // Delegate로 Sprite 넘기기
+            OnStageSelected?.Invoke(selectedSprite, _mapname); // Delegate로 Sprite, string 넘기기
             ClosePopupUI();
         }
     }

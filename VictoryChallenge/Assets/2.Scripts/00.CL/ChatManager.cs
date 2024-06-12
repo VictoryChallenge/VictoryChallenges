@@ -11,13 +11,29 @@ namespace VictoryChallenge.Scripts.CL
     /// <summary>
     /// 채팅 기능을 관리하며, 메시지 송수신, 채팅 로그 표시, 개인 메시지 처리를 포함하는 클래스
     /// </summary>
-    public class ChatManager : MonoBehaviour, IChatClientListener
+    public class ChatManager : UI_Scene, IChatClientListener
     {
-        public TMP_InputField inputField; 
-        public TextMeshProUGUI chatDisplay; // 채팅 메시지 표시 텍스트
-        public ScrollRect scrollRect; // 스크롤 뷰
-        public ChatClient chatClient; // 채팅 클라이언트
-        public string lastMessages; // 마지막 메시지
+        enum Inputfields
+        { 
+            ChatInput,
+        }
+
+        enum TMPs
+        { 
+            ChatDisplay,
+        }
+
+        enum ScrollRects
+        { 
+            ChatScrollView,
+        }
+
+        TMP_InputField chatinput; 
+        TextMeshProUGUI chatDisplay; // 채팅 메시지 표시 텍스트
+        ScrollRect scrollRect; // 스크롤 뷰
+        
+        ChatClient chatClient; // 채팅 클라이언트
+        string lastMessages; // 마지막 메시지
         string roomName; // 방 이름
 
         private List<string> chatMessages = new List<string>(); // 채팅 메시지 리스트
@@ -25,9 +41,25 @@ namespace VictoryChallenge.Scripts.CL
 
         void Start()
         {
+            Init();
+            RectTransform rectTransform = GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = Vector2.zero;
+
             PhotonNetwork.IsMessageQueueRunning = true; // 메시지 큐 실행
 
             InitializeChat(PhotonNetwork.NickName); // 채팅 초기화
+        }
+
+        public override void Init()
+        {
+            base.Init();
+            Bind<TMP_InputField>(typeof(Inputfields));
+            Bind<TextMeshProUGUI>(typeof(TMPs));
+            Bind<ScrollRect>(typeof(ScrollRects));
+
+            chatinput = GetInputField((int)Inputfields.ChatInput);
+            chatDisplay = GetTextMeshPro((int)TMPs.ChatDisplay);
+            scrollRect = GetScrollRect((int)ScrollRects.ChatScrollView);
         }
 
         void Update()
@@ -38,14 +70,14 @@ namespace VictoryChallenge.Scripts.CL
             }
 
             // 인풋 필드가 포커스를 받지 않은 상태에서 Enter 키를 누르면 인풋 필드 활성화 및 선택
-            if (!inputField.isFocused && Input.GetKeyDown(KeyCode.Return))
+            if (!chatinput.isFocused && Input.GetKeyDown(KeyCode.Return))
             {
-                inputField.ActivateInputField();
-                inputField.Select();
+                chatinput.ActivateInputField();
+                chatinput.Select();
             }
 
             // 인풋 필드가 비어 있지 않고 Enter 키를 누르면 메시지 전송
-            if (!string.IsNullOrEmpty(inputField.text) && Input.GetKeyDown(KeyCode.Return))
+            if (!string.IsNullOrEmpty(chatinput.text) && Input.GetKeyDown(KeyCode.Return))
             {
                 SendMessage();
             }
@@ -165,10 +197,10 @@ namespace VictoryChallenge.Scripts.CL
         /// </summary>
         public void SendMessage()
         {
-            if (!string.IsNullOrEmpty(inputField.text))
+            if (!string.IsNullOrEmpty(chatinput.text))
             {
-                chatClient.PublishMessage("global", inputField.text); // 글로벌 채널에 메시지 전송
-                inputField.text = ""; // 인풋 필드 초기화
+                chatClient.PublishMessage("global", chatinput.text); // 글로벌 채널에 메시지 전송
+                chatinput.text = ""; // 인풋 필드 초기화
             }
         }
 
@@ -198,19 +230,24 @@ namespace VictoryChallenge.Scripts.CL
             // 명령어를 분석하여 대상 사용자 이름과 개인 메시지를 추출합니다.
             if (tokens.Length >= 3)
             {
-                string targetUser = tokens[1]; // 대상 사용자 이름
-                string message = string.Join(" ", tokens, 2, tokens.Length - 2); // 개인 메시지
+                if (tokens[0] == "/귓속말" || tokens[0] == "/귓말") 
+                {
+                    Debug.Log("ddzz");
+                    string targetUser = tokens[1]; // 대상 사용자 이름
+                    string message = string.Join(" ", tokens, 2, tokens.Length - 2); // 개인 메시지
 
-                // 개인 메시지를 보냅니다.
-                chatClient.SendPrivateMessage(targetUser, message, false);
+                    // 개인 메시지를 보냅니다.
+                    chatClient.SendPrivateMessage(targetUser, message, false);
 
-                // 보낸 메시지를 채팅 디스플레이에 표시합니다.
-                chatDisplay.text += $"<color=blue>[귓속말] {targetUser} << {message}</color>\n";
-            }
-            else
-            {
-                Debug.LogWarning("귓속말 명령어 형식이 올바르지 않습니다. /귓속말 대상사용자이름 메시지 or /귓말 대상사용자이름 메시지");
-                chatDisplay.text += "<color=red>명령어가 올바르지 않습니다. /귓속말 대상사용자이름 메시지 or /귓말 대상사용자이름 메시지</color>\n";
+                    // 보낸 메시지를 채팅 디스플레이에 표시합니다.
+                    chatDisplay.text += $"<color=blue>[귓속말] {targetUser} << {message}</color>\n";
+                }
+
+                else
+                {
+                    Debug.LogWarning("귓속말 명령어 형식이 올바르지 않습니다. /귓속말 대상사용자이름 메시지 or /귓말 대상사용자이름 메시지");
+                    chatDisplay.text += "<color=red>명령어가 올바르지 않습니다. /귓속말 대상사용자이름 메시지 or /귓말 대상사용자이름 메시지</color>\n";
+                }
             }
         }
 
