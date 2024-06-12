@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/1.Scenes/00.KJ/TestV2/MainMenu.unity
+    path: Assets/1.Scenes/00.KJ/MainMenu.unity
     guid: 32f4d939194e7b4429475ee685020491
   - enabled: 1
-    path: Assets/1.Scenes/00.KJ/TestV2/Lobby.unity
+    path: Assets/1.Scenes/00.KJ/Lobby.unity
     guid: 22dc013e5f8f4db459d6f4fbc8cafb32
+  - enabled: 1
+    path: Assets/1.Scenes/00.KJ/InGame.unity
+    guid: 3cb4f21d608bdee409e210e7a3380668
   m_configObjects: {}

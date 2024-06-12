@@ -35,6 +35,10 @@ namespace VictoryChallenge.StateMachine.Player
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
+            animator.SetInteger("State", (int)State.Attack);
+
+            controller.isAttacking = true;
+        
             _attackComboStack = _attackComboStack < _attackComboStackLimit ? _attackComboStack + 1 : 0;
 
             animator.SetInteger("AttackComboStack", _attackComboStack);
@@ -55,6 +59,7 @@ namespace VictoryChallenge.StateMachine.Player
             // 다음 콤보를 잇는데 유효한 시간이 지나면 초기화
             _attackComboStack = 0;
             animator.SetInteger("AttackComboStack", _attackComboStack);
+            controller.isAttacking = false;
         }
     }
 }

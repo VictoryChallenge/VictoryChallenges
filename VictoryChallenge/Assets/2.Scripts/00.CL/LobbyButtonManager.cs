@@ -1,34 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VictoryChallenge.KJ.Lobby;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.Scripts.CL
 {
     public class LobbyButtonManager : MonoBehaviour
     {
-        public Button stageSelect;
-        public Button gameStart;
+        public Button stageSelectButton;
+        public Button gameStartButton;
+        public Button leaveLobbyButton;
         public Button[] selectedMapButton;
-        public Image stageSelectImage;
 
         private GameObject stageSelectPanel;
         private TextMeshProUGUI stageName;
         private string mapName;
+        private Image stageSelectImage;
 
         void Start()
         {
             stageSelectPanel = GameObject.Find("StageSelect");
             stageName = GameObject.Find("StageName").GetComponent<TextMeshProUGUI>();
-            stageSelectImage = stageSelect.GetComponent<Image>();
+            stageSelectImage = stageSelectButton.GetComponent<Image>();
             mapName = "«˜æ– ∏∂∂Û≈Ê";
 
             stageSelectPanel.SetActive(false);
-            stageSelect.onClick.AddListener(StageSelect);
+            if (PhotonNetwork.IsMasterClient)
+                stageSelectButton.onClick.AddListener(StageSelect);
 
             foreach (var mapbutton in selectedMapButton)
             {
@@ -49,8 +50,8 @@ namespace VictoryChallenge.Scripts.CL
                         case "Zombie":
                             stageName.text = "¡ª∫Ò";
                             break;
-                        case "KimHyeongDon":
-                            stageName.text = "±Ë«¸µ∑";
+                        case "OnlyUp":
+                            stageName.text = "ø¬∏Ææ˜";
                             break;
                         default:
                             break;
@@ -58,9 +59,10 @@ namespace VictoryChallenge.Scripts.CL
                     stageSelectImage.sprite = localimage.sprite;
                     stageSelectPanel.SetActive(false);
                 });
-
             }
-            gameStart.onClick.AddListener(GameScene);
+
+            gameStartButton.onClick.AddListener(GameScene);
+            leaveLobbyButton.onClick.AddListener(() => LobbyManager.Instance.LeaveRoom());
         }
 
         private void Update()
@@ -79,9 +81,9 @@ namespace VictoryChallenge.Scripts.CL
         void GameScene()
         {
             if (mapName == "Marathon")
-                SceneManager.LoadScene(2);
+                PhotonNetwork.LoadLevel(2);
             //if (mapName == "OnlyOne")
-              //SceneManager.LoadScene(3); // √÷»ƒ¿«1¿Œ∏ §§
+                //PhotonNetwork.LoadLevel(3);
         }
     }
 }
