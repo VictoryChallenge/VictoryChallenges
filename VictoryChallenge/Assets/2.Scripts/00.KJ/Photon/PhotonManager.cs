@@ -38,7 +38,6 @@ namespace VictoryChallenge.KJ.Photon
         #endregion
 
         #region Photon Connect
-
         public override void OnConnected()                  // 연결에 성공
         {
             base.OnConnected();
@@ -75,6 +74,12 @@ namespace VictoryChallenge.KJ.Photon
             {
                 PhotonNetwork.LoadLevel(1);                 // 로비(방) 씬으로 이동
             }
+        }
+
+        public void SetPlayerNickname(string nickname)
+        {
+            PhotonNetwork.NickName = nickname;
+            Debug.Log("유저 닉네임 " + PhotonNetwork.NickName);
         }
         #endregion
 
