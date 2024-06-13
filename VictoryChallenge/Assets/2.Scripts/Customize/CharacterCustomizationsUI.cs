@@ -15,6 +15,7 @@ namespace VictoryChallenge.Customize
         [SerializeField] private Button _headPartsButton;
         [SerializeField] private Button _mouthAndNosesButton;
         [SerializeField] private Button _tailsButton;
+        [SerializeField] private Button _changeButton;
 
         [SerializeField] private Button _saveButton;
         [SerializeField] private Button _loadButton;
@@ -35,6 +36,12 @@ namespace VictoryChallenge.Customize
             {
                 Debug.Log("Color Button");
                 _playerCharacterCustomized.ChangeSkinnedBodyPart(PlayerCharacterCustomized.BodyPartType.Color);
+            });
+
+            _changeButton.onClick.AddListener(() =>
+            {
+                Debug.Log("Color Button");
+                _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Color);
             });
 
             _bodyPartsButton.onClick.AddListener(() =>
