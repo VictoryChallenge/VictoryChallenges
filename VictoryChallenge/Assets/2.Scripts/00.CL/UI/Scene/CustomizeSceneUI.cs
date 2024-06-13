@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace VictoryChallenge.Scripts.CL
 { 
     public class CustomizeSceneUI : UI_Scene
     {
-        // Start is called before the first frame update
+        enum Buttons
+        { 
+            LeftChoice,
+            RightChoice,
+            LeaveRoomButton
+        }
+
         void Start()
         {
             Init();
@@ -15,12 +23,31 @@ namespace VictoryChallenge.Scripts.CL
         public override void Init()
         {
             base.Init();
+            Bind<Button>(typeof(Buttons));
+
+            Managers.UI.ShowPopupUI<UI_Popup>("CustomButtonPopup");
+            GetButton((int)Buttons.LeftChoice).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
+            GetButton((int)Buttons.RightChoice).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
+            GetButton((int)Buttons.LeaveRoomButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
         }
 
-        // Update is called once per frame
-        void Update()
+        public void OnButtonClicked(PointerEventData data, int a)
         {
-        
+            switch (a)
+            {
+                case 1:
+                    Debug.Log("왼쪽버튼.");
+                    break;
+                case 2:
+                    Debug.Log("오른쪽버튼.");
+                    break;
+                case 3:
+                    Debug.Log("로비.");
+                    break;
+                default:
+                    Debug.LogWarning("Unhandled action: " + a);
+                    break;
+            }
         }
     }
 }
