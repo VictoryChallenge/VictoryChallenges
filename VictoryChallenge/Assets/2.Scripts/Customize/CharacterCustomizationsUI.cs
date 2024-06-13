@@ -87,20 +87,20 @@ namespace VictoryChallenge.Customize
 
             _earButton.onClick.AddListener(() =>
             {
-                Debug.Log("ear");
-                _playerCharacterCustomized.ChangeMeshBodyPart(PlayerCharacterCustomized.BodyPartType.Ear);
+                //Debug.Log("ear");
+                _playerCharacterCustomized.OnChangeEarMesh();
             });
 
             _eyes2Button.onClick.AddListener(() =>
             {
                 Debug.Log("eyes2");
-                _playerCharacterCustomized.ChangeMeshBodyPart(PlayerCharacterCustomized.BodyPartType.Eyes2);
+                _playerCharacterCustomized.OnChangeEyeMesh();
             });
 
             _hatButton.onClick.AddListener(() =>
             {
                 Debug.Log("hat");
-                _playerCharacterCustomized.ChangeMeshBodyPart(PlayerCharacterCustomized.BodyPartType.Hat);
+                _playerCharacterCustomized.OnChangeHatMesh();
             });
         }
     }
