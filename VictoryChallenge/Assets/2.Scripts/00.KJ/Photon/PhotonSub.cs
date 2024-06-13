@@ -80,6 +80,8 @@ namespace VictoryChallenge.KJ.Photon
                 PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsReady", _isReady } });
                 Debug.Log("호스트 준비 상태");
             }
+
+            Debug.Log("유저 이름 " + PhotonNetwork.NickName);
         }
 
         private IEnumerator UpdateButtonTextWithDelay()
@@ -168,6 +170,12 @@ namespace VictoryChallenge.KJ.Photon
                 Debug.Log("모든 플레이어가 준비됨, 게임 시작");
                 PhotonNetwork.LoadLevel(2);
             }
+        }
+
+        public override void OnMasterClientSwitched(Player newMasterClient)
+        {
+            base.OnMasterClientSwitched(newMasterClient);
+            OnStartClicked();
         }
         #endregion
     }

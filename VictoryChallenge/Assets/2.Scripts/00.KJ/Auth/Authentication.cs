@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.KJ.Auth
 {
@@ -303,6 +304,7 @@ namespace VictoryChallenge.KJ.Auth
                         {
                             // 회원가입 성공
                             Debug.Log("회원가입이 성공적으로 이루어졌습니다." + _user.DisplayName);
+                            PhotonManager.Instance.SetPlayerNickname(_username);
                             confirmRegisterText.text = "Register successful";
                             warningRegisterText.text = "";
                         }
