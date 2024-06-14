@@ -7,7 +7,6 @@ namespace VictoryChallenge.Json
     {
         [SerializeField] private GameObject _customPrefab;
         [SerializeField] private Transform _spawnPos;
-        [SerializeField] private PlayerCharacterCustomized _playerCharacterCustomized;
 
 
         private void Start()

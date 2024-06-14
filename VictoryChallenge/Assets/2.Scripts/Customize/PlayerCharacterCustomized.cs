@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static VictoryChallenge.Customize.PlayerCharacterCustomized;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text;
+using static VictoryChallenge.Customize.PlayerCharacterCustomized;
 
 namespace VictoryChallenge.Customize
 {
@@ -15,12 +15,12 @@ namespace VictoryChallenge.Customize
 
         [SerializeField] private SkinnedBodyPartData[] _skinnedBodyPartDataArray;
         [SerializeField] private GameObject _earMesh;
-        [SerializeField] private GameObject _eyeMesh;
         [SerializeField] private GameObject _hatMesh;
+        [SerializeField] private GameObject _accessoryMesh;
 
         private int _earIndex = 0;
-        private int _eyeIndex = 0;
         private int _hatIndex = 0;
+        private int _accessoryIndex = 0;
 
         public enum BodyPartType
         {
@@ -41,37 +41,7 @@ namespace VictoryChallenge.Customize
             public SkinnedMeshRenderer skinnedMeshRenderer;
         }
 
-        private void Start()
-        {
-            _earMesh = transform.Find("root").
-                       transform.Find("pelvis").
-                       transform.Find("spine_01").
-                       transform.Find("spine_02").
-                       transform.Find("spine_03").
-                       transform.Find("neck_01").
-                       transform.Find("head").
-                       transform.Find("Ear").gameObject;
-
-            _eyeMesh = transform.Find("root").
-                       transform.Find("pelvis").
-                       transform.Find("spine_01").
-                       transform.Find("spine_02").
-                       transform.Find("spine_03").
-                       transform.Find("neck_01").
-                       transform.Find("head").
-                       transform.Find("Eye").gameObject;
-
-            _hatMesh = transform.Find("root").
-                       transform.Find("pelvis").
-                       transform.Find("spine_01").
-                       transform.Find("spine_02").
-                       transform.Find("spine_03").
-                       transform.Find("neck_01").
-                       transform.Find("head").
-                       transform.Find("Hat").gameObject;
-        }
-
-        public void ChangeSkinnedBodyPart(BodyPartType bodyPartType)
+        public void ChangeSkinnedBodyPartRight(BodyPartType bodyPartType)
         {
             SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartType);
             int meshIndex = System.Array.IndexOf(bodyPartData.meshArray, bodyPartData.skinnedMeshRenderer.sharedMesh);
@@ -82,6 +52,7 @@ namespace VictoryChallenge.Customize
         {
             SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartType);
             int meshIndex = System.Array.IndexOf(bodyPartData.meshArray, bodyPartData.skinnedMeshRenderer.sharedMesh);
+            
             if(meshIndex > 0)
             {
                 bodyPartData.skinnedMeshRenderer.sharedMesh = bodyPartData.meshArray[Mathf.Abs(meshIndex - 1) % bodyPartData.meshArray.Length];
@@ -89,7 +60,16 @@ namespace VictoryChallenge.Customize
             else if (meshIndex <= 0)
             {
                 meshIndex = bodyPartData.meshArray.Length;
-                bodyPartData.skinnedMeshRenderer.sharedMesh = bodyPartData.meshArray[Mathf.Abs(meshIndex - 1) % bodyPartData.meshArray.Length];
+
+                if(bodyPartData.skinnedMeshRenderer.sharedMesh == null)
+                {
+                    bodyPartData.skinnedMeshRenderer.sharedMesh = bodyPartData.meshArray[bodyPartData.meshArray.Length - 2];
+                }
+                else
+                {
+                    bodyPartData.skinnedMeshRenderer.sharedMesh = bodyPartData.meshArray[Mathf.Abs(meshIndex - 1) % bodyPartData.meshArray.Length];
+                }
+
             }
         }
 
@@ -105,7 +85,7 @@ namespace VictoryChallenge.Customize
             return null;
         }
 
-        public void OnChangeEarMesh()
+        public void OnChangeRightEarMesh()
         {
             int childCount = _earMesh.transform.childCount;
 
@@ -128,30 +108,76 @@ namespace VictoryChallenge.Customize
             }
         }
 
-        public void OnChangeEyeMesh()
+        public void OnChangeLeftEarMesh()
         {
-            int childCount = _eyeMesh.transform.childCount;
+            int childCount = _earMesh.transform.childCount;
 
-            if (_eyeIndex < childCount - 1)
+            if (_earIndex > 0)
             {
-                _eyeIndex++;
-                _eyeMesh.transform.GetChild(_eyeIndex).gameObject.SetActive(true);
+                _earIndex--;
             }
             else
             {
-                _eyeIndex = 0;
+                _earIndex = childCount - 1;
             }
+            _earMesh.transform.GetChild(_earIndex).gameObject.SetActive(true);
 
             for (int i = 0; i < childCount; i++)
             {
-                if (i != _eyeIndex)
+                if (i != _earIndex)
                 {
-                    _eyeMesh.transform.GetChild(i).gameObject.SetActive(false);
+                    _earMesh.transform.GetChild(i).gameObject.SetActive(false);
                 }
             }
         }
 
-        public void OnChangeHatMesh()
+        public void OnChangeRightAccessoryMesh()
+        {
+            int childCount = _accessoryMesh.transform.childCount;
+
+            if (_accessoryIndex < childCount - 1)
+            {
+                _accessoryIndex++;
+                _accessoryMesh.transform.GetChild(_accessoryIndex).gameObject.SetActive(true);
+            }
+            else
+            {
+                _accessoryIndex = 0;
+            }
+
+            for (int i = 0; i < childCount; i++)
+            {
+                if (i != _accessoryIndex)
+                {
+                    _accessoryMesh.transform.GetChild(i).gameObject.SetActive(false);
+                }
+            }
+        }
+
+        public void OnChangeLeftAccessoryMesh()
+        {
+            int childCount = _accessoryMesh.transform.childCount;
+
+            if (_accessoryIndex > 0)
+            {
+                _accessoryIndex--;
+            }
+            else
+            {
+                _accessoryIndex = childCount - 1;
+            }
+            _accessoryMesh.transform.GetChild(_accessoryIndex).gameObject.SetActive(true);
+
+            for (int i = 0; i < childCount; i++)
+            {
+                if (i != _accessoryIndex)
+                {
+                    _accessoryMesh.transform.GetChild(i).gameObject.SetActive(false);
+                }
+            }
+        }
+
+        public void OnChangeRightHatMesh()
         {
             int childCount = _hatMesh.transform.childCount;
 
@@ -164,6 +190,29 @@ namespace VictoryChallenge.Customize
             {
                 _hatIndex = 0;
             }
+
+            for (int i = 0; i < childCount; i++)
+            {
+                if (i != _hatIndex)
+                {
+                    _hatMesh.transform.GetChild(i).gameObject.SetActive(false);
+                }
+            }
+        }
+
+        public void OnChangeLeftHatMesh()
+        {
+            int childCount = _hatMesh.transform.childCount;
+
+            if (_hatIndex > 0)
+            {
+                _hatIndex--;
+            }
+            else
+            {
+                _hatIndex = childCount - 1;
+            }
+            _hatMesh.transform.GetChild(_hatIndex).gameObject.SetActive(true);
 
             for (int i = 0; i < childCount; i++)
             {
@@ -197,6 +246,7 @@ namespace VictoryChallenge.Customize
             {
                 SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartType);
                 int meshIndex = Array.IndexOf(bodyPartData.meshArray, bodyPartData.skinnedMeshRenderer.sharedMesh);
+                
                 bodyPartTypeIndexList.Add(new BodyPartTypeIndex
                 {
                     bodyPartType = bodyPartType,
@@ -208,7 +258,7 @@ namespace VictoryChallenge.Customize
             {
                 bodyPartTypeIndexList = bodyPartTypeIndexList,
                 earIndex = _earIndex,
-                eyeIndex = _eyeIndex,
+                eyeIndex = _accessoryIndex,
                 hatIndex = _hatIndex,
             };
 
@@ -251,7 +301,7 @@ namespace VictoryChallenge.Customize
             }
 
             _earMesh.transform.GetChild(saveObject.earIndex).gameObject.SetActive(true);
-            _eyeMesh.transform.GetChild(saveObject.eyeIndex).gameObject.SetActive(true);
+            _accessoryMesh.transform.GetChild(saveObject.eyeIndex).gameObject.SetActive(true);
             _hatMesh.transform.GetChild(saveObject.hatIndex).gameObject.SetActive(true);
         }
     }

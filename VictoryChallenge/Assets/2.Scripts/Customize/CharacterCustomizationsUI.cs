@@ -8,106 +8,165 @@ namespace VictoryChallenge.Customize
     public class CharacterCustomizationsUI : MonoBehaviour
     {
         // Skinned
-        [SerializeField] private Button _colorButton;
-        [SerializeField] private Button _bodyPartsButton;
-        [SerializeField] private Button _eyesButton;
-        [SerializeField] private Button _glovesButton;
-        [SerializeField] private Button _headPartsButton;
-        [SerializeField] private Button _mouthAndNosesButton;
-        [SerializeField] private Button _tailsButton;
-        [SerializeField] private Button _changeButton;
 
+        // Color
+        [SerializeField] private Button _colorRightButton;
+        [SerializeField] private Button _colorLeftButton;
+
+        // BodyPart
+        [SerializeField] private Button _bodyPartsRightButton;
+        [SerializeField] private Button _bodyPartsLeftButton;
+
+        // Eye
+        [SerializeField] private Button _eyesRightButton;
+        [SerializeField] private Button _eyesLeftButton;
+
+        // Glove
+        [SerializeField] private Button _glovesRightButton;
+        [SerializeField] private Button _glovesLeftButton;
+
+        // HeadPart
+        [SerializeField] private Button _headPartsRightButton;
+        [SerializeField] private Button _headPartsLeftButton;
+
+        // MouseAndNoses
+        [SerializeField] private Button _mouthAndNosesRightButton;
+        [SerializeField] private Button _mouthAndNosesLeftButton;
+
+        // Tails
+        [SerializeField] private Button _tailsRightButton;
+        [SerializeField] private Button _tailsLeftButton;
+
+        // Save & Load
         [SerializeField] private Button _saveButton;
         [SerializeField] private Button _loadButton;
 
         // Mesh
-        [SerializeField] private Button _earButton;
-        [SerializeField] private Button _eyes2Button;
-        [SerializeField] private Button _hatButton;
+        // Ear
+        [SerializeField] private Button _earRightButton;
+        [SerializeField] private Button _earLeftButton;
+
+        // Accessory
+        [SerializeField] private Button _accessoryRightButton;
+        [SerializeField] private Button _accessoryLeftButton;
+
+        // Hat
+        [SerializeField] private Button _hatRightButton;
+        [SerializeField] private Button _hatLeftButton;
 
         [SerializeField] private PlayerCharacterCustomized _playerCharacterCustomized;
 
 
-
-
         private void Awake()
         {
-            _colorButton.onClick.AddListener(() =>
+            _colorRightButton.onClick.AddListener(() =>
             {
-                Debug.Log("Color Button");
-                _playerCharacterCustomized.ChangeSkinnedBodyPart(PlayerCharacterCustomized.BodyPartType.Color);
+                _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.Color);
             });
 
-            _changeButton.onClick.AddListener(() =>
+            _colorLeftButton.onClick.AddListener(() =>
             {
-                Debug.Log("Color Button");
                 _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Color);
             });
 
-            _bodyPartsButton.onClick.AddListener(() =>
+            _bodyPartsRightButton.onClick.AddListener(() =>
             {
-                Debug.Log("BodyParts Button");
-                _playerCharacterCustomized.ChangeSkinnedBodyPart(PlayerCharacterCustomized.BodyPartType.BodyParts);
+                _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.BodyParts);
             });
 
-            _eyesButton.onClick.AddListener(() =>
+            _bodyPartsLeftButton.onClick.AddListener(() =>
             {
-                Debug.Log("eyes Button");
-                _playerCharacterCustomized.ChangeSkinnedBodyPart(PlayerCharacterCustomized.BodyPartType.Eyes);
+                _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.BodyParts);
             });
 
-            _glovesButton.onClick.AddListener(() =>
+            _eyesRightButton.onClick.AddListener(() =>
             {
-                Debug.Log("gloves Button");
-                _playerCharacterCustomized.ChangeSkinnedBodyPart(PlayerCharacterCustomized.BodyPartType.Gloves);
+                _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.Eyes);
             });
 
-            _headPartsButton.onClick.AddListener(() =>
+            _eyesLeftButton.onClick.AddListener(() =>
             {
-                Debug.Log("headParts Button");
-                _playerCharacterCustomized.ChangeSkinnedBodyPart(PlayerCharacterCustomized.BodyPartType.HeadParts);
+                _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Eyes);
             });
 
-            _mouthAndNosesButton.onClick.AddListener(() =>
+            _glovesRightButton.onClick.AddListener(() =>
             {
-                Debug.Log("Mouth Button");
-                _playerCharacterCustomized.ChangeSkinnedBodyPart(PlayerCharacterCustomized.BodyPartType.Mouth);
+                _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.Gloves);
             });
 
-            _tailsButton.onClick.AddListener(() =>
+            _glovesLeftButton.onClick.AddListener(() =>
             {
-                Debug.Log("tails Button");
-                _playerCharacterCustomized.ChangeSkinnedBodyPart(PlayerCharacterCustomized.BodyPartType.Tails);
+                _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Gloves);
+            });
+
+            _headPartsRightButton.onClick.AddListener(() =>
+            {
+                _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.HeadParts);
+            });
+
+            _headPartsLeftButton.onClick.AddListener(() =>
+            {
+                _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.HeadParts);
+            });
+
+            _mouthAndNosesRightButton.onClick.AddListener(() =>
+            {
+                _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.Mouth);
+            });
+
+            _mouthAndNosesLeftButton.onClick.AddListener(() =>
+            {
+                _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Mouth);
+            });
+
+            _tailsRightButton.onClick.AddListener(() =>
+            {
+                _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.Tails);
+            });
+
+            _tailsLeftButton.onClick.AddListener(() =>
+            {
+                _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Tails);
             });
 
             _loadButton.onClick.AddListener(() =>
             {
-                Debug.Log("Load");
                 _playerCharacterCustomized.Load();
             });
 
             _saveButton.onClick.AddListener(() =>
             {
-                Debug.Log("Save");
                 _playerCharacterCustomized.Save();
             });
 
-            _earButton.onClick.AddListener(() =>
+            _earRightButton.onClick.AddListener(() =>
             {
-                //Debug.Log("ear");
-                _playerCharacterCustomized.OnChangeEarMesh();
+                _playerCharacterCustomized.OnChangeRightEarMesh();
             });
 
-            _eyes2Button.onClick.AddListener(() =>
+            _earLeftButton.onClick.AddListener(() =>
             {
-                Debug.Log("eyes2");
-                _playerCharacterCustomized.OnChangeEyeMesh();
+                _playerCharacterCustomized.OnChangeLeftEarMesh();
             });
 
-            _hatButton.onClick.AddListener(() =>
+            _hatRightButton.onClick.AddListener(() =>
             {
-                Debug.Log("hat");
-                _playerCharacterCustomized.OnChangeHatMesh();
+                _playerCharacterCustomized.OnChangeRightHatMesh();
+            });
+
+            _hatLeftButton.onClick.AddListener(() =>
+            {
+                _playerCharacterCustomized.OnChangeLeftHatMesh();
+            });
+
+            _accessoryRightButton.onClick.AddListener(() =>
+            {
+                _playerCharacterCustomized.OnChangeRightAccessoryMesh();
+            });
+
+            _accessoryLeftButton.onClick.AddListener(() =>
+            {
+                _playerCharacterCustomized.OnChangeLeftAccessoryMesh();
             });
         }
     }
