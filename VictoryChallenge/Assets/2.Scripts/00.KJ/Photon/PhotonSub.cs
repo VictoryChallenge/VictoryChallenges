@@ -12,8 +12,8 @@ namespace VictoryChallenge.KJ.Photon
     public class PhotonSub : MonoBehaviourPunCallbacks
     {
 
-        [SerializeField] private Button _button;
-        [SerializeField] private TMP_Text _text;
+        [HideInInspector] public Button _button;
+        [HideInInspector] public TMP_Text _text;
 
         private bool _isReady = false;
         //private bool _isControllerCreated = false;
@@ -40,7 +40,7 @@ namespace VictoryChallenge.KJ.Photon
         public void AssignButtonAndText()
         {
             _button = GameObject.Find("GameStart").GetComponent<Button>();
-            _text = GameObject.Find("ReadyOrStart").GetComponent<TMP_Text>();
+            _text = GameObject.Find("ReadyOrStart").GetComponent<TextMeshProUGUI>();
         }
 
         public void OnSceneLoadedForAllPlayers()
@@ -71,7 +71,7 @@ namespace VictoryChallenge.KJ.Photon
                 OnSceneLoadedForAllPlayers();
             }
 
-            StartCoroutine(UpdateButtonTextWithDelay());
+            //StartCoroutine(UpdateButtonTextWithDelay());
 
             if (PhotonNetwork.IsMasterClient)
             {
@@ -167,7 +167,8 @@ namespace VictoryChallenge.KJ.Photon
             if (PhotonNetwork.IsMasterClient && AllPlayersReady())
             {
                 Debug.Log("모든 플레이어가 준비됨, 게임 시작");
-                PhotonNetwork.LoadLevel(2);
+                // 나중에 맵 추가되면 여기로 넘겨주기 대리자^^
+                //PhotonNetwork.LoadLevel(3);
             }
         }
 

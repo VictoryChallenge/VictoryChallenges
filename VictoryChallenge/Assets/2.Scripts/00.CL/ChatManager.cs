@@ -45,7 +45,7 @@ namespace VictoryChallenge.Scripts.CL
             RectTransform rectTransform = GetComponent<RectTransform>();
             rectTransform.anchoredPosition = Vector2.zero;
 
-            PhotonNetwork.IsMessageQueueRunning = true; // 메시지 큐 실행
+            //PhotonNetwork.IsMessageQueueRunning = true; // 메시지 큐 실행
 
             InitializeChat(PhotonNetwork.NickName); // 채팅 초기화
             chatinput.onEndEdit.AddListener(OnInputEndEdit);

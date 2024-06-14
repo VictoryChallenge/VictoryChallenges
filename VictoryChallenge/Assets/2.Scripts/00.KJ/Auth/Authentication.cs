@@ -122,6 +122,7 @@ namespace VictoryChallenge.KJ.Auth
                 if (Result)
                 {
                     PhotonNetwork.LoadLevel("MainSceneCL(T)");
+                    PhotonManager.Instance.CheckNetwork();
                 }
                 else
                 {

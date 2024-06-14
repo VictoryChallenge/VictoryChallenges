@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -45,12 +46,9 @@ namespace VictoryChallenge.Scripts.CL
 
             stageSelectButtonImage = GetButton((int)Buttons.StageSelectButton).GetComponent<Image>();
 
-            if (PhotonNetwork.IsMasterClient)
-            {
-                GetTextMeshPro((int)TMPs.ReadyOrStart).text = "Start";
-                GetButton((int)Buttons.GameStart).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
-            }
-            else GetTextMeshPro((int)TMPs.ReadyOrStart).text = "Ready";
+            PhotonSub.Instance._text = GetTextMeshPro((int)TMPs.ReadyOrStart);
+            PhotonSub.Instance._button = GetButton((int)Buttons.GameStart);
+            GetButton((int)Buttons.GameStart).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
 
             GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
             GetButton((int)Buttons.LeaveLobby).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
@@ -62,7 +60,7 @@ namespace VictoryChallenge.Scripts.CL
             {
                 case 1:
                     Debug.Log("1");
-                    // PhotonNetwork.LoadLevel로 GameStart 넘기기
+                    PhotonSub.Instance.UpdateButtonText();
                     break;
                 case 2:
                     var stageSelectPopup = Managers.UI.ShowPopupUI<StageSelectPopup>();

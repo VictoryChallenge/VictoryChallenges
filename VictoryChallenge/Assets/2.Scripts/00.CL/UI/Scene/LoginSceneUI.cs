@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VictoryChallenge.KJ.Auth;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.Scripts.CL
 { 
