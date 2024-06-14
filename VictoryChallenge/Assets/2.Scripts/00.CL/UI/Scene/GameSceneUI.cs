@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace VictoryChallenge.Scripts.CL
 { 
-    public class GameSceneUI : MonoBehaviour
+    public class GameSceneUI : UI_Scene
     {
         private TextMeshProUGUI _countdown;
 
