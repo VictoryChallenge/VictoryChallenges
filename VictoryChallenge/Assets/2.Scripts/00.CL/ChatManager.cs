@@ -48,6 +48,7 @@ namespace VictoryChallenge.Scripts.CL
             PhotonNetwork.IsMessageQueueRunning = true; // 메시지 큐 실행
 
             InitializeChat(PhotonNetwork.NickName); // 채팅 초기화
+            chatinput.onEndEdit.AddListener(OnInputEndEdit);
         }
 
         public override void Init()
@@ -238,7 +239,7 @@ namespace VictoryChallenge.Scripts.CL
 
                     // 개인 메시지를 보냅니다.
                     chatClient.SendPrivateMessage(targetUser, message, false);
-
+                    
                     // 보낸 메시지를 채팅 디스플레이에 표시합니다.
                     chatDisplay.text += $"<color=blue>[귓속말] {targetUser} << {message}</color>\n";
                 }
@@ -249,6 +250,28 @@ namespace VictoryChallenge.Scripts.CL
                     chatDisplay.text += "<color=red>명령어가 올바르지 않습니다. /귓속말 대상사용자이름 메시지 or /귓말 대상사용자이름 메시지</color>\n";
                 }
             }
+        }
+
+        private void OnInputEndEdit(string input)
+        {
+            // 명령어 파싱
+            if (input.StartsWith("/귓속말 ") || input.StartsWith("/귓말 "))
+            {
+                string[] tokens = input.Split(' ');
+                if (tokens.Length >= 3)
+                {
+                    // 귓속말 명령어 처리
+                    HandleWhisperCommand(tokens);
+                    chatinput.text = ""; // 입력 필드 초기화
+                    return;
+                }
+            }
+
+            // 여기서 다른 명령어들을 처리할 수 있습니다.
+
+            // 디폴트로는 채팅 메시지로 처리
+            SendMessage();
+            chatinput.text = ""; // 입력 필드 초기화
         }
 
         //private void ShowChatBubble(string sender, string message)

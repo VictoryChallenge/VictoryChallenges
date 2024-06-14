@@ -52,6 +52,8 @@ namespace VictoryChallenge.Scripts.CL
             _nickname = GetInputField((int)InputFields.Nickname);
 
             GetButton((int)Buttons.Register).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
+            AuthenticationTest.Instance.confirmRegisterText = GetTextMeshPro((int)TMPs.ConfirmText);
+            AuthenticationTest.Instance.warningRegisterText = GetTextMeshPro((int)TMPs.ErrorText);
         }
 
         private void Update()
@@ -69,7 +71,7 @@ namespace VictoryChallenge.Scripts.CL
                 case 1:
                     if (_email != null && _password != null && _passwordCheck != null && _nickname != null)
                     {
-                        AuthenticationTest.Instance.emailRegister = _email;                        
+                        AuthenticationTest.Instance.emailRegister = _email;
                         AuthenticationTest.Instance.passwordRegister = _password;
                         AuthenticationTest.Instance.passwordCheck = _passwordCheck;
                         AuthenticationTest.Instance.usernameRegister = _nickname;
