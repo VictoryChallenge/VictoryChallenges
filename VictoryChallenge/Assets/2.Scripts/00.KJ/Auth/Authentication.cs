@@ -1,5 +1,7 @@
 using Firebase;
 using Firebase.Auth;
+using Photon.Pun;
+
 //using Firebase.Database;
 using System;
 using System.Collections;
@@ -7,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.KJ.Auth
@@ -51,19 +54,19 @@ namespace VictoryChallenge.KJ.Auth
 
         [Header("Log-In")]
         [Tooltip("로그인에 필요한 UI")]
-        public TMP_InputField email;                                // E-mail
-        public TMP_InputField password;                             // Password
-        public TMP_Text warningLoginText;                           // 오류 메세지
-        public TMP_Text confirmLoginText;                           // 성공시 나타나는 메세지
+        [HideInInspector] public TMP_InputField email;                                // E-mail
+        [HideInInspector] public TMP_InputField password;                             // Password
+        [HideInInspector] public TMP_Text warningLoginText;                           // 오류 메세지
+        [HideInInspector] public TMP_Text confirmLoginText;                           // 성공시 나타나는 메세지
 
         [Header("Register")]
         [Tooltip("회원가입에 필요한 UI")]
-        public TMP_InputField usernameRegister;                     // username 입력
-        public TMP_InputField emailRegister;                        // email 입력
-        public TMP_InputField passwordRegister;                     // password 입력
-        public TMP_InputField passwordCheck;                        // password 입력 체크
-        public TMP_Text warningRegisterText;                        // 오류 메세지
-        public TMP_Text confirmRegisterText;                        // 성공시 나타나는 메세지
+        [HideInInspector] public TMP_InputField usernameRegister;                     // username 입력
+        [HideInInspector] public TMP_InputField emailRegister;                        // email 입력
+        [HideInInspector] public TMP_InputField passwordRegister;                     // password 입력
+        [HideInInspector] public TMP_InputField passwordCheck;                        // password 입력 체크
+        [HideInInspector] public TMP_Text warningRegisterText;                        // 오류 메세지
+        [HideInInspector] public TMP_Text confirmRegisterText;                        // 성공시 나타나는 메세지
 
         //private DatabaseReference _databaseReference;               // 데이터베이스의 특정 위치 참조
 
@@ -118,7 +121,7 @@ namespace VictoryChallenge.KJ.Auth
             {
                 if (Result)
                 {
-                    Debug.Log($"로그인 정보  {email.text}, {usernameRegister.text}, {password.text}");
+                    PhotonNetwork.LoadLevel("MainSceneCL(T)");
                 }
                 else
                 {
@@ -139,54 +142,73 @@ namespace VictoryChallenge.KJ.Auth
             var LoginTask = _auth.SignInWithEmailAndPasswordAsync(_email, _password);
             // LoginTask.IsCompleted가 참이 될 때 까지 기다림
             yield return new WaitUntil(predicate: () => LoginTask.IsCompleted);
-            _user = LoginTask.Result.User;
 
             if (LoginTask.Exception != null)
             {
                 // 예외 처리
-                Debug.LogWarning(message: $"예외 발생 {LoginTask.Exception}");
+                Debug.LogError(message: $"예외 발생 {LoginTask.Exception}");
                 FirebaseException firebaseEx = LoginTask.Exception.GetBaseException() as FirebaseException;
-                AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
 
-                string message = "로그인 실패";
-                switch (errorCode)
+                string message = "로그인에 실패했습니다.";
+
+                if (firebaseEx != null)
                 {
-                    case AuthError.MissingEmail:
-                        message = "Enter your e-mail";
-                        break;
+                    AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
 
-                    case AuthError.MissingPassword:
-                        message = "Enter your password";
-                        break;
 
-                    case AuthError.InvalidEmail:
-                        message = "Invalid e-mail, Check again";
-                        break;
+                    switch (errorCode)
+                    {
+                        case AuthError.MissingEmail:
+                            message = "이메일을 입력해주세요";
+                            break;
 
-                    case AuthError.WrongPassword:
-                        message = "Wrong password, Check again";
-                        break;
+                        case AuthError.MissingPassword:
+                            message = "비밀번호를 입력해주세요.";
+                            break;
 
-                    case AuthError.UserNotFound:
-                        message = "Account not exist";
-                        break;
+                        case AuthError.InvalidEmail:
+                            message = "잘못된 이메일입니다. 다시 확인해주세요.";
+                            break;
 
-                    case AuthError.NetworkRequestFailed:
-                        message = "NetworkError";
-                        break;
+                        case AuthError.WrongPassword:
+                            message = "잘못된 비밀번호입니다. 다시 확인해주세요.";
+                            break;
+
+                        case AuthError.UserNotFound:
+                            message = "계정이 이미 존재합니다.";
+                            break;
+
+                        case AuthError.NetworkRequestFailed:
+                            message = "네트워크 오류입니다. 네트워크 연결을 확인하세요.";
+                            break;
+                    }
+                }
+                else
+                {
+                    message = $"알수 없는 오류가 발생하였습니다. : {LoginTask.Exception.GetBaseException().Message}";
                 }
                 warningLoginText.text = message;
                 onLoginCompleted?.Invoke(false);
             }
             else
             {
-                // 로그인 성공했을 경우
-                Debug.LogFormat("로그인 성공 : {0}, {1} ", _user.Email, _user.DisplayName);
-                warningLoginText.text = "";
-                confirmLoginText.text = "Login successful";
-                // yield return DB로 보내야함
+                try
+                {
+                    _user = LoginTask.Result.User;
+                    // 로그인 성공했을 경우
+                    Debug.LogFormat($"로그인 성공 : {_user.Email}, {_user.DisplayName}");
+                    warningLoginText.text = "";
+                    confirmLoginText.text = "로그인에 성공했습니다.";
+                    // yield return DB로 보내야함
 
-                onLoginCompleted?.Invoke(true);
+                    onLoginCompleted?.Invoke(true);
+                }
+                catch (Exception ex)
+                {
+                    Debug.Log("오류 발생");
+                    warningLoginText.text = "사용자 정보 가져오는 도중 오류가 발생했습니다.";
+                    onLoginCompleted?.Invoke(false);
+                }
             }
         }
 
@@ -209,11 +231,11 @@ namespace VictoryChallenge.KJ.Auth
         {
             if (string.IsNullOrWhiteSpace(_username))
             {
-                warningRegisterText.text = "Enter your username";
+                warningRegisterText.text = "닉네임을 입력하세요.";
             }
             else if (passwordRegister.text != passwordCheck.text)
             {
-                warningRegisterText.text = "Check your password";
+                warningRegisterText.text = "비밀번호를 확인하세요.";
             }
             else
             {
@@ -224,43 +246,43 @@ namespace VictoryChallenge.KJ.Auth
                 if (RegisterTask.Exception != null)
                 {
                     // 예외 처리
-                    Debug.LogWarning(message: $"예외 발생 {RegisterTask.Exception}");
+                    Debug.LogError(message: $"예외 발생 {RegisterTask.Exception}");
                     FirebaseException firebaseEx = RegisterTask.Exception.GetBaseException() as FirebaseException;
                     AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
 
-                    string message = "register Fail";
+                    string message = "회원가입에 실패했습니다.";
                     switch (errorCode)
                     {
                         case AuthError.MissingEmail:
-                            message = "Enter your e-mail";
+                            message = "이메일을 입력해주세요.";
                             break;
 
                         case AuthError.MissingPassword:
-                            message = "Enter your password";
+                            message = "비밀번호를 입력해주세요.";
                             break;
 
                         case AuthError.InvalidEmail:
-                            message = "Invalid e-mail, Check again";
+                            message = "잘못된 이메일입니다. 다시 확인해주세요.";
                             break;
 
                         case AuthError.WrongPassword:
-                            message = "wrong password, Check again";
+                            message = "잘못된 비밀번호입니다. 다시 확인해주세요.";
                             break;
 
                         case AuthError.UserNotFound:
-                            message = "Account not exist";
+                            message = "이미 존재하는 계정입니다.";
                             break;
 
                         case AuthError.EmailAlreadyInUse:
-                            message = "E-mail already in used";
+                            message = "이메일이 이미 사용중입니다.";
                             break;
 
                         case AuthError.WeakPassword:
-                            message = "Weak password";
+                            message = "비밀번호 보안이 약합니다.";
                             break;
 
                         case AuthError.NetworkRequestFailed:
-                            message = "Network error";
+                            message = "네트워크 오류입니다. 네트워크 연결을 확인하세요.";
                             break;
                     }
                     warningRegisterText.text = message;
@@ -281,17 +303,17 @@ namespace VictoryChallenge.KJ.Auth
                         if (ProfileTask.Exception != null)
                         {
                             // 사용자 정보를 불러올 때 예외가 발생하면 처리
-                            Debug.LogWarning(message: $"사용자 프로필 정보를 업데이트 하는데 예외가 발생했습니다. {ProfileTask.Exception}");
+                            Debug.LogError(message: $"사용자 프로필 정보를 업데이트 하는데 예외가 발생했습니다. {ProfileTask.Exception}");
                             FirebaseException firebaseEx = ProfileTask.Exception.GetBaseException() as FirebaseException;
                             AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
-                            warningRegisterText.text = "Failed username";
+                            warningRegisterText.text = "닉네임을 확인하세요.";
                         }
                         else
                         {
                             // 회원가입 성공
-                            Debug.Log("회원가입이 성공적으로 이루어졌습니다." + _user.DisplayName);
+                            Debug.LogFormat("회원가입이 성공적으로 이루어졌습니다." + _user.DisplayName);
                             PhotonManager.Instance.SetPlayerNickname(_username);
-                            confirmRegisterText.text = "Register successful";
+                            confirmRegisterText.text = "회원가입이 성공적으로 이루어졌습니다.";
                             warningRegisterText.text = "";
                         }
                     }

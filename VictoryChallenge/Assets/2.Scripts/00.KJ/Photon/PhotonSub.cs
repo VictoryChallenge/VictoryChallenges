@@ -39,8 +39,8 @@ namespace VictoryChallenge.KJ.Photon
         #region Dynamic Buttons
         public void AssignButtonAndText()
         {
-            _button = GameObject.Find("Button").GetComponent<Button>();
-            _text = GameObject.Find("Text").GetComponent<TMP_Text>();
+            _button = GameObject.Find("GameStart").GetComponent<Button>();
+            _text = GameObject.Find("ReadyOrStart").GetComponent<TMP_Text>();
         }
 
         public void OnSceneLoadedForAllPlayers()

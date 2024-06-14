@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using VictoryChallenge.KJ.Auth;
 
 namespace VictoryChallenge.Scripts.CL
 {
@@ -52,8 +53,8 @@ namespace VictoryChallenge.Scripts.CL
             _nickname = GetInputField((int)InputFields.Nickname);
 
             GetButton((int)Buttons.Register).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
-            AuthenticationTest.Instance.confirmRegisterText = GetTextMeshPro((int)TMPs.ConfirmText);
-            AuthenticationTest.Instance.warningRegisterText = GetTextMeshPro((int)TMPs.ErrorText);
+            Authentication.Instance.confirmRegisterText = GetTextMeshPro((int)TMPs.ConfirmText);
+            Authentication.Instance.warningRegisterText = GetTextMeshPro((int)TMPs.ErrorText);
         }
 
         private void Update()
@@ -64,6 +65,20 @@ namespace VictoryChallenge.Scripts.CL
             }
         }
 
+        //public void NavigateThroughInputField(List<TMP_InputField> inputFields)
+        //{
+        //    for (int i = 0; i < inputFields.Count; i++)
+        //    {
+        //        if (inputFields[i].isFocused)
+        //        {
+        //            int nextIndex = (i + 1) % inputFields.Count;
+        //            inputFields[nextIndex].Select();
+        //            inputFields[nextIndex].ActivateInputField();
+        //            break;
+        //        }
+        //    }
+        //}
+
         void OnButtonClicked(PointerEventData data, int a)
         {
             switch (a)
@@ -71,11 +86,11 @@ namespace VictoryChallenge.Scripts.CL
                 case 1:
                     if (_email != null && _password != null && _passwordCheck != null && _nickname != null)
                     {
-                        AuthenticationTest.Instance.emailRegister = _email;
-                        AuthenticationTest.Instance.passwordRegister = _password;
-                        AuthenticationTest.Instance.passwordCheck = _passwordCheck;
-                        AuthenticationTest.Instance.usernameRegister = _nickname;
-                        AuthenticationTest.Instance.RegisterButton();
+                        Authentication.Instance.emailRegister = _email;
+                        Authentication.Instance.passwordRegister = _password;
+                        Authentication.Instance.passwordCheck = _passwordCheck;
+                        Authentication.Instance.usernameRegister = _nickname;
+                        Authentication.Instance.RegisterButton();
                     }
                     else
                     {

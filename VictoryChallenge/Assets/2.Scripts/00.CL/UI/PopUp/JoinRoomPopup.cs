@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -43,7 +44,7 @@ namespace VictoryChallenge.Scripts.CL
             switch (a)
             {
                 case 1:
-                    // PhotonNetwork.JoinRoom(); 등 퀵매치함수 넣으면 될듯
+                    PhotonManager.Instance.QuickMatch();
                     Debug.Log("ddd");
                     break;
                 case 2:

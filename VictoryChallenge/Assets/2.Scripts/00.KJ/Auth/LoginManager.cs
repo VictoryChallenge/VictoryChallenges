@@ -7,6 +7,7 @@ public class LoginManager : MonoBehaviour
     [SerializeField] private GameObject _loginPanel;                            // 로그인 패널
     [SerializeField] private GameObject _registerPanel;                         // 회원가입 패널
 
+    // 이거에용
     public enum ActivePanel { Login, Register }
     public ActivePanel activePanel;
     public List<TMP_InputField> loginInputFields;
@@ -65,6 +66,7 @@ public class LoginManager : MonoBehaviour
         }
     }
 
+    // 이고에용
     public void NavigateThroughInputField(List<TMP_InputField> inputFields)
     {
         for (int i = 0;  i < inputFields.Count; i++)

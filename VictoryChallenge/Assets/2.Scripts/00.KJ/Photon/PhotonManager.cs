@@ -51,7 +51,6 @@ namespace VictoryChallenge.KJ.Photon
 
             PhotonNetwork.AutomaticallySyncScene = true;    // 마스터(호스트)가 씬을 넘기면 클라이언트들도 같이 넘어감
 
-            MenuManager.Instance.OpenMenu("title");         // 타이틀 메뉴로 이동
         }
         #endregion
 
