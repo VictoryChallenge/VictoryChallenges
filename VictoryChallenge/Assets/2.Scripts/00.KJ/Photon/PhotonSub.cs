@@ -6,7 +6,6 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using Photon.Realtime;
-using VictoryChallenge.KJ.Manager;
 
 namespace VictoryChallenge.KJ.Photon
 {

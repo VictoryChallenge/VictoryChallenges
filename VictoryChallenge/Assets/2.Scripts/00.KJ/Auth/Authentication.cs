@@ -11,6 +11,33 @@ using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.KJ.Auth
 {
+    #region UID 해시함수
+    /// <summary>
+    /// UID를 해시함수를 이용해서 ShortUID로 변환
+    /// </summary>
+    public static class UIDHelper
+    {
+        public static string GenerateShortUID(string longUID)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // SHA256 해시 값을 계산
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(longUID));
+
+                // 바이트 배열을 String으로 변환
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+
+                // 해시값의 앞부분만(8자리) 사용하여 ShortUID 생성
+                return builder.ToString().Substring(0, 8);
+            }
+        }
+    }
+    #endregion
+
     /// <summary>
     /// 로그인
     /// </summary>
@@ -39,11 +66,6 @@ namespace VictoryChallenge.KJ.Auth
         public TMP_Text confirmRegisterText;                        // 성공시 나타나는 메세지
 
         //private DatabaseReference _databaseReference;               // 데이터베이스의 특정 위치 참조
-        [Header("테스트")]
-        private bool _isActiveL = false;
-        private bool _isActiveR = false;
-        [SerializeField] private GameObject _loginPanel;
-        [SerializeField] private GameObject _registerPanel;
 
         /// <summary>
         /// 의존성 상태 확인 후 초기화
@@ -68,44 +90,8 @@ namespace VictoryChallenge.KJ.Auth
                 }
             });
         }
-        #region SetActive
-        void Update()
-        {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                ExitUI();
-            }
-        }
 
-        public void OpenLoginUI()
-        {
-            _isActiveL = true;
-            Debug.Log("로그인창 활성화 ");
-            _loginPanel.SetActive(true);
-        }
-
-        public void OpenRegisterUI()
-        {
-            _isActiveR = true;
-            Debug.Log("회원가입창 활성화");
-            _registerPanel.SetActive(true);
-        }
-
-        public void ExitUI()
-        {
-            if (_isActiveL == true)
-            {
-                _isActiveL = false;
-                _loginPanel.SetActive(false);
-            }
-            else if (_isActiveR == true)
-            {
-                _isActiveR = false;
-                _registerPanel.SetActive(false);
-            }
-        }
-        #endregion
-
+        #region 로그인 및 회원가입
         /// <summary>
         /// Firebase 초기화
         /// </summary>
@@ -312,30 +298,9 @@ namespace VictoryChallenge.KJ.Auth
                 }
             }
         }
-    }
+        #endregion
 
-    /// <summary>
-    /// UID를 해시함수를 이용해서 ShortUID로 변환
-    /// </summary>
-    public static class UIDHelper
-    {
-        public static string GenerateShortUID(string longUID)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                // SHA256 해시 값을 계산
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(longUID));
-
-                // 바이트 배열을 String으로 변환
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-
-                // 해시값의 앞부분만(8자리) 사용하여 ShortUID 생성
-                return builder.ToString().Substring(0, 8);
-            }
-        }
+        #region ShortUID
+        #endregion
     }
 }

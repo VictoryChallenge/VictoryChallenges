@@ -1,12 +1,5 @@
 using Photon.Pun;
-using Photon.Realtime;
-using System.Collections;
-using System.IO;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.KJ.Lobby
 {
@@ -66,6 +59,25 @@ namespace VictoryChallenge.KJ.Lobby
             }
         }
         #endregion
+
+        //#region Team
+        //public void TeamSelectInRoom(int team)
+        //{
+        //    if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("Team"))
+        //    {
+        //        PhotonNetwork.LocalPlayer.CustomProperties["Team"] = team;
+        //    }
+        //    else
+        //    {
+        //        ExitGames.Client.Photon.Hashtable playerProps = new ExitGames.Client.Photon.Hashtable
+        //        {
+        //            {"Team", team }
+        //        };
+
+        //        PhotonNetwork.SetPlayerCustomProperties(playerProps);
+        //    }
+        //}
+        //#endregion
     }
 }
 
