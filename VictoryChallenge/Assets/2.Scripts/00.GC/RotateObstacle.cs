@@ -8,7 +8,6 @@ public class RotateObstacle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("´ê¾Ò³ª?");
             collision.transform.SetParent(transform);
         }
     }
@@ -17,7 +16,6 @@ public class RotateObstacle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("¾È´ê¾Ò³ª?");
             collision.transform.SetParent(null);
         }
     }

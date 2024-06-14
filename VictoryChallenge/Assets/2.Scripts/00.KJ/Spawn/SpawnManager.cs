@@ -6,7 +6,7 @@ namespace VictoryChallenge.KJ.Spawn
     {
         public static SpawnManager Instance;
 
-        SpawnPoint[] spawnPoints;
+        [SerializeField] SpawnPoint[] spawnPoints;
 
         void Awake()
         {
