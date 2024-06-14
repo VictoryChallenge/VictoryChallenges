@@ -143,7 +143,7 @@ MonoBehaviour:
     _guidString: b1090753-cc13-4091-82df-dc4cb4720b12
   _objectGroupName: Tree
   _globalObjectIdString: GlobalObjectId_V1-2-7d47a22b6cee9a34b92b76e6a3d0fca6-1190776231-0
-  _uiSelected: 1
+  _uiSelected: 0
 --- !u!114 &-6137928954960009520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +162,24 @@ MonoBehaviour:
   _objectGroupName: Floor
   _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-1287046749-0
   _uiSelected: 0
+--- !u!114 &-5357046516377740166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 78473f12-c3b1-4312-80ed-80b5e583a1bc
+  _objectGroupName: Grass
+  _globalObjectIdString: GlobalObjectId_V1-2-7d47a22b6cee9a34b92b76e6a3d0fca6-718699557-0
+  _uiSelected: 1
 --- !u!114 &-4540785700576365603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,13 +302,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedItems:
     _serializedList:
-    - _guidString: b1090753-cc13-4091-82df-dc4cb4720b12
+    - _guidString: 78473f12-c3b1-4312-80ed-80b5e583a1bc
   collapsedItems:
     _serializedList: []
   selectRangeBeginId:
-    _guidString: 15f9bbb7-0c2c-44db-9461-2f423cd349d0
+    _guidString: c3d74b15-9b95-4f7f-8371-28d5f69242c8
   selectRangeEndId:
-    _guidString: 15f9bbb7-0c2c-44db-9461-2f423cd349d0
+    _guidString: c3d74b15-9b95-4f7f-8371-28d5f69242c8
   hasSelectRange: 0
   scrollOffset: {x: 0, y: 0}
   vertScrollHighValue: 0
@@ -349,6 +367,7 @@ MonoBehaviour:
       - {fileID: -3242385427026738426}
       - {fileID: 2675826118748946544}
       - {fileID: -6419588465207099192}
+      - {fileID: -5357046516377740166}
     - _serializedList:
       - {fileID: 5274929535151896507}
       - {fileID: 1578579157117131913}

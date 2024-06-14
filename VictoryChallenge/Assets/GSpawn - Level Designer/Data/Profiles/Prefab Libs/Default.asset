@@ -25,8 +25,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -200,8 +202,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -235,8 +239,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -687,7 +693,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 3.7739341, y: 0.24166217, z: 0.8794919}
-  _uiSelected: 1
+  _uiSelected: 0
 --- !u!114 &-5742719716304150312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,8 +820,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -960,8 +968,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - e39e3ca2ec52d764da7ae63a1a648fcf
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: 4037882564713181110, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -5357046516377740166, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -6.377795, y: 0.11719352, z: 13.703099}
     _rotation: {x: -0.00000011920929, y: -0.007615005, z: -0.000000008381903, w: 0.99997103}
@@ -969,7 +979,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 0.4135812, y: 0.52732545, z: 0.645005}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-5018579024705758862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,8 +1104,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1129,8 +1141,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1197,8 +1211,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -3.9680405, y: -2.6087127, z: 82.52631}
     _rotation: {x: -0, y: -0.19509014, z: -0.000000007450581, w: 0.9807853}
@@ -1232,8 +1248,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1427,8 +1445,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1532,8 +1552,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1567,8 +1589,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -46.81491, y: 0, z: -1.9846267}
     _rotation: {x: -0, y: 0.70090896, z: -0, w: 0.7132508}
@@ -1602,8 +1626,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1637,8 +1663,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -19.88358, y: 1.6935291, z: 196.97803}
     _rotation: {x: -0.0000000074505797, y: 0.21564089, z: 0.000000005587935, w: 0.97647274}
@@ -1672,8 +1700,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - e39e3ca2ec52d764da7ae63a1a648fcf
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: 4037882564713181110, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -5357046516377740166, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 12.435108, y: 0, z: 22.504238}
     _rotation: {x: -0.00000002991047, y: -0.7604061, z: 0.000000052839166, w: -0.64944786}
@@ -1681,7 +1711,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 1.1941274, y: 0.6082745, z: 1.0412182}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-2425594753303249543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,8 +2015,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2119,8 +2151,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -6.972348, y: 6.2208276, z: 138.65842}
     _rotation: {x: -0.00000002421439, y: 0.69304806, z: 0.000000008847565, w: 0.72089136}
@@ -2154,8 +2188,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2189,8 +2225,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2342,8 +2380,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2581,8 +2621,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -98.25489, y: -0.9080002, z: -34.572075}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2781,8 +2823,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2849,8 +2893,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -24.694836, y: 11.491218, z: 91.6197}
     _rotation: {x: -0.16200095, y: -0.053737395, z: 0.012568639, w: 0.9852462}
@@ -3362,8 +3408,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -86.1315, y: 0, z: -1.7608852}
     _rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
@@ -3597,8 +3645,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -5.398473, y: -0.11650562, z: 167.87076}
     _rotation: {x: 0.000000047148205, y: 0.72400916, z: -0.000000037485734, w: 0.6897905}
@@ -3667,8 +3717,10 @@ MonoBehaviour:
   _sceneToObjectGroup:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
+    - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
