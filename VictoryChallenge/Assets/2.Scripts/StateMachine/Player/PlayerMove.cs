@@ -17,14 +17,14 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
-                { State.Jump, (animator) =>
-                {
-                    return animator.IsGrounded() && Input.GetKeyDown(KeyCode.Space);
-                }},
-                //{ State.JumpStart, (animator) =>
+                //{ State.Jump, (animator) =>
                 //{
                 //    return animator.IsGrounded() && Input.GetKeyDown(KeyCode.Space);
                 //}},
+                { State.JumpStart, (animator) =>
+                {
+                    return animator.IsGrounded() && Input.GetKeyDown(KeyCode.Space);
+                }},
                 { State.Attack, (animator) =>
                 {
                     return !controller.isGrabbable && !controller.isHit && Input.GetMouseButtonDown(0);
@@ -56,6 +56,10 @@ namespace VictoryChallenge.StateMachine.Player
                 { State.Holding, (animator) =>
                 {
                     return controller.isHolding;
+                }},
+                {    State.Slip, (animator) =>
+                {
+                    return controller.isSlip && !controller.isSliping;
                 }},
             };
         }

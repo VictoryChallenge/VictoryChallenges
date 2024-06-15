@@ -20,6 +20,8 @@ namespace VictoryChallenge.StateMachine
         JumpStart,
         Jumping,
         JumpEnd,
+        Slip,
+        SlipRecover,
     }
 }
 

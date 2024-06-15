@@ -30,9 +30,11 @@ namespace VictoryChallenge.StateMachine.Player
 
             animator.SetInteger("State", (int)State.JumpStart);
             
-            animator.transform.position += Vector3.up * 0.4f;
+            animator.transform.position += Vector3.up * 0.2f;
             controller.velocity = new Vector3(controller.velocity.x, 0.0f, controller.velocity.z);
             controller.GetComponent<Rigidbody>().AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+
+            controller.GetComponent<CapsuleCollider>().center = new Vector3(0f, 1.5f, 0f);
         }
     }
 }
