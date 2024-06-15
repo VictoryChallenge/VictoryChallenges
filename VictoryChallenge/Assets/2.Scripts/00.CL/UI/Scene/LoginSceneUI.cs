@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VictoryChallenge.KJ.Auth;
 using VictoryChallenge.KJ.Photon;
+using static LoginManager;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -33,10 +34,19 @@ namespace VictoryChallenge.Scripts.CL
 
         private TMP_InputField _email;
         private TMP_InputField _password;
+        public List<TMP_InputField> loginInputFields = new List<TMP_InputField>();
 
         void Start()
         {
             Init();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                NavigateThroughInputField(loginInputFields);
+            }
         }
 
         public override void Init()
@@ -45,6 +55,9 @@ namespace VictoryChallenge.Scripts.CL
             Bind<Button>(typeof(Buttons));
             Bind<TMP_InputField>(typeof(InputFields));
             Bind<TextMeshProUGUI>(typeof(TMPs));
+
+            loginInputFields.Add(GetInputField((int)InputFields.Email));
+            loginInputFields.Add(GetInputField((int)InputFields.Password));
 
             _email = GetInputField((int)InputFields.Email);
             _password = GetInputField((int)InputFields.Password);
@@ -71,6 +84,20 @@ namespace VictoryChallenge.Scripts.CL
                 default:
                     Debug.LogWarning("Unhandled action: " + a);
                     break;
+            }
+        }
+
+        public void NavigateThroughInputField(List<TMP_InputField> inputFields)
+        {
+            for (int i = 0; i < inputFields.Count; i++)
+            {
+                if (inputFields[i].isFocused)
+                {
+                    int nextIndex = (i + 1) % inputFields.Count;
+                    inputFields[nextIndex].Select();
+                    inputFields[nextIndex].ActivateInputField();
+                    break;
+                }
             }
         }
     }

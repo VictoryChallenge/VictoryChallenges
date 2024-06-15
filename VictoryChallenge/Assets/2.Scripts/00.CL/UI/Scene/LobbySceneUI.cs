@@ -4,6 +4,7 @@ using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VictoryChallenge.KJ.Photon;
 
@@ -48,6 +49,7 @@ namespace VictoryChallenge.Scripts.CL
 
             PhotonSub.Instance._text = GetTextMeshPro((int)TMPs.ReadyOrStart);
             PhotonSub.Instance._button = GetButton((int)Buttons.GameStart);
+            PhotonSub.Instance.UpdateButtonText();
             GetButton((int)Buttons.GameStart).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
 
             GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
@@ -60,7 +62,7 @@ namespace VictoryChallenge.Scripts.CL
             {
                 case 1:
                     Debug.Log("1");
-                    PhotonSub.Instance.UpdateButtonText();
+                    // 게임시작 혹은 레디 ㅋㅋ
                     break;
                 case 2:
                     var stageSelectPopup = Managers.UI.ShowPopupUI<StageSelectPopup>();
@@ -68,7 +70,7 @@ namespace VictoryChallenge.Scripts.CL
                     break;
                 case 3:
                     Debug.Log("3");
-                    // Leave Lobby 추가 (로비떠나는기능)
+                    LeaveLobby();
                     break;
                 default:
                     Debug.LogWarning("Unhandled action: " + a);
@@ -82,6 +84,12 @@ namespace VictoryChallenge.Scripts.CL
                 stageSelectButtonImage.sprite = newSprite;
             if (name != null)
                 GetTextMeshPro((int)TMPs.StageName).text = name;
+        }
+
+        private void LeaveLobby()
+        {
+            PhotonNetwork.LeaveRoom(); // 포톤 네트워크에서 현재 방을 떠남
+            SceneManager.LoadScene(1); // 로비 씬 다시 로드
         }
     }
 }
