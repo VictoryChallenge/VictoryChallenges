@@ -2,23 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateObstacle : MonoBehaviour
+
+namespace VictoryChallenge.Map
 {
-    private void OnCollisionEnter(Collision collision)
+    public class RotateObstacle : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Player"))
+        private void OnCollisionEnter(Collision collision)
         {
-            collision.transform.SetParent(transform);
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                collision.transform.SetParent(transform);
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                collision.transform.SetParent(null);
+            }
         }
     }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(null);
-        }
-    }
-
-
 }

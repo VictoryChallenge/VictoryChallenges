@@ -126,6 +126,24 @@ MonoBehaviour:
   _objectGroupName: Rock
   _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-191571013-0
   _uiSelected: 0
+--- !u!114 &-6496072030615568441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Ground
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: d59f6233-dd82-4b2d-a6a4-1b86e6b12553
+  _objectGroupName: Ground
+  _globalObjectIdString: GlobalObjectId_V1-2-44113e863289d1b4ebd9de3e8282d670-1965465043-0
+  _uiSelected: 1
 --- !u!114 &-6419588465207099192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedItems:
     _serializedList:
-    - _guidString: 78473f12-c3b1-4312-80ed-80b5e583a1bc
+    - _guidString: d59f6233-dd82-4b2d-a6a4-1b86e6b12553
   collapsedItems:
     _serializedList: []
   selectRangeBeginId:
@@ -351,6 +369,7 @@ MonoBehaviour:
     - 8396bb939a95a0245b2656546d865710
     - e39e3ca2ec52d764da7ae63a1a648fcf
     - d3278be2888ac72428ed3f1a42e3291a
+    - 44113e863289d1b4ebd9de3e8282d670
     _serializedValues:
     - _serializedList:
       - {fileID: -8102035667555546039}
@@ -384,6 +403,8 @@ MonoBehaviour:
       - {fileID: 3511448482691847517}
     - _serializedList:
       - {fileID: -262574501215136593}
+    - _serializedList:
+      - {fileID: -6496072030615568441}
   _sceneToDefaultObjectGroup:
     _serializedKeys: []
     _serializedValues: []
