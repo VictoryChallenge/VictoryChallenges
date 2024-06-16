@@ -12,7 +12,7 @@ namespace VictoryChallenge.Map
         {
             if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-
+                Debug.Log("¿Í Â¦Â¦Â¦!!");
             }
         }
     }
