@@ -21,6 +21,10 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
+                { State.Sliding, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.C);
+                }},
             };
         }
 
