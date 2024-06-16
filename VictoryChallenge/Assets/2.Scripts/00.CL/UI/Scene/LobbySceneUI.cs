@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VictoryChallenge.KJ.Photon;
+using VictoryChallenge.KJ.Room;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -70,7 +71,7 @@ namespace VictoryChallenge.Scripts.CL
                     break;
                 case 3:
                     Debug.Log("3");
-                    LeaveLobby();
+                    LeftLobby();
                     break;
                 default:
                     Debug.LogWarning("Unhandled action: " + a);
@@ -85,11 +86,10 @@ namespace VictoryChallenge.Scripts.CL
             if (name != null)
                 GetTextMeshPro((int)TMPs.StageName).text = name;
         }
-
-        private void LeaveLobby()
+        
+        public void LeftLobby()
         {
-            PhotonNetwork.LeaveRoom(); // 포톤 네트워크에서 현재 방을 떠남
-            SceneManager.LoadScene(1); // 로비 씬 다시 로드
+            RoomMananger.Instance.LeaveRoom();
         }
     }
 }

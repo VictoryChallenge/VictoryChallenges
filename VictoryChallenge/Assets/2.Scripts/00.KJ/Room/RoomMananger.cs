@@ -1,4 +1,5 @@
 using Photon.Pun;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using VictoryChallenge.KJ.Photon;
 
@@ -34,22 +35,49 @@ namespace VictoryChallenge.KJ.Room
 
         void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (scene.buildIndex == 1 && PhotonNetwork.InRoom)
+            if (scene.buildIndex == 2 && PhotonNetwork.InRoom)
             {
-                PhotonSub.Instance.AssignButtonAndText();
+                //PhotonSub.Instance.AssignButtonAndText();
 
                 if (PhotonSub.Instance != null)
                 {
+                    Debug.Log("호스트 호출");
                     PhotonSub.Instance.OnSceneLoadedForAllPlayers();
                 }
             }
-            else if (scene.buildIndex == 2)
+            else if (scene.buildIndex == 3)
             {
                 if (PhotonSub.Instance != null)
                 {
+                    Debug.Log("클라이언트 호출");
                     PhotonSub.Instance.OnSceneLoadedForAllPlayers();
                 }
             }
         }
+
+        #region Lobby
+        public override void OnLeftRoom()                   // 로비(룸)에서 떠났으면 호출
+        {
+            base.OnLeftRoom();
+            CleanUpPhotonView();
+            PhotonNetwork.LoadLevel(1);                     // 메뉴 씬으로 이동
+        }
+
+        public void LeaveRoom()
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+
+        void CleanUpPhotonView()                            // Photon 오브젝트 삭제
+        {
+            foreach (PhotonView pv in FindObjectsOfType<PhotonView>())
+            {
+                if (pv.IsMine && pv.ViewID > 0)
+                {
+                    Destroy(pv.gameObject);
+                }
+            }
+        }
+        #endregion
     }
 }

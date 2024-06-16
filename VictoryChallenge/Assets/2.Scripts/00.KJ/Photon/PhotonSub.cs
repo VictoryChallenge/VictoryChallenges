@@ -45,33 +45,24 @@ namespace VictoryChallenge.KJ.Photon
 
         public void OnSceneLoadedForAllPlayers()
         {
-            if (SceneManager.GetActiveScene().buildIndex == 1)
+            if (SceneManager.GetActiveScene().buildIndex == 2)
             {
-                Debug.Log("클라이언트 플레이어 매니저 생성");
-                //if (!_isControllerCreated)
-                //{
-                //    GameObject playerManager = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
-                //    DontDestroyOnLoad(playerManager);
-                //    playerManager.GetComponent<PlayerManager>().CreateController();
-                //    _isControllerCreated = true;
-                //}
-
+                Debug.Log("호스트 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 2)
+            else if (SceneManager.GetActiveScene().buildIndex == 3)
             {
+                Debug.Log("클라 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
             }
         }
 
         public override void OnJoinedRoom()                     // 로비(룸)에 들어왔을 때
         {
-            if (SceneManager.GetActiveScene().buildIndex == 1)
+            if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 OnSceneLoadedForAllPlayers();
             }
-
-            //StartCoroutine(UpdateButtonTextWithDelay());
 
             if (PhotonNetwork.IsMasterClient)
             {
@@ -81,13 +72,6 @@ namespace VictoryChallenge.KJ.Photon
             }
 
             Debug.Log("유저 이름 " + PhotonNetwork.NickName);
-        }
-
-        private IEnumerator UpdateButtonTextWithDelay()
-        {
-            yield return new WaitForSeconds(0.1f);
-            AssignButtonAndText();
-            UpdateButtonText();
         }
 
         public void UpdateButtonText()
@@ -175,7 +159,7 @@ namespace VictoryChallenge.KJ.Photon
         public override void OnMasterClientSwitched(Player newMasterClient)
         {
             base.OnMasterClientSwitched(newMasterClient);
-            OnStartClicked();
+            UpdateButtonText();
         }
         #endregion
     }
