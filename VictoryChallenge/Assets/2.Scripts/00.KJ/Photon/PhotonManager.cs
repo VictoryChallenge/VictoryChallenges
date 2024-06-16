@@ -28,17 +28,10 @@ namespace VictoryChallenge.KJ.Photon
         {
             PhotonNetwork.GameVersion = "0.1.0";
             Debug.Log("게임버전" + PhotonNetwork.GameVersion);
-
-            if (!PhotonNetwork.IsConnected)                 // 연결에 실패했을시 다시 연결함
-            {
-                bool isConnected = PhotonNetwork.ConnectUsingSettings();
-                Debug.Log("ConnectUsingSettings " + isConnected);
-            }
         }
         #endregion
 
         #region Photon Connect
-
         public override void OnConnected()                  // 연결에 성공
         {
             base.OnConnected();
@@ -52,12 +45,27 @@ namespace VictoryChallenge.KJ.Photon
 
             PhotonNetwork.AutomaticallySyncScene = true;    // 마스터(호스트)가 씬을 넘기면 클라이언트들도 같이 넘어감
 
-            MenuManager.Instance.OpenMenu("title");         // 타이틀 메뉴로 이동
         }
         #endregion
 
-        #region Quick Match
-        public void QuickMatch()                            // 퀵 매치
+        #region Main Menu
+        public void CheckNetwork()                            // 퀵 매치
+        {
+            if (PhotonNetwork.IsConnected)
+            {
+                Debug.Log("되네요");
+            }
+            else
+            {
+                if (!PhotonNetwork.IsConnected)                 // 연결에 실패했을시 다시 연결함
+                {
+                    PhotonNetwork.ConnectUsingSettings();
+                    Debug.Log("ConnectUsingSettings");
+                }
+            }
+        }
+
+        public void QuickMatch()
         {
             RoomOptions roomOptions = new RoomOptions()
             {
@@ -73,8 +81,14 @@ namespace VictoryChallenge.KJ.Photon
             base.OnJoinedRoom();
             if (PhotonNetwork.IsMasterClient)
             {
-                PhotonNetwork.LoadLevel(1);                 // 로비(방) 씬으로 이동
+                PhotonNetwork.LoadLevel(2);                 // 로비(방) 씬으로 이동
             }
+        }
+
+        public void SetPlayerNickname(string nickname)
+        {
+            PhotonNetwork.NickName = nickname;
+            Debug.Log("유저 닉네임 " + PhotonNetwork.NickName);
         }
         #endregion
 

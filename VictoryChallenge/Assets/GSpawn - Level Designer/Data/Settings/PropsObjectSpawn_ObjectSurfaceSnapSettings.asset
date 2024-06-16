@@ -15,7 +15,7 @@ MonoBehaviour:
   _snapMode: 0
   _snapSingleTargetToCursor: 1
   _alignAxis: 0
-  _alignmentAxis: 0
+  _alignmentAxis: 1
   _invertAlignmentAxis: 0
   _implicitOffsetFromSurface: 0
   _embedInSurface: 1

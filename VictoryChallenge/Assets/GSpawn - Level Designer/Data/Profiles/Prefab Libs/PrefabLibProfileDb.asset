@@ -32,17 +32,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedItems:
     _serializedList:
-    - _guidString: 793a7093-7562-41bd-98f3-6bc9ea737aa0
-    - _guidString: bb0ad8ff-5531-43cc-815e-61e0090001a9
-    - _guidString: ef6eedee-5d04-466c-9c33-cfa29f5f40a8
-    - _guidString: 67d7fd19-a70d-4eb2-ae0a-9663b552730c
+    - _guidString: 35472149-1a5d-4bc8-85f7-2b0bef7f23bd
   selectRangeBeginId:
-    _guidString: 793a7093-7562-41bd-98f3-6bc9ea737aa0
+    _guidString: 35472149-1a5d-4bc8-85f7-2b0bef7f23bd
   selectRangeEndId:
-    _guidString: 67d7fd19-a70d-4eb2-ae0a-9663b552730c
+    _guidString: 35472149-1a5d-4bc8-85f7-2b0bef7f23bd
   hasSelectRange: 1
-  scrollOffset: {x: 0, y: 54}
-  vertScrollHighValue: 3316
+  scrollOffset: {x: 0, y: 1890}
+  vertScrollHighValue: 3282
   vertScrollLowValue: 0
 --- !u!114 &9087172559238843662
 MonoBehaviour:

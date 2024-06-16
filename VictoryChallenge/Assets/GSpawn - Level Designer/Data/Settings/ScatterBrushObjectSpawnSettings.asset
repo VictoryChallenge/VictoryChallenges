@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac58f3731b20a44296f93c2e5c0597b, type: 3}
   m_Name: ScatterBrushObjectSpawnSettings
   m_EditorClassIdentifier: 
-  _brushRadius: 8.200004
-  _maxNumObjects: 100
+  _brushRadius: 4.7
+  _maxNumObjects: 4
   _minDragDistance: 5
   _surfaceTypes: -1
   _surfaceLayers: -1
-  _scatterBrushPrefabProfileName: Tree
+  _scatterBrushPrefabProfileName: Grass
   _overlapTestPrecision: 1
