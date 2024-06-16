@@ -63,7 +63,6 @@ namespace VictoryChallenge.Scripts.CL
             {
                 case 1:
                     Debug.Log("1");
-                    // 게임시작 혹은 레디 ㅋㅋ
                     break;
                 case 2:
                     var stageSelectPopup = Managers.UI.ShowPopupUI<StageSelectPopup>();

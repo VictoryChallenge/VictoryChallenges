@@ -151,8 +151,7 @@ namespace VictoryChallenge.KJ.Photon
             if (PhotonNetwork.IsMasterClient && AllPlayersReady())
             {
                 Debug.Log("모든 플레이어가 준비됨, 게임 시작");
-                // 나중에 맵 추가되면 여기로 넘겨주기 대리자^^
-                //PhotonNetwork.LoadLevel(3);
+                PhotonNetwork.LoadLevel(3);
             }
         }
 
