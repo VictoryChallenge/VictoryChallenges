@@ -126,6 +126,24 @@ MonoBehaviour:
   _objectGroupName: Rock
   _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-191571013-0
   _uiSelected: 0
+--- !u!114 &-6496072030615568441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Ground
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: d59f6233-dd82-4b2d-a6a4-1b86e6b12553
+  _objectGroupName: Ground
+  _globalObjectIdString: GlobalObjectId_V1-2-44113e863289d1b4ebd9de3e8282d670-1965465043-0
+  _uiSelected: 1
 --- !u!114 &-6419588465207099192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +197,7 @@ MonoBehaviour:
     _guidString: 78473f12-c3b1-4312-80ed-80b5e583a1bc
   _objectGroupName: Grass
   _globalObjectIdString: GlobalObjectId_V1-2-7d47a22b6cee9a34b92b76e6a3d0fca6-718699557-0
-  _uiSelected: 1
+  _uiSelected: 0
 --- !u!114 &-4540785700576365603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +215,24 @@ MonoBehaviour:
     _guidString: cd837d45-5841-4a18-a823-5f9bf7ed7fed
   _objectGroupName: wall
   _globalObjectIdString: GlobalObjectId_V1-2-7d47a22b6cee9a34b92b76e6a3d0fca6-1021104694-0
+  _uiSelected: 0
+--- !u!114 &-4482079793855191522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Rock
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 425ec123-8266-4f31-99aa-c9319cad11ac
+  _objectGroupName: Rock
+  _globalObjectIdString: GlobalObjectId_V1-2-7d47a22b6cee9a34b92b76e6a3d0fca6-1130930537-0
   _uiSelected: 0
 --- !u!114 &-3242385427026738426
 MonoBehaviour:
@@ -302,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedItems:
     _serializedList:
-    - _guidString: 78473f12-c3b1-4312-80ed-80b5e583a1bc
+    - _guidString: 7ba63c93-743d-495b-a7f3-e736a6cbdb77
   collapsedItems:
     _serializedList: []
   selectRangeBeginId:
@@ -351,6 +387,7 @@ MonoBehaviour:
     - 8396bb939a95a0245b2656546d865710
     - e39e3ca2ec52d764da7ae63a1a648fcf
     - d3278be2888ac72428ed3f1a42e3291a
+    - 44113e863289d1b4ebd9de3e8282d670
     _serializedValues:
     - _serializedList:
       - {fileID: -8102035667555546039}
@@ -368,6 +405,8 @@ MonoBehaviour:
       - {fileID: 2675826118748946544}
       - {fileID: -6419588465207099192}
       - {fileID: -5357046516377740166}
+      - {fileID: -4482079793855191522}
+      - {fileID: 970104389054106148}
     - _serializedList:
       - {fileID: 5274929535151896507}
       - {fileID: 1578579157117131913}
@@ -384,9 +423,29 @@ MonoBehaviour:
       - {fileID: 3511448482691847517}
     - _serializedList:
       - {fileID: -262574501215136593}
+    - _serializedList:
+      - {fileID: -6496072030615568441}
   _sceneToDefaultObjectGroup:
     _serializedKeys: []
     _serializedValues: []
+--- !u!114 &970104389054106148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Flower
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 7ba63c93-743d-495b-a7f3-e736a6cbdb77
+  _objectGroupName: Flower
+  _globalObjectIdString: GlobalObjectId_V1-2-7d47a22b6cee9a34b92b76e6a3d0fca6-7957334-0
+  _uiSelected: 1
 --- !u!114 &1078004175485843022
 MonoBehaviour:
   m_ObjectHideFlags: 0

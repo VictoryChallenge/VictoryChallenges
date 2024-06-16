@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0262334731dc04f8b6e838610cc272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1102 &-5749304506427976615
+--- !u!1102 &-5685085482610009281
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Move_X
-  m_Speed: 2
-  m_CycleOffset: 1
+  m_Name: Move_X 2
+  m_Speed: 1.5
+  m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
@@ -32,7 +32,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fd94a079faa51f14cadcf8fb0bb3ba72, type: 2}
+  m_Motion: {fileID: 7400000, guid: b2e7811951652af4c9f70e01077a7f09, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -48,8 +48,8 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -5749304506427976615}
-    m_Position: {x: 420, y: 20, z: 0}
+    m_State: {fileID: -5685085482610009281}
+    m_Position: {x: 410, y: 60, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -59,14 +59,14 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 780, y: 110, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -5749304506427976615}
+  m_DefaultState: {fileID: -5685085482610009281}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Move_X
+  m_Name: Move_X 2
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: StartTime

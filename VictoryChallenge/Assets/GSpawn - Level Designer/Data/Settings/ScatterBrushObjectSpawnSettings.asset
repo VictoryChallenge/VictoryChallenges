@@ -17,5 +17,5 @@ MonoBehaviour:
   _minDragDistance: 5
   _surfaceTypes: -1
   _surfaceLayers: -1
-  _scatterBrushPrefabProfileName: Tree
+  _scatterBrushPrefabProfileName: Grass
   _overlapTestPrecision: 1
