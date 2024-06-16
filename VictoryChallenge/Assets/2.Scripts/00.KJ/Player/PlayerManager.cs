@@ -6,6 +6,7 @@ using UnityEngine;
 using VictoryChallenge.Controllers.Player;
 using VictoryChallenge.Camera;
 using VictoryChallenge.KJ.Spawn;
+using VictoryChallenge.Customize;
 
 namespace VictoryChallenge.KJ.Manager
 {
@@ -44,6 +45,7 @@ namespace VictoryChallenge.KJ.Manager
             }
             Debug.Log("스폰 포인트 " + spawnPoint);
             controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
+            controller.GetComponentInChildren<PlayerCharacterCustomized>().Load();
         }
 
         public void Die()
