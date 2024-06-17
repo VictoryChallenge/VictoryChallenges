@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8267b50b48934ad468b191edae8905f8, type: 3}
   m_Name: PrefabFromSelectedObjectsCreationSettings
   m_EditorClassIdentifier: 
-  _prefabName: 
-  _destinationFolder: 
+  _prefabName: Prefebs2
+  _destinationFolder: Assets/Platformer_2-Low_Poly/Prefabs
   _pivot: 4
   _pivotObjectName: 
