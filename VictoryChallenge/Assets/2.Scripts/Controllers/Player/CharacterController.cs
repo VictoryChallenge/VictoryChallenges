@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using Photon.Pun;
 using VictoryChallenge.ComponentExtensions;
 using Cinemachine;
+using VictoryChallenge.Customize;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -266,6 +267,12 @@ namespace VictoryChallenge.Controllers.Player
         public void HoldingCheckRPC(bool isCheck)
         {
             _isHolding = isCheck;
+        }
+
+        [PunRPC]
+        public void CustomDataRPC()
+        {
+            transform.GetComponentInChildren<PlayerCharacterCustomized>().Load();
         }
 
         #region 충돌체크
