@@ -265,7 +265,7 @@ namespace VictoryChallenge.Customize
             //string jsonData = JsonUtility.ToJson(saveObject);
             //PlayerPrefs.SetString(PLAYER_PREFS_SAVE, jsonData);
 
-            FileStream stream = new FileStream(Application.dataPath + "/Resources/customData.json", FileMode.Create);
+            FileStream stream = new FileStream(Application.persistentDataPath + "/customData.json", FileMode.Create);
 
             string jsonData = JsonConvert.SerializeObject(saveObject);
 
@@ -276,7 +276,7 @@ namespace VictoryChallenge.Customize
 
         public void Load()
         {
-            FileStream stream = new FileStream(Application.dataPath + "/Resources/customData.json", FileMode.Open);
+            FileStream stream = new FileStream(Application.persistentDataPath + "/customData.json", FileMode.Open);
             byte[] data = new byte[stream.Length];
             stream.Read(data, 0, data.Length);
             stream.Close();
