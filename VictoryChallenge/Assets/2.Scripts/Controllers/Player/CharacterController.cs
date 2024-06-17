@@ -126,6 +126,15 @@ namespace VictoryChallenge.Controllers.Player
             set => _isSliping = value;
         }
         private bool _isSliping;
+
+        // GoalIn Finish
+        public bool isFinished
+        {
+            get => _isFinished;
+            set => _isFinished = value;
+        }
+
+        private bool _isFinished;
         #endregion
 
         private void Awake()
