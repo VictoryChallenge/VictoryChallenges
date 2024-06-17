@@ -272,7 +272,7 @@ namespace VictoryChallenge.Controllers.Player
         [PunRPC]
         public void CustomDataRPC()
         {
-            transform.GetComponentInChildren<PlayerCharacterCustomized>().Load();
+            transform.GetComponentInChildren<PlayerCharacterCustomized>().LoadData(transform.GetComponentInChildren<PlayerCharacterCustomized>().jsonOtherData);
         }
 
         #region 충돌체크

@@ -12,6 +12,14 @@ namespace VictoryChallenge.Customize
     public class PlayerCharacterCustomized : MonoBehaviour
     {
         private const string PLAYER_PREFS_SAVE = "PlayerCustomization";
+        
+        public string jsonOtherData 
+        { 
+            get => _jsonOtherData; 
+        }
+
+        private string _jsonOtherData;
+
 
         [SerializeField] private SkinnedBodyPartData[] _skinnedBodyPartDataArray;
         [SerializeField] private GameObject _earMesh;
@@ -272,6 +280,8 @@ namespace VictoryChallenge.Customize
             byte[] data = Encoding.UTF8.GetBytes(jsonData);
             stream.Write(data, 0, data.Length);
             stream.Close();
+
+            _jsonOtherData = jsonData;
         }
 
         public void Load()
@@ -331,6 +341,85 @@ namespace VictoryChallenge.Customize
             for(int i = 0; i < earMeshCount; i++)
             {
                 if(i != saveObject.earIndex)
+                {
+                    Destroy(_earMesh.transform.GetChild(i).gameObject);
+                }
+            }
+
+            for (int i = 0; i < accessoryMeshCount; i++)
+            {
+                if (i != saveObject.accessoryIndex)
+                {
+                    Destroy(_accessoryMesh.transform.GetChild(i).gameObject);
+                }
+            }
+
+            for (int i = 0; i < hatMeshCount; i++)
+            {
+                if (i != saveObject.hatIndex)
+                {
+                    Destroy(_hatMesh.transform.GetChild(i).gameObject);
+                }
+            }
+        }
+
+        public void LoadData(string jsonOtherData)
+        {
+            //FileStream stream = new FileStream(jsonOtherData, FileMode.Open);
+            //byte[] data = new byte[stream.Length];
+            //stream.Read(data, 0, data.Length);
+            //stream.Close();
+            //string jsonData = Encoding.UTF8.GetString(data);
+            SaveObject saveObject = JsonConvert.DeserializeObject<SaveObject>(jsonOtherData);
+
+            //string jsonData = PlayerPrefs.GetString(PLAYER_PREFS_SAVE);
+            //SaveObject saveObject = JsonUtility.FromJson<SaveObject>(jsonData);
+
+            foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
+            {
+                SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
+
+                if (bodyPartTypeIndex.index > -1)
+                {
+                    bodyPartData.skinnedMeshRenderer.sharedMesh = bodyPartData.meshArray[bodyPartTypeIndex.index];
+                }
+                else
+                {
+                    bodyPartData.skinnedMeshRenderer.sharedMesh = null;
+                }
+            }
+
+            // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
+
+            foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
+            {
+                SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
+
+                int childCount = bodyPartData.skinnedMeshRenderer.transform.parent.childCount;
+
+                Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
+
+                for (int i = 0; i < childCount; i++)
+                {
+                    if (i != 0)
+                    {
+                        Destroy(bodyPartData.skinnedMeshRenderer.transform.parent.transform.GetChild(i).gameObject);
+                    }
+                }
+            }
+
+            _earMesh.transform.GetChild(saveObject.earIndex).gameObject.SetActive(true);
+            _accessoryMesh.transform.GetChild(saveObject.accessoryIndex).gameObject.SetActive(true);
+            _hatMesh.transform.GetChild(saveObject.hatIndex).gameObject.SetActive(true);
+
+            int earMeshCount = _earMesh.transform.childCount;
+            int accessoryMeshCount = _accessoryMesh.transform.childCount;
+            int hatMeshCount = _hatMesh.transform.childCount;
+
+            // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
+            for (int i = 0; i < earMeshCount; i++)
+            {
+                if (i != saveObject.earIndex)
                 {
                     Destroy(_earMesh.transform.GetChild(i).gameObject);
                 }
