@@ -14,6 +14,7 @@ using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.KJ.Auth
 {
+
     #region UID 해시함수
     /// <summary>
     /// UID를 해시함수를 이용해서 ShortUID로 변환

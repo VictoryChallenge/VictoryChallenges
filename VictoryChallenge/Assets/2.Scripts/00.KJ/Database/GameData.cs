@@ -10,14 +10,14 @@ public class GameData
 public class User
 {
     public string uid;
-    public List<UserInformation> userinformations = new List<UserInformation>();
+    public string nickname;
     public int gold;
-    // 캐릭터 관련
+    //public List<UserInformation> userinformations = new List<UserInformation>();
 }
 
-[System.Serializable]
-public class UserInformation
-{
-    public int win;
-    public int lose;
-}
+//[System.Serializable]
+//public class UserInformation
+//{
+//    public int win;
+//    public int lose;
+//}
