@@ -17,9 +17,7 @@ namespace VictoryChallenge.Customize
         { 
             get => _jsonOtherData; 
         }
-
         private string _jsonOtherData;
-
 
         [SerializeField] private SkinnedBodyPartData[] _skinnedBodyPartDataArray;
         [SerializeField] private GameObject _earMesh;

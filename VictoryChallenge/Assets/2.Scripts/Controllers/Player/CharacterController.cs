@@ -7,6 +7,7 @@ using Photon.Pun;
 using VictoryChallenge.ComponentExtensions;
 using Cinemachine;
 using VictoryChallenge.Customize;
+using Newtonsoft.Json;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -272,7 +273,7 @@ namespace VictoryChallenge.Controllers.Player
         [PunRPC]
         public void CustomDataRPC()
         {
-            transform.GetComponentInChildren<PlayerCharacterCustomized>().LoadData(transform.GetComponentInChildren<PlayerCharacterCustomized>().jsonOtherData);
+            GetComponentInChildren<PlayerCharacterCustomized>().Load();
         }
 
         #region 충돌체크

@@ -47,7 +47,7 @@ namespace VictoryChallenge.KJ.Manager
             controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
             controller.GetComponentInChildren<PlayerCharacterCustomized>().Load();
 
-            controller.GetComponentInChildren<PlayerController>().GetComponent<PhotonView>().RPC("CustomDataRPC", RpcTarget.All);
+            controller.GetComponentInChildren<PlayerController>().GetComponent<PhotonView>().RPC("CustomDataRPC", RpcTarget.AllBuffered);
         }
 
         public void Die()
