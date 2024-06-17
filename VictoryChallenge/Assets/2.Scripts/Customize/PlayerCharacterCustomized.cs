@@ -6,6 +6,10 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 using static VictoryChallenge.Customize.PlayerCharacterCustomized;
+using VictoryChallenge.KJ.Database;
+using Firebase.Auth;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
+using VictoryChallenge.KJ.Auth;
 
 namespace VictoryChallenge.Customize
 {
@@ -244,6 +248,65 @@ namespace VictoryChallenge.Customize
             public int hatIndex;
         }
 
+        public string Initialize()
+        {
+            List<BodyPartTypeIndex> bodyPartTypeIndexList = new List<BodyPartTypeIndex>();
+
+            bodyPartTypeIndexList.Add(new BodyPartTypeIndex
+            {
+                bodyPartType = BodyPartType.Color,
+                index = 0,
+            });
+
+            bodyPartTypeIndexList.Add(new BodyPartTypeIndex
+            {
+                bodyPartType = BodyPartType.BodyParts,
+                index = 0,
+            });
+
+            bodyPartTypeIndexList.Add(new BodyPartTypeIndex
+            {
+                bodyPartType = BodyPartType.Eyes,
+                index = 0,
+            });
+
+            bodyPartTypeIndexList.Add(new BodyPartTypeIndex
+            {
+                bodyPartType = BodyPartType.Gloves,
+                index = 0,
+            });
+
+            bodyPartTypeIndexList.Add(new BodyPartTypeIndex
+            {
+                bodyPartType = BodyPartType.HeadParts,
+                index = 0,
+            });
+
+            bodyPartTypeIndexList.Add(new BodyPartTypeIndex
+            {
+                bodyPartType = BodyPartType.Mouth,
+                index = 0,
+            });
+
+            bodyPartTypeIndexList.Add(new BodyPartTypeIndex
+            {
+                bodyPartType = BodyPartType.Tails,
+                index = 0,
+            });
+
+            SaveObject saveObject = new SaveObject
+            {
+                bodyPartTypeIndexList = bodyPartTypeIndexList,
+                earIndex = 0,
+                accessoryIndex = 0,
+                hatIndex = 0,
+            };
+
+            string jsonData = JsonConvert.SerializeObject(saveObject);
+
+            return jsonData;
+        }
+
         public void Save()
         {
             List<BodyPartTypeIndex> bodyPartTypeIndexList = new List<BodyPartTypeIndex>();
@@ -273,13 +336,20 @@ namespace VictoryChallenge.Customize
 
             FileStream stream = new FileStream(Application.persistentDataPath + "/customData.json", FileMode.Create);
 
-            string jsonData = JsonConvert.SerializeObject(saveObject);
+            string customData = JsonConvert.SerializeObject(saveObject);
 
-            byte[] data = Encoding.UTF8.GetBytes(jsonData);
+            byte[] data = Encoding.UTF8.GetBytes(customData);
             stream.Write(data, 0, data.Length);
             stream.Close();
 
-            _jsonOtherData = jsonData;
+            // 내 유저 아이디에 맞는 커스텀 데이터 저장
+            string shortUID = UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
+            Debug.Log("shortUID : " + shortUID);
+            User user = DatabaseManager.Instance.gameData.users[shortUID];
+            string userData = JsonUtility.ToJson(user);
+            DatabaseManager.Instance.WriteUserData(shortUID, true, userData, customData);
+
+            _jsonOtherData = customData;
         }
 
         public void Load()
@@ -316,7 +386,7 @@ namespace VictoryChallenge.Customize
 
                 int childCount = bodyPartData.skinnedMeshRenderer.transform.parent.childCount;
 
-                Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
+                //Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
 
                 for(int i = 0; i < childCount; i++)
                 {
