@@ -2,6 +2,7 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VictoryChallenge.KJ.Photon;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 namespace VictoryChallenge.KJ.Room
 {
@@ -59,7 +60,7 @@ namespace VictoryChallenge.KJ.Room
         public override void OnLeftRoom()                   // 로비(룸)에서 떠났으면 호출
         {
             base.OnLeftRoom();
-            CleanUpPhotonView();
+            //CleanUpPhotonView();
             PhotonNetwork.LoadLevel(1);                     // 메뉴 씬으로 이동
         }
 
