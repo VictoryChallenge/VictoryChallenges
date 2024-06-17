@@ -2,7 +2,6 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VictoryChallenge.KJ.Photon;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 namespace VictoryChallenge.KJ.Room
 {
