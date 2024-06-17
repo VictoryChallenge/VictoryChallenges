@@ -29,6 +29,10 @@ namespace VictoryChallenge.StateMachine.Player
                 {
                     return Input.GetKeyDown(KeyCode.C);
                 }},
+                { State.Slip, (animator) =>
+                {
+                    return controller.isSlip && !controller.isSliping;
+                }},
             };
         }
 

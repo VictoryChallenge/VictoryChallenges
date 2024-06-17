@@ -20,7 +20,15 @@ namespace VictoryChallenge.StateMachine.Player
                 { State.JumpEnd, (animator) =>
                 {
                     return controller.velocity.y <= 0;
-                }}
+                }},
+                { State.Sliding, (animator) =>
+                {
+                    return Input.GetKeyDown(KeyCode.C);
+                }},
+                { State.Slip, (animator) =>
+                {
+                    return controller.isSlip && !controller.isSliping;
+                }},
             };
         }
 

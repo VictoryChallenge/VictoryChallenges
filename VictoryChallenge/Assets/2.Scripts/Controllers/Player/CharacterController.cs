@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Photon.Pun;
 using VictoryChallenge.ComponentExtensions;
+using Cinemachine;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -103,13 +104,29 @@ namespace VictoryChallenge.Controllers.Player
             get => _isHit;
             set => _isHit = value;
         }
+
         private bool _isHit;
 
         // Object
         public virtual bool isReverseKey { get; set; }
+
+        public bool isSlip
+        {
+            get => _isSlip;
+            set => _isSlip = value;
+        }
+
+        private bool _isSlip;
+
+        public bool isSliping
+        {
+            get => _isSliping;
+            set => _isSliping = value;
+        }
+        private bool _isSliping;
         #endregion
 
-        protected virtual void Start()
+        private void Awake()
         {
             // 컴포넌트 캐싱
             _rigidBody = GetComponent<Rigidbody>();
@@ -117,12 +134,17 @@ namespace VictoryChallenge.Controllers.Player
 
             // 애니메이션 상태머신 등록
             InitAnimatorBehaviours();
-            
+
             // 포톤뷰 캐싱
             _pv = GetComponent<PhotonView>();
+        }
 
+        protected virtual void Start()
+        {
             if (!_pv.IsMine)
             {
+                CinemachineVirtualCamera otherCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
+                otherCam.enabled = false; 
                 return;
             }
         }
@@ -237,7 +259,7 @@ namespace VictoryChallenge.Controllers.Player
         public void HitCheckRPC(bool isCheck)
         {
             _isHit = isCheck;
-            //Debug.Log("호출");
+            Debug.Log("hitCheck" + _isHit);
         }
 
         [PunRPC]
@@ -247,18 +269,16 @@ namespace VictoryChallenge.Controllers.Player
         }
 
         #region 충돌체크
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    // Attack Check
-        //    if(_isAttacking)
-        //    {
-        //        if(other.gameObject.layer == LayerMask.NameToLayer("PlayerAttack"))
-        //        {
-        //            Debug.Log("나 맞았어 엄마한테 이를거야");
-        //            _isHit = true;
-        //        }
-        //    }
-        //}
+        private void OnCollisionEnter(Collision collision)
+        {
+            if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+            {
+                if(_isSlip == false)
+                {
+                    _isSlip = true;
+                }
+            }
+        }
         #endregion
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 /// 데이터를 저장하는 방법
 /// 1. 저장할 데이터가 존재
@@ -33,6 +34,28 @@ namespace VictoryChallenge.Json.DataManage
         public Vector2[] uv;
     }
 
+    [System.Serializable]
+    public class SkinnedMeshData
+    {
+        public Vector3[] vertices;
+        public int[] triangles;
+        public Vector2[] uv;
+        public Matrix4x4[] bindposes;
+        public BoneData[] bones;
+    }
+
+    [System.Serializable]
+    public class BoneData
+    {
+        public string boneName;
+        public string parentName;
+        public Vector3 localPosition;
+        public Quaternion localRotation;
+        public Vector3 localScale;
+    }
+
+
+
     public class JsonDataManager : MonoBehaviour
     {
         public static JsonDataManager instance;
@@ -43,6 +66,7 @@ namespace VictoryChallenge.Json.DataManage
         string filename = "save";
 
         MeshData meshData = new MeshData();
+        public SkinnedMeshRenderer skinnedMeshToSave; // 저장할 SkinnedMeshRenderer
         public Material meshMaterial; // 메시를 렌더링할 때 사용할 Material
         public Mesh testMesh;
 
@@ -100,6 +124,8 @@ namespace VictoryChallenge.Json.DataManage
             string data = File.ReadAllText(path + filename);
             playerData = JsonUtility.FromJson<PlayerData>(data);
         }
+
+        #region Mesh
 
         public void SaveMeshToJsonButton()
         {
@@ -167,5 +193,122 @@ namespace VictoryChallenge.Json.DataManage
             mesh.RecalculateNormals(); // 필요시 Normals 재계산
             return mesh;
         }
+        #endregion
+
+        #region SkinnedMesh
+
+        public void SaveSkinnedMeshToJsonButton()
+        {
+            SaveSkinnedMeshToJson(skinnedMeshToSave, path + filename);
+        }
+
+        public void LoadSkinnedMeshFromJsonButton()
+        {
+            SkinnedMeshRenderer loadedSkinnedMeshRenderer = LoadSkinnedMeshFromJson(path + filename);
+            loadedSkinnedMeshRenderer.sharedMaterial = meshMaterial; // 필요한 Material을 할당
+        }
+
+        public void SaveSkinnedMeshToJson(SkinnedMeshRenderer skinnedMeshRenderer, string path)
+        {
+            SkinnedMeshData skinnedMeshData = SkinnedMeshToSkinnedMeshData(skinnedMeshRenderer);
+            string json = JsonUtility.ToJson(skinnedMeshData);
+            File.WriteAllText(path, json);
+        }
+
+        public SkinnedMeshRenderer LoadSkinnedMeshFromJson(string path)
+        {
+            SkinnedMeshData skinnedMeshData = JsonToSkinnedMeshData(path);
+            return SkinnedMeshDataToSkinnedMesh(skinnedMeshData);
+        }
+
+        // Skinned Mesh -> Json
+
+        public SkinnedMeshData SkinnedMeshToSkinnedMeshData(SkinnedMeshRenderer skinnedMeshRenderer)
+        {
+            SkinnedMeshData skinnedMeshData = new SkinnedMeshData();
+            Mesh mesh = skinnedMeshRenderer.sharedMesh;
+
+            skinnedMeshData.vertices = mesh.vertices;
+            skinnedMeshData.triangles = mesh.triangles;
+            skinnedMeshData.uv = mesh.uv;
+            skinnedMeshData.bindposes = mesh.bindposes;
+
+            Transform[] bones = skinnedMeshRenderer.bones;
+            skinnedMeshData.bones = new BoneData[bones.Length];
+            for (int i = 0; i < bones.Length; i++)
+            {
+                BoneData boneData = new BoneData
+                {
+                    boneName = bones[i].name,
+                    parentName = bones[i].parent != null ? bones[i].parent.name : null,
+                    localPosition = bones[i].localPosition,
+                    localRotation = bones[i].localRotation,
+                    localScale = bones[i].localScale
+                };
+                skinnedMeshData.bones[i] = boneData;
+            }
+
+            return skinnedMeshData;
+        }
+
+        // Json -> Skinned Mesh
+
+        public SkinnedMeshData JsonToSkinnedMeshData(string path)
+        {
+            string json = File.ReadAllText(path);
+            SkinnedMeshData skinnedMeshData = JsonUtility.FromJson<SkinnedMeshData>(json);
+            return skinnedMeshData;
+        }
+
+        public SkinnedMeshRenderer SkinnedMeshDataToSkinnedMesh(SkinnedMeshData skinnedMeshData)
+        {
+            GameObject meshObject = new GameObject("LoadedSkinnedMesh");
+            SkinnedMeshRenderer skinnedMeshRenderer = meshObject.AddComponent<SkinnedMeshRenderer>();
+
+            Mesh mesh = new Mesh();
+            mesh.vertices = skinnedMeshData.vertices;
+            mesh.triangles = skinnedMeshData.triangles;
+            mesh.uv = skinnedMeshData.uv;
+            mesh.bindposes = skinnedMeshData.bindposes;
+            mesh.RecalculateNormals();
+
+            Transform[] bones = new Transform[skinnedMeshData.bones.Length];
+            for (int i = 0; i < skinnedMeshData.bones.Length; i++)
+            {
+                BoneData boneData = skinnedMeshData.bones[i];
+                GameObject boneObject = new GameObject(boneData.boneName);
+                Transform boneTransform = boneObject.transform;
+
+                boneTransform.localPosition = boneData.localPosition;
+                boneTransform.localRotation = boneData.localRotation;
+                boneTransform.localScale = boneData.localScale;
+
+                if (!string.IsNullOrEmpty(boneData.parentName))
+                {
+                    Transform parentTransform = meshObject.transform.Find(boneData.parentName);
+                    if (parentTransform != null)
+                    {
+                        boneTransform.parent = parentTransform;
+                    }
+                    else
+                    {
+                        boneTransform.parent = meshObject.transform;
+                    }
+                }
+                else
+                {
+                    boneTransform.parent = meshObject.transform;
+                }
+
+                bones[i] = boneTransform;
+            }
+
+            skinnedMeshRenderer.sharedMesh = mesh;
+            skinnedMeshRenderer.bones = bones;
+
+            return skinnedMeshRenderer;
+        }
+
+        #endregion
     }
 }

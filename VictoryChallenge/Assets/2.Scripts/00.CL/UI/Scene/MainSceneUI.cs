@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VictoryChallenge.KJ.Photon;
 
@@ -30,7 +31,7 @@ namespace VictoryChallenge.Scripts.CL
             Bind<Button>(typeof(Buttons));
 
             GetButton((int)Buttons.JoinRoomButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
-            //GetButton((int)Buttons.CustomizeButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
+            GetButton((int)Buttons.CustomizeButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
             //GetButton((int)Buttons.ShopButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
             GetButton((int)Buttons.SettingsButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 4));
             GetButton((int)Buttons.ExitGameButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 5));
@@ -44,7 +45,7 @@ namespace VictoryChallenge.Scripts.CL
                     Managers.UI.ShowPopupUI<JoinRoomPopup>();
                     break;
                 case 2:
-                    // Ä¿½ºÅÒ ¾À ·Îµå
+                    PhotonNetwork.LoadLevel("CustomizeTutorialCL");
                     break;
                 case 3:
                     // »óÁ¡ ¾À ¶ç¿ì±â

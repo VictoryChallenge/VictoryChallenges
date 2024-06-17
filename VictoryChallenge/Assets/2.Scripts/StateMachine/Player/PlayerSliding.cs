@@ -24,6 +24,8 @@ namespace VictoryChallenge.StateMachine.Player
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
             animator.SetInteger("State", (int)State.Sliding);
+
+            controller.GetComponent<CapsuleCollider>().center = new Vector3(0f, 1f, 0f);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

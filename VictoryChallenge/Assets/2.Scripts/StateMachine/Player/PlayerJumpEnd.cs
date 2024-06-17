@@ -29,6 +29,8 @@ namespace VictoryChallenge.StateMachine.Player
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
             animator.SetInteger("State", (int)State.JumpEnd);
+
+            controller.GetComponent<CapsuleCollider>().center = new Vector3(0f, 1f, 0f);
         }
     }
 }

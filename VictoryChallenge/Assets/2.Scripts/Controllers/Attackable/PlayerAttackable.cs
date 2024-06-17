@@ -7,16 +7,11 @@ namespace VictoryChallenge.Controllers.Attackable
 {
     public class PlayerAttackable : MonoBehaviour
     {
-        private CharacterController _characterController;
+        private bool _isCollisionCheck;
 
 
         private void Start()
         {
-            _characterController = GetComponent<CharacterController>();
-            if( _characterController != null )
-            {
-                //Debug.Log("character isn't null");
-            }
         }
 
         private void Update()
@@ -28,8 +23,9 @@ namespace VictoryChallenge.Controllers.Attackable
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
+                Debug.Log("isAttacking : " + this.gameObject.GetComponent<CharacterController>().isAttacking);
                 // Attack Check
-                if (_characterController.isAttacking)
+                if (this.gameObject.GetComponent<CharacterController>().isAttacking)
                 {
                     // 중복 hit체크 방지
                     if(other.gameObject.GetComponent<CharacterController>().isHit == false)
@@ -46,7 +42,7 @@ namespace VictoryChallenge.Controllers.Attackable
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 // Attack Check
-                if (_characterController.isAttacking)
+                if (this.gameObject.GetComponent<CharacterController>().isAttacking)
                 {
                     // 맞은 캐릭터의 hit 애니메이션 조건 = false 설정
                     other.gameObject.GetComponent<PhotonView>().RPC("HitCheckRPC", RpcTarget.All, false);
