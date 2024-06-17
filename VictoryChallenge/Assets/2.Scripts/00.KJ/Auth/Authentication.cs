@@ -1,46 +1,16 @@
+using Photon.Pun;
 using Firebase;
 using Firebase.Auth;
-using Photon.Pun;
-
-//using Firebase.Database;
+using Firebase.Database;
 using System;
 using System.Collections;
-using System.Security.Cryptography;
-using System.Text;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using VictoryChallenge.KJ.Photon;
+using VictoryChallenge.KJ.Database;
 
 namespace VictoryChallenge.KJ.Auth
 {
-    #region UID 해시함수
-    /// <summary>
-    /// UID를 해시함수를 이용해서 ShortUID로 변환
-    /// </summary>
-    public static class UIDHelper
-    {
-        public static string GenerateShortUID(string longUID)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                // SHA256 해시 값을 계산
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(longUID));
-
-                // 바이트 배열을 String으로 변환
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-
-                // 해시값의 앞부분만(8자리) 사용하여 ShortUID 생성
-                return builder.ToString().Substring(0, 8);
-            }
-        }
-    }
-    #endregion
-
     /// <summary>
     /// 로그인
     /// </summary>
@@ -68,7 +38,7 @@ namespace VictoryChallenge.KJ.Auth
         [HideInInspector] public TMP_Text warningRegisterText;                        // 오류 메세지
         [HideInInspector] public TMP_Text confirmRegisterText;                        // 성공시 나타나는 메세지
 
-        //private DatabaseReference _databaseReference;               // 데이터베이스의 특정 위치 참조
+        private DatabaseReference _databaseReference;               // 데이터베이스의 특정 위치 참조
 
         /// <summary>
         /// 의존성 상태 확인 후 초기화
@@ -82,8 +52,13 @@ namespace VictoryChallenge.KJ.Auth
 
                 if (dependencyStatus == DependencyStatus.Available)
                 {
-                    InitializeFirebase();
-                    //_databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+                    FirebaseApp app = FirebaseApp.DefaultInstance;
+                    if (app.Options.DatabaseUrl == null)
+                    {
+                        app.Options.DatabaseUrl = new Uri("https://victorychallenge-b8854-default-rtdb.firebaseio.com/");
+                    }
+                    _auth = FirebaseAuth.GetAuth(app);
+                    _databaseReference = FirebaseDatabase.GetInstance(app).RootReference;
 
                     Debug.Log("Firebase 초기화 성공");
                 }
@@ -100,7 +75,13 @@ namespace VictoryChallenge.KJ.Auth
         /// </summary>
         public void InitializeFirebase()
         {
-            _auth = FirebaseAuth.DefaultInstance;
+            FirebaseApp app = FirebaseApp.DefaultInstance;
+            if (app.Options.DatabaseUrl == null)
+            {
+                app.Options.DatabaseUrl = new Uri("https://victorychallenge-b8854-default-rtdb.firebaseio.com/");
+            }
+            _auth = FirebaseAuth.GetAuth(app);
+            _databaseReference = FirebaseDatabase.GetInstance(app).RootReference;
         }
 
         /// <summary>
@@ -186,30 +167,92 @@ namespace VictoryChallenge.KJ.Auth
                 }
                 else
                 {
-                    message = $"알수 없는 오류가 발생하였습니다. : {LoginTask.Exception.GetBaseException().Message}";
+                    message = $"알 수 없는 오류가 발생하였습니다. : {LoginTask.Exception.GetBaseException().Message}";
                 }
                 warningLoginText.text = message;
                 onLoginCompleted?.Invoke(false);
             }
             else
             {
-                try
-                {
-                    _user = LoginTask.Result.User;
-                    // 로그인 성공했을 경우
-                    Debug.LogFormat($"로그인 성공 : {_user.Email}, {_user.DisplayName}");
-                    warningLoginText.text = "";
-                    confirmLoginText.text = "로그인에 성공했습니다.";
-                    // yield return DB로 보내야함
+                _user = LoginTask.Result.User;
+                Debug.LogFormat($"로그인 성공 : {_user.Email}, {_user.DisplayName}");
 
-                    onLoginCompleted?.Invoke(true);
-                }
-                catch (Exception ex)
+                string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
+                DatabaseReference userRef = FirebaseDatabase.DefaultInstance.GetReference("User").Child(shortUID);
+
+                var userTask = userRef.GetValueAsync();
+                yield return new WaitUntil(predicate: () => userTask.IsCompleted);
+
+                if (userTask.Exception != null)
                 {
-                    Debug.Log("오류 발생");
-                    warningLoginText.text = "사용자 정보 가져오는 도중 오류가 발생했습니다.";
+                    Debug.Log("데이터 불러오는 중 에러 발생" + userTask.Exception);
                     onLoginCompleted?.Invoke(false);
                 }
+                else
+                {
+                    DataSnapshot snapshot = userTask.Result;
+                    if (snapshot.Exists)
+                    {
+                        string json = snapshot.GetRawJsonValue();
+                        User userData = JsonUtility.FromJson<User>(json);
+                        userData.uid = _user.UserId;
+                        userData.shortUID = shortUID;
+                        userData.userName = _user.DisplayName;
+
+                        string updateJsonData = JsonUtility.ToJson(userData);
+                        DatabaseManager.Instance.WriteUserData(userData.shortUID, true, updateJsonData);
+
+                        warningLoginText.text = "";
+                        confirmLoginText.text = "로그인에 성공했습니다.";
+
+                        onLoginCompleted?.Invoke(true);
+                    }
+                    else
+                    {
+                        Debug.Log("스냅샷" + snapshot);
+                        Debug.LogError("사용자 데이터를 찾을 수 없습니다.");
+                        onLoginCompleted?.Invoke(false);
+                    }
+                }
+                //try
+                //{
+                //    _user = LoginTask.Result.User;
+                //    // 로그인 성공했을 경우
+                //    Debug.LogFormat($"로그인 성공 : {_user.Email}, {_user.DisplayName}");
+                //    warningLoginText.text = "";
+                //    confirmLoginText.text = "로그인에 성공했습니다.";
+
+                //    // 로그인 정보 업데이트 (데이터베이스)
+                //    DatabaseManager.Instance.WriteUserData(_user.UserId, true, "jsonData");
+
+                //    onLoginCompleted?.Invoke(true);
+                //}
+                //catch (Exception ex)
+                //{
+                //    Debug.Log("오류 발생");
+                //    warningLoginText.text = "사용자 정보 가져오는 도중 오류가 발생했습니다.";
+                //    onLoginCompleted?.Invoke(false);
+                //}
+            }
+        }
+
+        /// <summary>
+        /// 로그 아웃 로직
+        /// </summary>
+        public void LogOut()
+        {
+            if (_user != null )
+            {
+                // 로그아웃 정보 업데이트 (데이터베이스)
+                string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
+                DatabaseManager.Instance.WriteUserData(shortUID, false, "");
+
+                _auth.SignOut();
+                Debug.Log("로그아웃 성공");
+            }
+            else
+            {
+                Debug.Log("로그인된 계정이 없습니다.");
             }
         }
 
@@ -316,14 +359,16 @@ namespace VictoryChallenge.KJ.Auth
                             PhotonManager.Instance.SetPlayerNickname(_username);
                             confirmRegisterText.text = "회원가입이 성공적으로 이루어졌습니다.";
                             warningRegisterText.text = "";
+
+                            string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
+                            User newUser = new User(_user.UserId, shortUID, _username, 100, 0);
+                            string jsonData = JsonUtility.ToJson(newUser);
+                            DatabaseManager.Instance.WriteUserData(newUser.shortUID, false, jsonData);
                         }
                     }
                 }
             }
         }
-        #endregion
-
-        #region ShortUID
         #endregion
     }
 }
