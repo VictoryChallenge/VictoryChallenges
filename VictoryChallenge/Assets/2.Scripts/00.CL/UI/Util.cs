@@ -22,6 +22,7 @@ namespace VictoryChallenge.Scripts.CL
             return component;
         }
 
+        #region 자식들 중 원하는 오브젝트/컴포넌트 찾기
         /// <summary>
         /// 하위 객체 중 파라미터 "name"과 같은 이름을 가진 게임오브젝트를 반환하는 함수
         /// </summary>
@@ -87,5 +88,6 @@ namespace VictoryChallenge.Scripts.CL
 
             return null;
         }
+        #endregion 찾기 끝
     }
 }

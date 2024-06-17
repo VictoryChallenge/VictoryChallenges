@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VictoryChallenge.KJ.Photon;
 using VictoryChallenge.KJ.Room;
+using VictoryChallenge.KJ.Lobby;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -27,7 +28,7 @@ namespace VictoryChallenge.Scripts.CL
         }
 
         enum Images
-        { 
+        {
             PlayerListContent,
         }
 
@@ -55,7 +56,23 @@ namespace VictoryChallenge.Scripts.CL
             GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
             GetButton((int)Buttons.LeaveLobby).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
 
-            //GetImage((int)Images.PlayerListContent).gameObject;
+            //if (PlayerList.Instance == null)
+            //{
+            //    Debug.LogError("PlayerList.Instance is null");
+            //}
+            //else
+            //{
+            //    var playerListContentImage = GetImage((int)Images.PlayerListContent);
+            //    if (playerListContentImage == null)
+            //    {
+            //        Debug.LogError("playerListContentImage is null");
+            //    }
+            //    else
+            //    {
+            //        PlayerList.Instance.playerListContent = playerListContentImage.gameObject;
+            //        Debug.Log(playerListContentImage.name);
+            //    }
+            //}
         }
 
         public void OnButtonClicked(PointerEventData data, int a)

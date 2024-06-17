@@ -36,7 +36,7 @@ public class MultiPlayerBuildAndRun
         for (int i = 1; i <= playerCount; i++)
         {
             BuildPipeline.BuildPlayer(GetScenePaths(),
-                "Builds/Win64/" + GetProjectName() + i.ToString() + "/" + GetProjectName() + i.ToString() + ".exe",
+                "Build/Win64/" + GetProjectName() + i.ToString() + "/" + GetProjectName() + i.ToString() + ".exe",
                 BuildTarget.StandaloneWindows64, BuildOptions.AutoRunPlayer);
         }
     }
@@ -82,7 +82,7 @@ public class MultiPlayerBuildAndRun
             // 씬의 경로를 추가
             // 프로젝트 이름과 플레이어 번호를 사용해서 빌드 경로와 파일 설정
             BuildPipeline.BuildPlayer(GetScenePaths(),
-                "Builds/Win64/" + GetProjectName() + i.ToString() + "/" + GetProjectName() + i.ToString() + ".app",
+                "Build/Win64/" + GetProjectName() + i.ToString() + "/" + GetProjectName() + i.ToString() + ".app",
                 BuildTarget.StandaloneOSX, BuildOptions.AutoRunPlayer
             );
         }

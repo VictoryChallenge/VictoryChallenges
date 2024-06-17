@@ -67,6 +67,7 @@ namespace VictoryChallenge.Scripts.CL
             }
         }
 
+        #region 씬관련
         /// <summary>
         /// Scene UI를 표시하는 함수
         /// </summary>
@@ -92,7 +93,9 @@ namespace VictoryChallenge.Scripts.CL
             // SceneUI 반환
             return SceneUI;
         }
+        #endregion 씬관련 끝
 
+        #region 팝업관련
         /// <summary>
         /// Popup UI를 표시하는 함수
         /// </summary>
@@ -164,5 +167,6 @@ namespace VictoryChallenge.Scripts.CL
             while (_popupStack.Count > 0)
                 ClosePopupUI();
         }
+        #endregion 팝업관련 끝
     }
 }

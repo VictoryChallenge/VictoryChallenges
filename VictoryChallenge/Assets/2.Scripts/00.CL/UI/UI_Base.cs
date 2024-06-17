@@ -18,6 +18,7 @@ namespace VictoryChallenge.Scripts.CL
         // Type을 key로 가지고, object 배열을 갖는 dictionary 생성
         Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
 
+        #region 바인딩 함수
         /// <summary>
         /// Enum에 있는 요소들을 자식 객체에서 찾아서 바인딩
         /// </summary>
@@ -44,7 +45,9 @@ namespace VictoryChallenge.Scripts.CL
                     objects[i] = Util.FindChild<T>(gameObject, names[i], true);
             }
         }
+        #endregion 바인딩 끝
 
+        #region UI 등 컴포넌트 요소 가져오는 함수
         /// <summary>
         /// 맨 위에서 선언한 object 딕셔너리에서 해당 인덱스의 요소를 가져오는 함수
         /// </summary>
@@ -76,7 +79,9 @@ namespace VictoryChallenge.Scripts.CL
         protected Toggle GetToggle(int idx) { return Get<Toggle>(idx); }
         protected TMP_InputField GetInputField(int idx) { return Get<TMP_InputField>(idx);}
         protected ScrollRect GetScrollRect(int idx) { return Get<ScrollRect>(idx); }
+        #endregion 끝
 
+        #region 이벤트 핸들러 작업 (AddListener과 동일한 기능)
         /// <summary>
         /// UI 이벤트를 추가하는 함수
         /// </summary>
@@ -103,5 +108,6 @@ namespace VictoryChallenge.Scripts.CL
                     break;
             }
         }
+        #endregion 끝
     }
 }
