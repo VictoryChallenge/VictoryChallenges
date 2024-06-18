@@ -8,10 +8,10 @@ using System.Text;
 using static VictoryChallenge.Customize.PlayerCharacterCustomized;
 using VictoryChallenge.KJ.Database;
 using Firebase.Auth;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
 using VictoryChallenge.KJ.Auth;
 using Firebase.Database;
 using Firebase.Extensions;
+using Photon.Pun;
 
 namespace VictoryChallenge.Customize
 {
@@ -34,6 +34,9 @@ namespace VictoryChallenge.Customize
         private int _hatIndex = 0;
         private int _accessoryIndex = 0;
 
+        private string _userId;
+        private string _shortUID;
+
         public enum BodyPartType
         {
             Color,
@@ -47,8 +50,13 @@ namespace VictoryChallenge.Customize
 
         private void Start()
         {
-
-            LoadData();
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                object[] data = GetComponent<PhotonView>().InstantiationData;
+                _userId = (string)data[0];
+                _shortUID = UIDHelper.GenerateShortUID(_userId);
+                LoadData();
+            }
         }
 
         [System.Serializable]
