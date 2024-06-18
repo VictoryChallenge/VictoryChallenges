@@ -131,7 +131,7 @@ namespace VictoryChallenge.Customize
 
             _loadButton.onClick.AddListener(() =>
             {
-                _playerCharacterCustomized.Load();
+                _playerCharacterCustomized.LoadData();
             });
 
             _saveButton.onClick.AddListener(() =>

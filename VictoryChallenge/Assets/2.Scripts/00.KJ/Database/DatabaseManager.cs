@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 using VictoryChallenge.Customize;
+using WebSocketSharp;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 namespace VictoryChallenge.KJ.Database
@@ -47,6 +48,15 @@ namespace VictoryChallenge.KJ.Database
     {
         public GameData gameData { get; private set; }
 
+        public DatabaseManager()
+        {
+            if(gameData == null)
+            {
+                gameData = new GameData();
+                Debug.Log("gameData 초기화");
+            }
+        }
+
         public void SaveUserDB(FirebaseUser user)
         {
             if (gameData == null || !gameData.users.ContainsKey(user.UserId))
@@ -64,7 +74,7 @@ namespace VictoryChallenge.KJ.Database
             WriteUserData(shortUID, true, jsonData, customData);
         }
 
-        public IEnumerator LoadUserDB(FirebaseUser user, string jsonData)
+        public IEnumerator LoadUserDB(FirebaseUser user)
         {
             if (gameData == null)
             {
@@ -166,13 +176,6 @@ namespace VictoryChallenge.KJ.Database
 
             // userkey를 가진 User의 데이터를 gameData에 넣기
             ReadUserData(userkey);
-        }
-
-        public string GetUserJsonData(FirebaseUser user)
-        {
-            User userData = gameData.users[user.UserId];
-            string jsonData = JsonUtility.ToJson(userData);
-            return jsonData;
         }
     }
 }

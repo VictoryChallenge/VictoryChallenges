@@ -10,6 +10,8 @@ using VictoryChallenge.KJ.Database;
 using Firebase.Auth;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 using VictoryChallenge.KJ.Auth;
+using Firebase.Database;
+using Firebase.Extensions;
 
 namespace VictoryChallenge.Customize
 {
@@ -41,6 +43,12 @@ namespace VictoryChallenge.Customize
             HeadParts,
             Mouth,
             Tails,
+        }
+
+        private void Start()
+        {
+
+            LoadData();
         }
 
         [System.Serializable]
@@ -348,7 +356,7 @@ namespace VictoryChallenge.Customize
             User user = DatabaseManager.Instance.gameData.users[shortUID];
             string userData = JsonUtility.ToJson(user);
             DatabaseManager.Instance.WriteUserData(shortUID, true, userData, customData);
-
+            Debug.Log("customData : " + customData);
             _jsonOtherData = customData;
         }
 
@@ -431,17 +439,43 @@ namespace VictoryChallenge.Customize
             }
         }
 
-        public void LoadData(string jsonOtherData)
+        public void LoadData()
         {
-            //FileStream stream = new FileStream(jsonOtherData, FileMode.Open);
-            //byte[] data = new byte[stream.Length];
-            //stream.Read(data, 0, data.Length);
-            //stream.Close();
-            //string jsonData = Encoding.UTF8.GetString(data);
-            SaveObject saveObject = JsonConvert.DeserializeObject<SaveObject>(jsonOtherData);
+            string shortUID = UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
+            StartCoroutine(C_LoadjsonData(shortUID));
+        }
 
-            //string jsonData = PlayerPrefs.GetString(PLAYER_PREFS_SAVE);
-            //SaveObject saveObject = JsonUtility.FromJson<SaveObject>(jsonData);
+        private IEnumerator C_LoadjsonData(string shortUID)
+        {
+            string userData = "";
+            DatabaseReference db = FirebaseDatabase.DefaultInstance.GetReference("User");
+            db.GetValueAsync().ContinueWithOnMainThread(task =>
+            {
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("ReadData is Faulted");
+                }
+                else if (task.IsCompleted)
+                {
+                    DataSnapshot snapshot = task.Result;
+                    Debug.Log("ChilderenCount" + snapshot.ChildrenCount);
+
+                    foreach (var child in snapshot.Children)
+                    {
+                        if (child.Key == shortUID)
+                        {
+                            Debug.Log("child.Value.ToString() : " + child.ToString());
+                            userData = child.Child("customData").Value.ToString();
+                        }
+                    }
+                }
+            });
+
+            yield return new WaitUntil(() => !string.IsNullOrEmpty(userData));
+
+            Debug.Log(userData);
+            // 역직렬화
+            SaveObject saveObject = JsonConvert.DeserializeObject<SaveObject>(userData);
 
             foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
             {
@@ -479,35 +513,6 @@ namespace VictoryChallenge.Customize
             _earMesh.transform.GetChild(saveObject.earIndex).gameObject.SetActive(true);
             _accessoryMesh.transform.GetChild(saveObject.accessoryIndex).gameObject.SetActive(true);
             _hatMesh.transform.GetChild(saveObject.hatIndex).gameObject.SetActive(true);
-
-            int earMeshCount = _earMesh.transform.childCount;
-            int accessoryMeshCount = _accessoryMesh.transform.childCount;
-            int hatMeshCount = _hatMesh.transform.childCount;
-
-            // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
-            for (int i = 0; i < earMeshCount; i++)
-            {
-                if (i != saveObject.earIndex)
-                {
-                    Destroy(_earMesh.transform.GetChild(i).gameObject);
-                }
-            }
-
-            for (int i = 0; i < accessoryMeshCount; i++)
-            {
-                if (i != saveObject.accessoryIndex)
-                {
-                    Destroy(_accessoryMesh.transform.GetChild(i).gameObject);
-                }
-            }
-
-            for (int i = 0; i < hatMeshCount; i++)
-            {
-                if (i != saveObject.hatIndex)
-                {
-                    Destroy(_hatMesh.transform.GetChild(i).gameObject);
-                }
-            }
         }
     }
 }

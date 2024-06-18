@@ -10,6 +10,8 @@ using VictoryChallenge.KJ.Photon;
 using VictoryChallenge.KJ.Database;
 using static VictoryChallenge.Customize.PlayerCharacterCustomized;
 using VictoryChallenge.Customize;
+using Firebase.Extensions;
+using Newtonsoft.Json;
 
 namespace VictoryChallenge.KJ.Auth
 {
@@ -196,13 +198,12 @@ namespace VictoryChallenge.KJ.Auth
                     if (snapshot.Exists)
                     {
                         string json = snapshot.GetRawJsonValue();
+                        string customData = snapshot.Child("customData").Value.ToString();
+
                         User userData = JsonUtility.FromJson<User>(json);
                         userData.uid = _user.UserId;
                         userData.shortUID = shortUID;
                         userData.userName = _user.DisplayName;
-
-                        PlayerCharacterCustomized playerData = new PlayerCharacterCustomized();
-                        string customData = playerData.Initialize();
 
                         string updateJsonData = JsonUtility.ToJson(userData);
                         DatabaseManager.Instance.WriteUserData(userData.shortUID, true, updateJsonData, customData);
@@ -378,5 +379,35 @@ namespace VictoryChallenge.KJ.Auth
             }
         }
         #endregion
+
+        private IEnumerator C_LoadjsonData(string shortUID)
+        {
+            string userData = "";
+            DatabaseReference db = FirebaseDatabase.DefaultInstance.GetReference("User");
+            db.GetValueAsync().ContinueWithOnMainThread(task =>
+            {
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("ReadData is Faulted");
+                }
+                else if (task.IsCompleted)
+                {
+                    DataSnapshot snapshot = task.Result;
+                    Debug.Log("ChilderenCount" + snapshot.ChildrenCount);
+
+                    foreach (var child in snapshot.Children)
+                    {
+                        if (child.Key == shortUID)
+                        {
+                            Debug.Log("child.Value.ToString() : " + child.ToString());
+                            userData = child.Child("customData").Value.ToString();
+                        }
+                    }
+                }
+            });
+            yield return new WaitUntil(() => !string.IsNullOrEmpty(userData));
+            
+        }
+
     }
 }
