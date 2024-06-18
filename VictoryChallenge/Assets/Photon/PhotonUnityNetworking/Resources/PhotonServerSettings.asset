@@ -44,6 +44,7 @@ MonoBehaviour:
   - HoldingCheckRPC
   - RPC_UpdateStageSelectTextSprite
   - CustomDataRPC
+  - SendCustomData
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -47,9 +47,9 @@ namespace VictoryChallenge.KJ.Manager
                 return;
             }
             Debug.Log("스폰 포인트 " + spawnPoint);
-            string userId = FirebaseAuth.DefaultInstance.CurrentUser.UserId;
-                //UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
-            Debug.Log("userId : " + userId);
+            /*FirebaseAuth.DefaultInstance.CurrentUser.UserId;*/
+            string userId = UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
+            //Debug.Log("userId : " + userId);
             controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { userId });
         }
 

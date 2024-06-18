@@ -12,6 +12,8 @@ using VictoryChallenge.KJ.Auth;
 using Firebase.Database;
 using Firebase.Extensions;
 using Photon.Pun;
+using VictoryChallenge.Controllers.Player;
+using UnityEngine.SceneManagement;
 
 namespace VictoryChallenge.Customize
 {
@@ -37,6 +39,8 @@ namespace VictoryChallenge.Customize
         private string _userId;
         private string _shortUID;
 
+        [SerializeField] private PhotonView _pv;
+
         public enum BodyPartType
         {
             Color,
@@ -50,11 +54,18 @@ namespace VictoryChallenge.Customize
 
         private void Start()
         {
-            if (GetComponent<PhotonView>().IsMine)
+            if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
             {
-                object[] data = GetComponent<PhotonView>().InstantiationData;
-                _userId = (string)data[0];
-                _shortUID = UIDHelper.GenerateShortUID(_userId);
+                if (_pv.IsMine)
+                {
+                    object[] data = _pv.InstantiationData;
+                    _userId = (string)data[0];
+                    _shortUID = UIDHelper.GenerateShortUID(_userId);
+                    LoadData();
+                }
+            }
+            else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4))
+            {
                 LoadData();
             }
         }
@@ -476,6 +487,7 @@ namespace VictoryChallenge.Customize
                             Debug.Log("child.Value.ToString() : " + child.ToString());
                             userData = child.Child("customData").Value.ToString();
                             DatabaseManager.Instance.customData = userData;
+                            _pv.RPC("SendCustomData", RpcTarget.AllBuffered, userData);
                         }
                     }
                 }
@@ -486,6 +498,49 @@ namespace VictoryChallenge.Customize
             Debug.Log(userData);
             // 역직렬화
             SaveObject saveObject = JsonConvert.DeserializeObject<SaveObject>(userData);
+
+            foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
+            {
+                SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
+
+                if (bodyPartTypeIndex.index > -1)
+                {
+                    bodyPartData.skinnedMeshRenderer.sharedMesh = bodyPartData.meshArray[bodyPartTypeIndex.index];
+                }
+                else
+                {
+                    bodyPartData.skinnedMeshRenderer.sharedMesh = null;
+                }
+            }
+
+            // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
+
+            foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
+            {
+                SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
+
+                int childCount = bodyPartData.skinnedMeshRenderer.transform.parent.childCount;
+
+                Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
+
+                for (int i = 0; i < childCount; i++)
+                {
+                    if (i != 0)
+                    {
+                        Destroy(bodyPartData.skinnedMeshRenderer.transform.parent.transform.GetChild(i).gameObject);
+                    }
+                }
+            }
+
+            _earMesh.transform.GetChild(saveObject.earIndex).gameObject.SetActive(true);
+            _accessoryMesh.transform.GetChild(saveObject.accessoryIndex).gameObject.SetActive(true);
+            _hatMesh.transform.GetChild(saveObject.hatIndex).gameObject.SetActive(true);
+        }
+
+        [PunRPC]
+        public void SendCustomData(string customData) 
+        {
+            SaveObject saveObject = JsonConvert.DeserializeObject<SaveObject>(customData);
 
             foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
             {

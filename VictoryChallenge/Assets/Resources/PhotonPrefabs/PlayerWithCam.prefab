@@ -13074,6 +13074,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2663402189044225329, guid: 92a88890847789b41a8d15ce4f6fa767,
+        type: 3}
+      propertyPath: _pv
+      value: 
+      objectReference: {fileID: 5423612666389817126}
     - target: {fileID: 4536369553757272199, guid: 92a88890847789b41a8d15ce4f6fa767,
         type: 3}
       propertyPath: m_Controller
@@ -13088,6 +13093,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635162545121551767, guid: 92a88890847789b41a8d15ce4f6fa767,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6635162545121551767, guid: 92a88890847789b41a8d15ce4f6fa767,
         type: 3}
