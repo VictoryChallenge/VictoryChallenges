@@ -2085,9 +2085,9 @@ MonoBehaviour:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
-    _position: {x: -0, y: 0, z: 0}
+    _position: {x: 0.7685715, y: 17.838665, z: 54.973343}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
-    _scale: {x: 1, y: 1, z: 1}
+    _scale: {x: 1.15, y: 1.15, z: 1.15}
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 0.45124927, y: 1.4510788, z: 0.45124927}
@@ -2472,11 +2472,11 @@ MonoBehaviour:
     - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
-    _position: {x: -1.5887527, y: 4.5679016, z: 91.38477}
-    _rotation: {x: -0, y: 0.7071065, z: -0, w: -0.7071071}
-    _scale: {x: 1, y: 1, z: 1}
-  _modularSnapVerticalStep: -12
-  _surfaceSnapAppliedOffsetFromSurface: -8.899986
+    _position: {x: 2.6587396, y: -9.038916, z: 27.587864}
+    _rotation: {x: 0.7071068, y: -0.7071068, z: -0, w: 0}
+    _scale: {x: 0.6900001, y: 0.6900001, z: 0.69000036}
+  _modularSnapVerticalStep: -24
+  _surfaceSnapAppliedOffsetFromSurface: -6.8999834
   _modelSize: {x: 24.869473, y: 11.967787, z: 12.875166}
   _uiSelected: 0
 --- !u!114 &-5087616926488539920
@@ -2952,9 +2952,9 @@ MonoBehaviour:
     _rotation: {x: 0, y: 0, z: 0, w: 1}
     _scale: {x: 1, y: 1, z: 1}
   _modularSnapVerticalStep: 0
-  _surfaceSnapAppliedOffsetFromSurface: -0.35000002
+  _surfaceSnapAppliedOffsetFromSurface: 0.049999993
   _modelSize: {x: 5.8525324, y: 1.6180689, z: 0.7329292}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-4228394532545801561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4477,11 +4477,11 @@ MonoBehaviour:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
-    _position: {x: -19.88358, y: 1.6935291, z: 196.97803}
+    _position: {x: 1.3568251, y: 8.3820095, z: 12.658292}
     _rotation: {x: -0.0000000074505797, y: 0.21564089, z: 0.000000005587935, w: 0.97647274}
-    _scale: {x: 2, y: 2, z: 2}
+    _scale: {x: 2.128536, y: 2.128536, z: 2.128536}
   _modularSnapVerticalStep: 0
-  _surfaceSnapAppliedOffsetFromSurface: 0
+  _surfaceSnapAppliedOffsetFromSurface: 9.3500185
   _modelSize: {x: 4, y: 2, z: 4}
   _uiSelected: 0
 --- !u!114 &-2751338048988121506
@@ -5414,7 +5414,7 @@ MonoBehaviour:
     _serializedKeys:
     - 34649597e8469d2489b9e43d42e854c3
     _serializedValues:
-    - {fileID: -2857655252048825849, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 0}
   _spawnGuideTransformTRS:
     _position: {x: -17.142939, y: 0.0000076293945, z: -43.629257}
     _rotation: {x: -0, y: 1, z: -0, w: -0.0000038398425}
@@ -6454,7 +6454,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 4, y: 2, z: 6}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-15360421851013545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7547,7 +7547,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 6.5, y: 0.810825, z: 6}
-  _uiSelected: 1
+  _uiSelected: 0
 --- !u!114 &1929950399476347696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9995,7 +9995,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 10.05
   _modelSize: {x: 10, y: 0, z: 10}
-  _uiSelected: 1
+  _uiSelected: 0
 --- !u!114 &5827910281587027228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10430,11 +10430,11 @@ MonoBehaviour:
     _serializedValues:
     - {fileID: 1739317549007672953, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
-    _position: {x: 35.48537, y: 10.934013, z: 3.7798486}
+    _position: {x: 6.322958, y: 6.874983, z: 83.66405}
     _rotation: {x: -0, y: 0.7253749, z: -0, w: 0.6883541}
-    _scale: {x: 1.2430079, y: 1.2430079, z: 1.2430079}
+    _scale: {x: 2.8899944, y: 2.8899944, z: 2.8899944}
   _modularSnapVerticalStep: 0
-  _surfaceSnapAppliedOffsetFromSurface: 24.849966
+  _surfaceSnapAppliedOffsetFromSurface: 14.449985
   _modelSize: {x: 1, y: 1, z: 1}
   _uiSelected: 0
 --- !u!114 &6594140710095221841
@@ -10506,11 +10506,11 @@ MonoBehaviour:
     - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
-    _position: {x: 2, y: 0, z: 2}
-    _rotation: {x: -0.000000022390513, y: 0.004947692, z: 6.5854433e-10, w: 0.99998784}
-    _scale: {x: 1.3381413, y: 1.338141, z: 1.3381412}
+    _position: {x: -10.805792, y: 0.9000242, z: 58.8424}
+    _rotation: {x: -0.000000015648931, y: 0.6982093, z: 0.000000016027483, w: 0.7158938}
+    _scale: {x: 1.3381417, y: 1.338141, z: 1.3381416}
   _modularSnapVerticalStep: 0
-  _surfaceSnapAppliedOffsetFromSurface: -8.349984
+  _surfaceSnapAppliedOffsetFromSurface: 7.35003
   _modelSize: {x: 25.97416, y: 7.930203, z: 10.020401}
   _uiSelected: 0
 --- !u!114 &6701437580649453811

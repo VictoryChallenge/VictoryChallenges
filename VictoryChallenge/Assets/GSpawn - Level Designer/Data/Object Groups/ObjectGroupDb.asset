@@ -288,24 +288,6 @@ MonoBehaviour:
   _objectGroupName: Obstacle
   _globalObjectIdString: GlobalObjectId_V1-2-b800fbcc83fc83b4b8327454d724edca-1187544739-0
   _uiSelected: 1
---- !u!114 &-2857655252048825849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
-  m_Name: Water
-  m_EditorClassIdentifier: 
-  _parentGroup: {fileID: 0}
-  _guid:
-    _guidString: 571ce54b-f1d2-48f4-bd18-fc7d3ef82194
-  _objectGroupName: Water
-  _globalObjectIdString: GlobalObjectId_V1-2-34649597e8469d2489b9e43d42e854c3-1027883329-0
-  _uiSelected: 1
 --- !u!114 &-1735305301273866831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,8 +448,7 @@ MonoBehaviour:
     - _serializedList:
       - {fileID: 8485959223536753481}
       - {fileID: -3091149285308133662}
-    - _serializedList:
-      - {fileID: -2857655252048825849}
+    - _serializedList: []
   _sceneToDefaultObjectGroup:
     _serializedKeys: []
     _serializedValues: []
