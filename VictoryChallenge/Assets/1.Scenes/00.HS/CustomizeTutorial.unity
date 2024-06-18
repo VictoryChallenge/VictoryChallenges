@@ -2948,8 +2948,9 @@ GameObject:
   - component: {fileID: 3371065433958832122}
   - component: {fileID: 8391811242445816675}
   - component: {fileID: 7959991274679774933}
+  - component: {fileID: 8391811242445816676}
   m_Layer: 0
-  m_Name: Basic_Character
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12656,6 +12657,7 @@ MonoBehaviour:
   _earMesh: {fileID: 4572779214533364682}
   _hatMesh: {fileID: 8173926272025071399}
   _accessoryMesh: {fileID: 8725239003986933959}
+  _pv: {fileID: 0}
 --- !u!33 &7970083699600295797
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13195,6 +13197,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8391811242445816676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627218798316084851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6131174d1fb1dd04ca185cea88cb5ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tureSpeed: 10
 --- !u!4 &8406659972417845450
 Transform:
   m_ObjectHideFlags: 0
