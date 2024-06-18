@@ -8,7 +8,6 @@ using TMPro;
 using UnityEngine;
 using VictoryChallenge.KJ.Photon;
 using VictoryChallenge.KJ.Database;
-using static VictoryChallenge.Customize.PlayerCharacterCustomized;
 using VictoryChallenge.Customize;
 using Firebase.Extensions;
 using Newtonsoft.Json;
@@ -23,7 +22,7 @@ namespace VictoryChallenge.KJ.Auth
         [Header("Firebase")]
         [Tooltip("파이어베이스 인증에 필요한 변수들")]
         public DependencyStatus dependencyStatus;                   // Firebase 초기화 후 상태 확인
-        private FirebaseAuth _auth;                                 // 인증(로그인)
+        public FirebaseAuth _auth { get; private set; }             // 인증(로그인)
         public FirebaseUser _user { get; private set; }             // 인증이 완료된 유저 정보
 
         [Header("Log-In")]
@@ -201,12 +200,22 @@ namespace VictoryChallenge.KJ.Auth
                         string customData = snapshot.Child("customData").Value.ToString();
 
                         User userData = JsonUtility.FromJson<User>(json);
+
+                        if (userData.isLoggedIn)
+                        {
+                            warningLoginText.text = "이미 접속중인 아이디 입니다.";
+                            yield break;
+                        }
+
                         userData.uid = _user.UserId;
                         userData.shortUID = shortUID;
                         userData.userName = _user.DisplayName;
+                        userData.isLoggedIn = true;
+
+                        Debug.Log("접속중 ON : " + userData.isLoggedIn);
 
                         string updateJsonData = JsonUtility.ToJson(userData);
-                        DatabaseManager.Instance.WriteUserData(userData.shortUID, true, updateJsonData, customData);
+                        DatabaseManager.Instance.WriteUserData(userData.shortUID, updateJsonData, customData);
 
                         warningLoginText.text = "";
                         confirmLoginText.text = "로그인에 성공했습니다.";
@@ -220,25 +229,6 @@ namespace VictoryChallenge.KJ.Auth
                         onLoginCompleted?.Invoke(false);
                     }
                 }
-                //try
-                //{
-                //    _user = LoginTask.Result.User;
-                //    // 로그인 성공했을 경우
-                //    Debug.LogFormat($"로그인 성공 : {_user.Email}, {_user.DisplayName}");
-                //    warningLoginText.text = "";
-                //    confirmLoginText.text = "로그인에 성공했습니다.";
-
-                //    // 로그인 정보 업데이트 (데이터베이스)
-                //    DatabaseManager.Instance.WriteUserData(_user.UserId, true, "jsonData");
-
-                //    onLoginCompleted?.Invoke(true);
-                //}
-                //catch (Exception ex)
-                //{
-                //    Debug.Log("오류 발생");
-                //    warningLoginText.text = "사용자 정보 가져오는 도중 오류가 발생했습니다.";
-                //    onLoginCompleted?.Invoke(false);
-                //}
             }
         }
 
@@ -249,12 +239,16 @@ namespace VictoryChallenge.KJ.Auth
         {
             if (_user != null )
             {
-                // 로그아웃 정보 업데이트 (데이터베이스)
+                //// 로그아웃 정보 업데이트 (데이터베이스)
                 string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
-                DatabaseManager.Instance.WriteUserData(shortUID, false, "", "");
+                DatabaseManager.Instance.gameData.users[shortUID].isLoggedIn = false;
+                User userData = DatabaseManager.Instance.gameData.users[shortUID];
+                string json = JsonUtility.ToJson(userData);
 
-                _auth.SignOut();
-                Debug.Log("로그아웃 성공");
+                DatabaseManager.Instance.SignOutProcess(shortUID, json, "");
+                Debug.Log("접속중 OFF : " + DatabaseManager.Instance.gameData.users[shortUID].isLoggedIn);
+                    
+                // 로그아웃과 게임종료가 데이터 업데이트 이후에 이루어져야함
             }
             else
             {
@@ -362,7 +356,6 @@ namespace VictoryChallenge.KJ.Auth
                         {
                             // 회원가입 성공
                             Debug.LogFormat("회원가입이 성공적으로 이루어졌습니다." + _user.DisplayName);
-                            PhotonManager.Instance.SetPlayerNickname(_username);
                             confirmRegisterText.text = "회원가입이 성공적으로 이루어졌습니다.";
                             warningRegisterText.text = "";
 
@@ -370,9 +363,9 @@ namespace VictoryChallenge.KJ.Auth
                             string customData = playerData.Initialize();
 
                             string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
-                            User newUser = new User(_user.UserId, shortUID, _username, 100, 0);
+                            User newUser = new User(_user.UserId, shortUID, _username, false, 100, 0);
                             string jsonData = JsonUtility.ToJson(newUser);
-                            DatabaseManager.Instance.WriteUserData(newUser.shortUID, false, jsonData, customData);
+                            DatabaseManager.Instance.WriteUserData(newUser.shortUID, jsonData, customData);
                         }
                     }
                 }

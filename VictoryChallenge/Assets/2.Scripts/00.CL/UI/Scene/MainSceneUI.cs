@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VictoryChallenge.KJ.Auth;
 using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.Scripts.CL
@@ -54,8 +55,8 @@ namespace VictoryChallenge.Scripts.CL
                     Managers.UI.ShowPopupUI<SettingsPopup>();
                     break;
                 case 5:
-                    //게임나가기
-                     Application.Quit();
+                    // 로그아웃 추가
+                    Authentication.Instance.LogOut();
                     break;
                 default:
                     Debug.LogWarning("Unhandled action: " + a);
