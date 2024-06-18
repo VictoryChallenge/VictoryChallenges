@@ -1,6 +1,7 @@
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using VictoryChallenge.KJ.Auth;
 using VictoryChallenge.KJ.Menu;
 
 namespace VictoryChallenge.KJ.Photon
@@ -44,7 +45,7 @@ namespace VictoryChallenge.KJ.Photon
             Debug.Log("OnConnectedToMaster");
 
             PhotonNetwork.AutomaticallySyncScene = true;    // 마스터(호스트)가 씬을 넘기면 클라이언트들도 같이 넘어감
-
+            PhotonNetwork.NickName = Authentication.Instance._user.DisplayName;
         }
         #endregion
 
@@ -85,11 +86,11 @@ namespace VictoryChallenge.KJ.Photon
             }
         }
 
-        public void SetPlayerNickname(string nickname)
-        {
-            PhotonNetwork.NickName = nickname;
-            Debug.Log("유저 닉네임 " + PhotonNetwork.NickName);
-        }
+        //public void SetPlayerNickname(string nickname)
+        //{
+        //    PhotonNetwork.NickName = nickname;
+        //    Debug.Log("유저 닉네임 " + PhotonNetwork.NickName);
+        //}
         #endregion
 
         public void OnApplicationQuit()
