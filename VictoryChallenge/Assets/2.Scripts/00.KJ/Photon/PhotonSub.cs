@@ -19,7 +19,7 @@ namespace VictoryChallenge.KJ.Photon
         [HideInInspector] public TMP_Text _text;
 
         private bool _isReady = false;
-        private int stageNum;
+        private int stageNum = 3;
         //private bool _isControllerCreated = false;
 
         #region Singleton
