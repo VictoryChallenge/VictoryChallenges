@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 using Photon.Pun;
 using VictoryChallenge.ComponentExtensions;
 using Cinemachine;
+using VictoryChallenge.Customize;
+using Newtonsoft.Json;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -124,6 +126,15 @@ namespace VictoryChallenge.Controllers.Player
             set => _isSliping = value;
         }
         private bool _isSliping;
+
+        // GoalIn Finish
+        public bool isFinished
+        {
+            get => _isFinished;
+            set => _isFinished = value;
+        }
+
+        private bool _isFinished;
         #endregion
 
         private void Awake()
@@ -266,6 +277,12 @@ namespace VictoryChallenge.Controllers.Player
         public void HoldingCheckRPC(bool isCheck)
         {
             _isHolding = isCheck;
+        }
+
+        [PunRPC]
+        public void CustomDataRPC()
+        {
+            GetComponentInChildren<PlayerCharacterCustomized>().Load();
         }
 
         #region 충돌체크

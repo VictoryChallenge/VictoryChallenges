@@ -8549,6 +8549,7 @@ GameObject:
   - component: {fileID: 7226502690374904862}
   - component: {fileID: 4536369553757272199}
   - component: {fileID: 2663402189044225329}
+  - component: {fileID: 4712996218914820357}
   m_Layer: 0
   m_Name: Basic_Character
   m_TagString: Untagged
@@ -8707,6 +8708,21 @@ MonoBehaviour:
   _earMesh: {fileID: 8499446682386739246}
   _hatMesh: {fileID: 4318461029467829443}
   _accessoryMesh: {fileID: 3717608703743197987}
+--- !u!114 &4712996218914820357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635162545121551767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70e21468adefd44c8cdbc86c7e7daf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSmoothTime: 0.1
+  _pv: {fileID: 0}
+  _vCamPerspective: {fileID: 0}
 --- !u!1 &6691450883411963610
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,16 @@
 using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Extensions;
+using Google.MiniJSON;
+using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using VictoryChallenge.Customize;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 namespace VictoryChallenge.KJ.Database
 {
@@ -49,11 +53,14 @@ namespace VictoryChallenge.KJ.Database
                 Debug.LogError("사용자 데이터가 초기화 되지 않았거나 데이터가 없습니다.");
             }
 
-            User userData = gameData.users[user.UserId];
+            User userData = gameData.users[user.UserId]; 
             string jsonData = JsonUtility.ToJson(userData);
             string shortUID = UIDHelper.GenerateShortUID(user.UserId);
-            WriteUserData(shortUID, true, jsonData);
 
+            PlayerCharacterCustomized playerData = new PlayerCharacterCustomized();
+            string customData = playerData.Initialize();
+
+            WriteUserData(shortUID, true, jsonData, customData);
         }
 
         public IEnumerator LoadUserDB(FirebaseUser user, string jsonData)
@@ -85,7 +92,7 @@ namespace VictoryChallenge.KJ.Database
             }
         }
 
-        public void ReadUserData(string userkey, Action callback = null)
+        public void ReadUserData(string shortUID, Action callback = null)
         {
             DatabaseReference db = FirebaseDatabase.DefaultInstance.GetReference("User");
             db.GetValueAsync().ContinueWithOnMainThread(task =>
@@ -99,12 +106,23 @@ namespace VictoryChallenge.KJ.Database
                     DataSnapshot snapshot = task.Result;
                     Debug.Log("ChilderenCount" + snapshot.ChildrenCount);
 
-                    string strUserData = snapshot.Value.ToString();
-                    if (!string.IsNullOrEmpty(strUserData))
+                    foreach (var child in snapshot.Children)
                     {
-                        Debug.Log("복원 완료" + gameData);
-                        gameData = Newtonsoft.Json.JsonConvert.DeserializeObject<GameData>(strUserData);
+                        if(child.Key == shortUID)
+                        {
+                            Debug.Log("child.Value.ToString() : " + child.ToString());
+                            string strData = child.Child("jsonData").Value.ToString();
+                            User loadUser = JsonUtility.FromJson<User>(strData);
+                            gameData.users[shortUID] = loadUser;
+                            Debug.Log("gameData" + gameData.users[shortUID]);
+                        }
                     }
+
+                    //if (!string.IsNullOrEmpty(strUserData))
+                    //{
+                    //    gameData = Newtonsoft.Json.JsonConvert.DeserializeObject<GameData>(strUserData);
+                    //    Debug.Log("복원 완료" + gameData);
+                    //}
 
                     if (callback != null)
                     {
@@ -114,7 +132,7 @@ namespace VictoryChallenge.KJ.Database
             });
         }
 
-        public void WriteUserData(string userkey, bool isLoggedIn, string jsonData)
+        public void WriteUserData(string userkey, bool isLoggedIn, string jsonData, string customData)
         {
             DatabaseReference db = null;
             db = FirebaseDatabase.DefaultInstance.GetReference("User");
@@ -123,6 +141,7 @@ namespace VictoryChallenge.KJ.Database
             dic.Add("userkey", userkey);
             dic.Add("isLoggedIn", isLoggedIn);
             dic.Add("jsonData", jsonData);
+            dic.Add("customData", customData);
 
             Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add(userkey, dic);
@@ -134,6 +153,16 @@ namespace VictoryChallenge.KJ.Database
                     Debug.Log("Database Update");
                 }
             });
+
+            // userkey를 가진 User의 데이터를 gameData에 넣기
+            ReadUserData(userkey);
+        }
+
+        public string GetUserJsonData(FirebaseUser user)
+        {
+            User userData = gameData.users[user.UserId];
+            string jsonData = JsonUtility.ToJson(userData);
+            return jsonData;
         }
     }
 }

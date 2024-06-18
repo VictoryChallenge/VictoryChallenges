@@ -8,6 +8,8 @@ using TMPro;
 using UnityEngine;
 using VictoryChallenge.KJ.Photon;
 using VictoryChallenge.KJ.Database;
+using static VictoryChallenge.Customize.PlayerCharacterCustomized;
+using VictoryChallenge.Customize;
 
 namespace VictoryChallenge.KJ.Auth
 {
@@ -199,8 +201,11 @@ namespace VictoryChallenge.KJ.Auth
                         userData.shortUID = shortUID;
                         userData.userName = _user.DisplayName;
 
+                        PlayerCharacterCustomized playerData = new PlayerCharacterCustomized();
+                        string customData = playerData.Initialize();
+
                         string updateJsonData = JsonUtility.ToJson(userData);
-                        DatabaseManager.Instance.WriteUserData(userData.shortUID, true, updateJsonData);
+                        DatabaseManager.Instance.WriteUserData(userData.shortUID, true, updateJsonData, customData);
 
                         warningLoginText.text = "";
                         confirmLoginText.text = "로그인에 성공했습니다.";
@@ -245,7 +250,7 @@ namespace VictoryChallenge.KJ.Auth
             {
                 // 로그아웃 정보 업데이트 (데이터베이스)
                 string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
-                DatabaseManager.Instance.WriteUserData(shortUID, false, "");
+                DatabaseManager.Instance.WriteUserData(shortUID, false, "", "");
 
                 _auth.SignOut();
                 Debug.Log("로그아웃 성공");
@@ -360,10 +365,13 @@ namespace VictoryChallenge.KJ.Auth
                             confirmRegisterText.text = "회원가입이 성공적으로 이루어졌습니다.";
                             warningRegisterText.text = "";
 
+                            PlayerCharacterCustomized playerData = new PlayerCharacterCustomized();
+                            string customData = playerData.Initialize();
+
                             string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
                             User newUser = new User(_user.UserId, shortUID, _username, 100, 0);
                             string jsonData = JsonUtility.ToJson(newUser);
-                            DatabaseManager.Instance.WriteUserData(newUser.shortUID, false, jsonData);
+                            DatabaseManager.Instance.WriteUserData(newUser.shortUID, false, jsonData, customData);
                         }
                     }
                 }
