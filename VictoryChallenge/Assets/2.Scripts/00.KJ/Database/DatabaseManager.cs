@@ -53,6 +53,8 @@ namespace VictoryChallenge.KJ.Database
             }
         }
 
+        public string customData { get; set; }
+
         public void SaveUserDB(FirebaseUser user)
         {
             if (gameData == null || !gameData.users.ContainsKey(user.UserId))
@@ -133,7 +135,7 @@ namespace VictoryChallenge.KJ.Database
             });
         }
 
-        public void WriteUserData(string userkey, string jsonData, string customData)
+        public void WriteUserData(string userkey, string jsonData, string customData = "")
         {
             DatabaseReference db = null;
             db = FirebaseDatabase.DefaultInstance.GetReference("User");
@@ -181,16 +183,17 @@ namespace VictoryChallenge.KJ.Database
                     Debug.Log("로그아웃 성공");
                 }
             });
-                    //게임나가기
-                    Application.Quit();
+
+            //게임나가기
+            Application.Quit();
         }
-            public string GetUserJsonData(FirebaseUser user)
-            {
-                User userData = gameData.users[user.UserId];
-                string jsonData = JsonUtility.ToJson(userData);
-                return jsonData;
-            }
-        
+
+        public string GetUserJsonData(FirebaseUser user)
+        {
+            User userData = gameData.users[user.UserId];
+            string jsonData = JsonUtility.ToJson(userData);
+            return jsonData;
+        }
     }
 }
 

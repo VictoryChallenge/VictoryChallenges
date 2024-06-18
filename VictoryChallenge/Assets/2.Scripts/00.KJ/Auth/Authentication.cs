@@ -245,7 +245,7 @@ namespace VictoryChallenge.KJ.Auth
                 User userData = DatabaseManager.Instance.gameData.users[shortUID];
                 string json = JsonUtility.ToJson(userData);
 
-                DatabaseManager.Instance.SignOutProcess(shortUID, json, "");
+                DatabaseManager.Instance.SignOutProcess(shortUID, json, DatabaseManager.Instance.customData);
                 Debug.Log("접속중 OFF : " + DatabaseManager.Instance.gameData.users[shortUID].isLoggedIn);
                     
                 // 로그아웃과 게임종료가 데이터 업데이트 이후에 이루어져야함
@@ -372,35 +372,5 @@ namespace VictoryChallenge.KJ.Auth
             }
         }
         #endregion
-
-        private IEnumerator C_LoadjsonData(string shortUID)
-        {
-            string userData = "";
-            DatabaseReference db = FirebaseDatabase.DefaultInstance.GetReference("User");
-            db.GetValueAsync().ContinueWithOnMainThread(task =>
-            {
-                if (task.IsFaulted)
-                {
-                    Debug.LogError("ReadData is Faulted");
-                }
-                else if (task.IsCompleted)
-                {
-                    DataSnapshot snapshot = task.Result;
-                    Debug.Log("ChilderenCount" + snapshot.ChildrenCount);
-
-                    foreach (var child in snapshot.Children)
-                    {
-                        if (child.Key == shortUID)
-                        {
-                            Debug.Log("child.Value.ToString() : " + child.ToString());
-                            userData = child.Child("customData").Value.ToString();
-                        }
-                    }
-                }
-            });
-            yield return new WaitUntil(() => !string.IsNullOrEmpty(userData));
-            
-        }
-
     }
 }
