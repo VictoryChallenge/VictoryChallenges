@@ -4,7 +4,6 @@ using Firebase.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
@@ -62,15 +61,6 @@ namespace VictoryChallenge.KJ.Database
             if (gameData == null)
             {
                 gameData = new GameData();
-                //TextAsset userData = Resources.Load<TextAsset>("UserDB");
-                //gameData = Newtonsoft.Json.JsonConvert.DeserializeObject<GameData>(userData.text);
-
-                //Debug.Log("LoadUserDB");
-                //User u = new User();
-                //u.uid = user.UserId;
-                //u.shortUID = UIDHelper.GenerateShortUID(user.UserId);
-
-                //yield return null;
             }
 
             string shortUID = UIDHelper.GenerateShortUID(user.UserId);
