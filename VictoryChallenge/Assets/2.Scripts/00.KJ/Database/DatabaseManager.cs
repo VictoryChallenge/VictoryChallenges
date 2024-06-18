@@ -1,8 +1,6 @@
 using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Extensions;
-using Google.MiniJSON;
-using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 using VictoryChallenge.Customize;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
+using VictoryChallenge.KJ.Auth;
 
 namespace VictoryChallenge.KJ.Database
 {
@@ -46,6 +44,15 @@ namespace VictoryChallenge.KJ.Database
     {
         public GameData gameData { get; private set; }
 
+        public DatabaseManager()
+        {
+            if (gameData == null)
+            {
+                gameData = new GameData();
+                Debug.Log("gameData 초기화");
+            }
+        }
+
         public void SaveUserDB(FirebaseUser user)
         {
             if (gameData == null || !gameData.users.ContainsKey(user.UserId))
@@ -60,10 +67,10 @@ namespace VictoryChallenge.KJ.Database
             PlayerCharacterCustomized playerData = new PlayerCharacterCustomized();
             string customData = playerData.Initialize();
 
-            WriteUserData(shortUID, true, jsonData, customData);
+            WriteUserData(shortUID, jsonData, customData);
         }
 
-        public IEnumerator LoadUserDB(FirebaseUser user, string jsonData)
+        public IEnumerator LoadUserDB(FirebaseUser user)
         {
             if (gameData == null)
             {
@@ -85,7 +92,7 @@ namespace VictoryChallenge.KJ.Database
                 DataSnapshot snapshot = task.Result;
                 if (snapshot.Exists)
                 {
-                    string json = snapshot.Child("jsonData").Value.ToString();
+                    string json = snapshot.Children.ToString();
                     User loadUser = JsonUtility.FromJson<User>(json);
                     gameData.users[shortUID] = loadUser;
                 }
@@ -118,12 +125,6 @@ namespace VictoryChallenge.KJ.Database
                         }
                     }
 
-                    //if (!string.IsNullOrEmpty(strUserData))
-                    //{
-                    //    gameData = Newtonsoft.Json.JsonConvert.DeserializeObject<GameData>(strUserData);
-                    //    Debug.Log("복원 완료" + gameData);
-                    //}
-
                     if (callback != null)
                     {
                         callback?.Invoke();
@@ -132,14 +133,13 @@ namespace VictoryChallenge.KJ.Database
             });
         }
 
-        public void WriteUserData(string userkey, bool isLoggedIn, string jsonData, string customData)
+        public void WriteUserData(string userkey, string jsonData, string customData)
         {
             DatabaseReference db = null;
             db = FirebaseDatabase.DefaultInstance.GetReference("User");
 
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("userkey", userkey);
-            dic.Add("isLoggedIn", isLoggedIn);
             dic.Add("jsonData", jsonData);
             dic.Add("customData", customData);
 
@@ -158,12 +158,39 @@ namespace VictoryChallenge.KJ.Database
             ReadUserData(userkey);
         }
 
-        public string GetUserJsonData(FirebaseUser user)
+        public void SignOutProcess(string userkey, string jsonData, string customData)
         {
-            User userData = gameData.users[user.UserId];
-            string jsonData = JsonUtility.ToJson(userData);
-            return jsonData;
+            DatabaseReference db = null;
+            db = FirebaseDatabase.DefaultInstance.GetReference("User");
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("userkey", userkey);
+            dic.Add("jsonData", jsonData);
+            dic.Add("customData", customData);
+
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add(userkey, dic);
+
+            db.UpdateChildrenAsync(data).ContinueWithOnMainThread(task =>
+            {
+                if (task.IsCompleted)
+                {
+                    Debug.Log("Database Update");
+
+                    Authentication.Instance._auth.SignOut();
+                    Debug.Log("로그아웃 성공");
+                }
+            });
+                    //게임나가기
+                    Application.Quit();
         }
+            public string GetUserJsonData(FirebaseUser user)
+            {
+                User userData = gameData.users[user.UserId];
+                string jsonData = JsonUtility.ToJson(userData);
+                return jsonData;
+            }
+        
     }
 }
 

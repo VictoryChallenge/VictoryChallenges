@@ -15,16 +15,18 @@ namespace VictoryChallenge.KJ.Database
         public string uid;
         public string shortUID;
         public string userName;
+        public bool isLoggedIn;
         public int gold;
         public int rank;
 
         public User() { }
 
-        public User(string uid, string shortUID, string userName, int gold, int rank)
+        public User(string uid, string shortUID, string userName, bool isLoggedIn , int gold, int rank)
         {
             this.uid = uid;
             this.shortUID = shortUID;
             this.userName = userName;
+            this.isLoggedIn = isLoggedIn;
             this.gold = gold;
             this.rank = rank;
         }

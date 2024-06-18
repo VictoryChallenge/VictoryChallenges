@@ -55,7 +55,7 @@ namespace VictoryChallenge.Scripts.CL
             {
                 case 1:
                     // 나중에없애기.테스트용
-                    PhotonNetwork.NickName = GetInputField((int)InputFields.NickNameInput).text;
+                    //PhotonNetwork.NickName = GetInputField((int)InputFields.NickNameInput).text;
                     PhotonManager.Instance.QuickMatch();
                     break;
                 case 2:

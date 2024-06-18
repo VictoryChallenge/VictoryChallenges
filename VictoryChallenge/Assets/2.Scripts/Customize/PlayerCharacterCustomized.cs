@@ -347,7 +347,7 @@ namespace VictoryChallenge.Customize
             Debug.Log("shortUID : " + shortUID);
             User user = DatabaseManager.Instance.gameData.users[shortUID];
             string userData = JsonUtility.ToJson(user);
-            DatabaseManager.Instance.WriteUserData(shortUID, true, userData, customData);
+            DatabaseManager.Instance.WriteUserData(shortUID, userData, customData);
 
             _jsonOtherData = customData;
         }
