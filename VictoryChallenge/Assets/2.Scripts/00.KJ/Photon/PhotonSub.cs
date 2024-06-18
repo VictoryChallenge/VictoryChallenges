@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using UnityEngine.SceneManagement;
+using manager = VictoryChallenge.Scripts.CL.Managers;
 using System.Collections;
 using Photon.Realtime;
+using System;
+using VictoryChallenge.Scripts.CL;
 
 namespace VictoryChallenge.KJ.Photon
 {
@@ -16,6 +19,7 @@ namespace VictoryChallenge.KJ.Photon
         [HideInInspector] public TMP_Text _text;
 
         private bool _isReady = false;
+        private int stageNum;
         //private bool _isControllerCreated = false;
 
         #region Singleton
@@ -151,7 +155,7 @@ namespace VictoryChallenge.KJ.Photon
             if (PhotonNetwork.IsMasterClient && AllPlayersReady())
             {
                 Debug.Log("모든 플레이어가 준비됨, 게임 시작");
-                PhotonNetwork.LoadLevel(3);
+                PhotonNetwork.LoadLevel(stageNum);
             }
         }
 
@@ -161,5 +165,11 @@ namespace VictoryChallenge.KJ.Photon
             UpdateButtonText();
         }
         #endregion
+
+        public void SetStageNum(int _stageNum)
+        {
+            stageNum = _stageNum;
+            Debug.Log("스테이지 번호 설정: " + stageNum);
+        }
     }
 }

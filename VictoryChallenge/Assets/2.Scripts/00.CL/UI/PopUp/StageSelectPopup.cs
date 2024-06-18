@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -64,6 +65,7 @@ namespace VictoryChallenge.Scripts.CL
         {
             Sprite selectedSprite = null;
             string _mapname = null;
+            int stageNum = 3;
 
             switch (a)
             {
@@ -71,21 +73,25 @@ namespace VictoryChallenge.Scripts.CL
                     Debug.Log("저스트런");
                     selectedSprite = _justrunSp;
                     _mapname = _justrun1;
+                    stageNum = 3;
                     break;
                 case 2:
                     Debug.Log("OnlyOne");
                     selectedSprite = _onlyoneSp;
                     _mapname = _onlyone;
+                    stageNum = 7; // 변경된 스테이지 번호
                     break;
                 case 3:
                     Debug.Log("마라톤");
                     selectedSprite = _marathonSp;
                     _mapname = _marathon;
+                    stageNum = 6;
                     break;
                 case 4:
                     Debug.Log("OnlyUp");
                     selectedSprite = _onlyupSp;
                     _mapname = _onlyup;
+                    stageNum = 5;
                     break;
                 default:
                     Debug.LogWarning("Unhandled action: " + a);
@@ -93,7 +99,9 @@ namespace VictoryChallenge.Scripts.CL
             }
 
             OnStageSelected?.Invoke(selectedSprite, _mapname); // Delegate로 Sprite, string 넘기기
+            PhotonSub.Instance.SetStageNum(stageNum);
             ClosePopupUI();
+
         }
     }
 }

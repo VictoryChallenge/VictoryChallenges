@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using VictoryChallenge.KJ.Photon;
 using VictoryChallenge.KJ.Room;
 using VictoryChallenge.KJ.Lobby;
+using System;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -75,6 +76,18 @@ namespace VictoryChallenge.Scripts.CL
             //}
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameObject go = GameObject.Find("GameSettingPopup");
+                if (go != null)
+                    return;
+                else
+                    Managers.UI.ShowPopupUI<GameSettingPopup>();
+            }
+        }
+
         public void OnButtonClicked(PointerEventData data, int a)
         {
             switch (a)
@@ -129,7 +142,5 @@ namespace VictoryChallenge.Scripts.CL
         {
             RoomMananger.Instance.LeaveRoom();
         }
-
-        
     }
 }

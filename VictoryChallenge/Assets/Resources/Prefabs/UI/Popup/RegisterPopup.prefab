@@ -617,6 +617,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 681343843095081008, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
         type: 3}
+      propertyPath: m_text
+      value: Password Check...
+      objectReference: {fileID: 0}
+    - target: {fileID: 681343843095081008, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
+        type: 3}
       propertyPath: m_fontSize
       value: 15
       objectReference: {fileID: 0}
@@ -772,12 +777,12 @@ PrefabInstance:
     - target: {fileID: 7215504026528661214, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
         type: 3}
       propertyPath: m_InputType
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7215504026528661214, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
         type: 3}
       propertyPath: m_ContentType
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7646059737294766103, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
         type: 3}
@@ -826,6 +831,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7878510311608179930}
     m_Modifications:
+    - target: {fileID: 681343843095081008, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
+        type: 3}
+      propertyPath: m_text
+      value: Password...
+      objectReference: {fileID: 0}
     - target: {fileID: 681343843095081008, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
         type: 3}
       propertyPath: m_fontSize
@@ -1263,6 +1273,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 681343843095081008, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
         type: 3}
+      propertyPath: m_text
+      value: Nickname...
+      objectReference: {fileID: 0}
+    - target: {fileID: 681343843095081008, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
+        type: 3}
       propertyPath: m_fontSize
       value: 15
       objectReference: {fileID: 0}
@@ -1418,12 +1433,12 @@ PrefabInstance:
     - target: {fileID: 7215504026528661214, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
         type: 3}
       propertyPath: m_InputType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7215504026528661214, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
         type: 3}
       propertyPath: m_ContentType
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7646059737294766103, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
         type: 3}
@@ -1472,6 +1487,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7878510311608179930}
     m_Modifications:
+    - target: {fileID: 681343843095081008, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
+        type: 3}
+      propertyPath: m_text
+      value: Email...
+      objectReference: {fileID: 0}
     - target: {fileID: 681343843095081008, guid: 4e0ea7e7dae784f66b10412a0e8cda86,
         type: 3}
       propertyPath: m_fontSize

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace VictoryChallenge.Scripts.CL
@@ -168,5 +169,25 @@ namespace VictoryChallenge.Scripts.CL
                 ClosePopupUI();
         }
         #endregion 팝업관련 끝
+
+        public bool IsPointerOverUIElement()
+        {
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current)
+            {
+                position = new Vector2(Input.mousePosition.x, Input.mousePosition.y)
+            };
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+            // Raycast 결과 중 UI 레이어에 해당하는 요소가 있는지 확인
+            foreach (RaycastResult result in results)
+            {
+                if (result.gameObject.layer == 5)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
