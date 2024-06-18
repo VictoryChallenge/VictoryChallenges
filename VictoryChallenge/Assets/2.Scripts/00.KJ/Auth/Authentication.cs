@@ -233,11 +233,11 @@ namespace VictoryChallenge.KJ.Auth
         }
 
         /// <summary>
-        /// 로그 아웃 로직
+        /// 로그 아웃
         /// </summary>
         public void LogOut()
         {
-            if (_user != null )
+            if (_user != null)
             {
                 //// 로그아웃 정보 업데이트 (데이터베이스)
                 string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
@@ -247,8 +247,7 @@ namespace VictoryChallenge.KJ.Auth
 
                 DatabaseManager.Instance.SignOutProcess(shortUID, json, DatabaseManager.Instance.customData);
                 Debug.Log("접속중 OFF : " + DatabaseManager.Instance.gameData.users[shortUID].isLoggedIn);
-                    
-                // 로그아웃과 게임종료가 데이터 업데이트 이후에 이루어져야함
+
             }
             else
             {

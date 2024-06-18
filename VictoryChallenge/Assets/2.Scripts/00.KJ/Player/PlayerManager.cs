@@ -7,6 +7,9 @@ using VictoryChallenge.Controllers.Player;
 using VictoryChallenge.Camera;
 using VictoryChallenge.KJ.Spawn;
 using VictoryChallenge.Customize;
+using Firebase.Auth;
+using VictoryChallenge.KJ.Auth;
+using VictoryChallenge.KJ.Database;
 
 namespace VictoryChallenge.KJ.Manager
 {
@@ -31,12 +34,6 @@ namespace VictoryChallenge.KJ.Manager
 
         public void CreateController()
         {
-            //if (controller == null)
-            //{
-            //    Transform spawnPoint = SpawnManager.Instance.GetSpawnPoint();
-            //    controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
-                
-            //}
             
             Transform spawnPoint = SpawnManager.Instance.GetSpawnPoint();
             if (spawnPoint == null)
@@ -44,10 +41,9 @@ namespace VictoryChallenge.KJ.Manager
                 return;
             }
             Debug.Log("스폰 포인트 " + spawnPoint);
-            controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
-            controller.GetComponentInChildren<PlayerCharacterCustomized>().Load();
-
-            controller.GetComponentInChildren<PlayerController>().GetComponent<PhotonView>().RPC("CustomDataRPC", RpcTarget.AllBuffered);
+            string userId = UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
+            Debug.Log("유저" + userId);
+            controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { userId });
         }
 
         public void Die()
