@@ -168,7 +168,17 @@ namespace VictoryChallenge.KJ.Database
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("userkey", userkey);
             dic.Add("jsonData", jsonData);
-            dic.Add("customData", customData);
+
+            if(!string.IsNullOrEmpty(customData))
+            {
+                dic.Add("customData", customData);
+            }
+            else
+            {
+                PlayerCharacterCustomized playerCharacterCustomized = new PlayerCharacterCustomized();
+                customData = playerCharacterCustomized.Initialize();
+                dic.Add("customData", customData);
+            }
 
             Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add(userkey, dic);

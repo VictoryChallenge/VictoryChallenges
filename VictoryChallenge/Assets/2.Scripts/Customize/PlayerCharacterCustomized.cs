@@ -21,12 +21,6 @@ namespace VictoryChallenge.Customize
     {
         private const string PLAYER_PREFS_SAVE = "PlayerCustomization";
         
-        public string jsonOtherData 
-        { 
-            get => _jsonOtherData; 
-        }
-        private string _jsonOtherData;
-
         [SerializeField] private SkinnedBodyPartData[] _skinnedBodyPartDataArray;
         [SerializeField] private GameObject _earMesh;
         [SerializeField] private GameObject _hatMesh;
@@ -38,6 +32,7 @@ namespace VictoryChallenge.Customize
 
         private string _userId;
         private string _shortUID;
+        private bool _isLocal;
 
         [SerializeField] private PhotonView _pv;
 
@@ -61,11 +56,13 @@ namespace VictoryChallenge.Customize
                     object[] data = _pv.InstantiationData;
                     _userId = (string)data[0];
                     _shortUID = UIDHelper.GenerateShortUID(_userId);
+                    _isLocal = false;
                     LoadData();
                 }
             }
             else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4))
             {
+                _isLocal = true;
                 LoadData();
             }
         }
@@ -361,13 +358,13 @@ namespace VictoryChallenge.Customize
             //string jsonData = JsonUtility.ToJson(saveObject);
             //PlayerPrefs.SetString(PLAYER_PREFS_SAVE, jsonData);
 
-            FileStream stream = new FileStream(Application.persistentDataPath + "/customData.json", FileMode.Create);
+            //FileStream stream = new FileStream(Application.persistentDataPath + "/customData.json", FileMode.Create);
+
+            //byte[] data = Encoding.UTF8.GetBytes(customData);
+            //stream.Write(data, 0, data.Length);
+            //stream.Close();
 
             string customData = JsonConvert.SerializeObject(saveObject);
-
-            byte[] data = Encoding.UTF8.GetBytes(customData);
-            stream.Write(data, 0, data.Length);
-            stream.Close();
 
             // 내 유저 아이디에 맞는 커스텀 데이터 저장
             string shortUID = UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
@@ -375,9 +372,8 @@ namespace VictoryChallenge.Customize
             User user = DatabaseManager.Instance.gameData.users[shortUID];
             string userData = JsonUtility.ToJson(user);
             DatabaseManager.Instance.WriteUserData(shortUID, userData, customData);
-            DatabaseManager.Instance.customData = userData;
+            DatabaseManager.Instance.customData = customData;
             Debug.Log("customData : " + customData);
-            _jsonOtherData = customData;
         }
 
         public void Load()
@@ -487,7 +483,12 @@ namespace VictoryChallenge.Customize
                             Debug.Log("child.Value.ToString() : " + child.ToString());
                             userData = child.Child("customData").Value.ToString();
                             DatabaseManager.Instance.customData = userData;
-                            _pv.RPC("SendCustomData", RpcTarget.AllBuffered, userData);
+                            
+                            // RPC 보낼 수 있는 조건인지 확인
+                            if(!_isLocal)
+                            {
+                                _pv.RPC("SendCustomData", RpcTarget.AllBuffered, userData);
+                            }
                         }
                     }
                 }
