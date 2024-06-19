@@ -11,7 +11,7 @@ namespace VictoryChallenge.Scripts.CL
     {
         enum Sliders
         {
-            Slider,
+            SoundSlider,
         }
 
         enum Buttons
@@ -27,15 +27,30 @@ namespace VictoryChallenge.Scripts.CL
         enum Toggles
         {
             ScreenModeToggle,
+            Sound,
         }
 
         private List<Resolution> resolutions;
+        AudioSource _audiosource;
+        AudioSource _audiosourceE;
 
         void Start()
         {
             Init();
             RectTransform rectTransform = GetComponent<RectTransform>();
             rectTransform.anchoredPosition = Vector2.zero;
+            _audiosource = GameObject.Find("BGM").GetComponent<AudioSource>();
+            _audiosourceE = GameObject.Find("Effect").GetComponent<AudioSource>();
+            // 슬라이더 값을 오디오 소스의 볼륨 값으로 초기화
+            Slider soundSlider = GetSlider((int)Sliders.SoundSlider);
+            if (soundSlider != null)
+            {
+                soundSlider.value = _audiosource.volume;
+            }
+            else
+            {
+                Debug.LogError("SoundSlider is null. Please check if it is correctly bound.");
+            }
 
             LoadSettings();
         }
@@ -53,6 +68,8 @@ namespace VictoryChallenge.Scripts.CL
             GetDropdown((int)Dropdowns.Dropdown).onValueChanged.AddListener(OnResolutionChange);
             GetToggle((int)Toggles.ScreenModeToggle).onValueChanged.AddListener(ScreenModeUpdate);
             GetToggle((int)Toggles.ScreenModeToggle).isOn = (Screen.fullScreenMode == FullScreenMode.FullScreenWindow);
+            GetSlider((int)Sliders.SoundSlider).onValueChanged.AddListener(UpdateVolume);
+            GetToggle((int)Toggles.Sound).onValueChanged.AddListener(UpdateToggleImage);
         }
         private void Update()
         {
@@ -123,6 +140,33 @@ namespace VictoryChallenge.Scripts.CL
                 Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreenMode);
                 GetDropdown((int)Dropdowns.Dropdown).value = resolutionIndex;
                 GetDropdown((int)Dropdowns.Dropdown).RefreshShownValue();
+            }
+        }
+
+        void UpdateVolume(float volume)
+        {
+            _audiosource.volume = volume;
+            PlayerPrefs.SetFloat("Volume", volume);  // 볼륨 값 저장
+            PlayerPrefs.Save();
+
+            // Debug.Log로 볼륨 값 확인
+            Debug.Log("Volume updated: " + volume + " 볼륨 " + _audiosource.volume);
+        }
+
+        void UpdateToggleImage(bool isOn)
+        {
+            Sprite sound_on = Resources.Load<Sprite>("Sound-On");
+            Sprite sound_off = Resources.Load<Sprite>("Sound-Off");
+
+            Toggle soundToggle = GetToggle((int)Toggles.Sound);
+            if (soundToggle != null)
+            {
+                soundToggle.image.sprite = isOn ? sound_on : sound_off;
+                _audiosource.mute = !isOn;
+            }
+            else
+            {
+                Debug.LogError("SoundToggle is null. Please check if it is correctly bound.");
             }
         }
     }

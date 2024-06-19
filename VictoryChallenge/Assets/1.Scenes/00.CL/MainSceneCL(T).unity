@@ -424,6 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 0}
   _text: {fileID: 0}
+  stageNum: 3
 --- !u!4 &253744139
 Transform:
   m_ObjectHideFlags: 0
