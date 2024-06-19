@@ -13,17 +13,21 @@ namespace VictoryChallenge.Scripts.CL
         {
             Click,
             Drag,
+            MaxCount
         }
 
         public enum MouseEvent
         {
             Press,
             Click,
+            MaxCount
         }
 
-        public enum CameraMode
+        public enum Sound
         {
-            Quarterview,
+            BGM,
+            Effect,
+            MaxCount
         }
 
         //public enum Scene
