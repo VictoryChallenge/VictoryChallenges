@@ -3,38 +3,60 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace VictoryChallenge.Scripts.CL
 { 
     public class GameSceneUI : UI_Scene
     {
-        private TextMeshProUGUI _countdown;
+        enum TMPs
+        { 
+            countdown,
+        }
 
         void Start()
         {
-            _countdown = GameObject.Find("countdown").GetComponent<TextMeshProUGUI>();
+            Init();
+        }
+
+        TMP_Text text;
+
+        public override void Init()
+        {
+            base.Init();
+            Bind<TextMeshProUGUI>(typeof(TMPs));
+
+            text = GetTextMeshPro((int)TMPs.countdown);
+
             StartCoroutine(GameStart());
         }
 
         void Update()
         {
-        
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameObject go = GameObject.Find("GameSettingPopup");
+                if (go != null)
+                    return;
+                else 
+                    Managers.UI.ShowPopupUI<GameSettingPopup>();
+            }
         }
 
         IEnumerator GameStart()
         { 
             yield return null;
 
-            _countdown.text = "3";
+            text.text = "3";
             yield return new WaitForSeconds(1f);
 
-            _countdown.text = "2";
+            text.text = "2";
             yield return new WaitForSeconds(1f);
 
-            _countdown.text = "1";
+            text.text = "1";
             yield return new WaitForSeconds(1f);
 
-            _countdown.gameObject.SetActive(false);
+            text.gameObject.SetActive(false);
         }
     }
 }

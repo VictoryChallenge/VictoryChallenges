@@ -34,6 +34,12 @@ namespace VictoryChallenge.KJ.Manager
 
         public void CreateController()
         {
+            //if (controller == null)
+            //{
+            //    Transform spawnPoint = SpawnManager.Instance.GetSpawnPoint();
+            //    controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
+                
+            //}
             
             Transform spawnPoint = SpawnManager.Instance.GetSpawnPoint();
             if (spawnPoint == null)
@@ -41,8 +47,9 @@ namespace VictoryChallenge.KJ.Manager
                 return;
             }
             Debug.Log("스폰 포인트 " + spawnPoint);
+            /*FirebaseAuth.DefaultInstance.CurrentUser.UserId;*/
             string userId = UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
-            Debug.Log("유저" + userId);
+            //Debug.Log("userId : " + userId);
             controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { userId });
         }
 

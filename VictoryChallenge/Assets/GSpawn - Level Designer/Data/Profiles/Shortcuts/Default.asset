@@ -94,7 +94,7 @@ MonoBehaviour:
         _key: 120
       _name: Transform/Rotate Around X
       _conflicts: []
-      _uiSelected: 0
+      _uiSelected: 1
     - _guid:
         _guidString: a51a531e-1ca5-4307-a8b3-3be553e4dfc9
       _canChangeFromUI: 1
@@ -227,7 +227,29 @@ MonoBehaviour:
       _name: Selection/Duplicate Selected
       _conflicts: []
       _uiSelected: 0
-    _uiSelected: 0
+    - _guid:
+        _guidString: 1b7606ed-d1d0-44e2-919a-341d71c7bd03
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 91
+      _name: Grid/vertical Step Down
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: fdc6053d-4457-4dd7-9125-a5af6141e038
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 93
+      _name: Grid/vertical Step Up
+      _conflicts: []
+      _uiSelected: 0
+    _uiSelected: 1
   - _guid:
       _guidString: d3ef545f-4d1c-4286-8fbb-6906b67d4c48
     _name: Object Transform Sessions
@@ -351,6 +373,50 @@ MonoBehaviour:
         _shift: 1
         _key: 97
       _name: Surface Snap/Toggle Axis Alignment
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: cdeae538-b97c-4ef9-bdef-a41bdf5d10c9
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 101
+      _name: Modular Snap/vertical Step Up
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 15de9aa4-7c36-476b-ad4d-492a09cb587a
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 113
+      _name: Modular Snap/vertical Step Down
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 8901e663-5019-4e73-a38d-eb3ae9ac1632
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 114
+      _name: Modular Snap/Reset vertical Step
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 6e6f210b-297a-4dcc-a987-7e16986a9972
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 114
+      _name: Modular Snap/Reset vertical Step to Original
       _conflicts: []
       _uiSelected: 0
     _uiSelected: 0

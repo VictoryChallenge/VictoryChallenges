@@ -81,7 +81,7 @@ Material:
     - _Depth: 5
     - _DepthMultiply: 2
     - _DetailNormalMapScale: 1
-    - _DisplacementAmount: 0.4
+    - _DisplacementAmount: 0.04
     - _DstBlend: 10
     - _EnvironmentReflections: 1
     - _FoamDistortionAmount: 0.03

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -11,19 +12,19 @@ namespace VictoryChallenge.Scripts.CL
     {
         enum Buttons
         { 
-            Marathon,
+            Justrun1,
             OnlyOne,
-            Zombie,
+            Marathon,
             OnlyUp,
         }
 
-        Sprite _marathonSp;
+        Sprite _justrunSp;
         Sprite _onlyoneSp;
-        Sprite _zombieSp;
+        Sprite _marathonSp;
         Sprite _onlyupSp;
-        string _marathon = "marathon";
+        string _justrun1 = "장애물 달리기";
         string _onlyone = "onlyone";
-        string _zombie = "zombie";
+        string _marathon = "혈압 마라톤";
         string _onlyup = "onlyup";
 
         public Action<Sprite, string> OnStageSelected;
@@ -41,14 +42,14 @@ namespace VictoryChallenge.Scripts.CL
 
             Bind<Button>(typeof(Buttons));
 
-            _marathonSp = GetButton((int)Buttons.Marathon).gameObject.GetComponent<Image>().sprite;
+            _justrunSp = GetButton((int)Buttons.Justrun1).gameObject.GetComponent<Image>().sprite;
             _onlyoneSp = GetButton((int)Buttons.OnlyOne).gameObject.GetComponent<Image>().sprite;
-            _zombieSp = GetButton((int)Buttons.Zombie).gameObject.GetComponent<Image>().sprite;
+            _marathonSp = GetButton((int)Buttons.Marathon).gameObject.GetComponent<Image>().sprite;
             _onlyupSp = GetButton((int)Buttons.OnlyUp).gameObject.GetComponent<Image>().sprite;
 
-            GetButton((int)Buttons.Marathon).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
+            GetButton((int)Buttons.Justrun1).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
             GetButton((int)Buttons.OnlyOne).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
-            GetButton((int)Buttons.Zombie).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
+            GetButton((int)Buttons.Marathon).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
             GetButton((int)Buttons.OnlyUp).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 4));
         }
 
@@ -64,28 +65,33 @@ namespace VictoryChallenge.Scripts.CL
         {
             Sprite selectedSprite = null;
             string _mapname = null;
+            int stageNum = 3;
 
             switch (a)
             {
                 case 1:
-                    Debug.Log("Marathon");
-                    selectedSprite = _marathonSp;
-                    _mapname = _marathon;
+                    Debug.Log("저스트런");
+                    selectedSprite = _justrunSp;
+                    _mapname = _justrun1;
+                    stageNum = 3;
                     break;
                 case 2:
                     Debug.Log("OnlyOne");
                     selectedSprite = _onlyoneSp;
                     _mapname = _onlyone;
+                    stageNum = 7; // 변경된 스테이지 번호
                     break;
                 case 3:
-                    Debug.Log("Zombie");
-                    selectedSprite = _zombieSp;
-                    _mapname = _zombie;
+                    Debug.Log("마라톤");
+                    selectedSprite = _marathonSp;
+                    _mapname = _marathon;
+                    stageNum = 6;
                     break;
                 case 4:
                     Debug.Log("OnlyUp");
                     selectedSprite = _onlyupSp;
                     _mapname = _onlyup;
+                    stageNum = 5;
                     break;
                 default:
                     Debug.LogWarning("Unhandled action: " + a);
@@ -93,7 +99,9 @@ namespace VictoryChallenge.Scripts.CL
             }
 
             OnStageSelected?.Invoke(selectedSprite, _mapname); // Delegate로 Sprite, string 넘기기
+            PhotonSub.Instance.SetStageNum(stageNum);
             ClosePopupUI();
+
         }
     }
 }

@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VictoryChallenge.KJ.Photon;
 using VictoryChallenge.KJ.Room;
+using VictoryChallenge.KJ.Lobby;
+using System;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -27,7 +29,7 @@ namespace VictoryChallenge.Scripts.CL
         }
 
         enum Images
-        { 
+        {
             PlayerListContent,
         }
 
@@ -52,9 +54,38 @@ namespace VictoryChallenge.Scripts.CL
             PhotonSub.Instance._button = GetButton((int)Buttons.GameStart);
             PhotonSub.Instance.UpdateButtonText();
             GetButton((int)Buttons.GameStart).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
-
             GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
             GetButton((int)Buttons.LeaveLobby).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
+
+            //if (PlayerList.Instance == null)
+            //{
+            //    Debug.LogError("PlayerList.Instance is null");
+            //}
+            //else
+            //{
+            //    var playerListContentImage = GetImage((int)Images.PlayerListContent);
+            //    if (playerListContentImage == null)
+            //    {
+            //        Debug.LogError("playerListContentImage is null");
+            //    }
+            //    else
+            //    {
+            //        PlayerList.Instance.playerListContent = playerListContentImage.gameObject;
+            //        Debug.Log(playerListContentImage.name);
+            //    }
+            //}
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameObject go = GameObject.Find("GameSettingPopup");
+                if (go != null)
+                    return;
+                else
+                    Managers.UI.ShowPopupUI<GameSettingPopup>();
+            }
         }
 
         public void OnButtonClicked(PointerEventData data, int a)
