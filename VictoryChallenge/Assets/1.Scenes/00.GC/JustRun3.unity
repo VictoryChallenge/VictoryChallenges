@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2365,6 +2365,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5423612666389817126, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5507134366000885620, guid: f407247cf4d461344a85f54c530aac54,
         type: 3}
       propertyPath: m_Layer
@@ -2619,6 +2624,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517715472237453633, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.023528
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517715472237453633, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.9911385
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517715472237453633, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99978054
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517715472237453633, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.004355835
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517715472237453633, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.020493537
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517715472237453633, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.00008928604
       objectReference: {fileID: 0}
     - target: {fileID: 8521350288020486452, guid: f407247cf4d461344a85f54c530aac54,
         type: 3}
