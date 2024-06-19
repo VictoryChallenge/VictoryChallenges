@@ -1665,6 +1665,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5423612667339456947}
+    - targetCorrespondingSourceObject: {fileID: 6635162545121551767, guid: 92a88890847789b41a8d15ce4f6fa767,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5423612667339456948}
     - targetCorrespondingSourceObject: {fileID: 1028327763681498058, guid: 92a88890847789b41a8d15ce4f6fa767,
         type: 3}
       insertIndex: -1
@@ -3636,6 +3640,19 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &5423612667339456948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737399963738598216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6131174d1fb1dd04ca185cea88cb5ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tureSpeed: 10
 --- !u!224 &5437574322648615251
 RectTransform:
   m_ObjectHideFlags: 0
