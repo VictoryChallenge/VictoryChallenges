@@ -19,7 +19,7 @@ namespace VictoryChallenge.KJ.Photon
         [HideInInspector] public TMP_Text _text;
 
         private bool _isReady = false;
-        private int stageNum = 3;
+        [HideInInspector] public int stageNum = 3;
         //private bool _isControllerCreated = false;
 
         #region Singleton
@@ -54,7 +54,7 @@ namespace VictoryChallenge.KJ.Photon
                 Debug.Log("호스트 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 3)
+            else if (SceneManager.GetActiveScene().buildIndex == stageNum)
             {
                 Debug.Log("클라 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);

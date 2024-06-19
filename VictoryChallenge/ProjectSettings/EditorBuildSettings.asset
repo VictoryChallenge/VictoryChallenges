@@ -21,8 +21,8 @@ EditorBuildSettings:
     path: Assets/1.Scenes/00.CL/CustomizeTutorialCL.unity
     guid: f7edc989cb7eb644a982d4555a3e84a0
   - enabled: 1
-    path: Assets/1.Scenes/00.GC/JustRun2.unity
-    guid: 44113e863289d1b4ebd9de3e8282d670
+    path: Assets/1.Scenes/00.CL/JustRun2CL.unity
+    guid: 1825df5dd50d1204eabdd96fe66aa364
   - enabled: 1
     path: Assets/1.Scenes/00.GC/SSAP maraton.unity
     guid: 8396bb939a95a0245b2656546d865710
