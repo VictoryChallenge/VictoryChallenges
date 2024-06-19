@@ -1,11 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-namespace PolygonArsenal
-{
-
 [AddComponentMenu("Camera-Control/Mouse drag Orbit with zoom")]
-
 public class PolygonOrbit : MonoBehaviour
 {
     public Transform target;
@@ -72,5 +67,4 @@ public class PolygonOrbit : MonoBehaviour
             angle -= 360F;
         return Mathf.Clamp(angle, min, max);
     }
-}
 }

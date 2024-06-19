@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3168730392114890696}
   - component: {fileID: 3168730392114890699}
   m_Layer: 0
-  m_Name: MissileSceneLight
+  m_Name: MainSceneLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,8 +42,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.38416696, g: 0.542733, b: 0.8396226, a: 1}
-  m_Intensity: 8
+  m_Color: {r: 0.35789803, g: 0.48518273, b: 0.72156864, a: 1}
+  m_Intensity: 1300
   m_Range: 45
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
