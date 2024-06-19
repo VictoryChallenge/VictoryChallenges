@@ -137,6 +137,10 @@ namespace VictoryChallenge.Controllers.Player
         private bool _isFinished;
         #endregion
 
+        #region DB
+        public virtual string shortUID { get; set; }
+        #endregion
+
         private void Awake()
         {
             // 컴포넌트 캐싱

@@ -10,6 +10,7 @@ using VictoryChallenge.Customize;
 using Firebase.Auth;
 using VictoryChallenge.KJ.Auth;
 using VictoryChallenge.KJ.Database;
+using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
 
 namespace VictoryChallenge.KJ.Manager
 {
@@ -51,6 +52,7 @@ namespace VictoryChallenge.KJ.Manager
             string userId = UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
             //Debug.Log("userId : " + userId);
             controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { userId });
+            controller.GetComponent<CharacterController>().shortUID = userId;
         }
 
         public void Die()

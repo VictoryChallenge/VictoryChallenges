@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using VictoryChallenge.KJ.Database;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
 
 namespace VictoryChallenge.Scripts.HS
@@ -32,7 +33,12 @@ namespace VictoryChallenge.Scripts.HS
                     _rankCount++;
                     other.gameObject.GetComponent<CharacterController>().isFinished = true;
 
-                    if(_rankCount == 1)
+                    // 각자 플레이어의 shortUID -> DB에 있는 shortUID에 접근해서 jsonData를 받아오기
+                    string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
+                    DatabaseManager.Instance.gameData.users[userShortUID].rank = _rankCount;
+                    Debug.Log("rank : " + DatabaseManager.Instance.gameData.users[userShortUID].rank);
+
+                    if (_rankCount == 1)
                     {
                         StartCoroutine(C_FinishCount());
                     }

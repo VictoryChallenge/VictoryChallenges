@@ -198,8 +198,9 @@ namespace VictoryChallenge.KJ.Auth
                     {
                         string json = snapshot.GetRawJsonValue();
                         string customData = snapshot.Child("customData").Value.ToString();
+                        string userjsonData = snapshot.Child("jsonData").Value.ToString();
 
-                        User userData = JsonUtility.FromJson<User>(json);
+                        User userData = JsonUtility.FromJson<User>(userjsonData);
 
                         if (userData.isLoggedIn)
                         {
