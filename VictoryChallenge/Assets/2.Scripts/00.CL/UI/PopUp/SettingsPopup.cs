@@ -49,7 +49,7 @@ namespace VictoryChallenge.Scripts.CL
             Bind<Toggle>(typeof(Toggles));
 
             InitializeResolutionOptions();
-            GetButton((int)Buttons.exitButton).onClick.AddListener(ClosePopupUI);
+            GetButton((int)Buttons.exitButton).onClick.AddListener(ClosePopup);
             GetDropdown((int)Dropdowns.Dropdown).onValueChanged.AddListener(OnResolutionChange);
             GetToggle((int)Toggles.ScreenModeToggle).onValueChanged.AddListener(ScreenModeUpdate);
             GetToggle((int)Toggles.ScreenModeToggle).isOn = (Screen.fullScreenMode == FullScreenMode.FullScreenWindow);
@@ -60,6 +60,12 @@ namespace VictoryChallenge.Scripts.CL
             {
                 ClosePopupUI();
             }
+        }
+
+        void ClosePopup()
+        {
+            Managers.Sound.Play("Click", Define.Sound.Effect);
+            ClosePopupUI();
         }
 
         void InitializeResolutionOptions()
@@ -86,6 +92,7 @@ namespace VictoryChallenge.Scripts.CL
 
         void ScreenModeUpdate(bool isOn)
         {
+            Managers.Sound.Play("Click", Define.Sound.Effect);
             Screen.fullScreenMode = isOn ? FullScreenMode.FullScreenWindow : FullScreenMode.Windowed;
             PlayerPrefs.SetInt("FullScreen", isOn ? 1 : 0); // 1 for fullscreen, 0 for windowed
         }

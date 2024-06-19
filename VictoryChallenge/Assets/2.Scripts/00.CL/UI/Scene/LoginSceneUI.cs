@@ -55,6 +55,7 @@ namespace VictoryChallenge.Scripts.CL
             Bind<Button>(typeof(Buttons));
             Bind<TMP_InputField>(typeof(InputFields));
             Bind<TextMeshProUGUI>(typeof(TMPs));
+            Managers.Sound.Play("MainBGM", Define.Sound.BGM);
 
             loginInputFields.Add(GetInputField((int)InputFields.Email));
             loginInputFields.Add(GetInputField((int)InputFields.Password));
@@ -70,6 +71,8 @@ namespace VictoryChallenge.Scripts.CL
 
         public void OnButtonClicked(PointerEventData data, int a)
         {
+            Managers.Sound.Play("Click", Define.Sound.Effect);
+
             switch (a)
             {
                 case 1:
