@@ -10,6 +10,7 @@ using VictoryChallenge.KJ.Photon;
 using VictoryChallenge.KJ.Room;
 using VictoryChallenge.KJ.Lobby;
 using System;
+using GSpawn;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -125,7 +126,7 @@ namespace VictoryChallenge.Scripts.CL
         private void RPC_UpdateStageSelectTextSprite(string spriteName, string name)
         {
             // Resources 폴더에서 스프라이트 로드
-            Sprite sprite = Resources.Load<Sprite>(spriteName);
+            Sprite sprite = Resources.Load<Sprite>($"Sprites/{spriteName}");
             if (sprite != null)
             {
                 stageSelectButtonImage.sprite = sprite;
