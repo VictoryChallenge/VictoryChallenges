@@ -9,7 +9,7 @@ public class ChatTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        chatinput = GameObject.Find("Chat").GetComponent<TMP_InputField>();
+        //chatinput = GameObject.Find("Chat").GetComponent<TMP_InputField>();
     }
 
     // Update is called once per frame

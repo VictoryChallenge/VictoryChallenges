@@ -5,9 +5,8 @@ using Photon.Chat;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
-using UnityEngine; 
+using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 using AuthenticationValues = Photon.Chat.AuthenticationValues;
 
 namespace VictoryChallenge.Scripts.CL
@@ -18,30 +17,31 @@ namespace VictoryChallenge.Scripts.CL
     public class ChatManager : UI_Scene, IChatClientListener
     {
         enum Inputfields
-        { 
+        {
             ChatInput,
         }
 
         enum TMPs
-        { 
+        {
             ChatDisplay,
         }
 
         enum ScrollRects
-        { 
+        {
             ChatScrollView,
         }
 
-        TMP_InputField chatinput; 
+        TMP_InputField chatinput;
         TextMeshProUGUI chatDisplay; // 채팅 메시지 표시 텍스트
         ScrollRect scrollRect; // 스크롤 뷰
-        
+
         ChatClient chatClient; // 채팅 클라이언트
         string lastMessages; // 마지막 메시지
         string roomName; // 방 이름
 
         private List<string> chatMessages = new List<string>(); // 채팅 메시지 리스트
         private string userName; // 사용자 이름
+        private bool inputbool;
 
         void Start()
         {
@@ -53,7 +53,6 @@ namespace VictoryChallenge.Scripts.CL
 
             //InitializeChat(PhotonNetwork.NickName); // 채팅 초기화
             InitializeChat("말랑이");
-            chatinput.onSubmit.AddListener(OnInputEndEdit);
         }
 
         public override void Init()
@@ -75,17 +74,29 @@ namespace VictoryChallenge.Scripts.CL
                 chatClient.Service(); // 채팅 클라이언트 서비스 실행
             }
 
-            ChatInputCheck();
-        }
-
-        void ChatInputCheck()
-        {             
-            // Enter 키 입력 시
-            if (Input.GetKeyDown(KeyCode.Return) && !chatinput.isFocused)
+            // 인풋 필드가 비어 있지 않고 Enter 키를 누르면 메시지 전송
+            if (!string.IsNullOrEmpty(chatinput.text) && Input.GetKeyDown(KeyCode.Return))
             {
-                //chatinput.ActivateInputField(); // 입력 필드 활성화
-                chatinput.Select(); // 포커스 주기
-                Debug.Log("활성화됨");
+                inputbool = false;
+                OnInputEndEdit(chatinput.text);
+                Debug.Log("1번비활성");
+                chatinput.DeactivateInputField();
+                chatinput.OnDeselect(null);
+                chatinput.text = string.Empty;
+                return;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                inputbool = true;
+            }
+
+            // 인풋 필드가 포커스를 받지 않은 상태에서 Enter 키를 누르면 인풋 필드 활성화 및 선택
+            if (!chatinput.isFocused && Input.GetKeyDown(KeyCode.Return) && inputbool == true)
+            {
+                Debug.Log("1번활성");
+                chatinput.ActivateInputField();
+                chatinput.Select();
             }
         }
 
@@ -166,7 +177,7 @@ namespace VictoryChallenge.Scripts.CL
             }
 
             if (sender != PhotonNetwork.NickName || senderId != PhotonNetwork.LocalPlayer.UserId)
-            { 
+            {
                 string whisperMessage = $"<color=blue>[귓속말] {sender} >> {message}</color>";
                 chatMessages.Add(whisperMessage);
                 UpdateChatDisplay();
@@ -226,8 +237,6 @@ namespace VictoryChallenge.Scripts.CL
 
                 // 개인 메시지를 보냅니다.
                 chatClient.SendPrivateMessage(targetUser, message, false);
-                chatinput.DeactivateInputField(); // 입력 필드 비활성화
-                chatinput.OnDeselect(null); // 포커스 해제
 
                 // 보낸 메시지를 채팅 디스플레이에 표시합니다.
                 string sentWhisperMessage = $"<color=blue>[귓속말] {targetUser} << {message}</color>";
@@ -271,12 +280,10 @@ namespace VictoryChallenge.Scripts.CL
                     UpdateChatDisplay(); // 채팅 디스플레이 업데이트
                 }
             }
- 
+
             SendMessage();
-            chatinput.text = ""; // 입력 필드 초기화
-            chatinput.DeactivateInputField(); // 입력 필드 비활성화
-            chatinput.OnDeselect(null); // 포커스 해제
-            Debug.Log("엔터친edit");
+            chatinput.DeactivateInputField();
+            Debug.Log("edit비활성화리스너");
         }
 
         /// <summary>
@@ -335,8 +342,6 @@ namespace VictoryChallenge.Scripts.CL
             {
                 chatClient.PublishMessage("global", chatinput.text); // 글로벌 채널에 메시지 전송
                 chatinput.text = ""; // 입력 필드 초기화
-                chatinput.DeactivateInputField(); // 입력 필드 비활성화
-                chatinput.OnDeselect(null); // 포커스 해제
                 Debug.Log("센드");
             }
         }
