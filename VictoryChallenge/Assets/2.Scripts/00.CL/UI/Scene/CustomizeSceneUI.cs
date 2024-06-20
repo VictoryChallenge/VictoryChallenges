@@ -54,6 +54,7 @@ namespace VictoryChallenge.Scripts.CL
 
         public void SceneLoad()
         {
+            Managers.Sound.Play("Click", Define.Sound.Effect);
             SceneManager.LoadScene(1);
         }
     }

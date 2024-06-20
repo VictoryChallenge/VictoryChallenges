@@ -97,6 +97,7 @@ namespace VictoryChallenge.Scripts.CL
         void LeaveRoom()
         {
             RoomMananger.Instance.LeaveRoom();
+            Managers.Sound.Play("MainBGM", Define.Sound.BGM);
         }
     }
 }

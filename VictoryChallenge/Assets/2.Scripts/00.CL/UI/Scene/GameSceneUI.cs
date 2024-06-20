@@ -27,6 +27,9 @@ namespace VictoryChallenge.Scripts.CL
         {
             base.Init();
             Bind<TextMeshProUGUI>(typeof(TMPs));
+            Managers.Sound.Play("RunBGM1", Define.Sound.BGM);
+            AudioSource _audioSource = GameObject.Find("BGM").GetComponent<AudioSource>();
+            _audioSource.volume = 0.4f;
 
             isMoving = false;
             text = GetTextMeshPro((int)TMPs.countdown);

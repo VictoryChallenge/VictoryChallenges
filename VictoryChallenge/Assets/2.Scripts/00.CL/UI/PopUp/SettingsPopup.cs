@@ -65,6 +65,7 @@ namespace VictoryChallenge.Scripts.CL
 
             InitializeResolutionOptions();
             GetButton((int)Buttons.exitButton).onClick.AddListener(ClosePopup);
+            GetButton((int)Buttons.exitButton).onClick.AddListener(() => Managers.Sound.Play("Click", Define.Sound.Effect));
             GetDropdown((int)Dropdowns.Dropdown).onValueChanged.AddListener(OnResolutionChange);
             GetToggle((int)Toggles.ScreenModeToggle).onValueChanged.AddListener(ScreenModeUpdate);
             GetToggle((int)Toggles.ScreenModeToggle).isOn = (Screen.fullScreenMode == FullScreenMode.FullScreenWindow);
