@@ -362,10 +362,12 @@ namespace VictoryChallenge.KJ.Auth
 
                             PlayerCharacterCustomized playerData = new PlayerCharacterCustomized();
                             string customData = playerData.Initialize();
+                            DatabaseManager.Instance.customData = customData;
 
                             string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
                             User newUser = new User(_user.UserId, shortUID, _username, false, 100, 0);
                             string jsonData = JsonUtility.ToJson(newUser);
+                            DatabaseManager.Instance.userData = jsonData;
                             DatabaseManager.Instance.WriteUserData(newUser.shortUID, jsonData, customData);
                         }
                     }
