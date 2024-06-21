@@ -3,10 +3,7 @@ using System.IO;
 using System.Linq;
 using Photon.Realtime;
 using UnityEngine;
-using VictoryChallenge.Controllers.Player;
-using VictoryChallenge.Camera;
 using VictoryChallenge.KJ.Spawn;
-using VictoryChallenge.Customize;
 using Firebase.Auth;
 using VictoryChallenge.KJ.Auth;
 using VictoryChallenge.KJ.Database;
@@ -55,11 +52,11 @@ namespace VictoryChallenge.KJ.Manager
             //Debug.Log("userId : " + userId);
             controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { userId });
             controller.GetComponentInChildren<CharacterController>().shortUID = userId;
-
+            
             // 로비가 아닐때 플레이어 데이터를 RankManager에게 넘겨줌
             if(SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(2))
             {
-                RankManager.Instance.Register(userId, 0);
+                PlayersDataManager.Instance.Register(userId, 0);
             }
         }
 

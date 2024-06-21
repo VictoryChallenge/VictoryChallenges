@@ -1,20 +1,29 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Rendering;
 using UnityEngine;
 using VictoryChallenge.KJ.Database;
-
+using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
 
 namespace VictoryChallenge.Scripts.HS
 {
-    public class RankManager : SingletonLazy<RankManager>
+    public class PlayersDataManager : SingletonLazy<PlayersDataManager>
     {
         // 플레이어 데이터 담기
         // Dictionary<shortUID, rank>
         public Dictionary<string, int> playerDatas = new Dictionary<string, int>();
         public Dictionary<string, int> playerScoreDatas = new Dictionary<string, int>();
+
+
+        private void Start()
+        {
+            playerDatas.Add("04e82809", 0);
+            playerDatas.Add("f18057c7", 0);
+            playerScoreDatas.Add("04e82809", 0);
+            playerScoreDatas.Add("f18057c7", 0);
+        }
 
         public enum Point
         {
@@ -30,9 +39,8 @@ namespace VictoryChallenge.Scripts.HS
 
         public void Register(string shortUID, int rank = 0)
         {
-            // 플레이어의 ShortUID와 Rank를 Dictionary에 저장
-            playerDatas.Add(shortUID, rank);
-            playerScoreDatas.Add(shortUID, rank);
+            //// 플레이어의 ShortUID와 Rank를 Dictionary에 저장
+            //playerDatas.Add(shortUID, rank);
 
             foreach (var item in playerDatas.Keys)
             {
@@ -43,17 +51,6 @@ namespace VictoryChallenge.Scripts.HS
             {
                 Debug.Log("ValuesUser : " + item);
             }
-
-            foreach (var item in playerScoreDatas.Keys)
-            {
-                Debug.Log("KeyScore : " + item);
-            }
-
-            foreach (var item in playerScoreDatas.Values)
-            {
-                Debug.Log("ValuesScore : " + item);
-            }
-
         }
 
         public void SetRank(string shortUID, int rank)
@@ -81,12 +78,12 @@ namespace VictoryChallenge.Scripts.HS
         {
             playerScoreDatas = playerScoreDatas.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 
-            foreach(var item in playerScoreDatas.Keys)
+            foreach (var item in playerScoreDatas.Keys)
             {
                 Debug.Log("Key : " + item);
             }
 
-            foreach(var item in playerScoreDatas.Values)
+            foreach (var item in playerScoreDatas.Values)
             {
                 Debug.Log("Values : " + item);
             }
@@ -104,7 +101,7 @@ namespace VictoryChallenge.Scripts.HS
             Debug.Log("Winnder ShortUID: " + shortUID);
             //User user = DatabaseManager.Instance.gameData.users[shortUID];
 
-            
+
         }
 
         public int RewardPoint(int rank)

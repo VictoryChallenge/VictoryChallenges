@@ -48,7 +48,8 @@ namespace VictoryChallenge.Scripts.HS
                         string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
 
                         // shortUID와 rank를 DB에 연동하기 위해 RankManager에 등록
-                        RankManager.Instance.SetRank(userShortUID, _rankCount);
+                        //RankManager.Instance.SetRank(userShortUID, _rankCount);
+                        PlayersDataManager.Instance.SetRank(userShortUID, _rankCount);
 
                         // 한명이라도 들어오면 카운트 시작
                         if (_rankCount == 1)
@@ -70,7 +71,7 @@ namespace VictoryChallenge.Scripts.HS
                         string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
 
 
-                        RankManager.Instance.Register(userShortUID, _rankCount);
+                        //RankManager.Instance.Register(userShortUID, _rankCount);
 
                         // DB 연동 순위
                     }
@@ -96,7 +97,8 @@ namespace VictoryChallenge.Scripts.HS
                     isCheck = false;
                     _isActive = false;
                     _countText.text = "Game Over";
-                    RankManager.Instance.ChooseWinner();
+                    //RankManager.Instance.ChooseWinner();
+                    PlayersDataManager.Instance.ChooseWinner();
                 }
             }
         }
