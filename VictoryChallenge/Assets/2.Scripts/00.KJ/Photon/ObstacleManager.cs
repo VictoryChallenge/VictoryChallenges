@@ -20,7 +20,6 @@ namespace VictoryChallenge.KJ.Photon
             }
         }
 
-        [PunRPC]
         void SyncObstacleState()
         {
             foreach (GameObject obstacle in _obstacles)
@@ -38,6 +37,7 @@ namespace VictoryChallenge.KJ.Photon
                             if (parameter.type == AnimatorControllerParameterType.Bool)
                             {
                                 bool value = animator.GetBool(parameter.nameHash);
+                                Debug.Log($"{photonView.ViewID}, {parameter.nameHash}, {value}");
                                 photonView.RPC("SetAnimationBool", RpcTarget.AllBuffered, parameter.nameHash, value);
                             }
                         }
@@ -47,7 +47,7 @@ namespace VictoryChallenge.KJ.Photon
         }
     }
 
-    public class Obstcle : MonoBehaviourPun
+    public class Obstacle : MonoBehaviourPun
     {
         private Animator _animator;
 
