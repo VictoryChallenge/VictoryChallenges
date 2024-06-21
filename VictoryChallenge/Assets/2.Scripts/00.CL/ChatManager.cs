@@ -6,6 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using AuthenticationValues = Photon.Chat.AuthenticationValues;
 
@@ -51,8 +52,8 @@ namespace VictoryChallenge.Scripts.CL
 
             PhotonNetwork.IsMessageQueueRunning = true; // 메시지 큐 실행
 
-            //InitializeChat(PhotonNetwork.NickName); // 채팅 초기화
-            InitializeChat("말랑이");
+            InitializeChat(PhotonNetwork.NickName); // 채팅 초기화
+            //InitializeChat("말랑이");
         }
 
         public override void Init()
@@ -83,6 +84,7 @@ namespace VictoryChallenge.Scripts.CL
                 chatinput.DeactivateInputField();
                 chatinput.OnDeselect(null);
                 chatinput.text = string.Empty;
+                ClickCenterOfScreen();
                 return;
             }
 
@@ -231,7 +233,7 @@ namespace VictoryChallenge.Scripts.CL
                     // 대상 사용자가 온라인이 아닌 경우 적절한 메시지를 표시합니다.
                     string offlineMessage = $"<color=red>{targetUser}님은 온라인이 아닙니다.</color>";
                     chatMessages.Add(offlineMessage);
-                    UpdateChatDisplay();
+                    //UpdateChatDisplay();
                     return;
                 }
 
@@ -361,6 +363,31 @@ namespace VictoryChallenge.Scripts.CL
 
             Canvas.ForceUpdateCanvases();
             scrollRect.verticalNormalizedPosition = 0f; // 스크롤을 가장 아래로 설정
+        }
+
+        void ClickCenterOfScreen()
+        {
+            // 화면 가운데 위치 계산
+            Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+
+            // 새로운 PointerEventData 객체 생성
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+            {
+                position = screenCenter
+            };
+
+            // Raycast 결과를 저장할 리스트 생성
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            // Raycast를 통해 UI 요소 감지
+            EventSystem.current.RaycastAll(pointerData, results);
+
+            // 감지된 UI 요소들에 대해 클릭 이벤트 발생
+            foreach (RaycastResult result in results)
+            {
+                ExecuteEvents.Execute(result.gameObject, pointerData, ExecuteEvents.pointerClickHandler);
+                Debug.Log("Clicked on UI element: " + result.gameObject.name);
+            }
         }
     }
 }

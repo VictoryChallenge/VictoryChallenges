@@ -38,8 +38,8 @@ namespace VictoryChallenge.Scripts.CL
 
         void Start()
         {
-            Init();
             Managers.UI.ShowSceneUI<UI_Scene>("ChatPrefabs");
+            Init();
         }
 
         public override void Init()
