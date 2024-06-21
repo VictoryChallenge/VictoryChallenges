@@ -349,38 +349,6 @@ namespace VictoryChallenge.KJ.Auth
 
                     if (_user != null)
                     {
-
-                        string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
-                        DatabaseReference userRef = FirebaseDatabase.DefaultInstance.GetReference("User").Child(shortUID);
-                        var userTask = userRef.GetValueAsync();
-                        yield return new WaitUntil(() => userTask.IsCompleted);
-
-                        if (userTask.Exception != null)
-                        {
-                            Debug.LogError("데이터 불러오는 도중 에러 발생 : " + userTask.Exception);
-                            warningRegisterText.text = "회원가입 중 오류가 발생했습니다.";
-                            yield break;
-                        }
-                        else
-                        {
-                            DataSnapshot snapshot = userTask.Result;
-                            if (snapshot.Exists)
-                            {
-                                string userJsonData = snapshot.Child("jsonData").Value.ToString();
-
-                                JObject jsonData = JObject.Parse(userJsonData);
-                                bool isUsernameExist = jsonData["isUsernameExist"].Value<bool>();
-                                Debug.Log("중복닉네임 체크 : " + isUsernameExist);
-
-                                if (isUsernameExist)
-                                {
-                                    warningRegisterText.text = "이미 사용중인 닉네임입니다.";
-                                    Debug.Log("중복 닉네임 bool : " + isUsernameExist);
-                                    yield break;
-                                }
-                            }
-                        }
-
                         UserProfile profile = new UserProfile { DisplayName = _username };
 
                         var ProfileTask = _user.UpdateUserProfileAsync(profile);
@@ -405,7 +373,7 @@ namespace VictoryChallenge.KJ.Auth
                             PlayerCharacterCustomized playerData = new PlayerCharacterCustomized();
                             string customData = playerData.Initialize();
 
-                            //string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
+                            string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
                             User newUser = new User(_user.UserId, shortUID, _username, false, true, 100, 0);
 
                             string jsonData = JsonUtility.ToJson(newUser);
@@ -415,12 +383,6 @@ namespace VictoryChallenge.KJ.Auth
                 }
             }
         }
-
-        //public IEnumerator CheckUsernameExist(string username, System.Action<bool> callback)
-        //{
-        //    var dbReference = FirebaseDatabase.DefaultInstance.GetReference("User").Child()
-        //}
-
         #endregion
     }
 }
