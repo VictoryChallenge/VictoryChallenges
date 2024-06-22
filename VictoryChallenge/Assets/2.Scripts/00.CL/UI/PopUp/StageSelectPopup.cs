@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,21 +14,21 @@ namespace VictoryChallenge.Scripts.CL
         enum Buttons
         { 
             Justrun1,
-            OnlyOne,
+            Justrun2,
             Marathon,
-            OnlyUp,
+            OnlyOne,
         }
 
         Sprite _justrunSp;
-        Sprite _onlyoneSp;
+        Sprite _justrun2Sp;
         Sprite _marathonSp;
-        Sprite _onlyupSp;
+        Sprite _onlyoneSp;
         string _justrun1 = "장애물 달리기";
-        string _onlyone = "onlyone";
+        string _justrun2 = "장애물 달리기2";
         string _marathon = "혈압 마라톤";
-        string _onlyup = "onlyup";
+        string _onlyone = "onlyone";
 
-        public Action<Sprite, string> OnStageSelected;
+        public Action<Sprite, string, int> OnStageSelected;
 
         void Start()
         {
@@ -43,14 +44,14 @@ namespace VictoryChallenge.Scripts.CL
             Bind<Button>(typeof(Buttons));
 
             _justrunSp = GetButton((int)Buttons.Justrun1).gameObject.GetComponent<Image>().sprite;
-            _onlyoneSp = GetButton((int)Buttons.OnlyOne).gameObject.GetComponent<Image>().sprite;
+            _justrun2Sp = GetButton((int)Buttons.Justrun2).gameObject.GetComponent<Image>().sprite;
             _marathonSp = GetButton((int)Buttons.Marathon).gameObject.GetComponent<Image>().sprite;
-            _onlyupSp = GetButton((int)Buttons.OnlyUp).gameObject.GetComponent<Image>().sprite;
+            _onlyoneSp = GetButton((int)Buttons.OnlyOne).gameObject.GetComponent<Image>().sprite;
 
             GetButton((int)Buttons.Justrun1).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
-            GetButton((int)Buttons.OnlyOne).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
+            GetButton((int)Buttons.Justrun2).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
             GetButton((int)Buttons.Marathon).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
-            GetButton((int)Buttons.OnlyUp).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 4));
+            GetButton((int)Buttons.OnlyOne).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 4));
         }
 
         void Update()
@@ -63,6 +64,8 @@ namespace VictoryChallenge.Scripts.CL
 
         public void OnButtonClicked(PointerEventData data, int a)
         {
+            Managers.Sound.Play("Click", Define.Sound.Effect);
+
             Sprite selectedSprite = null;
             string _mapname = null;
             int stageNum = 3;
@@ -76,10 +79,10 @@ namespace VictoryChallenge.Scripts.CL
                     stageNum = 3;
                     break;
                 case 2:
-                    Debug.Log("OnlyOne");
-                    selectedSprite = _onlyoneSp;
-                    _mapname = _onlyone;
-                    stageNum = 7; // 변경된 스테이지 번호
+                    Debug.Log("저스트런2");
+                    selectedSprite = _justrun2Sp;
+                    _mapname = _justrun2;
+                    stageNum = 5; // 변경된 스테이지 번호
                     break;
                 case 3:
                     Debug.Log("마라톤");
@@ -88,20 +91,18 @@ namespace VictoryChallenge.Scripts.CL
                     stageNum = 6;
                     break;
                 case 4:
-                    Debug.Log("OnlyUp");
-                    selectedSprite = _onlyupSp;
-                    _mapname = _onlyup;
-                    stageNum = 5;
+                    Debug.Log("OnlyOne");
+                    selectedSprite = _onlyoneSp;
+                    _mapname = _onlyone;
+                    stageNum = 7;
                     break;
                 default:
                     Debug.LogWarning("Unhandled action: " + a);
                     break;
             }
 
-            OnStageSelected?.Invoke(selectedSprite, _mapname); // Delegate로 Sprite, string 넘기기
-            PhotonSub.Instance.SetStageNum(stageNum);
+            OnStageSelected?.Invoke(selectedSprite, _mapname, stageNum); // Delegate로 Sprite, string 넘기기
             ClosePopupUI();
-
         }
     }
 }

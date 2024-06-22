@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VictoryChallenge.KJ.Photon;
 
 namespace VictoryChallenge.KJ.Spawn
 {
@@ -14,6 +15,7 @@ namespace VictoryChallenge.KJ.Spawn
         void Awake()
         {
             Instance = this;
+            int a = PhotonSub.Instance.stageNum;
 
             switch (SceneManager.GetActiveScene().buildIndex)
             {
@@ -22,6 +24,9 @@ namespace VictoryChallenge.KJ.Spawn
                     _pointLength = 1;
                     break;
                 case 3:
+                case 5:
+                case 6:
+                case 7:
                     // Just Run
                     _pointLength = 4;
                     break;
@@ -38,12 +43,9 @@ namespace VictoryChallenge.KJ.Spawn
 
         public Transform GetSpawnPoint()
         {
-
-
             return spawnPoints[Random.Range(0, spawnPoints.Length)].transform;
         }
     }
-
 }
 
 

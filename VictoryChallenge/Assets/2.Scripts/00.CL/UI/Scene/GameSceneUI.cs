@@ -20,13 +20,20 @@ namespace VictoryChallenge.Scripts.CL
         }
 
         TMP_Text text;
+        // 캐릭터 이동을 막기 위한 불값 
+        public bool isMoving = true;
 
         public override void Init()
         {
             base.Init();
             Bind<TextMeshProUGUI>(typeof(TMPs));
+            Managers.Sound.Play("RunBGM1", Define.Sound.BGM);
+            AudioSource _audioSource = GameObject.Find("BGM").GetComponent<AudioSource>();
+            _audioSource.volume = 0.4f;
 
+            isMoving = false;
             text = GetTextMeshPro((int)TMPs.countdown);
+            text.gameObject.SetActive(false);
 
             StartCoroutine(GameStart());
         }
@@ -45,7 +52,9 @@ namespace VictoryChallenge.Scripts.CL
 
         IEnumerator GameStart()
         { 
-            yield return null;
+            yield return new WaitForSeconds(2f);
+            text.gameObject.SetActive(true);
+            Managers.Sound.Play("Countdown", Define.Sound.Effect);
 
             text.text = "3";
             yield return new WaitForSeconds(1f);
@@ -55,6 +64,12 @@ namespace VictoryChallenge.Scripts.CL
 
             text.text = "1";
             yield return new WaitForSeconds(1f);
+
+            isMoving = true;
+
+            text.text = "달려라~";
+            yield return new WaitForSeconds(1f);
+
 
             text.gameObject.SetActive(false);
         }

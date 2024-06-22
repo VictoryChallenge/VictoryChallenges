@@ -9,6 +9,7 @@ using System.Collections;
 using Photon.Realtime;
 using System;
 using VictoryChallenge.Scripts.CL;
+using VictoryChallenge.Scripts.HS;
 
 namespace VictoryChallenge.KJ.Photon
 {
@@ -19,7 +20,7 @@ namespace VictoryChallenge.KJ.Photon
         [HideInInspector] public TMP_Text _text;
 
         private bool _isReady = false;
-        private int stageNum = 3;
+        [HideInInspector] public int stageNum = 3;
         //private bool _isControllerCreated = false;
 
         #region Singleton
@@ -54,10 +55,13 @@ namespace VictoryChallenge.KJ.Photon
                 Debug.Log("호스트 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 3)
+            else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 5)
             {
                 Debug.Log("클라 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+
+                //Debug.Log("플레이어들의 데이터를 담을 매니저 생성");
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayersDataManager"), Vector3.zero, Quaternion.identity);
             }
         }
 

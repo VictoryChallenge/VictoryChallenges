@@ -197,16 +197,15 @@ namespace VictoryChallenge.KJ.Auth
                     DataSnapshot snapshot = userTask.Result;
                     if (snapshot.Exists)
                     {
-                        //string json = snapshot.GetRawJsonValue();
+                        string json = snapshot.GetRawJsonValue();
                         string customData = snapshot.Child("customData").Value.ToString();
-                        string userJsonData = snapshot.Child("jsonData").Value.ToString();
-                        
-                        JObject authJsonData = JObject.Parse(userJsonData);
+                        string userjsonData = snapshot.Child("jsonData").Value.ToString();
+
+                        JObject authJsonData = JObject.Parse(userjsonData);
                         bool isLoggedIn = authJsonData["isLoggedIn"].Value<bool>();
                         Debug.Log("접속중 테스트 : " + isLoggedIn);
 
-                        User userData = JsonUtility.FromJson<User>(userJsonData);
-                        Debug.Log("접속중1 " + userData);
+                        User userData = JsonUtility.FromJson<User>(userjsonData);
 
                         if (userData.isLoggedIn)
                         {
@@ -243,11 +242,11 @@ namespace VictoryChallenge.KJ.Auth
         }
 
         /// <summary>
-        /// 로그 아웃
+        /// 로그 아웃 로직
         /// </summary>
         public void LogOut()
         {
-            if (_user != null)
+            if (_user != null )
             {
                 //// 로그아웃 정보 업데이트 (데이터베이스)
                 string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
@@ -257,7 +256,8 @@ namespace VictoryChallenge.KJ.Auth
 
                 DatabaseManager.Instance.SignOutProcess(shortUID, json, DatabaseManager.Instance.customData);
                 Debug.Log("접속중 OFF : " + DatabaseManager.Instance.gameData.users[shortUID].isLoggedIn);
-
+                    
+                // 로그아웃과 게임종료가 데이터 업데이트 이후에 이루어져야함
             }
             else
             {
@@ -292,7 +292,6 @@ namespace VictoryChallenge.KJ.Auth
             }
             else
             {
-
                 var RegisterTask = _auth.CreateUserWithEmailAndPasswordAsync(_email, _password);
                 // LoginTask.IsCompleted가 참이 될 때 까지 기다림
                 yield return new WaitUntil(predicate: () => RegisterTask.IsCompleted);
@@ -338,7 +337,6 @@ namespace VictoryChallenge.KJ.Auth
                         case AuthError.NetworkRequestFailed:
                             message = "네트워크 오류입니다. 네트워크 연결을 확인하세요.";
                             break;
-
                     }
                     warningRegisterText.text = message;
                 }
@@ -372,11 +370,12 @@ namespace VictoryChallenge.KJ.Auth
 
                             PlayerCharacterCustomized playerData = new PlayerCharacterCustomized();
                             string customData = playerData.Initialize();
+                            DatabaseManager.Instance.customData = customData;
 
                             string shortUID = UIDHelper.GenerateShortUID(_user.UserId);
-                            User newUser = new User(_user.UserId, shortUID, _username, false, true, 100, 0);
-
+                            User newUser = new User(_user.UserId, shortUID, _username, false, 100, 0);
                             string jsonData = JsonUtility.ToJson(newUser);
+                            DatabaseManager.Instance.userData = jsonData;
                             DatabaseManager.Instance.WriteUserData(newUser.shortUID, jsonData, customData);
                         }
                     }

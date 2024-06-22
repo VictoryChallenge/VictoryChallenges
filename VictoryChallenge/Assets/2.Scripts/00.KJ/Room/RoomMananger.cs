@@ -35,6 +35,7 @@ namespace VictoryChallenge.KJ.Room
 
         void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
+
             if (scene.buildIndex == 2 && PhotonNetwork.InRoom)
             {
                 //PhotonSub.Instance.AssignButtonAndText();
@@ -45,8 +46,9 @@ namespace VictoryChallenge.KJ.Room
                     PhotonSub.Instance.OnSceneLoadedForAllPlayers();
                 }
             }
-            else if (scene.buildIndex == 3)
+            else if (scene.buildIndex >= 3 && scene.buildIndex != 4)
             {
+
                 if (PhotonSub.Instance != null)
                 {
                     Debug.Log("클라이언트 호출");

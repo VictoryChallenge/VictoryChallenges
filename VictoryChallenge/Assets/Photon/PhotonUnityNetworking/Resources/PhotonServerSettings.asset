@@ -45,8 +45,8 @@ MonoBehaviour:
   - RPC_UpdateStageSelectTextSprite
   - CustomDataRPC
   - SendCustomData
-  - SyncObstacleState
-  - SetAnimationBool
+  - StartCount
+  - SetStageNum
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
