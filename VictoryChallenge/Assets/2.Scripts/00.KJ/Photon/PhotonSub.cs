@@ -50,18 +50,23 @@ namespace VictoryChallenge.KJ.Photon
 
         public void OnSceneLoadedForAllPlayers()
         {
+
+
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 Debug.Log("호스트 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
             }
+            //else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 5)
             else if (SceneManager.GetActiveScene().buildIndex == stageNum)
             {
+                Debug.Log(stageNum + "스테이지입니다");
+
                 Debug.Log("클라 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
 
                 //Debug.Log("플레이어들의 데이터를 담을 매니저 생성");
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayersDataManager"), Vector3.zero, Quaternion.identity);
+                //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayersDataManager"), Vector3.zero, Quaternion.identity);
             }
         }
 

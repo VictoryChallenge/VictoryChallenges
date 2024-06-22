@@ -116,7 +116,7 @@ namespace VictoryChallenge.Scripts.CL
             }
         }
 
-        private void UpdateStageSelectTextSprite(Sprite newSprite, string name)
+        private void UpdateStageSelectTextSprite(Sprite newSprite, string name, int stageNumber)
         {
             if (newSprite != null)
                 stageSelectButtonImage.sprite = newSprite;
@@ -126,6 +126,7 @@ namespace VictoryChallenge.Scripts.CL
             PhotonView photonView = GetComponent<PhotonView>();
             // 이미지 및 텍스트 변경을 모든 클라이언트에 전파
             photonView.RPC("RPC_UpdateStageSelectTextSprite", RpcTarget.All, newSprite.name, name);
+            photonView.RPC("SetStageNum", RpcTarget.All, stageNumber);
         }
 
         [PunRPC]
@@ -143,6 +144,12 @@ namespace VictoryChallenge.Scripts.CL
             }
 
             GetTextMeshPro((int)TMPs.StageName).text = name;
+        }
+
+        [PunRPC]
+        void SetStageNum(int stageNumber)
+        {
+            PhotonSub.Instance.SetStageNum(stageNumber);
         }
 
         public void LeftLobby()

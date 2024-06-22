@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -27,7 +28,7 @@ namespace VictoryChallenge.Scripts.CL
         string _marathon = "혈압 마라톤";
         string _onlyone = "onlyone";
 
-        public Action<Sprite, string> OnStageSelected;
+        public Action<Sprite, string, int> OnStageSelected;
 
         void Start()
         {
@@ -100,10 +101,8 @@ namespace VictoryChallenge.Scripts.CL
                     break;
             }
 
-            OnStageSelected?.Invoke(selectedSprite, _mapname); // Delegate로 Sprite, string 넘기기
-            PhotonSub.Instance.SetStageNum(stageNum);
+            OnStageSelected?.Invoke(selectedSprite, _mapname, stageNum); // Delegate로 Sprite, string 넘기기
             ClosePopupUI();
-
         }
     }
 }
