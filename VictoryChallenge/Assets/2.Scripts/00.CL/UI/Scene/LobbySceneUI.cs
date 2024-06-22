@@ -125,8 +125,8 @@ namespace VictoryChallenge.Scripts.CL
 
             PhotonView photonView = GetComponent<PhotonView>();
             // 이미지 및 텍스트 변경을 모든 클라이언트에 전파
-            photonView.RPC("RPC_UpdateStageSelectTextSprite", RpcTarget.All, newSprite.name, name);
-            photonView.RPC("SetStageNum", RpcTarget.All, stageNumber);
+            photonView.RPC("RPC_UpdateStageSelectTextSprite", RpcTarget.AllBuffered, newSprite.name, name);
+            photonView.RPC("SetStageNum", RpcTarget.AllBuffered, stageNumber);
         }
 
         [PunRPC]

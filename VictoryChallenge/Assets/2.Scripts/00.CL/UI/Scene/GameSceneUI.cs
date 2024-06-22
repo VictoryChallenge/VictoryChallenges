@@ -2,6 +2,7 @@ using ithappy;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ namespace VictoryChallenge.Scripts.CL
 { 
     public class GameSceneUI : UI_Scene
     {
-
+        private PhotonView photonView;
 
         enum TMPs
         { 
@@ -19,7 +20,6 @@ namespace VictoryChallenge.Scripts.CL
 
         void Start()
         {
-
             Init();
         }
 
@@ -39,7 +39,7 @@ namespace VictoryChallenge.Scripts.CL
             text = GetTextMeshPro((int)TMPs.countdown);
             text.gameObject.SetActive(false);
 
-            StartCoroutine(GameStart());
+            //photonView.RPC("PlayerLoadedScene", RpcTarget.AllBuffered);
         }
 
         void Update()
@@ -67,22 +67,21 @@ namespace VictoryChallenge.Scripts.CL
             yield return new WaitForSeconds(1f);
 
             text.text = "1";
-            yield return new WaitForSeconds(1f);
 
-            isMoving = true;
-
-            text.text = "달려라~";
-            yield return new WaitForSeconds(1f);
-
-
-            text.gameObject.SetActive(false);
+            isMoving = true;  // 캐릭터 움직임 막을
+            
             Rnd_Animation[] objs = FindObjectsOfType<Rnd_Animation>();
             foreach(var obj in objs)
             {
                 obj.Active();
             }
-        }
 
-        
+            yield return new WaitForSeconds(1f);
+
+            text.text = "달려라~";
+            yield return new WaitForSeconds(1f);
+
+            text.gameObject.SetActive(false);
+        }
     }
 }
