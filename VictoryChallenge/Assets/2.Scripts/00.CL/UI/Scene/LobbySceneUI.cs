@@ -38,8 +38,8 @@ namespace VictoryChallenge.Scripts.CL
 
         void Start()
         {
-            Init();
             Managers.UI.ShowSceneUI<UI_Scene>("ChatPrefabs");
+            Init();
         }
 
         public override void Init()
@@ -86,6 +86,10 @@ namespace VictoryChallenge.Scripts.CL
                     return;
                 else
                     Managers.UI.ShowPopupUI<GameSettingPopup>();
+
+                GameObject gogo = GameObject.Find("ChatInput");
+                if (gogo != null && gogo.GetComponent<TMP_InputField>().isFocused)
+                    gogo.GetComponent<TMP_InputField>().DeactivateInputField();
             }
         }
 

@@ -56,6 +56,8 @@ namespace VictoryChallenge.Scripts.CL
             Bind<TMP_InputField>(typeof(InputFields));
             Bind<TextMeshProUGUI>(typeof(TMPs));
             Managers.Sound.Play("MainBGM", Define.Sound.BGM);
+            AudioSource _audioSource = GameObject.Find("BGM").GetComponent<AudioSource>();
+            _audioSource.volume = 0.4f;
 
             loginInputFields.Add(GetInputField((int)InputFields.Email));
             loginInputFields.Add(GetInputField((int)InputFields.Password));
