@@ -11,6 +11,7 @@ using VictoryChallenge.KJ.Database;
 using VictoryChallenge.Customize;
 using Firebase.Extensions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace VictoryChallenge.KJ.Auth
 {
@@ -200,11 +201,16 @@ namespace VictoryChallenge.KJ.Auth
                         string customData = snapshot.Child("customData").Value.ToString();
                         string userjsonData = snapshot.Child("jsonData").Value.ToString();
 
+                        JObject authJsonData = JObject.Parse(userjsonData);
+                        bool isLoggedIn = authJsonData["isLoggedIn"].Value<bool>();
+                        Debug.Log("접속중 테스트 : " + isLoggedIn);
+
                         User userData = JsonUtility.FromJson<User>(userjsonData);
 
                         if (userData.isLoggedIn)
                         {
                             warningLoginText.text = "이미 접속중인 아이디 입니다.";
+                            onLoginCompleted?.Invoke(false);
                             yield break;
                         }
 
@@ -217,6 +223,8 @@ namespace VictoryChallenge.KJ.Auth
 
                         string updateJsonData = JsonUtility.ToJson(userData);
                         DatabaseManager.Instance.WriteUserData(userData.shortUID, updateJsonData, customData);
+
+                        userRef.Child("jsonData").OnDisconnect().SetValue(authJsonData.ToString().Replace("\"isLoggedIn\":true", "\"isLoggedIn\":false"));
 
                         warningLoginText.text = "";
                         confirmLoginText.text = "로그인에 성공했습니다.";
