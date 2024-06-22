@@ -54,6 +54,7 @@ namespace VictoryChallenge.KJ.Database
         }
 
         public string customData { get; set; }
+        public string userData { get; set; }
 
         public void SaveUserDB(FirebaseUser user)
         {
@@ -135,15 +136,23 @@ namespace VictoryChallenge.KJ.Database
             });
         }
 
-        public void WriteUserData(string userkey, string jsonData, string customData = "")
+        public void WriteUserData(string userkey, string jsonData = "", string customJsonData = "")
         {
             DatabaseReference db = null;
             db = FirebaseDatabase.DefaultInstance.GetReference("User");
 
             Dictionary<string, object> dic = new Dictionary<string, object>();
             dic.Add("userkey", userkey);
-            dic.Add("jsonData", jsonData);
-            dic.Add("customData", customData);
+
+            if (!string.IsNullOrEmpty(jsonData))
+                dic.Add("jsonData", jsonData);
+            else
+                dic.Add("jsonData", userData);
+
+            if (!string.IsNullOrEmpty(customJsonData))
+                dic.Add("customData", customJsonData);
+            else
+                dic.Add("customData", customData);
 
             Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add(userkey, dic);
@@ -160,7 +169,7 @@ namespace VictoryChallenge.KJ.Database
             ReadUserData(userkey);
         }
 
-        public void SignOutProcess(string userkey, string jsonData, string customData)
+        public void SignOutProcess(string userkey, string jsonData, string customJsonData = "")
         {
             DatabaseReference db = null;
             db = FirebaseDatabase.DefaultInstance.GetReference("User");
@@ -169,14 +178,14 @@ namespace VictoryChallenge.KJ.Database
             dic.Add("userkey", userkey);
             dic.Add("jsonData", jsonData);
 
-            if(!string.IsNullOrEmpty(customData))
+            if(!string.IsNullOrEmpty(customJsonData))
             {
-                dic.Add("customData", customData);
+                dic.Add("customData", customJsonData);
             }
             else
             {
-                PlayerCharacterCustomized playerCharacterCustomized = new PlayerCharacterCustomized();
-                customData = playerCharacterCustomized.Initialize();
+                //PlayerCharacterCustomized playerCharacterCustomized = new PlayerCharacterCustomized();
+                //customData = playerCharacterCustomized.Initialize();
                 dic.Add("customData", customData);
             }
 

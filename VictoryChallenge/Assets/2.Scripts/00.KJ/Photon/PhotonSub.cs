@@ -9,6 +9,7 @@ using System.Collections;
 using Photon.Realtime;
 using System;
 using VictoryChallenge.Scripts.CL;
+using VictoryChallenge.Scripts.HS;
 
 namespace VictoryChallenge.KJ.Photon
 {
@@ -58,6 +59,9 @@ namespace VictoryChallenge.KJ.Photon
             {
                 Debug.Log("클라 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+
+                //Debug.Log("플레이어들의 데이터를 담을 매니저 생성");
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayersDataManager"), Vector3.zero, Quaternion.identity);
             }
         }
 
