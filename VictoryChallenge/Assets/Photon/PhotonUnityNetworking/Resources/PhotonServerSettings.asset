@@ -47,6 +47,8 @@ MonoBehaviour:
   - SendCustomData
   - StartCount
   - SetStageNum
+  - SetAnimationBool
+  - SyncObstacleState
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

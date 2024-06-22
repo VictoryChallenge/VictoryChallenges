@@ -2119,6 +2119,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1891113524}
+    - targetCorrespondingSourceObject: {fileID: 8825387722106718302, guid: d4339037c2415d94abbf9cafbe90275a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1891113534}
   m_SourcePrefab: {fileID: 100100000, guid: d4339037c2415d94abbf9cafbe90275a, type: 3}
 --- !u!114 &461469279
 MonoBehaviour:
@@ -8826,6 +8830,20 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 453866742}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1891113534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891113518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549566ae291a7134485071015c6a234f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  titleAnim: Rotation Z-
 --- !u!1001 &1904183477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10061,8 +10079,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 891424870646754634, guid: c497289dd80339a41bcfa15a7fc61da0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2064499078}
   m_SourcePrefab: {fileID: 100100000, guid: c497289dd80339a41bcfa15a7fc61da0, type: 3}
+--- !u!1 &2064499077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 891424870646754634, guid: c497289dd80339a41bcfa15a7fc61da0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2064499076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2064499078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064499077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549566ae291a7134485071015c6a234f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  titleAnim: Rotation Z-
 --- !u!4 &2065158705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4945312487114774359, guid: 6aa560996c9730c488734adc13c5a8bd,

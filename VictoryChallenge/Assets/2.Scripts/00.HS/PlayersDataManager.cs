@@ -63,9 +63,9 @@ namespace VictoryChallenge.Scripts.HS
             int score = RewardPoint(rank);
 
             // 순위에 맞는 점수, 골드 갱신
-            user.rank += score;
+            user.score += score;
 
-            playerScoreDatas[shortUID] = user.rank;
+            playerScoreDatas[shortUID] = user.score;
 
             string userData = JsonUtility.ToJson(user);
 

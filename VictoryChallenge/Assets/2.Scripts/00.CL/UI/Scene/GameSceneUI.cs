@@ -1,3 +1,4 @@
+using ithappy;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ namespace VictoryChallenge.Scripts.CL
 { 
     public class GameSceneUI : UI_Scene
     {
+
+
         enum TMPs
         { 
             countdown,
@@ -16,6 +19,7 @@ namespace VictoryChallenge.Scripts.CL
 
         void Start()
         {
+
             Init();
         }
 
@@ -72,6 +76,13 @@ namespace VictoryChallenge.Scripts.CL
 
 
             text.gameObject.SetActive(false);
+            Rnd_Animation[] objs = FindObjectsOfType<Rnd_Animation>();
+            foreach(var obj in objs)
+            {
+                obj.Active();
+            }
         }
+
+        
     }
 }
