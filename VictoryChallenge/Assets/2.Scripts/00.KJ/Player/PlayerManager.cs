@@ -8,8 +8,9 @@ using Firebase.Auth;
 using VictoryChallenge.KJ.Auth;
 using VictoryChallenge.KJ.Database;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
-using VictoryChallenge.Scripts.HS;
 using UnityEngine.SceneManagement;
+using VictoryChallenge.Scripts.HS;
+using VictoryChallenge.KJ.Rank;
 
 namespace VictoryChallenge.KJ.Manager
 {
@@ -18,6 +19,8 @@ namespace VictoryChallenge.KJ.Manager
         PhotonView pv;
 
         GameObject controller;
+
+        private RankManagers _rankManager;
 
         void Awake()
         {

@@ -10,6 +10,7 @@ using Photon.Realtime;
 using System;
 using VictoryChallenge.Scripts.CL;
 using VictoryChallenge.Scripts.HS;
+using VictoryChallenge.KJ.Name;
 
 namespace VictoryChallenge.KJ.Photon
 {
@@ -19,9 +20,11 @@ namespace VictoryChallenge.KJ.Photon
         [HideInInspector] public Button _button;
         [HideInInspector] public TMP_Text _text;
 
-        private bool _isReady = false;
+        [HideInInspector] public  bool _isReady = false;
         [HideInInspector] public int stageNum = 3;
         //private bool _isControllerCreated = false;
+
+        private PlayerNameDisplay _playerNameDisplay;
 
         #region Singleton
         public static PhotonSub Instance;
@@ -40,6 +43,11 @@ namespace VictoryChallenge.KJ.Photon
             }
         }
         #endregion
+
+        void Start()
+        {
+            _playerNameDisplay = GetComponent<PlayerNameDisplay>();
+        }
 
         #region Dynamic Buttons
         public void AssignButtonAndText()
@@ -107,6 +115,7 @@ namespace VictoryChallenge.KJ.Photon
             PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsReady", _isReady } });
             Debug.Log($"{PhotonNetwork.LocalPlayer.NickName}" + (_isReady ? "준비완료" : "아직 준비완료 안함"));
             CheckAllPlayersReady();
+            _playerNameDisplay.ToggleReadyState();
         }
 
         private void CheckAllPlayersReady()
