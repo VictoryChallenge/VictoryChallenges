@@ -32,7 +32,6 @@ namespace VictoryChallenge.Scripts.HS
         {
             // 플레이어의 ShortUID와 Rank를 Dictionary에 저장
             playerDatas.Add(shortUID, rank);
-            playerScoreDatas.Add(shortUID, rank);
 
             foreach (var item in playerDatas.Keys)
             {
@@ -43,17 +42,6 @@ namespace VictoryChallenge.Scripts.HS
             {
                 Debug.Log("ValuesUser : " + item);
             }
-
-            foreach (var item in playerScoreDatas.Keys)
-            {
-                Debug.Log("KeyScore : " + item);
-            }
-
-            foreach (var item in playerScoreDatas.Values)
-            {
-                Debug.Log("ValuesScore : " + item);
-            }
-
         }
 
         public void SetRank(string shortUID, int rank)

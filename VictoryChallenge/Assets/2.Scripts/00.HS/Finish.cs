@@ -51,10 +51,15 @@ namespace VictoryChallenge.Scripts.HS
                         // 각자 플레이어의 shortUID 받아오기
                         string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
 
+                        // 각자 플레이어의 nickName 받아오기
+                        string nickName = other.gameObject.GetComponent<CharacterController>().nickName;
+
                         // shortUID와 rank를 DB에 연동하기 위해 RankManager에 등록
                         //RankManager.Instance.SetRank(userShortUID, _rankCount);
                         //PlayersDataManager.Instance.SetRank(userShortUID, _rankCount);
-                        _gameManager.GetComponent<GameManagerCL>().SetRank(_rankCount);
+                        //_gameManager.GetComponent<GameManagerCL>().SetRank(_rankCount);
+                        _gameManager.GetComponent<GameManagerCL>().Register(nickName, _rankCount);
+
                         // 한명이라도 들어오면 카운트 시작
                         if (_rankCount == 1)
                         {

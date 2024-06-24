@@ -9,12 +9,16 @@ using VictoryChallenge.KJ.Database;
 using ExitGames.Client.Photon.StructWrapping;
 using UnityEngine.SocialPlatforms.Impl;
 using System.Collections.Generic;
+using VictoryChallenge.Scripts.HS;
+using VictoryChallenge.Json.DataManage;
 
 namespace VictoryChallenge.Scripts.CL
 {
     public class GameManagerCL : MonoBehaviourPunCallbacks
     {
         // 이 스크립트는 모든 플레이어가 씬을 로드했는지 확인하고, 그 후 게임을 시작하는 역할을 합니다.
+        Dictionary<string, int> playerRank = new Dictionary<string, int>();
+
 
         public enum Point
         {
@@ -63,8 +67,24 @@ namespace VictoryChallenge.Scripts.CL
             {
                 if (targetPlayer.CustomProperties.TryGetValue("Score", out debugScore))
                 {
-                    Debug.Log("Changed Score : " + debugScore);
+                    Debug.Log($"{targetPlayer}'s Score Changed " + debugScore);
+                    RankManager.Instance.Register(targetPlayer.NickName, debugScore);
                 }
+            }
+        }
+
+        public void Register(string nickName, int rank)
+        {
+            playerRank.Add(nickName, rank);
+
+            foreach (var item in playerRank.Keys)
+            {
+                Debug.Log("Nickname : " + item);
+            }
+
+            foreach (var item in playerRank.Values)
+            {
+                Debug.Log("rank : " + item);
             }
         }
 
@@ -111,13 +131,14 @@ namespace VictoryChallenge.Scripts.CL
         {
             int score = RewardPoint(rank);
 
-            Debug.Log($"Local NickName : {PhotonNetwork.LocalPlayer.NickName}" + "'s score : " + score);
-
+            // 들어온 유저들의 닉네임 로그
             if (PhotonNetwork.PlayerList.All(player => player.CustomProperties.ContainsKey("Score")))
             {
                 Debug.Log("PhotonNetwork.PlayerList : " + PhotonNetwork.PlayerList.ToStringFull());
             }
-            
+
+            // 결승선에 도달했을 때 Score 갱신
+            // 문제점 -> PhotonNetwork.LocalPlayer.SetCustomProperties을 갱신하는 것이므로 다른 사람의 점수는 건드릴 수가 없다..?
             PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Score", score } });
         }
 
@@ -130,6 +151,7 @@ namespace VictoryChallenge.Scripts.CL
                 if(player.CustomProperties.ContainsKey("Score"))
                 {
                     scores.Add((int)player.CustomProperties["Score"]);
+                    Debug.Log($"{player.NickName} is Add {(int)player.CustomProperties["Score"]}");
                 }
             }
 
@@ -139,12 +161,12 @@ namespace VictoryChallenge.Scripts.CL
             //{
             //    if(player.CustomProperties.ContainsValue())
             //}
-            foreach(int score  in scores)
-            {
-                Debug.Log("score in List : " + score);
-            }
+            //foreach(int score  in scores)
+            //{
+            //    Debug.Log("score in List : " + score);
+            //}
 
-            Debug.Log("Sorted Score" + scores.First());
+            //Debug.Log("Sorted Score" + scores.First());
 
             return scores.First();
         }
