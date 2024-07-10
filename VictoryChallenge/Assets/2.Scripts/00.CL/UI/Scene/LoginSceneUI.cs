@@ -67,8 +67,8 @@ namespace VictoryChallenge.Scripts.CL
 
             GetButton((int)Buttons.StartGame).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
             GetButton((int)Buttons.Register).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
-            Authentication.Instance.confirmLoginText = GetTextMeshPro((int)TMPs.ConfirmText);
-            Authentication.Instance.warningLoginText = GetTextMeshPro((int)TMPs.ErrorText);
+            RestAPIAuth.Instance.confirmLoginText = GetTextMeshPro((int)TMPs.ConfirmText);
+            RestAPIAuth.Instance.warningLoginText = GetTextMeshPro((int)TMPs.ErrorText);
         }
 
         public void OnButtonClicked(PointerEventData data, int a)
@@ -79,9 +79,9 @@ namespace VictoryChallenge.Scripts.CL
             {
                 case 1:
                     Debug.Log("Attempting to login...");
-                    Authentication.Instance.email = _email;
-                    Authentication.Instance.password = _password;
-                    Authentication.Instance.AttemptLogin();
+                    RestAPIAuth.Instance.email = _email;
+                    RestAPIAuth.Instance.password = _password;
+                    RestAPIAuth.Instance.AttemptLogin();
                     break;
                 case 2:
                     Managers.UI.ShowPopupUI<RegisterPopup>("RegisterPopup");

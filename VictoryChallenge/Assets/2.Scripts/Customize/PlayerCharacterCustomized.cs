@@ -367,12 +367,12 @@ namespace VictoryChallenge.Customize
             string customData = JsonConvert.SerializeObject(saveObject);
 
             // 내 유저 아이디에 맞는 커스텀 데이터 저장
-            string shortUID = UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
+            string shortUID = UIDHelper.GenerateShortUID(RestAPIAuth.Instance.UserId);
             Debug.Log("shortUID : " + shortUID);
-            User user = DatabaseManager.Instance.gameData.users[shortUID];
+            User user = DBTutorial.Instance.gameData.users[shortUID];
             string userData = JsonUtility.ToJson(user);
-            DatabaseManager.Instance.WriteUserData(shortUID, userData, customData);
-            DatabaseManager.Instance.customData = customData;
+            DBTutorial.Instance.WriteUserData(shortUID, userData, customData);
+            DBTutorial.Instance.customData = customData;
             Debug.Log("customData : " + customData);
         }
 
@@ -457,7 +457,7 @@ namespace VictoryChallenge.Customize
 
         public void LoadData()
         {
-            string shortUID = UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
+            string shortUID = UIDHelper.GenerateShortUID(RestAPIAuth.Instance.UserId);
             StartCoroutine(C_LoadjsonData(shortUID));
         }
 
@@ -482,7 +482,7 @@ namespace VictoryChallenge.Customize
                         {
                             Debug.Log("child.Value.ToString() : " + child.ToString());
                             userData = child.Child("customData").Value.ToString();
-                            DatabaseManager.Instance.customData = userData;
+                            DBTutorial.Instance.customData = userData;
                             
                             // RPC 보낼 수 있는 조건인지 확인
                             if(!_isLocal)

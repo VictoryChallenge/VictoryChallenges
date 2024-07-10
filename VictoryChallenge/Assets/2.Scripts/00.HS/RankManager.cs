@@ -61,7 +61,7 @@ namespace VictoryChallenge.Scripts.HS
             // 플레이어의 ShortUID와 Rank를 저장
             playerDatas[shortUID] = rank;
 
-            User user = DatabaseManager.Instance.gameData.users[shortUID];
+            User user = DBTutorial.Instance.gameData.users[shortUID];
 
             int score = RewardPoint(rank);
 
@@ -74,7 +74,7 @@ namespace VictoryChallenge.Scripts.HS
 
             Debug.Log("userJsonData " + userData);
 
-            DatabaseManager.Instance.WriteUserData(shortUID, userData);
+            DBTutorial.Instance.WriteUserData(shortUID, userData);
         }
 
         public string SortRank()
@@ -92,7 +92,7 @@ namespace VictoryChallenge.Scripts.HS
             }
 
 
-            DatabaseManager.Instance.ReadUserData("");
+            DBTutorial.Instance.ReadUserData("");
 
             return playerScoreDatas.First().Key.ToString();
         }
