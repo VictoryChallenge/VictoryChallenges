@@ -49,7 +49,7 @@ namespace VictoryChallenge.Scripts.HS
             // 플레이어의 ShortUID와 Rank를 저장
             playerDatas[shortUID] = rank;
 
-            User user = DatabaseManager.Instance.gameData.users[shortUID];
+            KJ.Database.User user = DatabaseManager.Instance.gameData.users[shortUID];
 
             int score = RewardPoint(rank);
 
