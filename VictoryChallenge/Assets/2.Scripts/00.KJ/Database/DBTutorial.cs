@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Proyecto26;
 using System;
@@ -147,13 +148,23 @@ namespace VictoryChallenge.KJ.Database
                         var snapshot = JObject.Parse(res.Text);
                         if (snapshot != null)
                         {
-                            foreach (var child in snapshot.Children())
+                            if (!string.IsNullOrEmpty(snapshot["jsonData"].ToString()))
                             {
-                                string strData = child.First["jsonData"].ToString();
+                                string strData = snapshot["jsonData"].ToString();
                                 User loadUser = JsonUtility.FromJson<User>(strData);
                                 gameData.users[shortUID] = loadUser;
-                                Debug.Log("gameData : " + gameData.users[shortUID]);
                             }
+                            if (!string.IsNullOrEmpty(snapshot["customData"].ToString()))
+                            {
+                                customData = snapshot["customData"].ToString();
+                            }
+                            //foreach (var child in snapshot.Children())
+                            //{
+                            //    string strData = child.First["jsonData"].ToString();
+                            //    User loadUser = JsonUtility.FromJson<User>(strData);
+                            //    gameData.users[shortUID] = loadUser;
+                            //    Debug.Log("gameData : " + gameData.users[shortUID]);
+                            //}
                         }
 
                         callback?.Invoke();
@@ -183,43 +194,80 @@ namespace VictoryChallenge.KJ.Database
 
                     RestClient.Request(getRequest, (getErr, getRes) =>
                     {
-                        if (getErr != null)
+                        if (getErr != null || string.IsNullOrEmpty(getRes.Text) || getRes.Text == "null")
                         {
-                            Debug.LogError($"데이터 업데이트 도중 오류 발생 : {getErr.Message}");
-                            return;
-                        }
+                            //Debug.LogError($"데이터 업데이트 도중 오류 발생 : {getErr.Message}");
 
-                        JObject existingData = getRes.Text != null ? JObject.Parse(getRes.Text) : new JObject();
+                            Debug.LogWarning("사용자 데이터 찾을 수 없음, 새로운 데이터 작성 시작");
 
-                        if (!string.IsNullOrEmpty(jsonData))
-                        {
-                            existingData["jsonData"] = JObject.Parse(jsonData);
-                        }
+                            JObject existingData = new JObject();
 
-                        if (!string.IsNullOrEmpty(customJsonData))
-                        {
-                            existingData["customData"] = JObject.Parse(customJsonData);
-                        }
-
-                        var putRequest = new RequestHelper
-                        {
-                            Uri = $"{RestAPIAuth.Instance.dbUrl}/User/{shortUID}.json?auth={idToken}",
-                            Method = "PUT",
-                            BodyString = existingData.ToString(),
-                            EnableDebug = true
-                        };
-
-                        RestClient.Request(putRequest, (putErr, putRes) =>
-                        {
-                            if (putErr != null)
+                            if (!string.IsNullOrEmpty(jsonData))
                             {
-                                Debug.LogError($"데이터 업데이트 도중 오류 발생 : {putErr.Message}");
+                                existingData["jsonData"] = jsonData;
                             }
-                            else
+
+                            if (!string.IsNullOrEmpty(customJsonData))
                             {
-                                Debug.Log("데이터 업데이트 성공");
+                                existingData["customData"] = customJsonData;
                             }
-                        });
+
+                            var putRequest = new RequestHelper
+                            {
+                                Uri = $"{RestAPIAuth.Instance.dbUrl}/User/{shortUID}.json?auth={idToken}",
+                                Method = "PUT",
+                                BodyString = existingData.ToString(),
+                                EnableDebug = true
+                            };
+
+                            RestClient.Request(putRequest, (putErr, putRes) =>
+                            {
+                                if (putErr != null)
+                                {
+                                    Debug.LogError($"데이터 업데이트 도중 오류 발생 : {putErr.Message}");
+                                }
+                                else
+                                {
+                                    ReadUserData(shortUID);
+                                    Debug.Log("데이터 업데이트 성공");
+                                }
+                            });
+                        }
+                        else
+                        {
+                            JObject existingData = getRes.Text != null ? JObject.Parse(getRes.Text) : new JObject();
+
+                            if (!string.IsNullOrEmpty(jsonData))
+                            {
+                                existingData["jsonData"] = /*JObject.Parse*/(jsonData);
+                            }
+
+                            if (!string.IsNullOrEmpty(customJsonData))
+                            {
+                                existingData["customData"] = /*JObject.Parse*/(customJsonData);
+                            }
+
+                            var putRequest = new RequestHelper
+                            {
+                                Uri = $"{RestAPIAuth.Instance.dbUrl}/User/{shortUID}.json?auth={idToken}",
+                                Method = "PUT",
+                                BodyString = existingData.ToString(),
+                                EnableDebug = true
+                            };
+
+                            RestClient.Request(putRequest, (putErr, putRes) =>
+                            {
+                                if (putErr != null)
+                                {
+                                    Debug.LogError($"데이터 업데이트 도중 오류 발생 : {putErr.Message}");
+                                }
+                                else
+                                {
+                                    ReadUserData(shortUID);
+                                    Debug.Log("데이터 업데이트 성공");
+                                }
+                            });
+                        }
                     });
                 }
                 else
@@ -252,16 +300,21 @@ namespace VictoryChallenge.KJ.Database
                             return;
                         }
 
-                        JObject existingData = JObject.Parse(getRes.Text);
 
+                        JObject existingData = new JObject();
+
+                        // isLoggedIn : false 초기화
                         if (!string.IsNullOrEmpty(jsonData))
                         {
-                            existingData["jsonData"] = JObject.Parse(jsonData);
+                            existingData["jsonData"] = jsonData;
+                            JObject isLoggedInData = JObject.Parse(jsonData);
+                            isLoggedInData["isLoggedIn"] = false;
+                            existingData["jsonData"] = JsonConvert.SerializeObject(isLoggedInData);
                         }
 
                         if (!string.IsNullOrEmpty(customJsonData))
                         {
-                            existingData["customData"] = JObject.Parse(customJsonData);
+                            existingData["customData"] = customJsonData;
                         }
                         else if (existingData["customData"] == null)
                         {
