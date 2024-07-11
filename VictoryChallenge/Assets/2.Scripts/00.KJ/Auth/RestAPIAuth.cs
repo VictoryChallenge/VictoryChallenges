@@ -10,6 +10,7 @@ using VictoryChallenge.KJ.Database;
 using VictoryChallenge.Customize;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using QFSW.QC.Actions;
 
 
 namespace VictoryChallenge.KJ.Auth
@@ -169,25 +170,27 @@ namespace VictoryChallenge.KJ.Auth
 
                 Debug.Log($"로그인 성공 : {json["email"]}, {json["password"]}, {json["displayName"]}");
 
-                StartCoroutine(FetchUserData(onLoginCompleted));
+                string shortUID = UIDHelper.GenerateShortUID(_userId);
+
+                StartCoroutine(FetchUserData(onLoginCompleted, shortUID));
             });
             yield return null;
         }
 
-        IEnumerator FetchUserData(Action<bool> onLoginCompleted)
+        IEnumerator FetchUserData(Action<bool> onLoginCompleted, string shortUID)
         {
             var request = new RequestHelper
             {
-                Uri = $"{dbUrl}/User/{_userId}.json?auth={_idToken}",
+                Uri = $"{dbUrl}/User/{shortUID}.json?auth={_idToken}",
                 Method = "GET",
                 EnableDebug = true
             };
 
             RestClient.Request(request, (err, res) =>
             {
-                if (err != null)
+                if (err != null || string.IsNullOrEmpty(res.Text) || res.Text == "null")
                 {
-                    Debug.LogError($"데이터 불러오는 도중 오류 발생 : {err.Message}");
+                    //Debug.LogError($"데이터 불러오는 도중 오류 발생 : {err.Message}");
                     onLoginCompleted?.Invoke(false);
                     return;
                 }
@@ -198,9 +201,10 @@ namespace VictoryChallenge.KJ.Auth
                     string customData = snapshot["customData"]?.ToString();
                     string userJsonData = snapshot["jsonData"]?.ToString();
 
-                    JObject authJsonData = JObject.Parse(userJsonData);
-                    bool isLoggedIn = authJsonData["isLoggedIn"].Value<bool>();
-                    Debug.Log("접속중 : " + isLoggedIn);
+                    //JObject authJsonData = JObject.Parse(userJsonData);
+                    //bool isLoggedIn = authJsonData["isLoggedIn"].Value<bool>();
+                    //bool isLoggedIn = snapshot["isLoggedIn"].Value<bool>();
+                    //Debug.Log("접속중 : " + isLoggedIn);
 
                     User userData = JsonUtility.FromJson<User>(userJsonData);
 
@@ -213,14 +217,15 @@ namespace VictoryChallenge.KJ.Auth
 
                     userData.uid = _userId;
                     userData.shortUID = UIDHelper.GenerateShortUID(_userId);
-                    userData.userName = authJsonData["displayName"].ToString();
+                    //userData.userName = authJsonData["userName"].ToString();
                     userData.isLoggedIn = true;
 
                     Debug.Log("플레이어 접속 상태 : " + userData.isLoggedIn);
 
-                    string updateJsonData = JsonUtility.ToJson(userData);
+                    //string updateJsonData = JsonUtility.ToJson(userData);
+                    DBTutorial.Instance.WriteUserData(shortUID, userJsonData, customData);
 
-                    StartCoroutine(UpdateUserData(userData.shortUID, updateJsonData, authJsonData.ToString(), onLoginCompleted));
+                    StartCoroutine(UpdateUserData(userData.shortUID, customData, userJsonData, onLoginCompleted));
                 }
                 else
                 {
@@ -231,7 +236,7 @@ namespace VictoryChallenge.KJ.Auth
             yield return null;
         }
 
-        IEnumerator UpdateUserData(string shortUID, string updateJsonData, string authJsonData, Action<bool> onLoginCompleted)
+        IEnumerator UpdateUserData(string shortUID, string customJsonData, string authJsonData, Action<bool> onLoginCompleted)
         {
             var getRequest = new RequestHelper
             {
@@ -249,13 +254,29 @@ namespace VictoryChallenge.KJ.Auth
                     return;
                 }
 
-                var existingData = JObject.Parse(getRes.Text);
+                JObject existingData = new JObject();
 
-                var updateData = JObject.Parse(updateJsonData);
-                existingData["jsonData"] = updateData["jsonData"];
-                if (updateData.ContainsKey("customData"))
+                if (!string.IsNullOrEmpty(authJsonData))
                 {
-                    existingData["customData"] = updateData["customData"];
+                    existingData["jsonData"] = authJsonData;
+                    JObject isLoggedInData = JObject.Parse(authJsonData);
+                    if (isLoggedInData != null)
+                    {
+                        // 중복 로그인 방지
+                        if(isLoggedInData["isLoggedIn"].Value<bool>() == true)
+                        {
+                            onLoginCompleted?.Invoke(false);
+                            return;
+                        }
+
+                        isLoggedInData["isLoggedIn"] = true;
+                        existingData["jsonData"] = JsonConvert.SerializeObject(isLoggedInData);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(customJsonData))
+                {
+                    existingData["customData"] = customJsonData;
                 }
 
                 var putRequest = new RequestHelper
@@ -276,27 +297,27 @@ namespace VictoryChallenge.KJ.Auth
                     }
                 });
 
-                var disconnectRequest = new RequestHelper
-                {
-                    Uri = $"{dbUrl}/User/{shortUID}/jsonData.json?auth={_idToken}",
-                    Method = "PUT",
-                    BodyString = authJsonData.Replace("\"isLoggedIn\":true", "\"isLoggedIn\":false"),
-                    EnableDebug = true,
-                };
+                //var disconnectRequest = new RequestHelper
+                //{
+                //    Uri = $"{dbUrl}/User/{shortUID}/jsonData.json?auth={_idToken}",
+                //    Method = "PUT",
+                //    BodyString = updateJsonData.Replace("\"isLoggedIn\":true", "\"isLoggedIn\":false"),
+                //    EnableDebug = true,
+                //};
 
-                RestClient.Request(disconnectRequest, (disconnectErr, disconnectRes) =>
-                {
-                    if (disconnectErr != null)
-                    {
-                        Debug.LogError($"OnDisconnect 설정중 오류 발생 : {disconnectErr.Message}");
-                        onLoginCompleted?.Invoke(false);
-                        return;
-                    }
+                //RestClient.Request(disconnectRequest, (disconnectErr, disconnectRes) =>
+                //{
+                //    if (disconnectErr != null)
+                //    {
+                //        Debug.LogError($"OnDisconnect 설정중 오류 발생 : {disconnectErr.Message}");
+                //        onLoginCompleted?.Invoke(false);
+                //        return;
+                //    }
 
-                    warningLoginText.text = " ";
-                    confirmLoginText.text = "로그인에 성공했습니다.";
-                    onLoginCompleted?.Invoke(true);
-                });
+                //    warningLoginText.text = " ";
+                //    confirmLoginText.text = "로그인에 성공했습니다.";
+                //});
+                onLoginCompleted?.Invoke(true);
             });
 
             yield return null;

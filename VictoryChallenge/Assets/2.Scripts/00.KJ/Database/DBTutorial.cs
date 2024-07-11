@@ -148,13 +148,23 @@ namespace VictoryChallenge.KJ.Database
                         var snapshot = JObject.Parse(res.Text);
                         if (snapshot != null)
                         {
-                            foreach (var child in snapshot.Children())
+                            if (!string.IsNullOrEmpty(snapshot["jsonData"].ToString()))
                             {
-                                string strData = child.First["jsonData"].ToString();
+                                string strData = snapshot["jsonData"].ToString();
                                 User loadUser = JsonUtility.FromJson<User>(strData);
                                 gameData.users[shortUID] = loadUser;
-                                Debug.Log("gameData : " + gameData.users[shortUID]);
                             }
+                            if (!string.IsNullOrEmpty(snapshot["customData"].ToString()))
+                            {
+                                customData = snapshot["customData"].ToString();
+                            }
+                            //foreach (var child in snapshot.Children())
+                            //{
+                            //    string strData = child.First["jsonData"].ToString();
+                            //    User loadUser = JsonUtility.FromJson<User>(strData);
+                            //    gameData.users[shortUID] = loadUser;
+                            //    Debug.Log("gameData : " + gameData.users[shortUID]);
+                            //}
                         }
 
                         callback?.Invoke();
@@ -191,7 +201,6 @@ namespace VictoryChallenge.KJ.Database
                             Debug.LogWarning("사용자 데이터 찾을 수 없음, 새로운 데이터 작성 시작");
 
                             JObject existingData = new JObject();
-                            string existingStringData = string.Empty;
 
                             if (!string.IsNullOrEmpty(jsonData))
                             {
@@ -219,6 +228,7 @@ namespace VictoryChallenge.KJ.Database
                                 }
                                 else
                                 {
+                                    ReadUserData(shortUID);
                                     Debug.Log("데이터 업데이트 성공");
                                 }
                             });
@@ -253,6 +263,7 @@ namespace VictoryChallenge.KJ.Database
                                 }
                                 else
                                 {
+                                    ReadUserData(shortUID);
                                     Debug.Log("데이터 업데이트 성공");
                                 }
                             });
@@ -289,16 +300,21 @@ namespace VictoryChallenge.KJ.Database
                             return;
                         }
 
-                        JObject existingData = JObject.Parse(getRes.Text);
 
+                        JObject existingData = new JObject();
+
+                        // isLoggedIn : false 초기화
                         if (!string.IsNullOrEmpty(jsonData))
                         {
-                            existingData["jsonData"] = JObject.Parse(jsonData);
+                            existingData["jsonData"] = jsonData;
+                            JObject isLoggedInData = JObject.Parse(jsonData);
+                            isLoggedInData["isLoggedIn"] = false;
+                            existingData["jsonData"] = JsonConvert.SerializeObject(isLoggedInData);
                         }
 
                         if (!string.IsNullOrEmpty(customJsonData))
                         {
-                            existingData["customData"] = JObject.Parse(customJsonData);
+                            existingData["customData"] = customJsonData;
                         }
                         else if (existingData["customData"] == null)
                         {

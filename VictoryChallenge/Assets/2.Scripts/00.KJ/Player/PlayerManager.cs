@@ -48,7 +48,7 @@ namespace VictoryChallenge.KJ.Manager
             }
             Debug.Log("스폰 포인트 " + spawnPoint);
             /*FirebaseAuth.DefaultInstance.CurrentUser.UserId;*/
-            string userId = UIDHelper.GenerateShortUID(Authentication.Instance._user.UserId);
+            string userId = UIDHelper.GenerateShortUID(RestAPIAuth.Instance.UserId);
             //Debug.Log("userId : " + userId);
             controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { userId });
             controller.GetComponentInChildren<CharacterController>().shortUID = userId;

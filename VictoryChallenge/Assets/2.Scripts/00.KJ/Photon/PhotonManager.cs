@@ -45,7 +45,7 @@ namespace VictoryChallenge.KJ.Photon
             Debug.Log("OnConnectedToMaster");
 
             PhotonNetwork.AutomaticallySyncScene = true;    // 마스터(호스트)가 씬을 넘기면 클라이언트들도 같이 넘어감
-            PhotonNetwork.NickName = Authentication.Instance._user.DisplayName;
+            PhotonNetwork.NickName = RestAPIAuth.Instance.DisplayName;
         }
         #endregion
 

@@ -60,8 +60,8 @@ namespace VictoryChallenge.Scripts.CL
 
             GetButton((int)Buttons.Register).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
             GetButton((int)Buttons.ExitButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
-            Authentication.Instance.confirmRegisterText = GetTextMeshPro((int)TMPs.ConfirmText);
-            Authentication.Instance.warningRegisterText = GetTextMeshPro((int)TMPs.ErrorText);
+            RestAPIAuth.Instance.confirmRegisterText = GetTextMeshPro((int)TMPs.ConfirmText);
+            RestAPIAuth.Instance.warningRegisterText = GetTextMeshPro((int)TMPs.ErrorText);
         }
 
         private void Update()
@@ -100,11 +100,11 @@ namespace VictoryChallenge.Scripts.CL
                 case 1:
                     if (_email != null && _password != null && _passwordCheck != null && _nickname != null)
                     {
-                        Authentication.Instance.emailRegister = _email;
-                        Authentication.Instance.passwordRegister = _password;
-                        Authentication.Instance.passwordCheck = _passwordCheck;
-                        Authentication.Instance.usernameRegister = _nickname;
-                        Authentication.Instance.RegisterButton();
+                        RestAPIAuth.Instance.emailRegister = _email;
+                        RestAPIAuth.Instance.passwordRegister = _password;
+                        RestAPIAuth.Instance.passwordCheck = _passwordCheck;
+                        RestAPIAuth.Instance.usernameRegister = _nickname;
+                        RestAPIAuth.Instance.RegisterButton();
                     }
                     else
                     {
