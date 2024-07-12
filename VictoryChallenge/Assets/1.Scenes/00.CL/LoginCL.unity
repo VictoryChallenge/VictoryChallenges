@@ -1755,62 +1755,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176111872}
   m_CullTransparentMesh: 1
---- !u!1 &1277150525
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1277150527}
-  - component: {fileID: 1277150529}
-  m_Layer: 0
-  m_Name: Authentication
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1277150527
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277150525}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 810.6276, y: 540.44684, z: 6.5234942}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1277150529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277150525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 335093f1cbc976547b2396f24996b15b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apiKey: AIzaSyDklGzIx5gYLyPYJm_8I3yo8FJnMTOokIA
-  dbUrl: https://victorychallenge-b8854-default-rtdb.firebaseio.com/
-  email: {fileID: 0}
-  password: {fileID: 0}
-  warningLoginText: {fileID: 0}
-  confirmLoginText: {fileID: 0}
-  usernameRegister: {fileID: 0}
-  emailRegister: {fileID: 0}
-  passwordRegister: {fileID: 0}
-  passwordCheck: {fileID: 0}
-  warningRegisterText: {fileID: 0}
-  confirmRegisterText: {fileID: 0}
 --- !u!1 &1316014809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,6 +2084,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677123181747020673, guid: 5d9367b986d834bad8ac68f5d86644bb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10.240234
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3223,6 +3172,5 @@ SceneRoots:
   - {fileID: 2024706645}
   - {fileID: 764972154}
   - {fileID: 244225060}
-  - {fileID: 1277150527}
   - {fileID: 1584036017}
   - {fileID: 1343149191}

@@ -39,7 +39,7 @@ namespace VictoryChallenge.KJ.Database
     }
     #endregion
 
-    public class DBTutorial : SingletonLazy<DBTutorial>
+    public class DBManager : SingletonLazy<DBManager>
     {
         public GameData gameData { get; private set; }
         public string customData { get; set; }
@@ -48,7 +48,7 @@ namespace VictoryChallenge.KJ.Database
         [HideInInspector] public string dbUrl = "https://victorychallenge-b8854-default-rtdb.firebaseio.com/";
 
 
-        public DBTutorial()
+        public DBManager()
         {
             if (gameData == null)
             {

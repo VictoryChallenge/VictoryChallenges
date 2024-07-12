@@ -224,7 +224,7 @@ namespace VictoryChallenge.KJ.Auth
                     Debug.Log("플레이어 접속 상태 : " + userData.isLoggedIn);
 
                     //string updateJsonData = JsonUtility.ToJson(userData);
-                    DBTutorial.Instance.WriteUserData(shortUID, userJsonData, customData);
+                    DBManager.Instance.WriteUserData(shortUID, userJsonData, customData);
 
                     StartCoroutine(UpdateUserData(userData.shortUID, customData, userJsonData, onLoginCompleted));
                 }
@@ -394,15 +394,15 @@ namespace VictoryChallenge.KJ.Auth
             {
                 string shortUID = UIDHelper.GenerateShortUID(_userId);
                 
-                if (DBTutorial.Instance.gameData.users.ContainsKey(shortUID))
+                if (DBManager.Instance.gameData.users.ContainsKey(shortUID))
                 {
-                    DBTutorial.Instance.gameData.users[shortUID].isLoggedIn = false;
-                    User userData = DBTutorial.Instance.gameData.users[shortUID];
+                    DBManager.Instance.gameData.users[shortUID].isLoggedIn = false;
+                    User userData = DBManager.Instance.gameData.users[shortUID];
                     string json = JsonUtility.ToJson(userData);
-                    string customData = DBTutorial.Instance.customData;
+                    string customData = DBManager.Instance.customData;
 
-                    StartCoroutine(DBTutorial.Instance.SignOutProcess(shortUID, json, customData));
-                    Debug.Log("접속 OFF : " + DBTutorial.Instance.gameData.users[shortUID].isLoggedIn);
+                    StartCoroutine(DBManager.Instance.SignOutProcess(shortUID, json, customData));
+                    Debug.Log("접속 OFF : " + DBManager.Instance.gameData.users[shortUID].isLoggedIn);
                 }
                 else
                 {
@@ -557,14 +557,14 @@ namespace VictoryChallenge.KJ.Auth
                         {
                             PlayerCharacterCustomized playerData = new PlayerCharacterCustomized();
                             string customData = playerData.Initialize();
-                            DBTutorial.Instance.customData = customData;
+                            DBManager.Instance.customData = customData;
 
                             string shortUID = UIDHelper.GenerateShortUID(_userId);
                             User newUser = new User(_userId, shortUID, _username, false, 100, 0);
                             string jsonData = JsonUtility.ToJson(newUser);
-                            DBTutorial.Instance.userData = jsonData;
+                            DBManager.Instance.userData = jsonData;
 
-                            DBTutorial.Instance.WriteUserData(shortUID, jsonData, customData);
+                            DBManager.Instance.WriteUserData(shortUID, jsonData, customData);
 
                             Debug.Log("회원가입이 성공적으로 이루어졌습니다." + newUser.userName);
                             confirmRegisterText.text = "회원가입이 성공적으로 이루어졌습니다.";

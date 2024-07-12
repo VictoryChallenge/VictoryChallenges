@@ -372,10 +372,10 @@ namespace VictoryChallenge.Customize
             // 내 유저 아이디에 맞는 커스텀 데이터 저장
             string shortUID = UIDHelper.GenerateShortUID(RestAPIAuth.Instance.UserId);
             Debug.Log("shortUID : " + shortUID);
-            User user = DBTutorial.Instance.gameData.users[shortUID];
+            User user = DBManager.Instance.gameData.users[shortUID];
             string userData = JsonUtility.ToJson(user);
-            DBTutorial.Instance.WriteUserData(shortUID, userData, customData);
-            DBTutorial.Instance.customData = customData;
+            DBManager.Instance.WriteUserData(shortUID, userData, customData);
+            DBManager.Instance.customData = customData;
             //Debug.Log("customData : " + customData);
         }
 
@@ -485,7 +485,7 @@ namespace VictoryChallenge.Customize
             //            {
             //                Debug.Log("child.Value.ToString() : " + child.ToString());
             //                userData = child.Child("customData").Value.ToString();
-            //                DBTutorial.Instance.customData = userData;
+            //                DBManager.Instance.customData = userData;
 
             //                // RPC 보낼 수 있는 조건인지 확인
             //                if(!_isLocal)
@@ -522,7 +522,7 @@ namespace VictoryChallenge.Customize
                     customData = snapshot["customData"]?.ToString();
                     //Debug.Log("customData :" + customData);
 
-                    DBTutorial.Instance.customData = customData;
+                    DBManager.Instance.customData = customData;
 
                     // RPC 보낼 수 있는 조건인지 확인
                     if(!_isLocal)
