@@ -22,7 +22,7 @@ namespace VictoryChallenge.KJ.Photon
         [HideInInspector] public Button _button;
         [HideInInspector] public TMP_Text _text;
 
-        private bool _isReady = false;
+        [HideInInspector] public bool _isReady = false;
         [HideInInspector] public int stageNum = 3;
         //private bool _isControllerCreated = false;
 
