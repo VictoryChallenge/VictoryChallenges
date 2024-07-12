@@ -195,7 +195,11 @@ namespace VictoryChallenge.Controllers.Player
             {
                 _velocity = new Vector3(horizontal, 0f, vertical).normalized * speedGain;
             }
-            
+            else
+            {
+                _velocity = Vector3.zero;
+            }
+
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);
 

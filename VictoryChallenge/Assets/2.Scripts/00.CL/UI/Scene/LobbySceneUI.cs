@@ -55,7 +55,8 @@ namespace VictoryChallenge.Scripts.CL
             PhotonSub.Instance._button = GetButton((int)Buttons.GameStart);
             PhotonSub.Instance.UpdateButtonText();
             GetButton((int)Buttons.GameStart).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
-            GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
+            if (PhotonNetwork.IsMasterClient)
+                GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
             GetButton((int)Buttons.LeaveLobby).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
 
             //if (PlayerList.Instance == null)

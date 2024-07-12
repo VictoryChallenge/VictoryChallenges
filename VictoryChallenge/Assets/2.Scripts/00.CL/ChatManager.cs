@@ -75,6 +75,19 @@ namespace VictoryChallenge.Scripts.CL
                 chatClient.Service(); // 채팅 클라이언트 서비스 실행
             }
 
+            if (!chatinput.isFocused)
+            { 
+                Controllers.Player.CharacterController[] cc = GameObject.FindObjectsOfType<Controllers.Player.CharacterController>();
+                foreach (Controllers.Player.CharacterController c in cc)
+                {
+                    if (c.isKeyActive == false)
+                    { 
+                        c.isKeyActive = true;
+                        Debug.Log($"{c.isKeyActive} + 트루");
+                    }
+                }
+            }
+
             // 인풋 필드가 비어 있지 않고 Enter 키를 누르면 메시지 전송
             if (!string.IsNullOrEmpty(chatinput.text) && Input.GetKeyDown(KeyCode.Return))
             {
@@ -85,6 +98,7 @@ namespace VictoryChallenge.Scripts.CL
                 chatinput.OnDeselect(null);
                 chatinput.text = string.Empty;
                 ClickCenterOfScreen();
+
                 return;
             }
 
@@ -99,6 +113,13 @@ namespace VictoryChallenge.Scripts.CL
                 Debug.Log("1번활성");
                 chatinput.ActivateInputField();
                 chatinput.Select();
+                
+                Controllers.Player.CharacterController[] cc = GameObject.FindObjectsOfType<Controllers.Player.CharacterController>();
+                foreach (Controllers.Player.CharacterController c in cc)
+                {
+                    c.isKeyActive = false;
+                    Debug.Log($"{c.isKeyActive} + 펄스");
+                }
             }
         }
 
