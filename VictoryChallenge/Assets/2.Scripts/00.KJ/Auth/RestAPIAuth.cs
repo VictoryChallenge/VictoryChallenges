@@ -46,6 +46,17 @@ namespace VictoryChallenge.KJ.Auth
         [HideInInspector] public TMP_Text warningRegisterText;
         [HideInInspector] public TMP_Text confirmRegisterText;
 
+        void Awake()
+        {
+            Debug.Log("½Ì±ÛÅæ »ý¼º");
+        }
+
+        void OnDestroy()
+        {
+            Debug.Log("½Ì±ÛÅæ ÆÄ±«");
+        }
+
+
         #region ·Î±×ÀÎ
         public void LoginButton(Action<bool> onLoginCompleted)
         {

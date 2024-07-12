@@ -4,7 +4,6 @@ using System.Linq;
 using Photon.Realtime;
 using UnityEngine;
 using VictoryChallenge.KJ.Spawn;
-using Firebase.Auth;
 using VictoryChallenge.KJ.Auth;
 using VictoryChallenge.KJ.Database;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
