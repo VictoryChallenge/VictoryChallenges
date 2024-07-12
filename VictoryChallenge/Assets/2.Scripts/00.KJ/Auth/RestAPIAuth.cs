@@ -217,7 +217,8 @@ namespace VictoryChallenge.KJ.Auth
 
                     userData.uid = _userId;
                     userData.shortUID = UIDHelper.GenerateShortUID(_userId);
-                    //userData.userName = authJsonData["userName"].ToString();
+                    SetDisplayName(userData.userName);
+                    //userData.userName = _displayName;
                     userData.isLoggedIn = true;
 
                     Debug.Log("플레이어 접속 상태 : " + userData.isLoggedIn);
