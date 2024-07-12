@@ -14,6 +14,9 @@ using Firebase.Extensions;
 using Photon.Pun;
 using VictoryChallenge.Controllers.Player;
 using UnityEngine.SceneManagement;
+using Proyecto26;
+using Unity.VisualScripting.Antlr3.Runtime;
+using Newtonsoft.Json.Linq;
 
 namespace VictoryChallenge.Customize
 {
@@ -369,11 +372,11 @@ namespace VictoryChallenge.Customize
             // 내 유저 아이디에 맞는 커스텀 데이터 저장
             string shortUID = UIDHelper.GenerateShortUID(RestAPIAuth.Instance.UserId);
             Debug.Log("shortUID : " + shortUID);
-            User user = DBTutorial.Instance.gameData.users[shortUID];
+            User user = DBManager.Instance.gameData.users[shortUID];
             string userData = JsonUtility.ToJson(user);
-            DBTutorial.Instance.WriteUserData(shortUID, userData, customData);
-            DBTutorial.Instance.customData = customData;
-            Debug.Log("customData : " + customData);
+            DBManager.Instance.WriteUserData(shortUID, userData, customData);
+            DBManager.Instance.customData = customData;
+            //Debug.Log("customData : " + customData);
         }
 
         public void Load()
@@ -463,108 +466,142 @@ namespace VictoryChallenge.Customize
 
         private IEnumerator C_LoadjsonData(string shortUID)
         {
-            string userData = "";
-            DatabaseReference db = FirebaseDatabase.DefaultInstance.GetReference("User");
-            db.GetValueAsync().ContinueWithOnMainThread(task =>
-            {
-                if (task.IsFaulted)
-                {
-                    Debug.LogError("ReadData is Faulted");
-                }
-                else if (task.IsCompleted)
-                {
-                    DataSnapshot snapshot = task.Result;
-                    Debug.Log("ChilderenCount" + snapshot.ChildrenCount);
+            //string userData = "";
+            //DatabaseReference db = FirebaseDatabase.DefaultInstance.GetReference("User");
+            //db.GetValueAsync().ContinueWithOnMainThread(task =>
+            //{
+            //    if (task.IsFaulted)
+            //    {
+            //        Debug.LogError("ReadData is Faulted");
+            //    }
+            //    else if (task.IsCompleted)
+            //    {
+            //        DataSnapshot snapshot = task.Result;
+            //        Debug.Log("ChilderenCount" + snapshot.ChildrenCount);
 
-                    foreach (var child in snapshot.Children)
+            //        foreach (var child in snapshot.Children)
+            //        {
+            //            if (child.Key == shortUID)
+            //            {
+            //                Debug.Log("child.Value.ToString() : " + child.ToString());
+            //                userData = child.Child("customData").Value.ToString();
+            //                DBManager.Instance.customData = userData;
+
+            //                // RPC 보낼 수 있는 조건인지 확인
+            //                if(!_isLocal)
+            //                {
+            //                    _pv.RPC("SendCustomData", RpcTarget.AllBuffered, userData);
+            //                }
+            //            }
+            //        }
+            //    }
+            //});
+
+            //yield return new WaitUntil(() => !string.IsNullOrEmpty(userData));
+            string customData = "";
+
+            var request = new RequestHelper
+            {
+                Uri = $"{RestAPIAuth.Instance.dbUrl}/User/{shortUID}.json?auth={RestAPIAuth.Instance.IdToken}",
+                Method = "GET",
+                EnableDebug = true
+            };
+
+            RestClient.Request(request, (err, res) =>
+            {
+                if (err != null || string.IsNullOrEmpty(res.Text) || res.Text == "null")
+                {
+                    Debug.LogError("커스텀 데이터가 존재하지 않습니다");
+                    return;
+                }
+
+                var snapshot = JObject.Parse(res.Text);
+                
+                if (snapshot != null)
+                {
+                    customData = snapshot["customData"]?.ToString();
+                    //Debug.Log("customData :" + customData);
+
+                    DBManager.Instance.customData = customData;
+
+                    // RPC 보낼 수 있는 조건인지 확인
+                    if(!_isLocal)
                     {
-                        if (child.Key == shortUID)
+                        _pv.RPC("SendCustomData", RpcTarget.AllBuffered, customData);
+                    }
+
+                    // 역직렬화
+                    SaveObject saveObject = JsonConvert.DeserializeObject<SaveObject>(customData);
+
+                    foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
+                    {
+                        SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
+
+                        if (bodyPartTypeIndex.index > -1)
                         {
-                            Debug.Log("child.Value.ToString() : " + child.ToString());
-                            userData = child.Child("customData").Value.ToString();
-                            DBTutorial.Instance.customData = userData;
-                            
-                            // RPC 보낼 수 있는 조건인지 확인
-                            if(!_isLocal)
+                            bodyPartData.skinnedMeshRenderer.sharedMesh = bodyPartData.meshArray[bodyPartTypeIndex.index];
+                        }
+                        else
+                        {
+                            bodyPartData.skinnedMeshRenderer.sharedMesh = null;
+                        }
+                    }
+
+                    // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
+
+                    foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
+                    {
+                        SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
+
+                        int childCount = bodyPartData.skinnedMeshRenderer.transform.parent.childCount;
+
+                        //Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
+
+                        for (int i = 0; i < childCount; i++)
+                        {
+                            if (i != 0)
                             {
-                                _pv.RPC("SendCustomData", RpcTarget.AllBuffered, userData);
+                                Destroy(bodyPartData.skinnedMeshRenderer.transform.parent.transform.GetChild(i).gameObject);
                             }
+                        }
+                    }
+
+                    _earMesh.transform.GetChild(saveObject.earIndex).gameObject.SetActive(true);
+                    _accessoryMesh.transform.GetChild(saveObject.accessoryIndex).gameObject.SetActive(true);
+                    _hatMesh.transform.GetChild(saveObject.hatIndex).gameObject.SetActive(true);
+
+                    int earMeshCount = _earMesh.transform.childCount;
+                    int accessoryMeshCount = _accessoryMesh.transform.childCount;
+                    int hatMeshCount = _hatMesh.transform.childCount;
+
+                    // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
+                    for (int i = 0; i < earMeshCount; i++)
+                    {
+                        if (i != saveObject.earIndex)
+                        {
+                            _earMesh.transform.GetChild(i).gameObject.SetActive(false);
+                        }
+                    }
+
+                    for (int i = 0; i < accessoryMeshCount; i++)
+                    {
+                        if (i != saveObject.accessoryIndex)
+                        {
+                            _accessoryMesh.transform.GetChild(i).gameObject.SetActive(false);
+                        }
+                    }
+
+                    for (int i = 0; i < hatMeshCount; i++)
+                    {
+                        if (i != saveObject.hatIndex)
+                        {
+                            _hatMesh.transform.GetChild(i).gameObject.SetActive(false);
                         }
                     }
                 }
             });
 
-            yield return new WaitUntil(() => !string.IsNullOrEmpty(userData));
-
-            Debug.Log(userData);
-            // 역직렬화
-            SaveObject saveObject = JsonConvert.DeserializeObject<SaveObject>(userData);
-
-            foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
-            {
-                SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
-
-                if (bodyPartTypeIndex.index > -1)
-                {
-                    bodyPartData.skinnedMeshRenderer.sharedMesh = bodyPartData.meshArray[bodyPartTypeIndex.index];
-                }
-                else
-                {
-                    bodyPartData.skinnedMeshRenderer.sharedMesh = null;
-                }
-            }
-
-            // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
-
-            foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
-            {
-                SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
-
-                int childCount = bodyPartData.skinnedMeshRenderer.transform.parent.childCount;
-
-                Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
-
-                for (int i = 0; i < childCount; i++)
-                {
-                    if (i != 0)
-                    {
-                        Destroy(bodyPartData.skinnedMeshRenderer.transform.parent.transform.GetChild(i).gameObject);
-                    }
-                }
-            }
-
-            _earMesh.transform.GetChild(saveObject.earIndex).gameObject.SetActive(true);
-            _accessoryMesh.transform.GetChild(saveObject.accessoryIndex).gameObject.SetActive(true);
-            _hatMesh.transform.GetChild(saveObject.hatIndex).gameObject.SetActive(true);
-
-            int earMeshCount = _earMesh.transform.childCount;
-            int accessoryMeshCount = _accessoryMesh.transform.childCount;
-            int hatMeshCount = _hatMesh.transform.childCount;
-
-            // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
-            for (int i = 0; i < earMeshCount; i++)
-            {
-                if (i != saveObject.earIndex)
-                {
-                    _earMesh.transform.GetChild(i).gameObject.SetActive(false);
-                }
-            }
-
-            for (int i = 0; i < accessoryMeshCount; i++)
-            {
-                if (i != saveObject.accessoryIndex)
-                {
-                    _accessoryMesh.transform.GetChild(i).gameObject.SetActive(false);
-                }
-            }
-
-            for (int i = 0; i < hatMeshCount; i++)
-            {
-                if (i != saveObject.hatIndex)
-                {
-                    _hatMesh.transform.GetChild(i).gameObject.SetActive(false);
-                }
-            }
+            yield return null;
         }
 
         [PunRPC]

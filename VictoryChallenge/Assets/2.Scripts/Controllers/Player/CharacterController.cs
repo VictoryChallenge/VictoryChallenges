@@ -8,6 +8,7 @@ using VictoryChallenge.ComponentExtensions;
 using Cinemachine;
 using VictoryChallenge.Customize;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -32,10 +33,10 @@ namespace VictoryChallenge.Controllers.Player
         }
         private Vector3 _velocity;
 
-        public bool isKeyActive 
-        { 
-            get => _isKeyActive; 
-            set => _isKeyActive = value; 
+        public bool isKeyActive
+        {
+            get => _isKeyActive;
+            set => _isKeyActive = value;
         }
 
         private bool _isKeyActive = true;
@@ -101,8 +102,8 @@ namespace VictoryChallenge.Controllers.Player
 
         private bool _isAttacking;
 
-        public bool isHit 
-        { 
+        public bool isHit
+        {
             get => _isHit;
             set => _isHit = value;
         }
@@ -139,6 +140,7 @@ namespace VictoryChallenge.Controllers.Player
 
         #region DB
         public virtual string shortUID { get; set; }
+        public virtual string nickName { get; private set; }
         #endregion
 
         private void Awake()
@@ -159,8 +161,13 @@ namespace VictoryChallenge.Controllers.Player
             if (!_pv.IsMine)
             {
                 CinemachineVirtualCamera otherCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
-                otherCam.enabled = false; 
+                otherCam.enabled = false;
                 return;
+            }
+
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
+            {
+                nickName = PhotonNetwork.NickName;
             }
         }
 
@@ -188,7 +195,11 @@ namespace VictoryChallenge.Controllers.Player
             {
                 _velocity = new Vector3(horizontal, 0f, vertical).normalized * speedGain;
             }
-            
+            else
+            {
+                _velocity = Vector3.zero;
+            }
+
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);
 

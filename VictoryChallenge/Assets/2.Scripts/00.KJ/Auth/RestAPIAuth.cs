@@ -24,7 +24,7 @@ namespace VictoryChallenge.KJ.Auth
         private string _userId;
         private string _displayName;
         private string _refreshToken;
-        private DateTime _tokenExpiryTime;
+        private DateTime _tokenExpiryTime; 
 
         public string IdToken => _idToken;
         public string UserId => _userId;
@@ -32,18 +32,18 @@ namespace VictoryChallenge.KJ.Auth
 
         [Header("Log-In")]
         [Tooltip("로그인에 필요한 UI")]
-        [HideInInspector] public TMP_InputField email;
-        [HideInInspector] public TMP_InputField password;
-        [HideInInspector] public TMP_Text warningLoginText;
-        [HideInInspector] public TMP_Text confirmLoginText;
+        [HideInInspector] public TMP_InputField email;                                
+        [HideInInspector] public TMP_InputField password;                             
+        [HideInInspector] public TMP_Text warningLoginText;                          
+        [HideInInspector] public TMP_Text confirmLoginText;                           
 
         [Header("Register")]
         [Tooltip("회원가입에 필요한 UI")]
-        [HideInInspector] public TMP_InputField usernameRegister;
-        [HideInInspector] public TMP_InputField emailRegister;
-        [HideInInspector] public TMP_InputField passwordRegister;
-        [HideInInspector] public TMP_InputField passwordCheck;
-        [HideInInspector] public TMP_Text warningRegisterText;
+        [HideInInspector] public TMP_InputField usernameRegister;                     
+        [HideInInspector] public TMP_InputField emailRegister;                        
+        [HideInInspector] public TMP_InputField passwordRegister;                     
+        [HideInInspector] public TMP_InputField passwordCheck;                       
+        [HideInInspector] public TMP_Text warningRegisterText;                        
         [HideInInspector] public TMP_Text confirmRegisterText;
 
         void Awake()
@@ -104,7 +104,7 @@ namespace VictoryChallenge.KJ.Auth
                 {
                     Debug.LogError($"로그인 실패 : {err.Message}");
                     string message = "로그인에 실패했습니다.";
-
+                    
                     if (res != null)
                     {
                         var errorResponse = JObject.Parse(res.Text);
@@ -114,7 +114,7 @@ namespace VictoryChallenge.KJ.Auth
                         {
                             var errorCode = error["message"].ToString();
 
-                            switch (errorCode)
+                            switch(errorCode)
                             {
                                 case "EMAIL_NOT_FOUND":
                                     message = "이메일을 찾을 수 없습니다.";
@@ -228,14 +228,14 @@ namespace VictoryChallenge.KJ.Auth
 
                     userData.uid = _userId;
                     userData.shortUID = UIDHelper.GenerateShortUID(_userId);
-                    //userData.userName = snapshot["userName"].ToString();
                     SetDisplayName(userData.userName);
+                    //userData.userName = _displayName;
                     userData.isLoggedIn = true;
 
                     Debug.Log("플레이어 접속 상태 : " + userData.isLoggedIn);
 
                     //string updateJsonData = JsonUtility.ToJson(userData);
-                    DBTutorial.Instance.WriteUserData(shortUID, userJsonData, customData);
+                    DBManager.Instance.WriteUserData(shortUID, userJsonData, customData);
 
                     StartCoroutine(UpdateUserData(userData.shortUID, customData, userJsonData, onLoginCompleted));
                 }
@@ -275,7 +275,7 @@ namespace VictoryChallenge.KJ.Auth
                     if (isLoggedInData != null)
                     {
                         // 중복 로그인 방지
-                        if (isLoggedInData["isLoggedIn"].Value<bool>() == true)
+                        if(isLoggedInData["isLoggedIn"].Value<bool>() == true)
                         {
                             onLoginCompleted?.Invoke(false);
                             return;
@@ -404,16 +404,16 @@ namespace VictoryChallenge.KJ.Auth
             if (_userId != null)
             {
                 string shortUID = UIDHelper.GenerateShortUID(_userId);
-
-                if (DBTutorial.Instance.gameData.users.ContainsKey(shortUID))
+                
+                if (DBManager.Instance.gameData.users.ContainsKey(shortUID))
                 {
-                    DBTutorial.Instance.gameData.users[shortUID].isLoggedIn = false;
-                    User userData = DBTutorial.Instance.gameData.users[shortUID];
+                    DBManager.Instance.gameData.users[shortUID].isLoggedIn = false;
+                    User userData = DBManager.Instance.gameData.users[shortUID];
                     string json = JsonUtility.ToJson(userData);
-                    string customData = DBTutorial.Instance.customData;
+                    string customData = DBManager.Instance.customData;
 
-                    StartCoroutine(DBTutorial.Instance.SignOutProcess(shortUID, json, customData));
-                    Debug.Log("접속 OFF : " + DBTutorial.Instance.gameData.users[shortUID].isLoggedIn);
+                    StartCoroutine(DBManager.Instance.SignOutProcess(shortUID, json, customData));
+                    Debug.Log("접속 OFF : " + DBManager.Instance.gameData.users[shortUID].isLoggedIn);
                 }
                 else
                 {
@@ -568,14 +568,14 @@ namespace VictoryChallenge.KJ.Auth
                         {
                             PlayerCharacterCustomized playerData = new PlayerCharacterCustomized();
                             string customData = playerData.Initialize();
-                            DBTutorial.Instance.customData = customData;
+                            DBManager.Instance.customData = customData;
 
                             string shortUID = UIDHelper.GenerateShortUID(_userId);
                             User newUser = new User(_userId, shortUID, _username, false, 100, 0);
                             string jsonData = JsonUtility.ToJson(newUser);
-                            DBTutorial.Instance.userData = jsonData;
+                            DBManager.Instance.userData = jsonData;
 
-                            DBTutorial.Instance.WriteUserData(shortUID, jsonData, customData);
+                            DBManager.Instance.WriteUserData(shortUID, jsonData, customData);
 
                             Debug.Log("회원가입이 성공적으로 이루어졌습니다." + newUser.userName);
                             confirmRegisterText.text = "회원가입이 성공적으로 이루어졌습니다.";

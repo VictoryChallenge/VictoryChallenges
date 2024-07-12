@@ -5,6 +5,7 @@ using UnityEngine;
 using VictoryChallenge.KJ.Database;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
 using Photon.Pun;
+using VictoryChallenge.Scripts.CL;
 
 namespace VictoryChallenge.Scripts.HS
 {
@@ -14,12 +15,15 @@ namespace VictoryChallenge.Scripts.HS
         private int _rankCount;
         private int _maxCount = 10;
         private PhotonView _pv;
+        private GameObject _gameManager;
+
 
         [SerializeField] public TextMeshProUGUI _countText;
 
         void Start()
         {
             _pv = GetComponent<PhotonView>();
+            _gameManager = GameObject.Find("GameCL");
         }
 
         void Update()
@@ -47,9 +51,14 @@ namespace VictoryChallenge.Scripts.HS
                         // 각자 플레이어의 shortUID 받아오기
                         string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
 
+                        // 각자 플레이어의 nickName 받아오기
+                        string nickName = other.gameObject.GetComponent<CharacterController>().nickName;
+
                         // shortUID와 rank를 DB에 연동하기 위해 RankManager에 등록
                         //RankManager.Instance.SetRank(userShortUID, _rankCount);
-                        PlayersDataManager.Instance.SetRank(userShortUID, _rankCount);
+                        //PlayersDataManager.Instance.SetRank(userShortUID, _rankCount);
+                        //_gameManager.GetComponent<GameManagerCL>().SetRank(_rankCount);
+                        _gameManager.GetComponent<GameManagerCL>().Register(nickName, _rankCount);
 
                         // 한명이라도 들어오면 카운트 시작
                         if (_rankCount == 1)
@@ -68,7 +77,7 @@ namespace VictoryChallenge.Scripts.HS
                     if (!other.gameObject.GetComponent<CharacterController>().isFinished)
                     {
                         // 각자 플레이어의 shortUID -> DB에 있는 shortUID에 접근해서 jsonData를 받아오기
-                        string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
+                        //string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
 
 
                         //RankManager.Instance.Register(userShortUID, _rankCount);
@@ -98,7 +107,8 @@ namespace VictoryChallenge.Scripts.HS
                     _isActive = false;
                     _countText.text = "Game Over";
                     //RankManager.Instance.ChooseWinner();
-                    PlayersDataManager.Instance.ChooseWinner();
+                    //PlayersDataManager.Instance.ChooseWinner();
+                    _gameManager.GetComponent<GameManagerCL>().ChooseWinner();
                 }
             }
         }

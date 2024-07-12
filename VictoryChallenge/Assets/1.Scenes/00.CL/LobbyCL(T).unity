@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.262814, g: 0.7014316, b: 0.83198744, a: 1}
+  m_IndirectSpecularColor: {r: 0.26212177, g: 0.7014462, b: 0.8327779, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -373,21 +373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnGuide: {fileID: 0}
---- !u!114 &13805553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _snapMode: 0
-  _snapHalfSpace: 0
-  _projectionSettings: {fileID: 0}
 --- !u!1001 &15388939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -630,26 +615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd5a2b6f9abc7c49ba32c7f51798bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &41074599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49490255aaf1a2641a4c5771511bd253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _halfSpace: 1
-  _alignAxis: 0
-  _alignmentAxis: 1
-  _invertAlignmentAxis: 0
-  _projectAsUnit: 0
-  _embedInSurface: 1
-  _inFrontOffset: 0
-  _behindOffset: 0
 --- !u!114 &43242903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2596,6 +2561,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 192317907}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &204427865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49490255aaf1a2641a4c5771511bd253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _halfSpace: 1
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _projectAsUnit: 0
+  _embedInSurface: 1
+  _inFrontOffset: 0
+  _behindOffset: 0
 --- !u!1001 &208074521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2758,6 +2743,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 219929311}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &228758028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snapMode: 0
+  _snapHalfSpace: 0
+  _projectionSettings: {fileID: 0}
 --- !u!1001 &229032971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3627,7 +3627,7 @@ MonoBehaviour:
   _spawnGuide: {fileID: 7014687}
   _extensionPlane:
     _refOBBFace: 4
-  _modularSnapSession: {fileID: 1482095610}
+  _modularSnapSession: {fileID: 228758028}
   _mirrorGizmo: {fileID: 22685241}
 --- !u!1001 &317446685
 PrefabInstance:
@@ -4197,7 +4197,7 @@ MonoBehaviour:
   _extensionPlane:
     _refOBBFace: 4
   _heightPatternDirection: 0
-  _modularSnapSession: {fileID: 13805553}
+  _modularSnapSession: {fileID: 488652964}
   _mirrorGizmo: {fileID: 1169872220}
 --- !u!1001 &342431884
 PrefabInstance:
@@ -6525,6 +6525,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 480931491}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &488652964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snapMode: 0
+  _snapHalfSpace: 0
+  _projectionSettings: {fileID: 0}
 --- !u!1001 &499400079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21399,21 +21414,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1478861114}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1482095610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _snapMode: 0
-  _snapHalfSpace: 0
-  _projectionSettings: {fileID: 0}
 --- !u!1001 &1484600511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22817,7 +22817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8725edae6a1fd4408036dedaf0199f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectionSettings: {fileID: 41074599}
+  _projectionSettings: {fileID: 204427865}
   _dragAndDropGuide: {fileID: 0}
 --- !u!114 &1587674393
 MonoBehaviour:

@@ -56,22 +56,22 @@ namespace VictoryChallenge.Scripts.HS
         public void SetRank(string shortUID, int rank)
         {
             // 플레이어의 ShortUID와 Rank를 저장
-            playerDatas[shortUID] = rank;
+            //playerDatas[shortUID] = rank;
 
-            User user = DBTutorial.Instance.gameData.users[shortUID];
+            //KJ.Database.User user = DatabaseManager.Instance.gameData.users[shortUID];
 
-            int score = RewardPoint(rank);
+            //int score = RewardPoint(rank);
 
-            // 순위에 맞는 점수, 골드 갱신
-            user.score += score;
+            //// 순위에 맞는 점수, 골드 갱신
+            //user.score += score;
 
-            playerScoreDatas[shortUID] = user.score;
+            //playerScoreDatas[shortUID] = user.score;
 
-            string userData = JsonUtility.ToJson(user);
+            //string userData = JsonUtility.ToJson(user);
 
-            Debug.Log("userJsonData " + userData);
+            //Debug.Log("userJsonData " + userData);
 
-            DBTutorial.Instance.WriteUserData(shortUID, userData);
+            //DatabaseManager.Instance.WriteUserData(shortUID, userData);
         }
 
         public string SortRank()
@@ -89,7 +89,7 @@ namespace VictoryChallenge.Scripts.HS
             }
 
 
-            DBTutorial.Instance.ReadUserData("");
+            //DatabaseManager.Instance.ReadUserData("");
 
             return playerScoreDatas.First().Key.ToString();
         }
