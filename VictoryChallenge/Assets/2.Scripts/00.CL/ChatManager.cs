@@ -5,7 +5,8 @@ using Photon.Chat;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
-using UnityEngine; 
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using AuthenticationValues = Photon.Chat.AuthenticationValues;
 
@@ -17,30 +18,31 @@ namespace VictoryChallenge.Scripts.CL
     public class ChatManager : UI_Scene, IChatClientListener
     {
         enum Inputfields
-        { 
+        {
             ChatInput,
         }
 
         enum TMPs
-        { 
+        {
             ChatDisplay,
         }
 
         enum ScrollRects
-        { 
+        {
             ChatScrollView,
         }
 
-        TMP_InputField chatinput; 
+        TMP_InputField chatinput;
         TextMeshProUGUI chatDisplay; // 채팅 메시지 표시 텍스트
         ScrollRect scrollRect; // 스크롤 뷰
-        
+
         ChatClient chatClient; // 채팅 클라이언트
         string lastMessages; // 마지막 메시지
         string roomName; // 방 이름
 
         private List<string> chatMessages = new List<string>(); // 채팅 메시지 리스트
         private string userName; // 사용자 이름
+        private bool inputbool;
 
         void Start()
         {
@@ -51,7 +53,7 @@ namespace VictoryChallenge.Scripts.CL
             PhotonNetwork.IsMessageQueueRunning = true; // 메시지 큐 실행
 
             InitializeChat(PhotonNetwork.NickName); // 채팅 초기화
-            chatinput.onEndEdit.AddListener(OnInputEndEdit);
+            //InitializeChat("말랑이");
         }
 
         public override void Init()
@@ -73,19 +75,54 @@ namespace VictoryChallenge.Scripts.CL
                 chatClient.Service(); // 채팅 클라이언트 서비스 실행
             }
 
-            // 인풋 필드가 포커스를 받지 않은 상태에서 Enter 키를 누르면 인풋 필드 활성화 및 선택
-            if (!chatinput.isFocused && Input.GetKeyDown(KeyCode.Return))
-            {
-                chatinput.ActivateInputField();
-                chatinput.Select();
+            if (!chatinput.isFocused)
+            { 
+                Controllers.Player.CharacterController[] cc = GameObject.FindObjectsOfType<Controllers.Player.CharacterController>();
+                foreach (Controllers.Player.CharacterController c in cc)
+                {
+                    if (c.isKeyActive == false)
+                    { 
+                        c.isKeyActive = true;
+                        Debug.Log($"{c.isKeyActive} + 트루");
+                    }
+                }
             }
 
             // 인풋 필드가 비어 있지 않고 Enter 키를 누르면 메시지 전송
             if (!string.IsNullOrEmpty(chatinput.text) && Input.GetKeyDown(KeyCode.Return))
             {
-                SendMessage();
+                inputbool = false;
+                OnInputEndEdit(chatinput.text);
+                Debug.Log("1번비활성");
+                chatinput.DeactivateInputField();
+                chatinput.OnDeselect(null);
+                chatinput.text = string.Empty;
+                ClickCenterOfScreen();
+
+                return;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                inputbool = true;
+            }
+
+            // 인풋 필드가 포커스를 받지 않은 상태에서 Enter 키를 누르면 인풋 필드 활성화 및 선택
+            if (!chatinput.isFocused && Input.GetKeyDown(KeyCode.Return) && inputbool == true)
+            {
+                Debug.Log("1번활성");
+                chatinput.ActivateInputField();
+                chatinput.Select();
+                
+                Controllers.Player.CharacterController[] cc = GameObject.FindObjectsOfType<Controllers.Player.CharacterController>();
+                foreach (Controllers.Player.CharacterController c in cc)
+                {
+                    c.isKeyActive = false;
+                    Debug.Log($"{c.isKeyActive} + 펄스");
+                }
             }
         }
+
 
         /// <summary>
         /// 채팅을 초기화합니다.
@@ -163,7 +200,7 @@ namespace VictoryChallenge.Scripts.CL
             }
 
             if (sender != PhotonNetwork.NickName || senderId != PhotonNetwork.LocalPlayer.UserId)
-            { 
+            {
                 string whisperMessage = $"<color=blue>[귓속말] {sender} >> {message}</color>";
                 chatMessages.Add(whisperMessage);
                 UpdateChatDisplay();
@@ -217,7 +254,7 @@ namespace VictoryChallenge.Scripts.CL
                     // 대상 사용자가 온라인이 아닌 경우 적절한 메시지를 표시합니다.
                     string offlineMessage = $"<color=red>{targetUser}님은 온라인이 아닙니다.</color>";
                     chatMessages.Add(offlineMessage);
-                    UpdateChatDisplay();
+                    //UpdateChatDisplay();
                     return;
                 }
 
@@ -267,11 +304,9 @@ namespace VictoryChallenge.Scripts.CL
                 }
             }
 
-            // 여기서 다른 명령어들을 처리할 수 있습니다.
-
-            // 디폴트로는 채팅 메시지로 처리
             SendMessage();
-            chatinput.text = ""; // 입력 필드 초기화
+            chatinput.DeactivateInputField();
+            Debug.Log("edit비활성화리스너");
         }
 
         /// <summary>
@@ -319,10 +354,18 @@ namespace VictoryChallenge.Scripts.CL
         /// </summary>
         public void SendMessage()
         {
+            if (chatinput.text.Trim() == "")
+            {
+                chatinput.DeactivateInputField();
+                chatinput.OnDeselect(null);
+                return;
+            }
+
             if (!string.IsNullOrEmpty(chatinput.text) && !chatinput.text.StartsWith("/"))
             {
                 chatClient.PublishMessage("global", chatinput.text); // 글로벌 채널에 메시지 전송
-                chatinput.text = ""; // 인풋 필드 초기화
+                chatinput.text = ""; // 입력 필드 초기화
+                Debug.Log("센드");
             }
         }
 
@@ -343,27 +386,29 @@ namespace VictoryChallenge.Scripts.CL
             scrollRect.verticalNormalizedPosition = 0f; // 스크롤을 가장 아래로 설정
         }
 
-        //private void ShowChatBubble(string sender, string message)
-        //{
-        //    // sender 이름으로 캐릭터를 찾기
-        //    GameObject[] characters = GameObject.FindGameObjectsWithTag("Player"); // Assuming the player characters are tagged as "Player"
-        //    foreach (var character in characters)
-        //    {
-        //        // Check if this character belongs to the sender
-        //        if (character.name == sender)
-        //        {
-        //            Character charComponent = character.GetComponent<Character>();
-        //            if (charComponent != null)
-        //            {
-        //                charComponent.photonView.RPC("ShowChatBubble", RpcTarget.All, message);
-        //            }
-        //            else
-        //            {
-        //                Debug.LogWarning("Character component not found in " + character.name);
-        //            }
-        //            break;
-        //        }
-        //    }
-        //}
+        void ClickCenterOfScreen()
+        {
+            // 화면 가운데 위치 계산
+            Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+
+            // 새로운 PointerEventData 객체 생성
+            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+            {
+                position = screenCenter
+            };
+
+            // Raycast 결과를 저장할 리스트 생성
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            // Raycast를 통해 UI 요소 감지
+            EventSystem.current.RaycastAll(pointerData, results);
+
+            // 감지된 UI 요소들에 대해 클릭 이벤트 발생
+            foreach (RaycastResult result in results)
+            {
+                ExecuteEvents.Execute(result.gameObject, pointerData, ExecuteEvents.pointerClickHandler);
+                Debug.Log("Clicked on UI element: " + result.gameObject.name);
+            }
+        }
     }
 }

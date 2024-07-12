@@ -10,6 +10,7 @@ using VictoryChallenge.KJ.Photon;
 using VictoryChallenge.KJ.Room;
 using VictoryChallenge.KJ.Lobby;
 using System;
+using GSpawn;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -37,8 +38,8 @@ namespace VictoryChallenge.Scripts.CL
 
         void Start()
         {
-            Init();
             Managers.UI.ShowSceneUI<UI_Scene>("ChatPrefabs");
+            Init();
         }
 
         public override void Init()
@@ -54,7 +55,8 @@ namespace VictoryChallenge.Scripts.CL
             PhotonSub.Instance._button = GetButton((int)Buttons.GameStart);
             PhotonSub.Instance.UpdateButtonText();
             GetButton((int)Buttons.GameStart).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
-            GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
+            if (PhotonNetwork.IsMasterClient)
+                GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
             GetButton((int)Buttons.LeaveLobby).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
 
             //if (PlayerList.Instance == null)
@@ -85,11 +87,17 @@ namespace VictoryChallenge.Scripts.CL
                     return;
                 else
                     Managers.UI.ShowPopupUI<GameSettingPopup>();
+
+                GameObject gogo = GameObject.Find("ChatInput");
+                if (gogo != null && gogo.GetComponent<TMP_InputField>().isFocused)
+                    gogo.GetComponent<TMP_InputField>().DeactivateInputField();
             }
         }
 
         public void OnButtonClicked(PointerEventData data, int a)
         {
+            Managers.Sound.Play("Click", Define.Sound.Effect);
+
             switch (a)
             {
                 case 1:
@@ -109,7 +117,7 @@ namespace VictoryChallenge.Scripts.CL
             }
         }
 
-        private void UpdateStageSelectTextSprite(Sprite newSprite, string name)
+        private void UpdateStageSelectTextSprite(Sprite newSprite, string name, int stageNumber)
         {
             if (newSprite != null)
                 stageSelectButtonImage.sprite = newSprite;
@@ -118,14 +126,15 @@ namespace VictoryChallenge.Scripts.CL
 
             PhotonView photonView = GetComponent<PhotonView>();
             // 이미지 및 텍스트 변경을 모든 클라이언트에 전파
-            photonView.RPC("RPC_UpdateStageSelectTextSprite", RpcTarget.All, newSprite.name, name);
+            photonView.RPC("RPC_UpdateStageSelectTextSprite", RpcTarget.AllBuffered, newSprite.name, name);
+            photonView.RPC("SetStageNum", RpcTarget.AllBuffered, stageNumber);
         }
 
         [PunRPC]
         private void RPC_UpdateStageSelectTextSprite(string spriteName, string name)
         {
             // Resources 폴더에서 스프라이트 로드
-            Sprite sprite = Resources.Load<Sprite>(spriteName);
+            Sprite sprite = Resources.Load<Sprite>($"Sprites/{spriteName}");
             if (sprite != null)
             {
                 stageSelectButtonImage.sprite = sprite;
@@ -136,6 +145,12 @@ namespace VictoryChallenge.Scripts.CL
             }
 
             GetTextMeshPro((int)TMPs.StageName).text = name;
+        }
+
+        [PunRPC]
+        void SetStageNum(int stageNumber)
+        {
+            PhotonSub.Instance.SetStageNum(stageNumber);
         }
 
         public void LeftLobby()

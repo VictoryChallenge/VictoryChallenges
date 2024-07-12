@@ -2,52 +2,9 @@ using Photon.Pun;
 using UnityEngine;
 
 namespace VictoryChallenge.KJ.Photon
-{
-    public class ObstacleManager : MonoBehaviourPun
-    {
-        private GameObject[] _obstacles;
+{ 
 
-        void Start()
-        {
-            int obstacleLayer = LayerMask.NameToLayer("Obstacle");
-            _obstacles = FindObjectsOfType<GameObject>();
-
-            _obstacles = System.Array.FindAll(_obstacles, go => go.layer == obstacleLayer);
-
-            if (PhotonNetwork.IsMasterClient)
-            {
-                SyncObstacleState();
-            }
-        }
-
-        void SyncObstacleState()
-        {
-            foreach (GameObject obstacle in _obstacles)
-            {
-                PhotonView photonView = obstacle.GetComponent<PhotonView>();
-
-                if (photonView != null && photonView.IsMine)
-                {
-                    Animator animator = obstacle.GetComponent<Animator>();
-
-                    if (animator != null)
-                    {
-                        foreach (AnimatorControllerParameter parameter in animator.parameters)
-                        {
-                            if (parameter.type == AnimatorControllerParameterType.Bool)
-                            {
-                                bool value = animator.GetBool(parameter.nameHash);
-                                Debug.Log($"{photonView.ViewID}, {parameter.nameHash}, {value}");
-                                photonView.RPC("SetAnimationBool", RpcTarget.AllBuffered, parameter.nameHash, value);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public class Obstacle : MonoBehaviourPun
+    public class Obstcle : MonoBehaviourPun
     {
         private Animator _animator;
 

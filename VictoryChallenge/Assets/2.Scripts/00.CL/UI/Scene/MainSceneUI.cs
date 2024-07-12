@@ -56,7 +56,7 @@ namespace VictoryChallenge.Scripts.CL
                     break;
                 case 5:
                     // 로그아웃 추가
-                    Authentication.Instance.LogOut();
+                    RestAPIAuth.Instance.LogOut();
                     break;
                 default:
                     Debug.LogWarning("Unhandled action: " + a);

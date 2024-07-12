@@ -47,7 +47,7 @@ namespace VictoryChallenge.StateMachine.Player
                 }},
                 { State.Sliding, (animator) =>
                 {
-                    return Input.GetKeyDown(KeyCode.C);
+                    return Input.GetKeyDown(KeyCode.C) && controller.isKeyActive;
                 }},                
                 { State.Push, (animator) =>
                 {
