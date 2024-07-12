@@ -26,9 +26,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -36,7 +38,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 2.6507485, y: 4.6757402, z: 0.3780439}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-8882357911298897064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,10 +103,12 @@ MonoBehaviour:
     - d3278be2888ac72428ed3f1a42e3291a
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -3225269675332924430, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -46.3899, y: -13.000004, z: 13.037027}
     _rotation: {x: -0, y: 0.113207445, z: -0, w: 0.9935714}
@@ -228,9 +232,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -238,7 +244,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 7.076624, y: 5.16577, z: 1.5872211}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-7543271905147944016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,9 +271,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -275,7 +283,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 4.212388, y: 0.44932777, z: 4.2246637}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-7474077959032166127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,10 +513,12 @@ MonoBehaviour:
     - d3278be2888ac72428ed3f1a42e3291a
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -3225269675332924430, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 9.930136, y: 48.223946, z: 69.09006}
     _rotation: {x: -0.000000044703484, y: -0.49099287, z: -0.000000014901161, w: 0.87116367}
@@ -610,10 +620,12 @@ MonoBehaviour:
     - d3278be2888ac72428ed3f1a42e3291a
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -3225269675332924430, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 5.8589745, y: 16.751888, z: 31.100592}
     _rotation: {x: -0, y: 0.76040393, z: -0, w: -0.6494504}
@@ -850,9 +862,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 0.7685715, y: 17.838665, z: 54.973343}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -860,7 +874,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 0.45124927, y: 1.4510788, z: 0.45124927}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-5461222522932385967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,10 +902,12 @@ MonoBehaviour:
     - d3278be2888ac72428ed3f1a42e3291a
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -3225269675332924430, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -21.658516, y: -10.69442, z: 124.55935}
     _rotation: {x: -0.000000044703487, y: 0.6978561, z: 0.000000044703487, w: -0.716238}
@@ -960,10 +976,12 @@ MonoBehaviour:
     - d3278be2888ac72428ed3f1a42e3291a
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -3225269675332924430, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 2.6587396, y: -9.038916, z: 27.587864}
     _rotation: {x: 0.7071068, y: -0.7071068, z: -0, w: 0}
@@ -1134,9 +1152,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -15.741248, y: 0, z: 43.512264}
     _rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1171,9 +1191,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1181,7 +1203,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 7.082917, y: 4.257657, z: 6.120133}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-4194185876225951897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1287,9 +1309,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -24.935497, y: 1.2208693, z: 87.95085}
     _rotation: {x: -0.0000000013577643, y: -0.0130889965, z: -0.000000007325821, w: 0.99991435}
@@ -1297,7 +1321,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: -0.099999994
   _modelSize: {x: 2.7269785, y: 1.698603, z: 1.5732634}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-3374903517059547548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1324,9 +1348,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1334,7 +1360,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 10, y: 0.20000014, z: 5}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-3360477238602656970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,9 +1547,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1531,7 +1559,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 0.1723806, y: 1.3969576, z: 0.19904795}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-3075480951453358127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,9 +1656,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1638,7 +1668,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 1.4062502, y: 4.6296706, z: 1.8750048}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-2899545905187086052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1665,9 +1695,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -19.464788, y: -3.7130017, z: 251.03261}
     _rotation: {x: -0, y: 0.999962, z: -0, w: 0.008726984}
@@ -1675,7 +1707,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: -4.550002
   _modelSize: {x: 5.5323973, y: 1.5880396, z: 0.6894601}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-2878685687058181015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1702,9 +1734,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -1712,7 +1746,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 4, y: 0.25105745, z: 4}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-2753899860544419768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1739,9 +1773,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 1.3568251, y: 8.3820095, z: 12.658292}
     _rotation: {x: -0.0000000074505797, y: 0.21564089, z: 0.000000005587935, w: 0.97647274}
@@ -1749,7 +1785,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 9.3500185
   _modelSize: {x: 4, y: 2, z: 4}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-2567355236889967561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1814,10 +1850,12 @@ MonoBehaviour:
     - d3278be2888ac72428ed3f1a42e3291a
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -3225269675332924430, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 54.426018, y: -6.687991, z: -36.811127}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2120,9 +2158,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2130,7 +2170,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 1.4259756, y: 3.9410417, z: 1.6465743}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-788223038677691582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2256,9 +2296,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -6.972348, y: 6.2208276, z: 138.65842}
     _rotation: {x: -0.00000002421439, y: 0.69304806, z: 0.000000008847565, w: 0.72089136}
@@ -2266,7 +2308,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 6.0499945
   _modelSize: {x: 1.4062502, y: 5.00393, z: 1.8750048}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-237775703259997123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2293,9 +2335,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2303,7 +2347,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 3.673841, y: 1.618069, z: 0.1757064}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-175392041362100524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2330,9 +2374,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2340,7 +2386,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 4.4133406, y: 0.54451734, z: 4.272261}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &-98621855370934588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2516,9 +2562,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2526,7 +2574,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 1.4259748, y: 1.4644458, z: 1.6465734}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &654507585938190445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2554,10 +2602,12 @@ MonoBehaviour:
     - d3278be2888ac72428ed3f1a42e3291a
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -3225269675332924430, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -18.567114, y: -55.1979, z: 189.9762}
     _rotation: {x: 0.0000003231689, y: 0.7012537, z: 0.00000032130626, w: 0.71291184}
@@ -2757,9 +2807,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -98.25489, y: -0.9080002, z: -34.572075}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2767,7 +2819,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: -0.8000001
   _modelSize: {x: 7.519444, y: 5.237529, z: 7.5194445}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &3173224190682657908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2959,9 +3011,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
@@ -2969,7 +3023,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 5.825121, y: 1.5911932, z: 1.5872211}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &4586051451011958996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3029,9 +3083,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -24.694836, y: 11.491218, z: 91.6197}
     _rotation: {x: -0.16200095, y: -0.053737395, z: 0.012568639, w: 0.9852462}
@@ -3039,7 +3095,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 8.199994
   _modelSize: {x: 2.6507485, y: 4.799993, z: 0.5306941}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &5084393105167325251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3442,10 +3498,12 @@ MonoBehaviour:
     - d3278be2888ac72428ed3f1a42e3291a
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: -3225269675332924430, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -10.805792, y: 0.9000242, z: 58.8424}
     _rotation: {x: -0.000000015648931, y: 0.6982093, z: 0.000000016027483, w: 0.7158938}
@@ -3569,9 +3627,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -86.1315, y: 0, z: -1.7608852}
     _rotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
@@ -3579,7 +3639,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 4, y: 0.20000002, z: 8}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &7151880729801544732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3806,9 +3866,11 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -5.398473, y: -0.11650562, z: 167.87076}
     _rotation: {x: 0.000000047148205, y: 0.72400916, z: -0.000000037485734, w: 0.6897905}
@@ -3816,7 +3878,7 @@ MonoBehaviour:
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 13.725125, y: 2.918638, z: 13.725128}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &8452484900415791822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3910,17 +3972,19 @@ MonoBehaviour:
     _serializedKeys:
     - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
+    - b800fbcc83fc83b4b8327454d724edca
     _serializedValues:
     - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    - {fileID: 2214136498459431874, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
-    _position: {x: -0, y: 0, z: 0}
+    _position: {x: 4.738592, y: 0, z: 34.411293}
     _rotation: {x: 0, y: -0, z: -0, w: 1}
-    _scale: {x: 1, y: 1, z: 1}
+    _scale: {x: 1.2809855, y: 1.2809855, z: 1.2809855}
   _modularSnapVerticalStep: 0
   _surfaceSnapAppliedOffsetFromSurface: 0
   _modelSize: {x: 10, y: 0.6837984, z: 5.5422215}
-  _uiSelected: 0
+  _uiSelected: 1
 --- !u!114 &8924152627488846483
 MonoBehaviour:
   m_ObjectHideFlags: 0
