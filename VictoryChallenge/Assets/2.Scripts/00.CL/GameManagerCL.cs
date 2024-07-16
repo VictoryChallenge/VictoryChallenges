@@ -11,6 +11,7 @@ using UnityEngine.SocialPlatforms.Impl;
 using System.Collections.Generic;
 using VictoryChallenge.Scripts.HS;
 using VictoryChallenge.Json.DataManage;
+using VictoryChallenge.KJ.Room;
 
 namespace VictoryChallenge.Scripts.CL
 {
@@ -46,7 +47,8 @@ namespace VictoryChallenge.Scripts.CL
                 Hashtable props = new Hashtable
                 {
                     { "SceneLoaded", true },
-                    { "Score", 0 }
+                    { "Score", 0 },
+                    { "IsGoaledIn", false }
                 };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(props);
             }
@@ -69,6 +71,15 @@ namespace VictoryChallenge.Scripts.CL
                 {
                     Debug.Log($"{targetPlayer}'s Score Changed " + debugScore);
                     RankManager.Instance.Register(targetPlayer.NickName, debugScore);
+                }
+            }
+
+            bool debugBool;
+            if (changedProps.ContainsKey("IsGoaledIn"))
+            {
+                if (targetPlayer.CustomProperties.TryGetValue("IsGoaledIn", out debugBool))
+                {
+                    Debug.Log($"{targetPlayer}'s isGoaledIn is " + debugBool);
                 }
             }
         }
@@ -170,6 +181,36 @@ namespace VictoryChallenge.Scripts.CL
 
             return scores.First();
         }
+
+        public void OnGoaledInCheck()
+        {
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsGoaledIn", true } });
+        }
+
+        public void ChooseFinalWinner()
+        {
+            foreach(var list in PhotonNetwork.PlayerList)
+            {
+                if(list.CustomProperties.ContainsKey("IsGoaledIn"))
+                {
+                    if(list.CustomProperties.TryGetValue("IsGoaledIn", out bool isCheck))
+                    {
+                        if(isCheck)
+                        {
+                            Debug.Log(list.NickName + " has Finish race, IsGoaledIn = " + isCheck);
+                            SceneManager.LoadScene(5);
+                        }
+                        else
+                        {
+                            Debug.Log(list.NickName + " has not Finish race, IsGoaledIn = " + isCheck);
+                            RoomMananger.Instance.LeaveRoom();
+                            SceneManager.LoadScene(1);
+                        }
+                    }
+                }
+            }
+        }
+
 
         // 마스터 클라이언트가 각 플레이어의 상태를 확인하고, 모든 플레이어가 씬을 로드했으면 게임을 시작합니다.
         [PunRPC]

@@ -57,10 +57,10 @@ namespace VictoryChallenge.KJ.Manager
             controller.GetComponentInChildren<CharacterController>().shortUID = userId;
             
             // 로비가 아닐때 플레이어 데이터를 RankManager에게 넘겨줌
-            if(SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(2))
-            {
-                PlayersDataManager.Instance.Register(userId, 0);
-            }
+            //if(SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(2))
+            //{
+            //    PlayersDataManager.Instance.Register(userId, 0);
+            //}
         }
 
         public void Die()

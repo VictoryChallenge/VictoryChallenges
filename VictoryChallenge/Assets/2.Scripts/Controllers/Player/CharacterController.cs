@@ -9,6 +9,8 @@ using Cinemachine;
 using VictoryChallenge.Customize;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
+using System;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -138,6 +140,12 @@ namespace VictoryChallenge.Controllers.Player
         private bool _isFinished;
         #endregion
 
+        #region 카메라
+        private CinemachineVirtualCamera _followCam;
+        private CinemachineVirtualCamera _introCam;
+        private PlayableDirector _introTimeline;
+        #endregion
+
         #region DB
         public virtual string shortUID { get; set; }
         public virtual string nickName { get; private set; }
@@ -158,17 +166,38 @@ namespace VictoryChallenge.Controllers.Player
 
         protected virtual void Start()
         {
+            _followCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
+
             if (!_pv.IsMine)
             {
-                CinemachineVirtualCamera otherCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
-                otherCam.enabled = false;
+                //CinemachineVirtualCamera otherCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
+                //otherCam.enabled = false;
+                //_followCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
+                _followCam.enabled = false;
                 return;
             }
 
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
             {
                 nickName = PhotonNetwork.NickName;
             }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
+            {
+                nickName = PhotonNetwork.NickName;
+
+
+                // 카메라 캐싱
+                _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
+                _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
+                _followCam.enabled = false;
+                _introTimeline.stopped += OnStopTimeline;
+            }
+        }
+
+        private void OnStopTimeline(PlayableDirector director)
+        {
+            _followCam.enabled = true;
+            _introCam.enabled = false;
         }
 
         private void FixedUpdate()
