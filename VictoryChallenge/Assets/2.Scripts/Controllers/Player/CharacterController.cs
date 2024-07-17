@@ -198,9 +198,9 @@ namespace VictoryChallenge.Controllers.Player
                 _followCam.enabled = false;
                 _introTimeline.stopped += OnStopTimeline;
 
-                GameCL = GameObject.Find("GameCL").GetComponent<GameManagerCL>();
-                _missionUI = GameObject.Find("Mission").GetComponent<Image>();
-                _missionUI.enabled = false;
+                //GameCL = GameObject.Find("GameCL").GetComponent<GameManagerCL>();
+                //_missionUI = GameObject.Find("Mission").GetComponent<Image>();
+                //_missionUI.enabled = false;
             }
         }
 
@@ -208,7 +208,7 @@ namespace VictoryChallenge.Controllers.Player
         {
             _followCam.enabled = true;
             _introCam.enabled = false;
-            _missionUI.enabled = false;
+            //_missionUI.enabled = false;
         }
 
         private void FixedUpdate()
@@ -317,15 +317,14 @@ namespace VictoryChallenge.Controllers.Player
         public IEnumerator C_IntroCutSceneStart()
         {
             _introTimeline.Play();
-
-
+            Debug.Log("IntroTimeline play");
 
             while (_introTimeline.state == PlayState.Playing)
             {
-                if (_introTimeline.time > 5f)
-                {
-                    _missionUI.enabled = true;
-                }
+                //if (_introTimeline.time > 5f)
+                //{
+                //    _missionUI.enabled = true;
+                //}
                 yield return null;
             }
         }

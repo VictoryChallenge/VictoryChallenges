@@ -123,6 +123,7 @@ namespace VictoryChallenge.Scripts.CL
             foreach (Controllers.Player.CharacterController c in cc)
             {
                 c.isKeyActive = false;
+                yield return c.StartCoroutine(c.C_IntroCutSceneStart());
             }
 
             // ROUND 텍스트 코루틴
