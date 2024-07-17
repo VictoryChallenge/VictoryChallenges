@@ -45,7 +45,8 @@ namespace VictoryChallenge.Scripts.CL
         void Start()
         {
             Init();
-            StartCoroutine(GameStart());
+            // 로그인안하고 씬에서 테스트만 하려면 아래코드 주석해제
+            // StartCoroutine(GameStart());
 
             switch (SceneManager.GetActiveScene().buildIndex)
             {
