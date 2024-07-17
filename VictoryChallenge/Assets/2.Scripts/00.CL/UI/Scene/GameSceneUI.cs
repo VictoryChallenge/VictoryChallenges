@@ -122,7 +122,6 @@ namespace VictoryChallenge.Scripts.CL
             foreach (Controllers.Player.CharacterController c in cc)
             {
                 c.isKeyActive = false;
-                Debug.Log($"{c.isKeyActive} + 펄스");
             }
 
             // ROUND 텍스트 코루틴
@@ -156,7 +155,6 @@ namespace VictoryChallenge.Scripts.CL
             foreach (Controllers.Player.CharacterController c in cc)
             {
                 c.isKeyActive = true;
-                Debug.Log($"{c.isKeyActive} + 트루");
             }
             isMoving = true;
 
@@ -173,7 +171,7 @@ namespace VictoryChallenge.Scripts.CL
             yield return new WaitForSeconds(0.5f);
 
             roundText.gameObject.SetActive(true);
-            roundText.text = $"Round 1";
+            roundText.text = $"Round {round}";
 
             RectTransform rectTransform = roundText.GetComponent<RectTransform>();
 
