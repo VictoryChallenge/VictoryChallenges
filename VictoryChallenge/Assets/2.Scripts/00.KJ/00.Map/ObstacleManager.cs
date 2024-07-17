@@ -12,7 +12,7 @@ namespace VictoryChallenge.KJ.Map
 
         void Start()
         {
-            StartCoroutine(SpawnObstacles());
+            //StartCoroutine(SpawnObstacles());
         }
 
         private IEnumerator SpawnObstacles()
