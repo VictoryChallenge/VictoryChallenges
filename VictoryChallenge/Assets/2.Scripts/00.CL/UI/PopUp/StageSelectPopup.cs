@@ -27,7 +27,7 @@ namespace VictoryChallenge.Scripts.CL
         string _marathon = "혈압 마라톤";
         string _onlyup = "onlyup";
 
-        public Action<Sprite, string> OnStageSelected;
+        public Action<Sprite, string, int> OnStageSelected;
 
         void Start()
         {
@@ -98,7 +98,7 @@ namespace VictoryChallenge.Scripts.CL
                     break;
             }
 
-            OnStageSelected?.Invoke(selectedSprite, _mapname); // Delegate로 Sprite, string 넘기기
+            OnStageSelected?.Invoke(selectedSprite, _mapname, stageNum); // Delegate로 Sprite, string 넘기기
             PhotonSub.Instance.SetStageNum(stageNum);
             ClosePopupUI();
 
