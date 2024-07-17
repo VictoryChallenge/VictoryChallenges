@@ -3,14 +3,10 @@ using ExitGames.Client.Photon;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using VictoryChallenge.KJ.Photon;
 using Photon.Realtime;
-using VictoryChallenge.KJ.Database;
 using ExitGames.Client.Photon.StructWrapping;
-using UnityEngine.SocialPlatforms.Impl;
 using System.Collections.Generic;
 using VictoryChallenge.Scripts.HS;
-using VictoryChallenge.Json.DataManage;
 
 namespace VictoryChallenge.Scripts.CL
 {
@@ -41,7 +37,7 @@ namespace VictoryChallenge.Scripts.CL
         {
             if (SceneManager.GetActiveScene().buildIndex >= 3 && SceneManager.GetActiveScene().buildIndex != 4)
             {
-                Debug.Log("ㅇㅇㅇㅋ제[발");
+                Debug.Log("제발");
                 // 플레이어의 씬 로드 상태를 CustomProperties에 설정
                 Hashtable props = new Hashtable
                 {
