@@ -158,6 +158,8 @@ namespace VictoryChallenge.KJ.Database
                             {
                                 customData = snapshot["customData"].ToString();
                             }
+
+                            
                             //foreach (var child in snapshot.Children())
                             //{
                             //    string strData = child.First["jsonData"].ToString();

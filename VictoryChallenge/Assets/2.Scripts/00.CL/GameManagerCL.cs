@@ -11,27 +11,13 @@ using UnityEngine.SocialPlatforms.Impl;
 using System.Collections.Generic;
 using VictoryChallenge.Scripts.HS;
 using VictoryChallenge.Json.DataManage;
+using VictoryChallenge.KJ.Room;
 
 namespace VictoryChallenge.Scripts.CL
 {
+    // 이 스크립트는 모든 플레이어가 씬을 로드했는지 확인하고, 그 후 게임을 시작하는 역할을 합니다.
     public class GameManagerCL : MonoBehaviourPunCallbacks
     {
-        // 이 스크립트는 모든 플레이어가 씬을 로드했는지 확인하고, 그 후 게임을 시작하는 역할을 합니다.
-        Dictionary<string, int> playerRank = new Dictionary<string, int>();
-
-
-        public enum Point
-        {
-            first = 10,
-            second = 8,
-            third = 6,
-            fourth = 5,
-            fifth = 4,
-            sixth = 3,
-            seventh = 2,
-            eighth = 1,
-        }
-
         private void Start()
         {
             OnSceneLoaded();
@@ -46,7 +32,7 @@ namespace VictoryChallenge.Scripts.CL
                 Hashtable props = new Hashtable
                 {
                     { "SceneLoaded", true },
-                    { "Score", 0 }
+                    { "IsGoaledIn", false }
                 };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(props);
             }
@@ -62,113 +48,49 @@ namespace VictoryChallenge.Scripts.CL
                 photonView.RPC("PlayerLoadedScene", RpcTarget.All);
             }
 
-            int debugScore;
-            if (changedProps.ContainsKey("Score"))
+            if (changedProps.ContainsKey("IsGoaledIn"))
             {
-                if (targetPlayer.CustomProperties.TryGetValue("Score", out debugScore))
+                if (targetPlayer.CustomProperties.TryGetValue("IsGoaledIn", out bool debugBool))
                 {
-                    Debug.Log($"{targetPlayer}'s Score Changed " + debugScore);
-                    RankManager.Instance.Register(targetPlayer.NickName, debugScore);
+                    Debug.Log($"{targetPlayer}'s isGoaledIn is " + debugBool);
                 }
             }
         }
 
-        public void Register(string nickName, int rank)
+        public void OnGoaledInCheck()
         {
-            playerRank.Add(nickName, rank);
-
-            foreach (var item in playerRank.Keys)
-            {
-                Debug.Log("Nickname : " + item);
-            }
-
-            foreach (var item in playerRank.Values)
-            {
-                Debug.Log("rank : " + item);
-            }
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsGoaledIn", true } });
         }
 
-        public int RewardPoint(int rank)
+        public void ChooseFinalWinner()
         {
-            Point point;
-
-            switch (rank)
+            foreach(var list in PhotonNetwork.PlayerList)
             {
-                case 1:
-                    point = Point.first;
-                    break;
-                case 2:
-                    point = Point.second;
-                    break;
-                case 3:
-                    point = Point.third;
-                    break;
-                case 4:
-                    point = Point.fourth;
-                    break;
-                case 5:
-                    point = Point.fifth;
-                    break;
-                case 6:
-                    point = Point.sixth;
-                    break;
-                case 7:
-                    point = Point.seventh;
-                    break;
-                case 8:
-                    point = Point.eighth;
-                    break;
-                default:
-                    point = 0;
-                    break;
-            }
-
-            //Debug.Log("point : " + (int)point);
-            return (int)point;
-        }
-
-        public void SetRank(int rank)
-        {
-            int score = RewardPoint(rank);
-
-            // 들어온 유저들의 닉네임 로그
-            if (PhotonNetwork.PlayerList.All(player => player.CustomProperties.ContainsKey("Score")))
-            {
-                Debug.Log("PhotonNetwork.PlayerList : " + PhotonNetwork.PlayerList.ToStringFull());
-            }
-
-            // 결승선에 도달했을 때 Score 갱신
-            // 문제점 -> PhotonNetwork.LocalPlayer.SetCustomProperties을 갱신하는 것이므로 다른 사람의 점수는 건드릴 수가 없다..?
-            PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Score", score } });
-        }
-
-        public int ChooseWinner()
-        {
-            List<int> scores = new List<int>();
-
-            foreach (var player in PhotonNetwork.PlayerList)
-            {
-                if(player.CustomProperties.ContainsKey("Score"))
+                if(list.CustomProperties.ContainsKey("IsGoaledIn"))
                 {
-                    scores.Add((int)player.CustomProperties["Score"]);
-                    Debug.Log($"{player.NickName} is Add {(int)player.CustomProperties["Score"]}");
+                    if(list.CustomProperties.TryGetValue("IsGoaledIn", out bool isCheck))
+                    {
+                        if(isCheck)
+                        {
+                            // 결승선에 들어온 경우
+                            Debug.Log(list.NickName + " has Finish race, IsGoaledIn = " + isCheck);
+                            SceneManager.LoadScene(5);
+                        }
+                        else
+                        {
+                            // 결승선에 들어오지 못한 경우
+                            Debug.Log(list.NickName + " has not Finish race, IsGoaledIn = " + isCheck);
+                            RoomMananger.Instance.LeaveRoom();
+                            SceneManager.LoadScene(1);
+                        }
+                    }
                 }
             }
+        }
 
-            scores.OrderByDescending(x => x).ToList();
-
-            //foreach(var player in PhotonNetwork.PlayerList)
-            //{
-            //    if(player.CustomProperties.ContainsValue())
-            //}
-            //foreach(int score  in scores)
-            //{
-            //    Debug.Log("score in List : " + score);
-            //}
-
-            //Debug.Log("Sorted Score" + scores.First());
-
-            return scores.First();
+        public void IntroCount()
+        {
+            PlayerLoadedScene();
         }
 
         // 마스터 클라이언트가 각 플레이어의 상태를 확인하고, 모든 플레이어가 씬을 로드했으면 게임을 시작합니다.

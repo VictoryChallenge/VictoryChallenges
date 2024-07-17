@@ -48,17 +48,32 @@ namespace VictoryChallenge.Scripts.HS
                         // 들어온 bool 값 true 체크해서 중복 입장 불가능하게 설정
                         other.gameObject.GetComponent<CharacterController>().isFinished = true;
 
+                        // shortUID - SDK, Photon
                         // 각자 플레이어의 shortUID 받아오기
-                        string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
+                        //string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
 
                         // 각자 플레이어의 nickName 받아오기
-                        string nickName = other.gameObject.GetComponent<CharacterController>().nickName;
+                        //string nickName = other.gameObject.GetComponent<CharacterController>().nickName;
 
                         // shortUID와 rank를 DB에 연동하기 위해 RankManager에 등록
-                        //RankManager.Instance.SetRank(userShortUID, _rankCount);
-                        //PlayersDataManager.Instance.SetRank(userShortUID, _rankCount);
                         //_gameManager.GetComponent<GameManagerCL>().SetRank(_rankCount);
-                        _gameManager.GetComponent<GameManagerCL>().Register(nickName, _rankCount);
+                        //_gameManager.GetComponent<GameManagerCL>().Register(nickName, _rankCount);
+
+                        // shortUID - Rest Api
+                        string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
+
+                        if(!string.IsNullOrEmpty(userShortUID))
+                        {
+                            DBManager.Instance.ReadUserData(userShortUID);
+                            Debug.Log($"플레이어 {userShortUID}의 데이터 읽기 성공");
+
+                            PhotonView photonView = other.GetComponent<PhotonView>();
+                            // 본인 플레이어만 true 값으로 갱신
+                            if(photonView.IsMine)
+                            {
+                                _gameManager.GetComponent<GameManagerCL>().OnGoaledInCheck();
+                            }
+                        }
 
                         // 한명이라도 들어오면 카운트 시작
                         if (_rankCount == 1)
@@ -106,9 +121,7 @@ namespace VictoryChallenge.Scripts.HS
                     isCheck = false;
                     _isActive = false;
                     _countText.text = "Game Over";
-                    //RankManager.Instance.ChooseWinner();
-                    //PlayersDataManager.Instance.ChooseWinner();
-                    _gameManager.GetComponent<GameManagerCL>().ChooseWinner();
+                    _gameManager.GetComponent<GameManagerCL>().ChooseFinalWinner();
                 }
             }
         }

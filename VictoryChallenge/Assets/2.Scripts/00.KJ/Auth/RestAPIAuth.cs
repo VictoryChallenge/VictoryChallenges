@@ -656,7 +656,7 @@ namespace VictoryChallenge.KJ.Auth
                             DBManager.Instance.customData = customData;
 
                             string shortUID = UIDHelper.GenerateShortUID(_userId);
-                            User newUser = new User(_userId, shortUID, _username, false, 100, 0);
+                            User newUser = new User(_userId, shortUID, _username, false, 100);
                             string jsonData = JsonUtility.ToJson(newUser);
                             DBManager.Instance.userData = jsonData;
 

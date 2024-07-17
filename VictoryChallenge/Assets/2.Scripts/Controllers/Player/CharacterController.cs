@@ -9,6 +9,10 @@ using Cinemachine;
 using VictoryChallenge.Customize;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
+using System;
+using UnityEngine.UI;
+using VictoryChallenge.Scripts.CL;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -138,6 +142,16 @@ namespace VictoryChallenge.Controllers.Player
         private bool _isFinished;
         #endregion
 
+        #region 카메라
+        private CinemachineVirtualCamera _followCam;
+        private CinemachineVirtualCamera _introCam;
+        public PlayableDirector introTimeline { get => _introTimeline; }
+        private PlayableDirector _introTimeline;
+
+        private Image _missionUI;
+        private GameManagerCL GameCL;
+        #endregion
+
         #region DB
         public virtual string shortUID { get; set; }
         public virtual string nickName { get; private set; }
@@ -158,17 +172,43 @@ namespace VictoryChallenge.Controllers.Player
 
         protected virtual void Start()
         {
+            _followCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
+
             if (!_pv.IsMine)
             {
-                CinemachineVirtualCamera otherCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
-                otherCam.enabled = false;
+                //CinemachineVirtualCamera otherCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
+                //otherCam.enabled = false;
+                //_followCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
+                _followCam.enabled = false;
                 return;
             }
 
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
             {
                 nickName = PhotonNetwork.NickName;
             }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
+            {
+                nickName = PhotonNetwork.NickName;
+
+
+                // 카메라 캐싱
+                _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
+                _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
+                _followCam.enabled = false;
+                _introTimeline.stopped += OnStopTimeline;
+
+                //GameCL = GameObject.Find("GameCL").GetComponent<GameManagerCL>();
+                //_missionUI = GameObject.Find("Mission").GetComponent<Image>();
+                //_missionUI.enabled = false;
+            }
+        }
+
+        private void OnStopTimeline(PlayableDirector director)
+        {
+            _followCam.enabled = true;
+            _introCam.enabled = false;
+            //_missionUI.enabled = false;
         }
 
         private void FixedUpdate()
@@ -203,7 +243,7 @@ namespace VictoryChallenge.Controllers.Player
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);
 
-            if(dizzyCount > 2)
+            if (dizzyCount > 2)
             {
                 isDie = true;
             }
@@ -271,6 +311,21 @@ namespace VictoryChallenge.Controllers.Player
             foreach (var behaviour in behaviours)
             {
                 behaviour.Init(this);
+            }
+        }
+
+        public IEnumerator C_IntroCutSceneStart()
+        {
+            _introTimeline.Play();
+            Debug.Log("IntroTimeline play");
+
+            while (_introTimeline.state == PlayState.Playing)
+            {
+                //if (_introTimeline.time > 5f)
+                //{
+                //    _missionUI.enabled = true;
+                //}
+                yield return null;
             }
         }
 
