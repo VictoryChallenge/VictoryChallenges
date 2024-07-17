@@ -631,7 +631,7 @@ namespace VictoryChallenge.Customize
 
                 int childCount = bodyPartData.skinnedMeshRenderer.transform.parent.childCount;
 
-                Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
+                //Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
 
                 for (int i = 0; i < childCount; i++)
                 {

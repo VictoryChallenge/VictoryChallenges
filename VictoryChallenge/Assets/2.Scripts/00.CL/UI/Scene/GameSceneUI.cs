@@ -60,6 +60,7 @@ namespace VictoryChallenge.Scripts.CL
             {
                 c.isKeyActive = false;
                 Debug.Log($"{c.isKeyActive} + ÆÞ½º");
+                yield return c.StartCoroutine(c.C_IntroCutSceneStart());
             }
 
             yield return new WaitForSeconds(2f);

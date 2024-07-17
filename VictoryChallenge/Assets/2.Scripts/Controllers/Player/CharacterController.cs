@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
 using System;
+using UnityEngine.UI;
+using VictoryChallenge.Scripts.CL;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -143,7 +145,11 @@ namespace VictoryChallenge.Controllers.Player
         #region 카메라
         private CinemachineVirtualCamera _followCam;
         private CinemachineVirtualCamera _introCam;
+        public PlayableDirector introTimeline { get => _introTimeline; }
         private PlayableDirector _introTimeline;
+
+        private Image _missionUI;
+        private GameManagerCL GameCL;
         #endregion
 
         #region DB
@@ -191,6 +197,10 @@ namespace VictoryChallenge.Controllers.Player
                 _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
                 _followCam.enabled = false;
                 _introTimeline.stopped += OnStopTimeline;
+
+                GameCL = GameObject.Find("GameCL").GetComponent<GameManagerCL>();
+                _missionUI = GameObject.Find("Mission").GetComponent<Image>();
+                _missionUI.enabled = false;
             }
         }
 
@@ -198,6 +208,7 @@ namespace VictoryChallenge.Controllers.Player
         {
             _followCam.enabled = true;
             _introCam.enabled = false;
+            _missionUI.enabled = false;
         }
 
         private void FixedUpdate()
@@ -232,7 +243,7 @@ namespace VictoryChallenge.Controllers.Player
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);
 
-            if(dizzyCount > 2)
+            if (dizzyCount > 2)
             {
                 isDie = true;
             }
@@ -300,6 +311,22 @@ namespace VictoryChallenge.Controllers.Player
             foreach (var behaviour in behaviours)
             {
                 behaviour.Init(this);
+            }
+        }
+
+        public IEnumerator C_IntroCutSceneStart()
+        {
+            _introTimeline.Play();
+
+
+
+            while (_introTimeline.state == PlayState.Playing)
+            {
+                if (_introTimeline.time > 5f)
+                {
+                    _missionUI.enabled = true;
+                }
+                yield return null;
             }
         }
 

@@ -56,7 +56,6 @@ namespace VictoryChallenge.Scripts.HS
                         //string nickName = other.gameObject.GetComponent<CharacterController>().nickName;
 
                         // shortUID와 rank를 DB에 연동하기 위해 RankManager에 등록
-                        //PlayersDataManager.Instance.SetRank(userShortUID, _rankCount);
                         //_gameManager.GetComponent<GameManagerCL>().SetRank(_rankCount);
                         //_gameManager.GetComponent<GameManagerCL>().Register(nickName, _rankCount);
 
