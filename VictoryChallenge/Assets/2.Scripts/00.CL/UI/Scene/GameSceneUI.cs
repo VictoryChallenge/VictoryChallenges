@@ -31,6 +31,7 @@ namespace VictoryChallenge.Scripts.CL
         TMP_Text text;
         private float time = 300;
         private Image mission;
+        private Image clock;
         private TextMeshProUGUI roundText;
         private TextMeshProUGUI personText;
         private CanvasGroup missionCanvasGroup;
@@ -46,7 +47,7 @@ namespace VictoryChallenge.Scripts.CL
         {
             Init();
             // 로그인안하고 씬에서 테스트만 하려면 아래코드 주석해제
-            // StartCoroutine(GameStart());
+            //StartCoroutine(GameStart());
 
             switch (SceneManager.GetActiveScene().buildIndex)
             {
@@ -88,6 +89,9 @@ namespace VictoryChallenge.Scripts.CL
 
             personText = GetTextMeshPro((int)TMPs.Person);
             personText.gameObject.SetActive(false);
+
+            clock = GetImage((int)Images.Clock);
+            clock.gameObject.SetActive(false);
         }
 
         void Update()
@@ -161,6 +165,7 @@ namespace VictoryChallenge.Scripts.CL
             isMoving = true;
 
             personText.gameObject.SetActive(true);
+            clock.gameObject.SetActive(true);
 
             text.text = "달려라~";
             yield return new WaitForSeconds(1f);
