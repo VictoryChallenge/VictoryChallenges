@@ -56,6 +56,11 @@ MonoBehaviour:
   - FinishMaster
   - SyncPlayerNickname
   - SyncPlayerNicknames
+  - StoneRoutine
+  - DeActiveStone
+  - GetQueue
+  - RandomPosition
+  - SetActiveRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
