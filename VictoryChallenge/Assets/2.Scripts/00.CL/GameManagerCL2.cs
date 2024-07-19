@@ -15,7 +15,7 @@ using CharacterController = VictoryChallenge.Controllers.Player.CharacterControl
 namespace VictoryChallenge.Scripts.CL
 {
     // 이 스크립트는 모든 플레이어가 씬을 로드했는지 확인하고, 그 후 게임을 시작하는 역할을 합니다.
-    public class GameManagerCL : MonoBehaviourPunCallbacks
+    public class GameManagerCL2 : MonoBehaviourPunCallbacks
     {
         private bool isGameStarted = false;
         private GameSceneUI gameSceneUI;
