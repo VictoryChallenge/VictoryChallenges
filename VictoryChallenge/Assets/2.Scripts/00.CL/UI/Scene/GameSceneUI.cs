@@ -228,7 +228,7 @@ namespace VictoryChallenge.Scripts.CL
             Text.gameObject.SetActive(false);
         }
 
-        IEnumerator AnimateFinishText(TextMeshProUGUI Text)
+        public IEnumerator AnimateFinishText(TextMeshProUGUI Text)
         {
             Controllers.Player.CharacterController[] cc = GameObject.FindObjectsOfType<Controllers.Player.CharacterController>();
             foreach (Controllers.Player.CharacterController c in cc)
@@ -247,7 +247,7 @@ namespace VictoryChallenge.Scripts.CL
             Vector3 middlePos = new Vector3(0, rectTransform.localPosition.y, 0);
             Vector3 endPos = new Vector3(Screen.width, rectTransform.localPosition.y, 0);
 
-            float duration = 1.3f; // 텍스트가 가운데로 이동하는데 걸리는 시간
+            float duration = 1.2f; // 텍스트가 가운데로 이동하는데 걸리는 시간
             float elapsedTime = 0f;
 
             // 왼쪽에서 가운데로 이동
@@ -263,7 +263,7 @@ namespace VictoryChallenge.Scripts.CL
             yield return new WaitForSeconds(2.5f); // 가운데에서 1초 머무름
 
             elapsedTime = 0f;
-            duration = 1.3f; // 텍스트가 오른쪽으로 이동하는데 걸리는 시간
+            duration = 1.2f; // 텍스트가 오른쪽으로 이동하는데 걸리는 시간
 
 
             // 가운데에서 오른쪽으로 이동
