@@ -1,3 +1,4 @@
+using Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Proyecto26;
@@ -281,6 +282,8 @@ namespace VictoryChallenge.KJ.Database
 
         public IEnumerator SignOutProcess(string shortUID, string jsonData, string customJsonData = "")
         {
+            bool isLoggedIn = true;
+
             RestAPIAuth.Instance.EnsureIdToken(success =>
             {
                 if (success)
@@ -344,12 +347,16 @@ namespace VictoryChallenge.KJ.Database
                             Debug.Log("업데이트 성공");
 
                             PerformLogOut();
+
+                            isLoggedIn = false;
+
                         });
                     });
                 }
             });
+            yield return new WaitUntil(() => !isLoggedIn);
 
-            yield return null;
+            //yield return null;
 
             //게임나가기
             Application.Quit();
