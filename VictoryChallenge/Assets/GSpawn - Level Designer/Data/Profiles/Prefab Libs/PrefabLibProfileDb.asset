@@ -38,8 +38,8 @@ MonoBehaviour:
   selectRangeEndId:
     _guidString: 67d7fd19-a70d-4eb2-ae0a-9663b552730c
   hasSelectRange: 1
-  scrollOffset: {x: 0, y: 2184}
-  vertScrollHighValue: NaN
+  scrollOffset: {x: 0, y: 2250}
+  vertScrollHighValue: 2703
   vertScrollLowValue: 0
 --- !u!114 &9087172559238843662
 MonoBehaviour:
