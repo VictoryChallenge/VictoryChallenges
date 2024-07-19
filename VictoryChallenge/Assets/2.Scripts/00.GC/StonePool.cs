@@ -20,8 +20,7 @@ public class StonePool : MonoBehaviourPun
 
     public List<Stone> stones;
     public Dictionary<string, Queue<GameObject>> poolDic;
-    private Queue<GameObject> queue = new Queue<GameObject>();
-
+    private Dictionary<GameObject, Vector3> _initPos;
 
     private void Awake()
     {
@@ -30,20 +29,27 @@ public class StonePool : MonoBehaviourPun
 
     private void Start()
     {
-        InitPoolInstantiate();
-        StartCoroutine(StoneRoutine(1.5f));
+        _initPos = new Dictionary<GameObject, Vector3>();
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            InitPoolInstantiate();
+            StartCoroutine(StoneRoutine(1.5f));
+        }
     }
 
     public void InitPoolInstantiate()
     {
         poolDic = new Dictionary<string, Queue<GameObject>>();
+
         foreach (Stone stone in stones)
         {
             Queue<GameObject> objpool = new Queue<GameObject>();
             for (int i = 0; i < stone.size; i++)
             {
                 GameObject obj = PhotonNetwork.Instantiate(stone.tag, transform.position, Quaternion.identity);
-                obj.GetComponent<PhotonView>().RPC("SetActiveRPC", RpcTarget.MasterClient, false);
+                _initPos[obj] = transform.position;
+                obj.GetComponent<PhotonView>().RPC("SetActiveRPC", RpcTarget.AllBuffered, false);
                 objpool.Enqueue(obj);
             }
             poolDic.Add(stone.tag, objpool);
@@ -59,7 +65,7 @@ public class StonePool : MonoBehaviourPun
         }
 
         GameObject obj = poolDic[tag].Dequeue();
-        obj.GetComponent<PhotonView>().RPC("SetActiveRPC", RpcTarget.MasterClient, true);
+        obj.GetComponent<PhotonView>().RPC("SetActiveRPC", RpcTarget.AllBuffered, true);
         obj.transform.position = position;
         obj.transform.rotation = rotation;
         poolDic[tag].Enqueue(obj);
@@ -69,8 +75,9 @@ public class StonePool : MonoBehaviourPun
 
     public void PoolDestroy(GameObject stone)
     {
-        stone.GetComponent<PhotonView>().RPC("SetActiveRPC", RpcTarget.MasterClient, false);
-        stone.transform.position = RandomPosition();
+        stone.transform.position = _initPos[stone];
+        stone.GetComponent<PhotonView>().RPC("SetActiveRPC", RpcTarget.AllBuffered, false);
+        
     }
 
     
@@ -85,6 +92,7 @@ public class StonePool : MonoBehaviourPun
 
             return randPosition;
         }
+
         return Vector3.zero;
     }
 
@@ -96,7 +104,7 @@ public class StonePool : MonoBehaviourPun
             GameObject stone = PoolInstantiate("Stone", position, Quaternion.identity);
         
             if(stone != null)
-                StartCoroutine(DeActiveStone(stone, 10f));
+                StartCoroutine(DeActiveStone(stone, 8f));
             
             yield return new WaitForSeconds(interval);
         }

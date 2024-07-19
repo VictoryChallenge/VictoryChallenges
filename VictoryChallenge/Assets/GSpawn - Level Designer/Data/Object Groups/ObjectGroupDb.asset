@@ -356,17 +356,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedItems:
     _serializedList:
-    - _guidString: 94621c50-80a7-4818-b174-b401697bade6
+    - _guidString: 7ba63c93-743d-495b-a7f3-e736a6cbdb77
   collapsedItems:
     _serializedList: []
   selectRangeBeginId:
     _guidString: 94621c50-80a7-4818-b174-b401697bade6
   selectRangeEndId:
     _guidString: 94621c50-80a7-4818-b174-b401697bade6
-  hasSelectRange: 1
+  hasSelectRange: 0
   scrollOffset: {x: 0, y: 0}
   vertScrollHighValue: 0
   vertScrollLowValue: 0
+--- !u!114 &-419261661008823446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Enviroment
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 352d8dda-f576-4bc4-82c8-7c983d6b97a4
+  _objectGroupName: Enviroment
+  _globalObjectIdString: GlobalObjectId_V1-2-b800fbcc83fc83b4b8327454d724edca-919415218-0
+  _uiSelected: 1
 --- !u!114 &-262574501215136593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +466,7 @@ MonoBehaviour:
     - _serializedList:
       - {fileID: -3225269675332924430}
       - {fileID: 2214136498459431874}
+      - {fileID: -419261661008823446}
     - _serializedList: []
   _sceneToDefaultObjectGroup:
     _serializedKeys: []
@@ -556,7 +575,7 @@ MonoBehaviour:
     _guidString: 94621c50-80a7-4818-b174-b401697bade6
   _objectGroupName: Obstacle
   _globalObjectIdString: GlobalObjectId_V1-2-b800fbcc83fc83b4b8327454d724edca-1866085746-0
-  _uiSelected: 1
+  _uiSelected: 0
 --- !u!114 &2675826118748946544
 MonoBehaviour:
   m_ObjectHideFlags: 0

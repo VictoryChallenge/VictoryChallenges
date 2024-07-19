@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/1.Scenes/00.GC/JustRun3.unity
     guid: b800fbcc83fc83b4b8327454d724edca
   - enabled: 0
+    path: Assets/1.Scenes/00.GC/JustRun.unity
+    guid: 7d47a22b6cee9a34b92b76e6a3d0fca6
+  - enabled: 0
     path: Assets/1.Scenes/00.CL/TestRunCL.unity
     guid: 9acbe4e29dfd1c0408c07281608d96f9
   - enabled: 0
