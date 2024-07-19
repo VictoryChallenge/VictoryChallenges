@@ -281,6 +281,8 @@ namespace VictoryChallenge.KJ.Database
 
         public IEnumerator SignOutProcess(string shortUID, string jsonData, string customJsonData = "")
         {
+            bool isWaitData = false;
+
             RestAPIAuth.Instance.EnsureIdToken(success =>
             {
                 if (success)
@@ -344,12 +346,14 @@ namespace VictoryChallenge.KJ.Database
                             Debug.Log("업데이트 성공");
 
                             PerformLogOut();
+
+                            isWaitData = true;
                         });
                     });
                 }
             });
 
-            yield return null;
+            yield return new WaitUntil(() => isWaitData);
 
             //게임나가기
             Application.Quit();
