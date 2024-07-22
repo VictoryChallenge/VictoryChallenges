@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace VictoryChallenge.KJ.Effect
 {
-    public class EffectManager : SingletonLazy<EffectManager>
+    public class VictoryEffectManager : MonoBehaviour
     {
         public List<ParticleSystem> fireworkEffects;
         public List<ParticleSystem> sparkEffects;
@@ -19,6 +19,7 @@ namespace VictoryChallenge.KJ.Effect
             foreach (var fireworkEffect in fireworkEffects)
             {
                 fireworkEffect.Play();
+                Debug.Log($"Effect : {fireworkEffect}");
             }
         }
 

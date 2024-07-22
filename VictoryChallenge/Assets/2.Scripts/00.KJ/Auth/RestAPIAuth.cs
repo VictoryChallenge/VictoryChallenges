@@ -321,14 +321,14 @@ namespace VictoryChallenge.KJ.Auth
                     JObject isLoggedInData = JObject.Parse(authJsonData);   // 인증 데이터를 Json 객체로 파싱
                     if (isLoggedInData != null)
                     {
-                        // 중복 로그인 방지
-                        //if(isLoggedInData["isLoggedIn"].Value<bool>() == true)
-                        //{
-                        //    onLoginCompleted?.Invoke(false);
-                        //    return;
-                        //}
+                        //중복 로그인 방지
+                        if (isLoggedInData["isLoggedIn"].Value<bool>() == true)
+                        {
+                            onLoginCompleted?.Invoke(false);
+                            return;
+                        }
 
-                        //isLoggedInData["isLoggedIn"] = true;
+                        isLoggedInData["isLoggedIn"] = true;
                         /* 업데이트 된 인증 데이터를 json 문자열로 변환 후 저장 */
                         existingData["jsonData"] = JsonConvert.SerializeObject(isLoggedInData); 
                     }
