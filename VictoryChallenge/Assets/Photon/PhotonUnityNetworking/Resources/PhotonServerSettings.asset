@@ -17,7 +17,7 @@ MonoBehaviour:
     AppIdFusion: 
     AppIdChat: 44ab5b5e-4998-4ed6-bed9-1f16fc524380
     AppIdVoice: 
-    AppVersion: 0.3.0
+    AppVersion: 0.4.0
     UseNameServer: 1
     FixedRegion: jp
     Server: 
@@ -56,11 +56,9 @@ MonoBehaviour:
   - FinishMaster
   - SyncPlayerNickname
   - SyncPlayerNicknames
-  - StoneRoutine
-  - DeActiveStone
-  - GetQueue
-  - RandomPosition
-  - SetActiveRPC
+  - RoundEnd
+  - C_RoundEnd
+  - SceneLoad
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

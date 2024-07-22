@@ -32,14 +32,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedItems:
     _serializedList:
-    - _guidString: 67d7fd19-a70d-4eb2-ae0a-9663b552730c
+    - _guidString: 80f58cfb-4490-4912-9e01-fb980136a8ef
   selectRangeBeginId:
-    _guidString: 67d7fd19-a70d-4eb2-ae0a-9663b552730c
+    _guidString: 80f58cfb-4490-4912-9e01-fb980136a8ef
   selectRangeEndId:
-    _guidString: 67d7fd19-a70d-4eb2-ae0a-9663b552730c
+    _guidString: 80f58cfb-4490-4912-9e01-fb980136a8ef
   hasSelectRange: 1
-  scrollOffset: {x: 0, y: 2250}
-  vertScrollHighValue: 2703
+  scrollOffset: {x: 0, y: 378}
+  vertScrollHighValue: NaN
   vertScrollLowValue: 0
 --- !u!114 &9087172559238843662
 MonoBehaviour:
@@ -55,15 +55,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedItems:
     _serializedList:
-    - _guidString: eba02aa8-209d-448b-a195-2422ed49be4c
+    - _guidString: dc33870b-04f6-4500-aa50-bdbaf1213d8b
   collapsedItems:
-    _serializedList:
-    - _guidString: 66eef34e-468e-4c78-a64d-c4308f000f2f
+    _serializedList: []
   selectRangeBeginId:
-    _guidString: eba02aa8-209d-448b-a195-2422ed49be4c
+    _guidString: dc33870b-04f6-4500-aa50-bdbaf1213d8b
   selectRangeEndId:
-    _guidString: eba02aa8-209d-448b-a195-2422ed49be4c
+    _guidString: dc33870b-04f6-4500-aa50-bdbaf1213d8b
   hasSelectRange: 1
   scrollOffset: {x: 0, y: 0}
-  vertScrollHighValue: 0
+  vertScrollHighValue: 48
   vertScrollLowValue: 0

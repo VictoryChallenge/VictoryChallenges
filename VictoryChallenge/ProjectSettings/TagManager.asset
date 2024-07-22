@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bullet
-  - Stone
+  - Obstacle
   layers:
   - Default
   - TransparentFX
