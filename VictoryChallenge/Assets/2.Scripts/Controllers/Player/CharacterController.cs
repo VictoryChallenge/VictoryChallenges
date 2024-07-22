@@ -328,14 +328,10 @@ namespace VictoryChallenge.Controllers.Player
                 yield break;
 
             _introTimeline.Play();
-            Debug.Log("IntroTimeline play");
+            //Debug.Log("IntroTimeline play");
 
             while (_introTimeline.state == PlayState.Playing)
             {
-                //if (_introTimeline.time > 5f)
-                //{
-                //    _missionUI.enabled = true;
-                //}
                 yield return null;
             }
         }
