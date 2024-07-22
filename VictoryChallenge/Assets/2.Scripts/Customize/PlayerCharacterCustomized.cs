@@ -52,7 +52,13 @@ namespace VictoryChallenge.Customize
 
         private void Start()
         {
-            if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(5))
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4))
+            {
+                _isLocal = true;
+                LoadData();
+            }
+            //if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(5))
+            else
             {
                 if (_pv.IsMine)
                 {
@@ -62,11 +68,6 @@ namespace VictoryChallenge.Customize
                     _isLocal = false;
                     LoadData();
                 }
-            }
-            else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4))
-            {
-                _isLocal = true;
-                LoadData();
             }
         }
 
