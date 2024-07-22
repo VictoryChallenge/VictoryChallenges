@@ -321,8 +321,8 @@ namespace VictoryChallenge.KJ.Auth
                     JObject isLoggedInData = JObject.Parse(authJsonData);   // 인증 데이터를 Json 객체로 파싱
                     if (isLoggedInData != null)
                     {
-                        // 중복 로그인 방지
-                        if(isLoggedInData["isLoggedIn"].Value<bool>() == true)
+                        //중복 로그인 방지
+                        if (isLoggedInData["isLoggedIn"].Value<bool>() == true)
                         {
                             onLoginCompleted?.Invoke(false);
                             return;

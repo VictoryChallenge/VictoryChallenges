@@ -60,6 +60,8 @@ MonoBehaviour:
   - C_RoundEnd
   - SceneLoad
   - WinnerCount
+  - SetActiveRPC
+  - StoneRoutine
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
