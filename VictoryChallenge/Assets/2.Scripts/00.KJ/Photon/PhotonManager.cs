@@ -1,3 +1,4 @@
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -68,14 +69,40 @@ namespace VictoryChallenge.KJ.Photon
 
         public void QuickMatch()
         {
+            Debug.Log("퀵매치");
+            PhotonNetwork.JoinRandomRoom();
+        }
+
+        public override void OnJoinRandomFailed(short returnCode, string message)
+        {
+            Debug.Log("못찾았슈");
+
+            CreateRoom(); // 랜덤 방 참가 실패 시 새 방 생성
+        }
+
+        private void CreateRoom()
+        {
+            string roomName = "Room_" + Random.Range(0, 1000000);
+
             RoomOptions roomOptions = new RoomOptions()
             {
-                IsVisible = false,      // 방이 로비에도 보이게 설정 -> 퀵 매치이므로 보여질 이유 없음
-                MaxPlayers = 4          // 최대 플레이어 인원 8명
+                IsVisible = true,
+                MaxPlayers = 4,
             };
 
-            PhotonNetwork.JoinOrCreateRoom("QuickMatchRoom", roomOptions, TypedLobby.Default);
+            PhotonNetwork.CreateRoom(roomName, roomOptions, TypedLobby.Default);
         }
+
+        //public void QuickMatch()
+        //{
+        //    RoomOptions roomOptions = new RoomOptions()
+        //    {
+        //        IsVisible = false,      // 방이 로비에도 보이게 설정 -> 퀵 매치이므로 보여질 이유 없음
+        //        MaxPlayers = 4          // 최대 플레이어 인원 8명
+        //    };
+
+        //    PhotonNetwork.JoinOrCreateRoom("QuickMatchRoom", roomOptions, TypedLobby.Default);
+        //}
 
         public override void OnJoinedRoom()
         {

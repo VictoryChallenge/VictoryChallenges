@@ -177,8 +177,12 @@ namespace VictoryChallenge.KJ.Photon
         {
             if (PhotonNetwork.IsMasterClient && AllPlayersReady())
             {
+                Hashtable props = new Hashtable() { { "isGameStarted", true } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+
                 Debug.Log("모든 플레이어가 준비됨, 게임 시작");
                 PhotonNetwork.LoadLevel(stageNum);
+                PhotonNetwork.CurrentRoom.IsOpen = false;
             }
         }
 
