@@ -239,6 +239,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerWithCam
       objectReference: {fileID: 0}
+    - target: {fileID: 5423612666389817126, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5681717699174676740, guid: f407247cf4d461344a85f54c530aac54,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -744,6 +749,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerWithCam (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423612666389817126, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5681717699174676740, guid: f407247cf4d461344a85f54c530aac54,
         type: 3}
@@ -1477,6 +1487,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerWithCam (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5423612666389817126, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5681717699174676740, guid: f407247cf4d461344a85f54c530aac54,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2208,6 +2223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerWithCam (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423612666389817126, guid: f407247cf4d461344a85f54c530aac54,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5681717699174676740, guid: f407247cf4d461344a85f54c530aac54,
         type: 3}
