@@ -25,7 +25,6 @@ namespace VictoryChallenge.Scripts.CL
 
         public override void Init()
         {
-            base.Init();
             Bind<Button>(typeof(Buttons));
 
             //Managers.UI.ShowPopupUI<UI_Popup>("CustomButtonPopup");
@@ -55,6 +54,7 @@ namespace VictoryChallenge.Scripts.CL
 
         public void SceneLoad()
         {
+            Managers.Sound.Play("Click", Define.Sound.Effect);
             SceneManager.LoadScene(1);
         }
     }
