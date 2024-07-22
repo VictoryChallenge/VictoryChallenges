@@ -252,24 +252,6 @@ MonoBehaviour:
   _objectGroupName: Ground
   _globalObjectIdString: GlobalObjectId_V1-2-7d47a22b6cee9a34b92b76e6a3d0fca6-1116811075-0
   _uiSelected: 0
---- !u!114 &-3225269675332924430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
-  m_Name: Ground
-  m_EditorClassIdentifier: 
-  _parentGroup: {fileID: 0}
-  _guid:
-    _guidString: 3940599b-a2a7-4cc1-9b94-d84bd0de0076
-  _objectGroupName: Ground
-  _globalObjectIdString: GlobalObjectId_V1-2-b800fbcc83fc83b4b8327454d724edca-1430503885-0
-  _uiSelected: 0
 --- !u!114 &-3131682881395382547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +270,24 @@ MonoBehaviour:
   _objectGroupName: Stone
   _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1616411629-0
   _uiSelected: 0
+--- !u!114 &-3091149285308133662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Obstacle
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 2b4bcd76-92b2-4380-8b34-9bf510e91e0b
+  _objectGroupName: Obstacle
+  _globalObjectIdString: GlobalObjectId_V1-2-b800fbcc83fc83b4b8327454d724edca-1187544739-0
+  _uiSelected: 1
 --- !u!114 &-1735305301273866831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,35 +356,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedItems:
     _serializedList:
-    - _guidString: 7ba63c93-743d-495b-a7f3-e736a6cbdb77
+    - _guidString: 571ce54b-f1d2-48f4-bd18-fc7d3ef82194
   collapsedItems:
     _serializedList: []
   selectRangeBeginId:
-    _guidString: 94621c50-80a7-4818-b174-b401697bade6
+    _guidString: c3d74b15-9b95-4f7f-8371-28d5f69242c8
   selectRangeEndId:
-    _guidString: 94621c50-80a7-4818-b174-b401697bade6
+    _guidString: c3d74b15-9b95-4f7f-8371-28d5f69242c8
   hasSelectRange: 0
   scrollOffset: {x: 0, y: 0}
   vertScrollHighValue: 0
   vertScrollLowValue: 0
---- !u!114 &-419261661008823446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
-  m_Name: Enviroment
-  m_EditorClassIdentifier: 
-  _parentGroup: {fileID: 0}
-  _guid:
-    _guidString: 352d8dda-f576-4bc4-82c8-7c983d6b97a4
-  _objectGroupName: Enviroment
-  _globalObjectIdString: GlobalObjectId_V1-2-b800fbcc83fc83b4b8327454d724edca-919415218-0
-  _uiSelected: 1
 --- !u!114 &-262574501215136593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,9 +446,8 @@ MonoBehaviour:
     - _serializedList:
       - {fileID: -6496072030615568441}
     - _serializedList:
-      - {fileID: -3225269675332924430}
-      - {fileID: 2214136498459431874}
-      - {fileID: -419261661008823446}
+      - {fileID: 8485959223536753481}
+      - {fileID: -3091149285308133662}
     - _serializedList: []
   _sceneToDefaultObjectGroup:
     _serializedKeys: []
@@ -557,24 +538,6 @@ MonoBehaviour:
     _guidString: 0f56cb36-388a-4628-936b-9fa030cdcc81
   _objectGroupName: Box
   _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-1129084643-0
-  _uiSelected: 0
---- !u!114 &2214136498459431874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
-  m_Name: Obstacle
-  m_EditorClassIdentifier: 
-  _parentGroup: {fileID: 0}
-  _guid:
-    _guidString: 94621c50-80a7-4818-b174-b401697bade6
-  _objectGroupName: Obstacle
-  _globalObjectIdString: GlobalObjectId_V1-2-b800fbcc83fc83b4b8327454d724edca-1866085746-0
   _uiSelected: 0
 --- !u!114 &2675826118748946544
 MonoBehaviour:
@@ -683,6 +646,24 @@ MonoBehaviour:
     _guidString: 63bf3c7d-2d24-4c49-a5f7-94e52026c3de
   _objectGroupName: Land
   _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-1415535552-0
+  _uiSelected: 0
+--- !u!114 &8485959223536753481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
+  m_Name: Ground
+  m_EditorClassIdentifier: 
+  _parentGroup: {fileID: 0}
+  _guid:
+    _guidString: 65f84abb-8fab-499a-8d46-9c7dc8eaffb1
+  _objectGroupName: Ground
+  _globalObjectIdString: GlobalObjectId_V1-2-b800fbcc83fc83b4b8327454d724edca-2081975568-0
   _uiSelected: 0
 --- !u!114 &8622233685703024741
 MonoBehaviour:

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Manager = VictoryChallenge.Scripts.CL.Managers;
+using VictoryChallenge.Scripts.CL;
 
 namespace VictoryChallenge.Customize
 {
@@ -62,111 +64,133 @@ namespace VictoryChallenge.Customize
             _colorRightButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.Color);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _colorLeftButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Color);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _bodyPartsRightButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.BodyParts);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _bodyPartsLeftButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.BodyParts);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _eyesRightButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.Eyes);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _eyesLeftButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Eyes);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _glovesRightButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.Gloves);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _glovesLeftButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Gloves);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _headPartsRightButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.HeadParts);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _headPartsLeftButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.HeadParts);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _mouthAndNosesRightButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.Mouth);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _mouthAndNosesLeftButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Mouth);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _tailsRightButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartRight(PlayerCharacterCustomized.BodyPartType.Tails);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _tailsLeftButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.ChangeSkinnedBodyPartLeft(PlayerCharacterCustomized.BodyPartType.Tails);
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _loadButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.LoadData();
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _saveButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.Save();
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _earRightButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.OnChangeRightEarMesh();
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _earLeftButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.OnChangeLeftEarMesh();
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _hatRightButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.OnChangeRightHatMesh();
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _hatLeftButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.OnChangeLeftHatMesh();
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _accessoryRightButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.OnChangeRightAccessoryMesh();
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
 
             _accessoryLeftButton.onClick.AddListener(() =>
             {
                 _playerCharacterCustomized.OnChangeLeftAccessoryMesh();
+                Manager.Sound.Play("Click", Define.Sound.Effect);
             });
         }
     }
