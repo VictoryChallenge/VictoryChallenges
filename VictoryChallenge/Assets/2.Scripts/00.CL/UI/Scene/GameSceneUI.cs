@@ -55,11 +55,13 @@ namespace VictoryChallenge.Scripts.CL
             {
                 case 3:
                     round = 1;
-                    person = 4;
+                    person = 2;
                     break;
                 case 4:
                     break;
                 case 5:
+                    round = 2;
+                    person = 2;
                     break;
                 case 6:
                     break;
@@ -122,13 +124,17 @@ namespace VictoryChallenge.Scripts.CL
                 int displayTime = Mathf.CeilToInt(time); // 시간을 올림하여 정수로 변환
                 GetTextMeshPro((int)TMPs.Time).text = displayTime.ToString();
             }
-            if (time <= 0)
+            if (time <= 0 || winner == person)
             {
-                GetTextMeshPro((int)TMPs.Time).text = "0"; // time을 정확히 0으로 설정
                 if (isMoving == true)
                 {
                     isMoving = false;
                     StartCoroutine(AnimateFinishText(finishText));
+                }
+
+                if(time <= 0)
+                {
+                    GetTextMeshPro((int)TMPs.Time).text = "0"; // time을 정확히 0으로 설정
                 }
             }
             // 인원수

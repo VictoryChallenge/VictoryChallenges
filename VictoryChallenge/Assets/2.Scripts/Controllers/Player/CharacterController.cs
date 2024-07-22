@@ -13,6 +13,7 @@ using UnityEngine.Playables;
 using System;
 using UnityEngine.UI;
 using VictoryChallenge.Scripts.CL;
+using Mono.CSharp;
 
 namespace VictoryChallenge.Controllers.Player
 {
@@ -147,9 +148,6 @@ namespace VictoryChallenge.Controllers.Player
         private CinemachineVirtualCamera _introCam;
         public PlayableDirector introTimeline { get => _introTimeline; }
         private PlayableDirector _introTimeline;
-
-        private Image _missionUI;
-        private GameManagerCL GameCL;
         #endregion
 
         #region DB
@@ -174,33 +172,43 @@ namespace VictoryChallenge.Controllers.Player
         {
             _followCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
 
-            if (!_pv.IsMine)
+            if(_pv.IsMine)
+            {
+                if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
+                {
+                    nickName = PhotonNetwork.NickName;
+                }
+                else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
+                {
+                    nickName = PhotonNetwork.NickName;
+
+
+                    // 카메라 캐싱
+                    _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
+                    _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
+                    _followCam.enabled = false;
+                    _introTimeline.stopped += OnStopTimeline;
+                }
+                else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(5))
+                {
+                    nickName = PhotonNetwork.NickName;
+
+
+                    // 카메라 캐싱
+                    _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
+                    _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
+                    _followCam.enabled = false;
+                    _introTimeline.stopped += OnStopTimeline;
+                }
+            }
+            //if (!_pv.IsMine)
+            else
             {
                 //CinemachineVirtualCamera otherCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
                 //otherCam.enabled = false;
                 //_followCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
                 _followCam.enabled = false;
                 return;
-            }
-
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
-            {
-                nickName = PhotonNetwork.NickName;
-            }
-            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
-            {
-                nickName = PhotonNetwork.NickName;
-
-
-                // 카메라 캐싱
-                _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
-                _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
-                _followCam.enabled = false;
-                _introTimeline.stopped += OnStopTimeline;
-
-                //GameCL = GameObject.Find("GameCL").GetComponent<GameManagerCL>();
-                //_missionUI = GameObject.Find("Mission").GetComponent<Image>();
-                //_missionUI.enabled = false;
             }
         }
 
@@ -316,6 +324,9 @@ namespace VictoryChallenge.Controllers.Player
 
         public IEnumerator C_IntroCutSceneStart()
         {
+            if (!_introTimeline)
+                yield break;
+
             _introTimeline.Play();
             Debug.Log("IntroTimeline play");
 
