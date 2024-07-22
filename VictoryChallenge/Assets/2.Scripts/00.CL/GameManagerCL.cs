@@ -3,24 +3,76 @@ using ExitGames.Client.Photon;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using VictoryChallenge.KJ.Photon;
 using Photon.Realtime;
-using VictoryChallenge.KJ.Database;
 using ExitGames.Client.Photon.StructWrapping;
-using UnityEngine.SocialPlatforms.Impl;
-using System.Collections.Generic;
-using VictoryChallenge.Scripts.HS;
-using VictoryChallenge.Json.DataManage;
 using VictoryChallenge.KJ.Room;
+using System.Collections.Generic;
+using System.Collections;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+
 
 namespace VictoryChallenge.Scripts.CL
 {
     // 이 스크립트는 모든 플레이어가 씬을 로드했는지 확인하고, 그 후 게임을 시작하는 역할을 합니다.
     public class GameManagerCL : MonoBehaviourPunCallbacks
     {
+        // random scene list
+        private bool _isFirstGoalIned;
+        private bool _isFinished = false;
+        private int _nextSceneNum;
+        private List<int> _round2List;
+
+        // 커스텀 프로퍼티 한번만 불러오기 위한
+        private bool isGameStarted;
+        
+        // PlayerActive
+        private bool _isMoving = false;
+        public bool isMoving
+        {
+            get { return _isMoving; }
+            set { _isMoving = value; }
+        }
+
+        // timer
+        public float time
+        {
+            get => _time;
+            set => _time = value;
+        }
+        private float _time = 20;
+
+        public int currentPlayer 
+        { 
+            get => _currentPlayer; 
+            set => _currentPlayer = value;
+        }
+        private int _currentPlayer;
+
+        public int maxPlayer { get => _maxPlayer; }
+        private int _maxPlayer = 2;
+
+        private GameSceneUI gameSceneUI;
+
         private void Start()
         {
+            gameSceneUI = GameObject.FindObjectOfType<GameSceneUI>();
+
             OnSceneLoaded();
+            ResetList();
+        }
+
+        private void Update()
+        {
+            if (_isMoving == true)
+            {
+                time -= Time.deltaTime;
+            }
+
+            if((time <= 0 && _isFinished == false) || (_isFinished == false && maxPlayer == currentPlayer))
+            {
+                ChooseFinalWinner();
+                _isFinished = true;
+            }
         }
 
         void OnSceneLoaded()
@@ -45,7 +97,20 @@ namespace VictoryChallenge.Scripts.CL
             if (changedProps.ContainsKey("SceneLoaded"))
             {
                 // SceneLoaded가 변경되었을 때만 RPC 호출
-                photonView.RPC("PlayerLoadedScene", RpcTarget.All);
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    // 모든 플레이어가 씬을 로드했는지 확인
+                    if (PhotonNetwork.PlayerList.All(player => player.CustomProperties.ContainsKey("SceneLoaded") && (bool)player.CustomProperties["SceneLoaded"]))
+                    {
+                        // 이미 게임이 시작되지 않았는지 확인
+                        if (!isGameStarted)
+                        {
+                            isGameStarted = true;
+                            double startTime = PhotonNetwork.Time + 1f;
+                            photonView.RPC("StartGame", RpcTarget.All, startTime);
+                        }
+                    }
+                }
             }
 
             if (changedProps.ContainsKey("IsGoaledIn"))
@@ -57,13 +122,103 @@ namespace VictoryChallenge.Scripts.CL
             }
         }
 
-        public void OnGoaledInCheck()
+        public void OnGoaledInCheck(bool isCheck)
         {
-            PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsGoaledIn", true } });
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsGoaledIn", isCheck } });
         }
 
         public void ChooseFinalWinner()
         {
+            photonView.RPC("RoundEnd", RpcTarget.AllBuffered);
+
+            //foreach(var list in PhotonNetwork.PlayerList)
+            //{
+            //    if(list.CustomProperties.ContainsKey("IsGoaledIn"))
+            //    {
+            //        if(list.CustomProperties.TryGetValue("IsGoaledIn", out bool isCheck))
+            //        {
+            //            if(isCheck)
+            //            {
+            //                // 결승선에 들어온 경우
+            //                Debug.Log(list.NickName + " has Finish race, IsGoaledIn = " + isCheck);
+            //                MixScene(SceneManager.GetActiveScene().buildIndex);
+            //            }
+            //            else
+            //            {
+            //                // 결승선에 들어오지 못한 경우
+            //                Debug.Log(list.NickName + " has not Finish race, IsGoaledIn = " + isCheck);
+            //                RoomMananger.Instance.LeaveRoom();
+            //                SceneManager.LoadScene(1);
+            //            }
+            //        }
+            //    }
+            //}
+        }
+
+        #region Scene
+        private void ResetList()
+        {
+            //random하게 불러올 씬 넘버
+            _round2List = new List<int>() { 5, 6 };
+        }
+
+        public void MixScene(int sceneNum)
+        {
+            List<int> list = new List<int>();
+            int count = 0;
+            switch (sceneNum)
+            {
+                case 3:
+                    count = _round2List.Count;
+                    for (int i = 0; i < count; i++)
+                    {
+                        int rand = Random.Range(0, _round2List.Count);
+                        list.Add(_round2List[rand]);
+                        _round2List.RemoveAt(rand);
+                    }
+                    _round2List = list;
+                    if(!_isFirstGoalIned)
+                    {
+                        photonView.RPC("SceneLoad", RpcTarget.AllBuffered, _round2List[0]);
+                        _nextSceneNum = _round2List[0];
+                    }
+                    else
+                    {
+                        photonView.RPC("SceneLoad", RpcTarget.AllBuffered, _nextSceneNum);
+                    }
+                    //SceneManager.LoadScene(_round2List[0]);
+                    _round2List.RemoveAt(0);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region RPC
+        [PunRPC]
+        void StartGame(double startTime)
+        {
+            StartCoroutine(StartCountdown(startTime));
+        }
+
+        [PunRPC]
+        private void SceneLoad(int sceneNum)
+        {
+            SceneManager.LoadScene(sceneNum);
+        }
+
+        [PunRPC]
+        private void RoundEnd()
+        {
+            StartCoroutine(C_RoundEnd());
+        }
+
+        private IEnumerator C_RoundEnd()
+        {
+            yield return new WaitForSeconds(5f);
+
             foreach(var list in PhotonNetwork.PlayerList)
             {
                 if(list.CustomProperties.ContainsKey("IsGoaledIn"))
@@ -74,51 +229,37 @@ namespace VictoryChallenge.Scripts.CL
                         {
                             // 결승선에 들어온 경우
                             Debug.Log(list.NickName + " has Finish race, IsGoaledIn = " + isCheck);
-                            SceneManager.LoadScene(5);
+                            MixScene(SceneManager.GetActiveScene().buildIndex);
+                            if (!_isFirstGoalIned)
+                                _isFirstGoalIned = true;
                         }
                         else
                         {
                             // 결승선에 들어오지 못한 경우
                             Debug.Log(list.NickName + " has not Finish race, IsGoaledIn = " + isCheck);
                             RoomMananger.Instance.LeaveRoom();
-                            SceneManager.LoadScene(1);
+                            //SceneManager.LoadScene(1);
                         }
                     }
                 }
             }
         }
 
-        public void IntroCount()
+        IEnumerator StartCountdown(double startTime)
         {
-            PlayerLoadedScene();
-        }
-
-        // 마스터 클라이언트가 각 플레이어의 상태를 확인하고, 모든 플레이어가 씬을 로드했으면 게임을 시작합니다.
-        [PunRPC]
-        void PlayerLoadedScene()
-        {
-            if (PhotonNetwork.IsMasterClient)
+            double timeRemaining = startTime - PhotonNetwork.Time;
+            while (timeRemaining > 0)
             {
-                Debug.Log("zzz마스터클");
-                // 모든 플레이어가 씬을 로드했는지 확인
-                if (PhotonNetwork.PlayerList.All(player => player.CustomProperties.ContainsKey("SceneLoaded") && (bool)player.CustomProperties["SceneLoaded"]))
-                {
-                    Debug.Log("왜안나오는데왜왜왜왜ㅗ애ㅗ애ㅗ애");
-                    // 모든 플레이어가 씬을 로드했음을 알리는 RPC 호출
-                    photonView.RPC("StartGame", RpcTarget.All);
-                }
+                Debug.Log("Time remaining: " + timeRemaining);
+                yield return new WaitForEndOfFrame();
+                timeRemaining = startTime - PhotonNetwork.Time;
             }
-        }
-
-        [PunRPC]
-        void StartGame()
-        {
             // 게임 시작 로직을 실행
-            GameSceneUI gameSceneUI = FindObjectOfType<GameSceneUI>();
             if (gameSceneUI != null)
             {
                 gameSceneUI.StartCoroutine("GameStart");
             }
         }
     }
+    #endregion
 }

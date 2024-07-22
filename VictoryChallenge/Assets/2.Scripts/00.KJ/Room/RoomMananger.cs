@@ -4,6 +4,7 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VictoryChallenge.KJ.Photon;
+using VictoryChallenge.Scripts.CL;
 
 namespace VictoryChallenge.KJ.Room
 {
@@ -65,11 +66,19 @@ namespace VictoryChallenge.KJ.Room
             base.OnLeftRoom();
             //CleanUpPhotonView();
             PhotonNetwork.LoadLevel(1);                     // 메뉴 씬으로 이동
+            Scripts.CL.Managers.Sound.Play("MainBGM", Define.Sound.BGM);
         }
 
         public void LeaveRoom()
         {
-            PhotonNetwork.LeaveRoom();
+            if (PhotonNetwork.IsConnected && PhotonNetwork.InRoom)
+            {
+                PhotonNetwork.LeaveRoom();
+            }
+            else
+            {
+                Debug.LogWarning("Client is not connected or not in a room.");
+            }
         }
 
         void CleanUpPhotonView()                            // Photon 오브젝트 삭제
