@@ -16,6 +16,7 @@ namespace VictoryChallenge.Camera
 
         private CinemachineVirtualCamera _vCam;
         private CinemachineTrackedDolly _settingCam;
+        
 
         void Start()
         {

@@ -26,15 +26,13 @@ namespace VictoryChallenge.Scripts.CL
         }
 
         AudioSource _audiosource;
-        AudioSource _audiosourceE;
 
         void Start()
         {
             Init();
             RectTransform rectTransform = GetComponent<RectTransform>();
             rectTransform.anchoredPosition = Vector2.zero;
-            _audiosource = GameObject.Find("BGM").GetComponent<AudioSource>();
-            _audiosourceE = GameObject.Find("Effect").GetComponent<AudioSource>();
+            _audiosource = GameObject.FindAnyObjectByType<AudioSource>().GetComponent<AudioSource>();
             // 슬라이더 값을 오디오 소스의 볼륨 값으로 초기화
             Slider soundSlider = GetSlider((int)Sliders.SoundSlider);
             if (soundSlider != null)

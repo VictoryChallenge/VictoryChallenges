@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace VictoryChallenge.Scripts.CL
-{ 
+{
     public class Managers : MonoBehaviour
     {
         static Managers s_Instance;
@@ -13,7 +13,7 @@ namespace VictoryChallenge.Scripts.CL
 
         public static ResourceManager Resource { get { return Instance._resource; } }
         public static UIManager UI { get { return Instance._ui; } }
-        public static SoundManager Sound { get {  return Instance._sound; } }
+        public static SoundManager Sound { get { return Instance._sound; } }
 
         void Start()
         {

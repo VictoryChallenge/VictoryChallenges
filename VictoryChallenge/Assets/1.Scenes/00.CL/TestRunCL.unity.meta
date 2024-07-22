@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:VictoryChallenge/Assets/1.Scenes/00.CL/CustomizeSceneCL.unity.meta
+guid: 9acbe4e29dfd1c0408c07281608d96f9
+========
 guid: 13340fd6c0d44104dab4c46fbda77366
+>>>>>>>> main:VictoryChallenge/Assets/1.Scenes/00.CL/TestRunCL.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

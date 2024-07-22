@@ -93,8 +93,6 @@ namespace VictoryChallenge.Scripts.CL
 
         void OnButtonClicked(PointerEventData data, int a)
         {
-            Managers.Sound.Play("Click", Define.Sound.Effect);
-
             switch (a)
             { 
                 case 1:

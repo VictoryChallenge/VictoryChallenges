@@ -13,7 +13,7 @@ namespace VictoryChallenge.Camera
 
         void Start()
         {
-            _playerTransform = GetComponentInParent<PlayerController>().GetComponent<Transform>();
+            _playerTransform = FindObjectOfType<PlayerController>().GetComponent<Transform>();
             //GameObject.Find("Player").GetComponent<Transform>();
 
             transform.parent = null;
