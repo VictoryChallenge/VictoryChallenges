@@ -47,8 +47,9 @@ namespace VictoryChallenge.Scripts.CL
         private GameManagerCL gameManager;
 
         // 장애물
-        private ObstacleManager obstacleManager;
-        private ConveyorBelt conveyorBelt;
+        private ObstacleManager _obstacleManager;
+        private ConveyorBelt _conveyorBelt;
+        private ConveyorBelt _conveyorBelt2;
 
         void Start()
         {
@@ -76,14 +77,41 @@ namespace VictoryChallenge.Scripts.CL
 
             gameManager = GameObject.FindObjectOfType<GameManagerCL>();
 
+            #region 장애물
             // 장애물
-            obstacleManager = FindObjectOfType<ObstacleManager>();
-            conveyorBelt = FindObjectOfType<ConveyorBelt>();
+            _obstacleManager = FindObjectOfType<ObstacleManager>();
 
-            if (conveyorBelt != null)
+            // 오른쪽 트랙
+            GameObject redPlayerLine = GameObject.Find("Red_Player_Line");
+            if (redPlayerLine != null)
             {
-                conveyorBelt.Initialize();
+                Transform trackTransform = redPlayerLine.transform.Find("Track");
+                if (trackTransform != null)
+                {
+                    _conveyorBelt = trackTransform.GetComponent<ConveyorBelt>();
+                    if (_conveyorBelt != null)
+                    {
+                        _conveyorBelt.Initialize();
+                    }
+                }
             }
+
+            // 왼쪽 트랙
+            GameObject bluePlayerLine = GameObject.Find("Blue_Player_Line");
+            if (bluePlayerLine != null)
+            {
+                Transform track2Transform = bluePlayerLine.transform.Find("Track");
+                if (track2Transform != null)
+                {
+                    _conveyorBelt2 = track2Transform.GetComponent<ConveyorBelt>();
+                    if (_conveyorBelt2 != null)
+                    {
+                        _conveyorBelt2.Initialize();
+                    }
+                }
+            }
+            #endregion
+
         }
 
         public override void Init()
@@ -204,14 +232,21 @@ namespace VictoryChallenge.Scripts.CL
             text.gameObject.SetActive(false);
 
             // 장애물
-            if (obstacleManager != null)
+            if (_obstacleManager != null)
             {
-                StartCoroutine(obstacleManager.SpawnObstacles());
+                StartCoroutine(_obstacleManager.SpawnObstacles());
             }
 
-            if (conveyorBelt != null)
+            if (_conveyorBelt != null)
             {
-                conveyorBelt.EnableConveyerBelt();
+                _conveyorBelt.EnableConveyerBelt();
+                Debug.Log("오른쪽 컨베이어 벨트");
+            }
+
+            if (_conveyorBelt2 != null)
+            {
+                _conveyorBelt2.EnableConveyerBelt();
+                Debug.Log("왼쪽 컨베이어 벨트");
             }
 
         }

@@ -1,8 +1,9 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace VictoryChallenge.KJ.Map
 {
-    public class ConveyorBelt : MonoBehaviour
+    public class ConveyorBelt : MonoBehaviourPun
     {
         private float conveyorSpeed = 10f;
         private float obstacleSpeed = 8f;
@@ -38,12 +39,7 @@ namespace VictoryChallenge.KJ.Map
         public void EnableConveyerBelt()
         {
             isConveyorEnabled = true;
-        }
-
-        public void DIsableConveyerBelt()
-        {
-            isConveyorEnabled = false;
-            elapsedTime = 0f;
+            Debug.Log($"시작 : 컨베이어벨트 작동");
         }
 
         public void Initialize()
