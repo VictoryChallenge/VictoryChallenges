@@ -64,6 +64,8 @@ namespace VictoryChallenge.Scripts.CL
                     person = 2;
                     break;
                 case 6:
+                    round = 2;
+                    person = 2;
                     break;
             }
 
