@@ -12,7 +12,6 @@ namespace VictoryChallenge.Scripts.HS
 {
     public class Finish : MonoBehaviour
     {
-        private bool _isActive = true;
         private int _rankCount;
         private int _maxCount = 10;
         private PhotonView _pv;
@@ -37,7 +36,6 @@ namespace VictoryChallenge.Scripts.HS
         private void OnTriggerEnter(Collider other)
         {
             // 카운트가 끝나기 전에 들어왔을 때
-            //if (_isActive)
             if(_gameManager.time > 0)
             {
                 // 플레이어가 결승선에 도착했을 때
@@ -131,7 +129,6 @@ namespace VictoryChallenge.Scripts.HS
                 if (_maxCount == 0)
                 {
                     isCheck = false;
-                    _isActive = false;
                     _countText.text = "Game Over";
                     _gameManager.GetComponent<GameManagerCL>().ChooseFinalWinner();
                 }

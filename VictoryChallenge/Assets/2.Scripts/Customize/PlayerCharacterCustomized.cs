@@ -52,7 +52,13 @@ namespace VictoryChallenge.Customize
 
         private void Start()
         {
-            if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(5))
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4))
+            {
+                _isLocal = true;
+                LoadData();
+            }
+            //if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3) || SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(5))
+            else
             {
                 if (_pv.IsMine)
                 {
@@ -62,11 +68,6 @@ namespace VictoryChallenge.Customize
                     _isLocal = false;
                     LoadData();
                 }
-            }
-            else if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4))
-            {
-                _isLocal = true;
-                LoadData();
             }
         }
 
@@ -549,22 +550,22 @@ namespace VictoryChallenge.Customize
 
                     // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
 
-                    foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
-                    {
-                        SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
-
-                        int childCount = bodyPartData.skinnedMeshRenderer.transform.parent.childCount;
-
-                        //Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
-
-                        for (int i = 0; i < childCount; i++)
-                        {
-                            if (i != 0)
-                            {
-                                Destroy(bodyPartData.skinnedMeshRenderer.transform.parent.transform.GetChild(i).gameObject);
-                            }
-                        }
-                    }
+                    //foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
+                    //{
+                    //    SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
+                    //
+                    //    int childCount = bodyPartData.skinnedMeshRenderer.transform.parent.childCount;
+                    //
+                    //    //Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
+                    //
+                    //    for (int i = 0; i < childCount; i++)
+                    //    {
+                    //        if (i != 0)
+                    //        {
+                    //            Destroy(bodyPartData.skinnedMeshRenderer.transform.parent.transform.GetChild(i).gameObject);
+                    //        }
+                    //    }
+                    //}
 
                     _earMesh.transform.GetChild(saveObject.earIndex).gameObject.SetActive(true);
                     _accessoryMesh.transform.GetChild(saveObject.accessoryIndex).gameObject.SetActive(true);
