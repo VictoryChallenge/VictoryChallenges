@@ -10,12 +10,8 @@ namespace VictoryChallenge.KJ.Map
         public Transform spawnPointBlue;
         public float spawnInterval = 1.5f;
 
-        void Start()
-        {
-            //StartCoroutine(SpawnObstacles());
-        }
 
-        private IEnumerator SpawnObstacles()
+        public IEnumerator SpawnObstacles()
         {
             while (true)
             {

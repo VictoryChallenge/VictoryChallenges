@@ -26,6 +26,9 @@ namespace VictoryChallenge.KJ.Spawn
                 case 3:
                 case 5:
                 case 6:
+                    // TestMap
+                    _pointLength = 6;
+                    break;
                 case 7:
                     // Just Run
                     _pointLength = 4;

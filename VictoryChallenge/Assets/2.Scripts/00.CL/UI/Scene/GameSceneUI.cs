@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VictoryChallenge.Controllers.Player;
+using VictoryChallenge.KJ.Map;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -45,6 +46,10 @@ namespace VictoryChallenge.Scripts.CL
         private bool isMoving;
         private GameManagerCL gameManager;
 
+        // 장애물
+        private ObstacleManager obstacleManager;
+        private ConveyorBelt conveyorBelt;
+
         void Start()
         {
             Init();
@@ -66,6 +71,15 @@ namespace VictoryChallenge.Scripts.CL
             }
 
             gameManager = GameObject.FindObjectOfType<GameManagerCL>();
+
+            // 장애물
+            obstacleManager = FindObjectOfType<ObstacleManager>();
+            conveyorBelt = FindObjectOfType<ConveyorBelt>();
+
+            if (conveyorBelt != null)
+            {
+                conveyorBelt.Initialize();
+            }
         }
 
         public override void Init()
@@ -180,6 +194,18 @@ namespace VictoryChallenge.Scripts.CL
             yield return new WaitForSeconds(1f);
 
             text.gameObject.SetActive(false);
+
+            // 장애물
+            if (obstacleManager != null)
+            {
+                StartCoroutine(obstacleManager.SpawnObstacles());
+            }
+
+            if (conveyorBelt != null)
+            {
+                conveyorBelt.EnableConveyerBelt();
+            }
+
         }
 
         IEnumerator AnimateRoundText(TextMeshProUGUI Text)

@@ -158,9 +158,6 @@ namespace VictoryChallenge.Controllers.Player
         public virtual string nickName { get; private set; }
         #endregion
 
-        #region 참조
-        //public VictoryEffectManager victoryEffectManager;
-        #endregion
 
         private void Awake()
         {
@@ -207,16 +204,15 @@ namespace VictoryChallenge.Controllers.Player
                 //_missionUI = GameObject.Find("Mission").GetComponent<Image>();
                 //_missionUI.enabled = false;
             }
-            //else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3))
-            //{
-            //    nickName = PhotonNetwork.NickName;
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(6))
+            {
+                nickName = PhotonNetwork.NickName;
 
-            //    _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
-            //    _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
-            //    victoryEffectManager = GameObject.Find("VictoryEffectManager").GetComponent<VictoryEffectManager>();
-            //    _followCam.enabled = false;
-            //    _introTimeline.stopped += OnWaitEffect;
-            //}
+                _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
+                _introTimeline = GameObject.Find("IntroTimeline").GetComponent <PlayableDirector>();
+                _followCam.enabled = false;
+                _introTimeline.stopped += OnStopTimeline;
+            }
         }
 
         private void OnStopTimeline(PlayableDirector director)
@@ -225,13 +221,6 @@ namespace VictoryChallenge.Controllers.Player
             _introCam.enabled = false;
             //_missionUI.enabled = false;
         }
-
-        //private void OnWaitEffect(PlayableDirector director)
-        //{
-        //    _introCam.enabled = false;
-        //    victoryEffectManager.PlayFirework();
-        //    victoryEffectManager.PlaySpark();
-        //}
 
         private void FixedUpdate()
         {

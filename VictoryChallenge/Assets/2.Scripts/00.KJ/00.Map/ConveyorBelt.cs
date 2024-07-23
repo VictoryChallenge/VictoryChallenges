@@ -8,28 +8,51 @@ namespace VictoryChallenge.KJ.Map
         private float obstacleSpeed = 8f;
         private int correction = 10;
         private float elapsedTime = 0f;
+        private bool isConveyorEnabled = false;
 
-        void FixedUpdate()
+
+        void Update()
         {
-            // 모든 플레이어가 준비가 끝나고 321 후에 시간이 돌아가도록 설정해야할듯
-            elapsedTime += Time.deltaTime;
+            if (isConveyorEnabled)
+            {
+                elapsedTime += Time.deltaTime;
 
-            if (elapsedTime > 20f)
-            {
-                conveyorSpeed = 20f;
-                Debug.Log($"20초 경과 : {conveyorSpeed}");
-            }
-            else if (elapsedTime > 10f)
-            {
-                conveyorSpeed = 15f;
-                Debug.Log($"10초 경과 : {conveyorSpeed}");
-            }
-            else
-            {
-                conveyorSpeed = 10f;
-                Debug.Log($"현재 컨베이어 스피드 : {conveyorSpeed}");
+                if (elapsedTime > 20f)
+                {
+                    conveyorSpeed = 20f;
+                    Debug.Log($"20초 경과 : {conveyorSpeed}");
+                }
+                else if (elapsedTime > 10f)
+                {
+                    conveyorSpeed = 15f;
+                    Debug.Log($"10초 경과 : {conveyorSpeed}");
+                }
+                else
+                {
+                    conveyorSpeed = 10f;
+                    Debug.Log($"현재 컨베이어 스피드 : {conveyorSpeed}");
+                }
             }
         }
+
+        public void EnableConveyerBelt()
+        {
+            isConveyorEnabled = true;
+        }
+
+        public void DIsableConveyerBelt()
+        {
+            isConveyorEnabled = false;
+            elapsedTime = 0f;
+        }
+
+        public void Initialize()
+        {
+            conveyorSpeed = 0f;
+            elapsedTime = 0f;
+            isConveyorEnabled = false;
+        }
+
 
         private void OnCollisionStay(Collision collision)
         {
