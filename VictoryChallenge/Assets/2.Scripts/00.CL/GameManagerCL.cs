@@ -70,6 +70,7 @@ namespace VictoryChallenge.Scripts.CL
                     _maxPlayer = 2;
                     break;
                 case 6:
+                    _maxPlayer = 2;
                     break;
             }
 
@@ -164,14 +165,15 @@ namespace VictoryChallenge.Scripts.CL
 
         public void ChooseFinalWinner()
         {
-            photonView.RPC("RoundEnd", RpcTarget.AllBuffered);
+            //photonView.RPC("RoundEnd", RpcTarget.AllBuffered);
+            RoundEnd();
         }
 
         #region Scene
         private void ResetList()
         {
             //random하게 불러올 씬 넘버
-            _round2List = new List<int>() { 5, 6 };
+            _round2List = new List<int>() { /*5,*/ 6 };
         }
 
         public void MixScene(int sceneNum)
@@ -189,15 +191,8 @@ namespace VictoryChallenge.Scripts.CL
                         _round2List.RemoveAt(rand);
                     }
                     _round2List = list;
-                    if(!_isFirstGoalIned)
-                    {
-                        //photonView.RPC("SceneLoad", RpcTarget.AllBuffered, _round2List[0]);
-                        _nextSceneNum = _round2List[0];
-                    }
-                    else
-                    {
-                        //photonView.RPC("SceneLoad", RpcTarget.AllBuffered, _nextSceneNum);
-                    }
+                    _nextSceneNum = _round2List[0];
+
                     //SceneManager.LoadScene(_round2List[0]);
                     _round2List.RemoveAt(0);
                     break;
@@ -239,28 +234,31 @@ namespace VictoryChallenge.Scripts.CL
         {
             yield return new WaitForSeconds(5f);
 
-            foreach(var list in PhotonNetwork.PlayerList)
-            {
-                if(list.CustomProperties.ContainsKey("IsGoaledIn"))
+            //foreach(var list in PhotonNetwork.PlayerList)
+            //{
+                if(PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("IsGoaledIn"))
                 {
-                    if(list.CustomProperties.TryGetValue("IsGoaledIn", out bool isCheck))
+                    if(PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("IsGoaledIn", out bool isCheck))
                     {
                         if(isCheck)
                         {
+                            yield return new WaitForSeconds(.5f);
                             // 결승선에 들어온 경우
-                            Debug.Log(list.NickName + " has Finish race, IsGoaledIn = " + isCheck);
+                            Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has Finish race, IsGoaledIn = " + isCheck);
                             //MixScene(SceneManager.GetActiveScene().buildIndex);
                             photonView.RPC("SceneLoad", RpcTarget.AllBuffered, _nextSceneNum);
+                            //PhotonNetwork.LoadLevel(_nextSceneNum);
+                            //SceneManager.LoadScene(5);
                         }
                         else 
                         {
                             // 결승선에 들어오지 못한 경우
-                            Debug.Log(list.NickName + " has not Finish race, IsGoaledIn = " + isCheck);
+                            Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has not Finish race, IsGoaledIn = " + isCheck);
                             RoomMananger.Instance.LeaveRoom();
                             //SceneManager.LoadScene(1);
                         }
                     }
-                }
+                //}
             }
         }
 

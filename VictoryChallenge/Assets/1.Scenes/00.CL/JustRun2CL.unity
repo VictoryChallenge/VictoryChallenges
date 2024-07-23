@@ -4851,7 +4851,7 @@ PrefabInstance:
     - target: {fileID: 6921135507733931052, guid: cd13a5500d9d28442933f30613546499,
         type: 3}
       propertyPath: sceneViewId
-      value: 888
+      value: 789
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
