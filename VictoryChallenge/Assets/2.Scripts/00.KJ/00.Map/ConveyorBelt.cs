@@ -5,48 +5,53 @@ namespace VictoryChallenge.KJ.Map
 {
     public class ConveyorBelt : MonoBehaviourPun
     {
-        private float conveyorSpeed = 10f;
-        private float obstacleSpeed = 8f;
-        private int correction = 10;
-        private float elapsedTime = 0f;
-        private bool isConveyorEnabled = false;
+        private float _conveyorSpeed = 10f;
+        private float _obstacleSpeed = 8f;
+        private int _correction = 10;
+        private float _elapsedTime = 0f;
+        private bool _isConveyorEnabled = false;
 
 
         void Update()
         {
-            if (isConveyorEnabled)
+            if (_isConveyorEnabled)
             {
-                elapsedTime += Time.deltaTime;
+                _elapsedTime += Time.deltaTime;
 
-                if (elapsedTime > 20f)
+                if (_elapsedTime > 20f)
                 {
-                    conveyorSpeed = 20f;
-                    Debug.Log($"20초 경과 : {conveyorSpeed}");
+                    _conveyorSpeed = 20f;
+                    Debug.Log($"20초 경과 : {_conveyorSpeed}");
                 }
-                else if (elapsedTime > 10f)
+                else if (_elapsedTime > 10f)
                 {
-                    conveyorSpeed = 15f;
-                    Debug.Log($"10초 경과 : {conveyorSpeed}");
+                    _conveyorSpeed = 15f;
+                    Debug.Log($"10초 경과 : {_conveyorSpeed}");
                 }
                 else
                 {
-                    conveyorSpeed = 10f;
-                    Debug.Log($"현재 컨베이어 스피드 : {conveyorSpeed}");
+                    _conveyorSpeed = 10f;
+                    Debug.Log($"현재 컨베이어 스피드 : {_conveyorSpeed}");
                 }
             }
         }
 
         public void EnableConveyerBelt()
         {
-            isConveyorEnabled = true;
+            _isConveyorEnabled = true;
             Debug.Log($"시작 : 컨베이어벨트 작동");
+        }
+
+        public void DisableConveyerBelt()
+        {
+            _isConveyorEnabled = false;
         }
 
         public void Initialize()
         {
-            conveyorSpeed = 0f;
-            elapsedTime = 0f;
-            isConveyorEnabled = false;
+            _conveyorSpeed = 0f;
+            _elapsedTime = 0f;
+            _isConveyorEnabled = false;
         }
 
 
@@ -62,13 +67,13 @@ namespace VictoryChallenge.KJ.Map
                 Vector3 moveDirection = -transform.forward * Time.fixedDeltaTime;
                 if (collision.gameObject.CompareTag("Obstacle"))
                 {
-                    trans.Translate(moveDirection * obstacleSpeed, Space.World);
-                    Debug.Log($"장애물 속도 설정: {collision.gameObject.name} with speed {obstacleSpeed * correction}");
+                    trans.Translate(moveDirection * _obstacleSpeed, Space.World);
+                    Debug.Log($"장애물 속도 설정: {collision.gameObject.name} with speed {_obstacleSpeed * _correction}");
                 }
                 else
                 {
-                    rb.AddForce(forceDirection * (conveyorSpeed * correction));
-                    Debug.Log($"플레이어 속도 설정: {collision.gameObject.name} with speed {conveyorSpeed * correction}");
+                    rb.AddForce(forceDirection * (_conveyorSpeed * _correction));
+                    Debug.Log($"플레이어 속도 설정: {collision.gameObject.name} with speed {_conveyorSpeed * _correction}");
                 }
             }
         }
