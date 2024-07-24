@@ -65,8 +65,11 @@ namespace VictoryChallenge.KJ.Room
         {
             base.OnLeftRoom();
             //CleanUpPhotonView();
-            PhotonNetwork.LoadLevel(1);                     // 메뉴 씬으로 이동
-            Scripts.CL.Managers.Sound.Play("MainBGM", Define.Sound.BGM);
+            if (SceneManager.GetActiveScene().name != "WinnerCL" && SceneManager.GetActiveScene().name != "LoseCL")
+            {
+                PhotonNetwork.LoadLevel(1);                     // 메뉴 씬으로 이동
+                Scripts.CL.Managers.Sound.Play("MainBGM", Define.Sound.BGM);
+            }    
         }
 
         public void LeaveRoom()
