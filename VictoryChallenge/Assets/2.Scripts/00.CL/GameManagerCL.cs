@@ -245,7 +245,7 @@ namespace VictoryChallenge.Scripts.CL
 
                         // 결승선에 들어온 경우
                         Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has Finish race, IsGoaledIn = " + isCheck);
-                        if (SceneManager.GetActiveScene().buildIndex == 6)
+                        if (SceneManager.GetActiveScene().name == "TestMap")
                         {
                             // 2인맵에서는 골인(콜라이더에닿은)된 애가 LOSE
                             StartCoroutine(LeaveRoomAndLoadScene("LoseCL"));
@@ -258,7 +258,7 @@ namespace VictoryChallenge.Scripts.CL
                     {
                         // 결승선에 들어오지 못한 경우
                         Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has not Finish race, IsGoaledIn = " + isCheck);
-                        if (SceneManager.GetActiveScene().buildIndex == 6)
+                        if (SceneManager.GetActiveScene().name == "TestMap")
                         {
                             // 2인맵에서는 골인 못한 (콜라이더에 안부딪힌)애가 우승
                             StartCoroutine(LeaveRoomAndLoadScene("WinnerCL"));
