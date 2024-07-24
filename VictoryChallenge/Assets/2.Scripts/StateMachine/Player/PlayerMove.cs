@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VictoryChallenge.ComponentExtensions;
@@ -70,7 +71,5 @@ namespace VictoryChallenge.StateMachine.Player
 
             animator.SetInteger("State", (int)State.Move);
         }
-
-        
     }
 }

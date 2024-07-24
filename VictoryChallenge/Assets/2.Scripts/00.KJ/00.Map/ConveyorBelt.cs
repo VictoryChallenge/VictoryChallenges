@@ -21,16 +21,19 @@ namespace VictoryChallenge.KJ.Map
                 if (_elapsedTime > 20f)
                 {
                     _conveyorSpeed = 20f;
+                    _obstacleSpeed = 10f;
                     Debug.Log($"20초 경과 : {_conveyorSpeed}");
                 }
                 else if (_elapsedTime > 10f)
                 {
                     _conveyorSpeed = 15f;
+                    _obstacleSpeed = 12f;
                     Debug.Log($"10초 경과 : {_conveyorSpeed}");
                 }
                 else
                 {
                     _conveyorSpeed = 10f;
+                    _obstacleSpeed = 8f;
                     Debug.Log($"현재 컨베이어 스피드 : {_conveyorSpeed}");
                 }
             }
