@@ -19,8 +19,6 @@ namespace VictoryChallenge.KJ.Manager
 
         GameObject controller;
 
-        private RankManagers _rankManager;
-
         void Awake()
         {
             pv = GetComponent<PhotonView>();
@@ -40,9 +38,8 @@ namespace VictoryChallenge.KJ.Manager
             //{
             //    Transform spawnPoint = SpawnManager.Instance.GetSpawnPoint();
             //    controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { pv.ViewID });
-                
+
             //}
-            
             Transform spawnPoint = SpawnManager.Instance.GetSpawnPoint();
             if (spawnPoint == null)
             {
@@ -52,14 +49,8 @@ namespace VictoryChallenge.KJ.Manager
             /*FirebaseAuth.DefaultInstance.CurrentUser.UserId;*/
             string userId = UIDHelper.GenerateShortUID(RestAPIAuth.Instance.UserId);
             //Debug.Log("userId : " + userId);
-            controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), spawnPoint.position, spawnPoint.rotation, 0, new object[] { userId });
+            controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), /*spawnPoint.position, spawnPoint.rotation,*/transform.position, transform.rotation, 0, new object[] { userId });
             controller.GetComponentInChildren<CharacterController>().shortUID = userId;
-            
-            // 로비가 아닐때 플레이어 데이터를 RankManager에게 넘겨줌
-            //if(SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(2))
-            //{
-            //    PlayersDataManager.Instance.Register(userId, 0);
-            //}
         }
 
         public void Die()
