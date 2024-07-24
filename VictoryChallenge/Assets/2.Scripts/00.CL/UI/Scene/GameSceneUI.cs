@@ -223,8 +223,12 @@ namespace VictoryChallenge.Scripts.CL
 
             isMoving = true;
 
-            personText.gameObject.SetActive(true);
-            clock.gameObject.SetActive(true);
+            // 2인용 맵에서는 안보이게
+            if (SceneManager.GetActiveScene().buildIndex != 6)
+            { 
+                personText.gameObject.SetActive(true);
+                clock.gameObject.SetActive(true);
+            }
 
             text.text = "달려라~";
             yield return new WaitForSeconds(1f);

@@ -39,6 +39,9 @@ EditorBuildSettings:
     path: Assets/1.Scenes/00.KJ/TestMapHS.unity
     guid: 0b519fe827652dd4cb1091d7ae84b57f
   - enabled: 1
-    path: Assets/1.Scenes/00.CL/VictoryCL.unity
-    guid: eafa87d42daebfa4c91a73b8d6c0369e
+    path: Assets/1.Scenes/00.CL/WinnerCL.unity
+    guid: bc2a62475a66dce4f8157172b467126b
+  - enabled: 1
+    path: Assets/1.Scenes/00.CL/LoseCL.unity
+    guid: b85cf732c1a0817448f8a73704de3a09
   m_configObjects: {}

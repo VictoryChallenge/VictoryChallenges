@@ -38,6 +38,7 @@ namespace VictoryChallenge.Scripts.CL
 
         void Start()
         {
+            PhotonNetwork.AutomaticallySyncScene = true;
             Managers.UI.ShowSceneUI<UI_Scene>("ChatPrefabs");
             Init();
         }
@@ -155,7 +156,8 @@ namespace VictoryChallenge.Scripts.CL
 
         public void LeftLobby()
         {
-            RoomMananger.Instance.LeaveRoom();
+            PhotonNetwork.LeaveRoom();
+            //RoomMananger.Instance.LeaveRoom();
         }
     }
 }
