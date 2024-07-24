@@ -14,7 +14,7 @@ namespace VictoryChallenge.KJ.Map
 
         void Update()
         {
-            if (_isConveyorEnabled)
+            if (_isConveyorEnabled == true)
             {
                 _elapsedTime += Time.deltaTime;
 
@@ -37,6 +37,13 @@ namespace VictoryChallenge.KJ.Map
                     Debug.Log($"현재 컨베이어 스피드 : {_conveyorSpeed}");
                 }
             }
+
+            else
+            {
+                _conveyorSpeed = 0f;
+                _obstacleSpeed = 0f;
+                Debug.Log($"현재 컨베이어 스피드 : {_conveyorSpeed}");
+            }
         }
 
         public void EnableConveyerBelt()
@@ -48,6 +55,7 @@ namespace VictoryChallenge.KJ.Map
         public void DisableConveyerBelt()
         {
             _isConveyorEnabled = false;
+            Debug.Log($"시작 : 컨베이어벨트 멈춤");
         }
 
         public void Initialize()

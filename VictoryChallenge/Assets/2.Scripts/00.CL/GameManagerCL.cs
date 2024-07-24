@@ -70,7 +70,7 @@ namespace VictoryChallenge.Scripts.CL
                     _maxPlayer = 2;
                     break;
                 case 6:
-                    _maxPlayer = 2;
+                    _maxPlayer = 1;
                     break;
             }
 
@@ -214,7 +214,8 @@ namespace VictoryChallenge.Scripts.CL
         [PunRPC]
         private void SceneLoad(int sceneNum)
         {
-            SceneManager.LoadScene(sceneNum);
+            // 빌드-에디터 캐릭터안맞아서
+            PhotonNetwork.LoadLevel(sceneNum);
         }
 
         [PunRPC]
@@ -247,6 +248,7 @@ namespace VictoryChallenge.Scripts.CL
                         Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has Finish race, IsGoaledIn = " + isCheck);
                         if (SceneManager.GetActiveScene().name == "TestMap")
                         {
+                            Debug.Log("패했대요");
                             // 2인맵에서는 골인(콜라이더에닿은)된 애가 LOSE
                             StartCoroutine(LeaveRoomAndLoadScene("LoseCL"));
                             yield break;
@@ -260,6 +262,7 @@ namespace VictoryChallenge.Scripts.CL
                         Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has not Finish race, IsGoaledIn = " + isCheck);
                         if (SceneManager.GetActiveScene().name == "TestMap")
                         {
+                            Debug.Log("승리했대요");
                             // 2인맵에서는 골인 못한 (콜라이더에 안부딪힌)애가 우승
                             StartCoroutine(LeaveRoomAndLoadScene("WinnerCL"));
                             yield break;
@@ -289,6 +292,7 @@ namespace VictoryChallenge.Scripts.CL
 
         private IEnumerator LeaveRoomAndLoadScene(string sceneName)
         {
+            Debug.Log("리브룸코루틴이래요");
             yield return null;
             PhotonNetwork.AutomaticallySyncScene = false;    // 마스터(호스트)가 씬을 넘기면 클라이언트들도 같이 넘어감
             SceneManager.LoadScene(sceneName);
