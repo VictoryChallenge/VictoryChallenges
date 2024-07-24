@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VictoryChallenge.Controllers.Player;
+using VictoryChallenge.KJ.Map;
 
 namespace VictoryChallenge.Scripts.CL
 { 
@@ -45,6 +46,11 @@ namespace VictoryChallenge.Scripts.CL
         private bool isMoving;
         private GameManagerCL gameManager;
 
+        // 장애물
+        private ObstacleManager _obstacleManager;
+        private ConveyorBelt _conveyorBelt;
+        private ConveyorBelt _conveyorBelt2;
+
         void Start()
         {
             Init();
@@ -55,17 +61,57 @@ namespace VictoryChallenge.Scripts.CL
             {
                 case 3:
                     round = 1;
-                    person = 4;
+                    person = 2;
                     break;
                 case 4:
                     break;
                 case 5:
+                    round = 2;
+                    person = 2;
                     break;
                 case 6:
+                    round = 2;
+                    person = 2;
                     break;
             }
 
             gameManager = GameObject.FindObjectOfType<GameManagerCL>();
+
+            #region 장애물
+            // 장애물
+            _obstacleManager = FindObjectOfType<ObstacleManager>();
+
+            // 오른쪽 트랙
+            GameObject redPlayerLine = GameObject.Find("Red_Player_Line");
+            if (redPlayerLine != null)
+            {
+                Transform trackTransform = redPlayerLine.transform.Find("Track");
+                if (trackTransform != null)
+                {
+                    _conveyorBelt = trackTransform.GetComponent<ConveyorBelt>();
+                    if (_conveyorBelt != null)
+                    {
+                        _conveyorBelt.Initialize();
+                    }
+                }
+            }
+
+            // 왼쪽 트랙
+            GameObject bluePlayerLine = GameObject.Find("Blue_Player_Line");
+            if (bluePlayerLine != null)
+            {
+                Transform track2Transform = bluePlayerLine.transform.Find("Track");
+                if (track2Transform != null)
+                {
+                    _conveyorBelt2 = track2Transform.GetComponent<ConveyorBelt>();
+                    if (_conveyorBelt2 != null)
+                    {
+                        _conveyorBelt2.Initialize();
+                    }
+                }
+            }
+            #endregion
+
         }
 
         public override void Init()
@@ -122,13 +168,17 @@ namespace VictoryChallenge.Scripts.CL
                 int displayTime = Mathf.CeilToInt(time); // 시간을 올림하여 정수로 변환
                 GetTextMeshPro((int)TMPs.Time).text = displayTime.ToString();
             }
-            if (time <= 0)
+            if (time <= 0 || winner == person)
             {
-                GetTextMeshPro((int)TMPs.Time).text = "0"; // time을 정확히 0으로 설정
                 if (isMoving == true)
                 {
                     isMoving = false;
                     StartCoroutine(AnimateFinishText(finishText));
+                }
+
+                if(time <= 0)
+                {
+                    GetTextMeshPro((int)TMPs.Time).text = "0"; // time을 정확히 0으로 설정
                 }
             }
             // 인원수
@@ -180,6 +230,25 @@ namespace VictoryChallenge.Scripts.CL
             yield return new WaitForSeconds(1f);
 
             text.gameObject.SetActive(false);
+
+            // 장애물
+            if (_obstacleManager != null)
+            {
+                StartCoroutine(_obstacleManager.SpawnObstacles());
+            }
+
+            if (_conveyorBelt != null)
+            {
+                _conveyorBelt.EnableConveyerBelt();
+                Debug.Log("오른쪽 컨베이어 벨트");
+            }
+
+            if (_conveyorBelt2 != null)
+            {
+                _conveyorBelt2.EnableConveyerBelt();
+                Debug.Log("왼쪽 컨베이어 벨트");
+            }
+
         }
 
         IEnumerator AnimateRoundText(TextMeshProUGUI Text)

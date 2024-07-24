@@ -13,6 +13,7 @@ using VictoryChallenge.Scripts.HS;
 using System.Collections.Generic;
 using VictoryChallenge.KJ.Database;
 using Photon.Pun.Demo.Cockpit;
+using GSpawn;
 
 namespace VictoryChallenge.KJ.Photon
 {
@@ -69,7 +70,7 @@ namespace VictoryChallenge.KJ.Photon
                 Debug.Log("호스트 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 7)
+            else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 7)
             {
                 Debug.Log("클라 플레이어 매니저 생성");
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
@@ -175,10 +176,23 @@ namespace VictoryChallenge.KJ.Photon
 
         public void OnStartClicked()
         {
-            if (PhotonNetwork.IsMasterClient && AllPlayersReady())
+            //방장이 레디 상태인지 확인하고, 레디 상태가 아니면 레디 상태로 설정
+            object isReady;
+            if (!PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("IsReady", out isReady) || !(bool)isReady)
             {
+                _isReady = true;
+                PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "IsReady", _isReady } });
+                Debug.Log("방장이 준비 상태가 아니었으므로 준비 상태로 변경함");
+            }
+
+            if (AllPlayersReady())
+            {
+                Hashtable props = new Hashtable() { { "isGameStarted", true } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+
                 Debug.Log("모든 플레이어가 준비됨, 게임 시작");
                 PhotonNetwork.LoadLevel(stageNum);
+                PhotonNetwork.CurrentRoom.IsOpen = false;
             }
         }
 

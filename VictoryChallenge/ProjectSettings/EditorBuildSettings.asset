@@ -17,10 +17,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/1.Scenes/00.CL/TestRunCL.unity
     guid: 13340fd6c0d44104dab4c46fbda77366
-  - enabled: 0
+  - enabled: 1
     path: Assets/1.Scenes/00.CL/JustRun(T)CL.unity
     guid: 00eafb36de05d6242a4c614457f791cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/1.Scenes/00.CL/JustRunCL.unity
     guid: e31fee4161bef1349bd5d420ae187958
   - enabled: 1
@@ -32,9 +32,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/1.Scenes/00.GC/SSAP maraton.unity
     guid: 8396bb939a95a0245b2656546d865710
-  - enabled: 1
+  - enabled: 0
     path: Assets/1.Scenes/00.KJ/TestMap.unity
     guid: 0172865ba98e8af4a9bac60290725e96
+  - enabled: 1
+    path: Assets/1.Scenes/00.KJ/TestMapHS.unity
+    guid: 0b519fe827652dd4cb1091d7ae84b57f
   - enabled: 1
     path: Assets/1.Scenes/00.CL/VictoryCL.unity
     guid: eafa87d42daebfa4c91a73b8d6c0369e
