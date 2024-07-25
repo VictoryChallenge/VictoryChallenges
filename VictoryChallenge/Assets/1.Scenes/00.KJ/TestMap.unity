@@ -2608,6 +2608,10 @@ MonoBehaviour:
   - {fileID: 9202592978034444254, guid: ec7498a1b75c5004aa79353e2793c70c, type: 3}
   - {fileID: 638215343142315439, guid: e0e8bee733916a7449a5cd0d4cda0e27, type: 3}
   - {fileID: 6093480598379660410, guid: efe36acb2b6b00447b97c6111439aecb, type: 3}
+  obstacleSpawnEffectRed: {fileID: 6387957344236907433, guid: e8b49b3a08949124aa63e3285d4fbd9f,
+    type: 3}
+  obstacleSpawnEffectBlue: {fileID: 2925808470599757538, guid: 7d9fa3c876a2a4d40b628f6fad8d222d,
+    type: 3}
   spawnPointRed: {fileID: 902632171}
   spawnPointBlue: {fileID: 2098042335}
   spawnInterval: 1
