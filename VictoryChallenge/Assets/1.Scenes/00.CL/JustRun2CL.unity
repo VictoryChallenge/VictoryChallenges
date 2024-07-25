@@ -920,6 +920,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: 2.15, y: 18.87, z: 146.09}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &180533729
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1242,6 +1244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: 0, y: 15, z: 38.6}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &283890805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3351,6 +3355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: 2.15, y: 18.87, z: 146.09}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &566840347
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4988,6 +4994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: 0.10315919, y: 18, z: 78.16648}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &901352086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5817,6 +5825,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: 3.2513847, y: 16, z: 105.96742}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &1085996346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6327,6 +6337,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: 0, y: 10.81, z: 0.5911365}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &1206231813
 BoxCollider:
   m_ObjectHideFlags: 0
