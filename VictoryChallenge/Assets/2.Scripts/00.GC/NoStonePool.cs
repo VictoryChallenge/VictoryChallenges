@@ -49,7 +49,7 @@ public class NoStonePool : MonoBehaviourPun
     
     private IEnumerator StoneRoutine(float interval)
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(10f);
 
         while (true)
         {
