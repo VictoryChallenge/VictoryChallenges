@@ -98,10 +98,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7336061575209989008}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cad8d792bf893f341b4a46fb85a6ee7a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -2262038129775388899}
   m_SourcePrefab: {fileID: 100100000, guid: cad8d792bf893f341b4a46fb85a6ee7a, type: 3}
 --- !u!1 &9103439263208941640 stripped
 GameObject:
@@ -196,18 +192,3 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
---- !u!114 &-2262038129775388899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9103439263208941640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fde0762456afa4448a8f9429689f8d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hitEffect: {fileID: 3935880551592863339, guid: da64095892eb4e94bb18ebb74553cb92,
-    type: 3}
-  _hitPoint: {fileID: 0}

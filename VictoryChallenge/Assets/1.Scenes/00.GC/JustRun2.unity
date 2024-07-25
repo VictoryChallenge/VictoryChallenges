@@ -2926,7 +2926,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9838,6 +9839,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: obstacle_14_001
       objectReference: {fileID: 0}
+    - target: {fileID: 6684307798162743813, guid: c497289dd80339a41bcfa15a7fc61da0,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9982,8 +9988,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095915382}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00435579, y: 0.020493552, z: -0.000089285204, w: 0.99978054}
-  m_LocalPosition: {x: -0.26603007, y: 19.723982, z: 71.668045}
+  m_LocalRotation: {x: 0.00435579, y: 0.020493556, z: -0.00008928522, w: 0.99978054}
+  m_LocalPosition: {x: -0.5663512, y: 19.583235, z: 125.40886}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
