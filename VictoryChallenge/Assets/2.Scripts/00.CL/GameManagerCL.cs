@@ -72,9 +72,12 @@ namespace VictoryChallenge.Scripts.CL
                 case 6:
                     _maxPlayer = 1;
                     break;
+                case 9:
+                    _maxPlayer = 4;
+                    break;
             }
 
-            OnSceneLoaded();
+            SceneLoaded();
             ResetList();
         }
 
@@ -93,7 +96,37 @@ namespace VictoryChallenge.Scripts.CL
             }
         }
 
-        void OnSceneLoaded()
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            Debug.Log("Scene loaded: " + scene.name);
+
+            foreach (var photonView in FindObjectsOfType<PhotonView>())
+            {
+                if (photonView.IsMine)
+                {
+                    photonView.RequestOwnership();
+                }
+                else
+                {
+                    photonView.TransferOwnership(photonView.OwnerActorNr);
+                }
+            }
+        }
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+
+        void SceneLoaded()
         {
             if (SceneManager.GetActiveScene().buildIndex >= 3 && SceneManager.GetActiveScene().buildIndex != 4)
             {

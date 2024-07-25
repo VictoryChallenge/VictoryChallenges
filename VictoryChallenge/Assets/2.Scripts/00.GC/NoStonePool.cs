@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEditor;
+using characterController = VictoryChallenge.Controllers.Player.CharacterController;
 
 public class NoStonePool : MonoBehaviourPun
 {
@@ -20,7 +21,7 @@ public class NoStonePool : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            StartCoroutine(StoneRoutine(1.5f));
+            photonView.RPC("StartStone", RpcTarget.All);
         }
     }
 
@@ -41,8 +42,15 @@ public class NoStonePool : MonoBehaviourPun
     }
 
     [PunRPC]
+    public void StartStone()
+    {
+        StartCoroutine(StoneRoutine(1.5f));
+    }
+    
     private IEnumerator StoneRoutine(float interval)
     {
+        yield return new WaitForSeconds(7f);
+
         while (true)
         {
             Vector3 position = RandomPosition();

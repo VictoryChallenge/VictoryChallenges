@@ -35,12 +35,19 @@ namespace VictoryChallenge.Scripts.CL
         }
 
         private Image stageSelectButtonImage;
+        private List<int> stageNum = new List<int> { 9 };
 
         void Start()
         {
             PhotonNetwork.AutomaticallySyncScene = true;
             Managers.UI.ShowSceneUI<UI_Scene>("ChatPrefabs");
             Init();
+        }
+
+        private int GetRandomStage()
+        {
+            int randomIndex = UnityEngine.Random.Range(0, stageNum.Count); // 0부터 리스트의 크기까지 랜덤한 인덱스를 선택
+            return stageNum[randomIndex]; // 랜덤 인덱스에 해당하는 값을 반환
         }
 
         public override void Init()
@@ -50,15 +57,17 @@ namespace VictoryChallenge.Scripts.CL
             Bind<Image>(typeof(Images));
             Bind<TextMeshProUGUI>(typeof(TMPs));
 
-            stageSelectButtonImage = GetButton((int)Buttons.StageSelectButton).GetComponent<Image>();
+
+            PhotonSub.Instance.stageNum = GetRandomStage();
+            //stageSelectButtonImage = GetButton((int)Buttons.StageSelectButton).GetComponent<Image>();
 
             PhotonSub.Instance._text = GetTextMeshPro((int)TMPs.ReadyOrStart);
             PhotonSub.Instance._button = GetButton((int)Buttons.GameStart);
             PhotonSub.Instance.UpdateButtonText();
             GetButton((int)Buttons.GameStart).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
-            if (PhotonNetwork.IsMasterClient)
-                GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
-            GetButton((int)Buttons.LeaveLobby).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 3));
+            //if (PhotonNetwork.IsMasterClient)
+            //    GetButton((int)Buttons.StageSelectButton).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
+            GetButton((int)Buttons.LeaveLobby).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
 
             //if (PlayerList.Instance == null)
             //{
@@ -104,11 +113,11 @@ namespace VictoryChallenge.Scripts.CL
                 case 1:
                     Debug.Log("1");
                     break;
+                //case 2:
+                //    var stageSelectPopup = Managers.UI.ShowPopupUI<StageSelectPopup>();
+                //    stageSelectPopup.OnStageSelected += UpdateStageSelectTextSprite; // 이벤트 구독
+                //    break;
                 case 2:
-                    var stageSelectPopup = Managers.UI.ShowPopupUI<StageSelectPopup>();
-                    stageSelectPopup.OnStageSelected += UpdateStageSelectTextSprite; // 이벤트 구독
-                    break;
-                case 3:
                     Debug.Log("3");
                     LeftLobby();
                     break;
@@ -118,41 +127,41 @@ namespace VictoryChallenge.Scripts.CL
             }
         }
 
-        private void UpdateStageSelectTextSprite(Sprite newSprite, string name, int stageNumber)
-        {
-            if (newSprite != null)
-                stageSelectButtonImage.sprite = newSprite;
-            if (name != null)
-                GetTextMeshPro((int)TMPs.StageName).text = name;
+        //private void UpdateStageSelectTextSprite(Sprite newSprite, string name, int stageNumber)
+        //{
+        //    if (newSprite != null)
+        //        stageSelectButtonImage.sprite = newSprite;
+        //    if (name != null)
+        //        GetTextMeshPro((int)TMPs.StageName).text = name;
 
-            PhotonView photonView = GetComponent<PhotonView>();
-            // 이미지 및 텍스트 변경을 모든 클라이언트에 전파
-            photonView.RPC("RPC_UpdateStageSelectTextSprite", RpcTarget.AllBuffered, newSprite.name, name);
-            photonView.RPC("SetStageNum", RpcTarget.AllBuffered, stageNumber);
-        }
+        //    PhotonView photonView = GetComponent<PhotonView>();
+        //    // 이미지 및 텍스트 변경을 모든 클라이언트에 전파
+        //    photonView.RPC("RPC_UpdateStageSelectTextSprite", RpcTarget.AllBuffered, newSprite.name, name);
+        //    photonView.RPC("SetStageNum", RpcTarget.AllBuffered, stageNumber);
+        //}
 
-        [PunRPC]
-        private void RPC_UpdateStageSelectTextSprite(string spriteName, string name)
-        {
-            // Resources 폴더에서 스프라이트 로드
-            Sprite sprite = Resources.Load<Sprite>($"Sprites/{spriteName}");
-            if (sprite != null)
-            {
-                stageSelectButtonImage.sprite = sprite;
-            }
-            else
-            {
-                Debug.LogError("스프라이트를 로드할 수 없습니다: " + spriteName);
-            }
+        //[PunRPC]
+        //private void RPC_UpdateStageSelectTextSprite(string spriteName, string name)
+        //{
+        //    // Resources 폴더에서 스프라이트 로드
+        //    Sprite sprite = Resources.Load<Sprite>($"Sprites/{spriteName}");
+        //    if (sprite != null)
+        //    {
+        //        stageSelectButtonImage.sprite = sprite;
+        //    }
+        //    else
+        //    {
+        //        Debug.LogError("스프라이트를 로드할 수 없습니다: " + spriteName);
+        //    }
 
-            GetTextMeshPro((int)TMPs.StageName).text = name;
-        }
+        //    GetTextMeshPro((int)TMPs.StageName).text = name;
+        //}
 
-        [PunRPC]
-        void SetStageNum(int stageNumber)
-        {
-            PhotonSub.Instance.SetStageNum(stageNumber);
-        }
+        //[PunRPC]
+        //void SetStageNum(int stageNumber)
+        //{
+        //    PhotonSub.Instance.SetStageNum(stageNumber);
+        //}
 
         public void LeftLobby()
         {
