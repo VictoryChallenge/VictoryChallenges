@@ -32,13 +32,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/1.Scenes/00.GC/SSAP maraton.unity
     guid: 8396bb939a95a0245b2656546d865710
-  - enabled: 0
+  - enabled: 1
     path: Assets/1.Scenes/00.KJ/TestMap.unity
     guid: 0172865ba98e8af4a9bac60290725e96
-  - enabled: 1
+  - enabled: 0
     path: Assets/1.Scenes/00.KJ/TestMapHS.unity
     guid: 0b519fe827652dd4cb1091d7ae84b57f
   - enabled: 1
-    path: Assets/1.Scenes/00.CL/VictoryCL.unity
-    guid: eafa87d42daebfa4c91a73b8d6c0369e
+    path: Assets/1.Scenes/00.CL/WinnerCL.unity
+    guid: bc2a62475a66dce4f8157172b467126b
+  - enabled: 1
+    path: Assets/1.Scenes/00.CL/LoseCL.unity
+    guid: b85cf732c1a0817448f8a73704de3a09
+  - enabled: 1
+    path: Assets/1.Scenes/00.GC/JustRun3.unity
+    guid: b800fbcc83fc83b4b8327454d724edca
   m_configObjects: {}

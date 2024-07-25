@@ -8,12 +8,13 @@ namespace VictoryChallenge.KJ.Map
         public GameObject[] obstaclePrefabs;
         public Transform spawnPointRed;
         public Transform spawnPointBlue;
-        public float spawnInterval = 1.5f;
+        public float spawnInterval = 1f;
+        public bool obstaclespawn = false;
 
 
         public IEnumerator SpawnObstacles()
         {
-            while (true)
+            while (obstaclespawn)
             {
                 SpawnRandomObstacles();
                 yield return new WaitForSeconds(spawnInterval);
@@ -22,10 +23,13 @@ namespace VictoryChallenge.KJ.Map
 
         private void SpawnRandomObstacles()
         {
-            int randomIndex = Random.Range(0, obstaclePrefabs.Length);
-            GameObject selectedPrefab = obstaclePrefabs[randomIndex];
-            Instantiate(selectedPrefab, spawnPointRed.position, spawnPointRed.rotation);
-            Instantiate(selectedPrefab, spawnPointBlue.position, spawnPointBlue.rotation);
+            int randomIndexRed = Random.Range(0, obstaclePrefabs.Length);
+            GameObject selectedPrefabRed = obstaclePrefabs[randomIndexRed];
+            Instantiate(selectedPrefabRed, spawnPointRed.position, spawnPointRed.rotation);
+
+            int randomIndexBlue = Random.Range(0, obstaclePrefabs.Length);
+            GameObject selectPrefabBlue = obstaclePrefabs[randomIndexBlue];
+            Instantiate(selectPrefabBlue, spawnPointBlue.position, spawnPointBlue.rotation);
         }
     }
 

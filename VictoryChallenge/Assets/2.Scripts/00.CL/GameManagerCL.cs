@@ -70,18 +70,22 @@ namespace VictoryChallenge.Scripts.CL
                     _maxPlayer = 2;
                     break;
                 case 6:
-                    _maxPlayer = 2;
+                    _maxPlayer = 1;
+                    break;
+                case 9:
+                    _maxPlayer = 4;
                     break;
             }
 
-            OnSceneLoaded();
+            SceneLoaded();
             ResetList();
         }
 
         private void Update()
         {
-            if (_isMoving == true)
+            if (_isMoving == true && SceneManager.GetActiveScene().buildIndex != 6)
             {
+                // 2인용 맵에서는 시간안가게
                 _time -= Time.deltaTime;
             }
 
@@ -92,7 +96,37 @@ namespace VictoryChallenge.Scripts.CL
             }
         }
 
-        void OnSceneLoaded()
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            Debug.Log("Scene loaded: " + scene.name);
+
+            foreach (var photonView in FindObjectsOfType<PhotonView>())
+            {
+                if (photonView.IsMine)
+                {
+                    photonView.RequestOwnership();
+                }
+                else
+                {
+                    photonView.TransferOwnership(photonView.OwnerActorNr);
+                }
+            }
+        }
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+
+        void SceneLoaded()
         {
             if (SceneManager.GetActiveScene().buildIndex >= 3 && SceneManager.GetActiveScene().buildIndex != 4)
             {
@@ -213,7 +247,8 @@ namespace VictoryChallenge.Scripts.CL
         [PunRPC]
         private void SceneLoad(int sceneNum)
         {
-            SceneManager.LoadScene(sceneNum);
+            // 빌드-에디터 캐릭터안맞아서
+            PhotonNetwork.LoadLevel(sceneNum);
         }
 
         [PunRPC]
@@ -234,31 +269,41 @@ namespace VictoryChallenge.Scripts.CL
         {
             yield return new WaitForSeconds(5f);
 
-            //foreach(var list in PhotonNetwork.PlayerList)
-            //{
-                if(PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("IsGoaledIn"))
+            if(PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("IsGoaledIn"))
+            {
+                if(PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("IsGoaledIn", out bool isCheck))
                 {
-                    if(PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("IsGoaledIn", out bool isCheck))
+                    if(isCheck)
                     {
-                        if(isCheck)
+                        yield return new WaitForSeconds(.5f);
+
+                        // 결승선에 들어온 경우
+                        Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has Finish race, IsGoaledIn = " + isCheck);
+                        if (SceneManager.GetActiveScene().name == "TestMap")
                         {
-                            yield return new WaitForSeconds(.5f);
-                            // 결승선에 들어온 경우
-                            Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has Finish race, IsGoaledIn = " + isCheck);
-                            //MixScene(SceneManager.GetActiveScene().buildIndex);
-                            photonView.RPC("SceneLoad", RpcTarget.AllBuffered, _nextSceneNum);
-                            //PhotonNetwork.LoadLevel(_nextSceneNum);
-                            //SceneManager.LoadScene(5);
+                            Debug.Log("패했대요");
+                            // 2인맵에서는 골인(콜라이더에닿은)된 애가 LOSE
+                            StartCoroutine(LeaveRoomAndLoadScene("LoseCL"));
+                            yield break;
                         }
-                        else 
-                        {
-                            // 결승선에 들어오지 못한 경우
-                            Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has not Finish race, IsGoaledIn = " + isCheck);
-                            RoomMananger.Instance.LeaveRoom();
-                            //SceneManager.LoadScene(1);
-                        }
+                        else
+                            photonView.RPC("SceneLoad", RpcTarget.AllBuffered, _nextSceneNum);    
                     }
-                //}
+                    else 
+                    {
+                        // 결승선에 들어오지 못한 경우
+                        Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has not Finish race, IsGoaledIn = " + isCheck);
+                        if (SceneManager.GetActiveScene().name == "TestMap")
+                        {
+                            Debug.Log("승리했대요");
+                            // 2인맵에서는 골인 못한 (콜라이더에 안부딪힌)애가 우승
+                            StartCoroutine(LeaveRoomAndLoadScene("WinnerCL"));
+                            yield break;
+                        }
+
+                        RoomMananger.Instance.LeaveRoom();
+                    }
+                }
             }
         }
 
@@ -276,6 +321,14 @@ namespace VictoryChallenge.Scripts.CL
             {
                 gameSceneUI.StartCoroutine("GameStart");
             }
+        }
+
+        private IEnumerator LeaveRoomAndLoadScene(string sceneName)
+        {
+            Debug.Log("리브룸코루틴이래요");
+            yield return null;
+            PhotonNetwork.AutomaticallySyncScene = false;    // 마스터(호스트)가 씬을 넘기면 클라이언트들도 같이 넘어감
+            SceneManager.LoadScene(sceneName);
         }
         #endregion
     }

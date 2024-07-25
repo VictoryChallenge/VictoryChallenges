@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using VictoryChallenge.KJ.Database;
 using Photon.Pun.Demo.Cockpit;
 using GSpawn;
+using VictoryChallenge.KJ.Spawn;
 
 namespace VictoryChallenge.KJ.Photon
 {
@@ -68,12 +69,25 @@ namespace VictoryChallenge.KJ.Photon
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 Debug.Log("호스트 플레이어 매니저 생성");
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+
+                // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작하지만 GetIndexSpawnPoint 함수에서 -1 해서 0번 인덱스부터 접근 가능
+                int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber; 
+                Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
             }
             else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 7)
             {
                 Debug.Log("클라 플레이어 매니저 생성");
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+
+                // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작하지만 GetIndexSpawnPoint 함수에서 -1 해서 0번 인덱스부터 접근 가능
+                int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber; 
+                Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
+                //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+            }
+            else if((SceneManager.GetActiveScene().name == "WinnerCL") || (SceneManager.GetActiveScene().name == "LoseCL"))
+            {
+                // 결과씬 처리
             }
         }
 

@@ -10,8 +10,8 @@ namespace VictoryChallenge.KJ.Effect
 
         void Start()
         {
-            StopFirework();
-            StopSpark();
+            PlayFirework();
+            PlaySpark();
         }
 
         public void PlayFirework()

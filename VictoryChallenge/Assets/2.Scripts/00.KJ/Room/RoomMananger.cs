@@ -49,9 +49,8 @@ namespace VictoryChallenge.KJ.Room
                     PhotonSub.Instance.OnSceneLoadedForAllPlayers();
                 }
             }
-            else if (scene.buildIndex >= 3 && scene.buildIndex != 4)
+            else if (scene.buildIndex >= 3 && scene.buildIndex != 4 && scene.buildIndex != 7 && scene.buildIndex != 8)
             {
-
                 if (PhotonSub.Instance != null)
                 {
                     Debug.Log("클라이언트 호출");
@@ -65,8 +64,11 @@ namespace VictoryChallenge.KJ.Room
         {
             base.OnLeftRoom();
             //CleanUpPhotonView();
-            PhotonNetwork.LoadLevel(1);                     // 메뉴 씬으로 이동
-            Scripts.CL.Managers.Sound.Play("MainBGM", Define.Sound.BGM);
+            if (SceneManager.GetActiveScene().name != "WinnerCL" && SceneManager.GetActiveScene().name != "LoseCL")
+            {
+                PhotonNetwork.LoadLevel(1);                     // 메뉴 씬으로 이동
+                Scripts.CL.Managers.Sound.Play("MainBGM", Define.Sound.BGM);
+            }    
         }
 
         public void LeaveRoom()

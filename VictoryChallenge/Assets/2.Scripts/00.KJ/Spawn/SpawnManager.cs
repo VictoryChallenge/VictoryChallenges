@@ -1,4 +1,5 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VictoryChallenge.KJ.Photon;
@@ -11,7 +12,7 @@ namespace VictoryChallenge.KJ.Spawn
 
         private static int _pointLength;
         [SerializeField] SpawnPoint[] spawnPoints;
-
+            
         void Awake()
         {
             Instance = this;
@@ -21,13 +22,13 @@ namespace VictoryChallenge.KJ.Spawn
             {
                 case 2:
                     // 로비
-                    _pointLength = 1;
+                    _pointLength = 4;
                     break;
                 case 3:
                 case 5:
                 case 6:
                     // TestMap
-                    _pointLength = 6;
+                    _pointLength = 4;
                     break;
                 case 7:
                     // Just Run
@@ -48,8 +49,12 @@ namespace VictoryChallenge.KJ.Spawn
         {
             return spawnPoints[Random.Range(0, spawnPoints.Length)].transform;
         }
+
+        public Transform GetIndexSpawnPoint(int index)
+        {
+            // 포뮬러연산 추가 예정
+
+            return spawnPoints[index - 1].transform;
+        }
     }
 }
-
-
-//if (SceneManager.GetActiveScene().buildIndex == 2)

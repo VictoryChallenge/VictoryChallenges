@@ -71,7 +71,11 @@ namespace VictoryChallenge.Scripts.CL
                     break;
                 case 6:
                     round = 2;
-                    person = 2;
+                    person = 1;
+                    break;
+                case 9:
+                    round = 1;
+                    person = 4;
                     break;
             }
 
@@ -223,8 +227,12 @@ namespace VictoryChallenge.Scripts.CL
 
             isMoving = true;
 
-            personText.gameObject.SetActive(true);
-            clock.gameObject.SetActive(true);
+            // 2인용 맵에서는 안보이게
+            if (SceneManager.GetActiveScene().buildIndex != 6)
+            { 
+                personText.gameObject.SetActive(true);
+                clock.gameObject.SetActive(true);
+            }
 
             text.text = "달려라~";
             yield return new WaitForSeconds(1f);
@@ -234,6 +242,7 @@ namespace VictoryChallenge.Scripts.CL
             // 장애물
             if (_obstacleManager != null)
             {
+                _obstacleManager.obstaclespawn = true;
                 StartCoroutine(_obstacleManager.SpawnObstacles());
             }
 
@@ -303,6 +312,24 @@ namespace VictoryChallenge.Scripts.CL
             foreach (Controllers.Player.CharacterController c in cc)
             {
                 c.isKeyActive = false;
+            }
+
+            if (_obstacleManager != null)
+            {
+                _obstacleManager.obstaclespawn = false;
+                StopCoroutine(_obstacleManager.SpawnObstacles());
+            }
+
+            if (_conveyorBelt != null)
+            {
+                _conveyorBelt.DisableConveyerBelt();
+                Debug.Log("오른쪽 컨베이어 벨트 disable");
+            }
+
+            if (_conveyorBelt2 != null)
+            {
+                _conveyorBelt2.DisableConveyerBelt();
+                Debug.Log("왼쪽 컨베이어 벨트 disable");
             }
 
             Managers.Sound.Play("Whistle", Define.Sound.Effect);
