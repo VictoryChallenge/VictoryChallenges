@@ -174,7 +174,7 @@ namespace VictoryChallenge.Scripts.CL
         private void ResetList()
         {
             //random하게 불러올 씬 넘버
-            _round2List = new List<int>() { /*5,*/ 6 };
+            _round2List = new List<int>() { 5, /*6*/ };
         }
 
         public void MixScene(int sceneNum)
