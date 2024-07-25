@@ -71,7 +71,7 @@ namespace VictoryChallenge.Scripts.CL
                     break;
                 case 6:
                     round = 2;
-                    person = 2;
+                    person = 1;
                     break;
             }
 
@@ -238,6 +238,7 @@ namespace VictoryChallenge.Scripts.CL
             // 장애물
             if (_obstacleManager != null)
             {
+                _obstacleManager.obstaclespawn = true;
                 StartCoroutine(_obstacleManager.SpawnObstacles());
             }
 
@@ -307,6 +308,24 @@ namespace VictoryChallenge.Scripts.CL
             foreach (Controllers.Player.CharacterController c in cc)
             {
                 c.isKeyActive = false;
+            }
+
+            if (_obstacleManager != null)
+            {
+                _obstacleManager.obstaclespawn = false;
+                StopCoroutine(_obstacleManager.SpawnObstacles());
+            }
+
+            if (_conveyorBelt != null)
+            {
+                _conveyorBelt.DisableConveyerBelt();
+                Debug.Log("오른쪽 컨베이어 벨트 disable");
+            }
+
+            if (_conveyorBelt2 != null)
+            {
+                _conveyorBelt2.DisableConveyerBelt();
+                Debug.Log("왼쪽 컨베이어 벨트 disable");
             }
 
             Managers.Sound.Play("Whistle", Define.Sound.Effect);

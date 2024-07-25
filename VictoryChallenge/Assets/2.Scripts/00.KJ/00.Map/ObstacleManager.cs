@@ -11,11 +11,12 @@ namespace VictoryChallenge.KJ.Map
         public Transform spawnPointRed;
         public Transform spawnPointBlue;
         public float spawnInterval = 1f;
+        public bool obstaclespawn = false;
 
 
         public IEnumerator SpawnObstacles()
         {
-            while (true)
+            while (obstaclespawn)
             {
                 SpawnRandomObstacles();
                 yield return new WaitForSeconds(spawnInterval);

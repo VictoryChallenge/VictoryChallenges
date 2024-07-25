@@ -49,9 +49,8 @@ namespace VictoryChallenge.KJ.Room
                     PhotonSub.Instance.OnSceneLoadedForAllPlayers();
                 }
             }
-            else if (scene.buildIndex >= 3 && scene.buildIndex != 4)
+            else if (scene.buildIndex >= 3 && scene.buildIndex != 4 && scene.buildIndex != 7 && scene.buildIndex != 8)
             {
-
                 if (PhotonSub.Instance != null)
                 {
                     Debug.Log("클라이언트 호출");
