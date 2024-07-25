@@ -15,6 +15,7 @@ using VictoryChallenge.KJ.Database;
 using Photon.Pun.Demo.Cockpit;
 using GSpawn;
 using VictoryChallenge.KJ.Spawn;
+using ExitGames.Client.Photon.StructWrapping;
 
 namespace VictoryChallenge.KJ.Photon
 {
@@ -70,8 +71,8 @@ namespace VictoryChallenge.KJ.Photon
             {
                 Debug.Log("호스트 플레이어 매니저 생성");
 
-                // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작하지만 GetIndexSpawnPoint 함수에서 -1 해서 0번 인덱스부터 접근 가능
-                int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber; 
+                // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작
+                int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1; 
                 Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
             }
@@ -79,11 +80,20 @@ namespace VictoryChallenge.KJ.Photon
             {
                 Debug.Log("클라 플레이어 매니저 생성");
 
-                // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작하지만 GetIndexSpawnPoint 함수에서 -1 해서 0번 인덱스부터 접근 가능
-                int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber; 
-                Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
-                //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+                if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("PlayerNumber", out int checkNum))
+                {
+                    Debug.Log("checkNum = " + checkNum);
+                    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(checkNum);
+                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
+                }
+                else
+                {
+                    // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작
+                    int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+                    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
+                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
+                    //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+                }
             }
             else if((SceneManager.GetActiveScene().name == "WinnerCL") || (SceneManager.GetActiveScene().name == "LoseCL"))
             {
@@ -236,6 +246,25 @@ namespace VictoryChallenge.KJ.Photon
                 {
                     StartCoroutine(CountdownCoroutine());
                 }
+            }
+        }
+
+        public override void OnPlayerLeftRoom(Player otherPlayer)
+        {
+            base.OnPlayerLeftRoom(otherPlayer);
+            UpdatePlayerNumber();
+        }
+
+        private void UpdatePlayerNumber()
+        {
+            List<Player> players = new List<Player>(PhotonNetwork.PlayerList);
+            players.Sort((p1, p2) => p1.ActorNumber.CompareTo(p2.ActorNumber));
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                Hashtable props = new Hashtable { { "PlayerNumber", i + 1 } };
+                players[i].SetCustomProperties(props);
+                Debug.Log($"num = {i + 1}");
             }
         }
 
