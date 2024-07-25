@@ -73,6 +73,10 @@ namespace VictoryChallenge.Scripts.CL
                     round = 2;
                     person = 1;
                     break;
+                case 9:
+                    round = 1;
+                    person = 4;
+                    break;
             }
 
             gameManager = GameObject.FindObjectOfType<GameManagerCL>();
