@@ -35,7 +35,7 @@ namespace VictoryChallenge.Scripts.CL
         }
 
         private Image stageSelectButtonImage;
-        private List<int> stageNum = new List<int> { 9 };
+        private List<int> stageNum = new List<int> { 6 };
 
         void Start()
         {
