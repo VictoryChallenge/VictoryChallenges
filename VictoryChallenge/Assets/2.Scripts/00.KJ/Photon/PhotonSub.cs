@@ -67,7 +67,8 @@ namespace VictoryChallenge.KJ.Photon
                 Debug.Log("호스트 플레이어 매니저 생성");
 
                 // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작
-                int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1; 
+                int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+                Debug.Log("ActorNum = " + playerIndex);
                 Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
             }
@@ -81,14 +82,14 @@ namespace VictoryChallenge.KJ.Photon
                     Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(checkNum);
                     PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
                 }
-                else
-                {
-                    // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작
-                    int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
-                    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
-                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
-                    //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
-                }
+                //else
+                //{
+                //    // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작
+                //    int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+                //    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
+                //    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
+                //    //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+                //}
             }
             else if((SceneManager.GetActiveScene().name == "WinnerCL") || (SceneManager.GetActiveScene().name == "LoseCL"))
             {
@@ -237,6 +238,13 @@ namespace VictoryChallenge.KJ.Photon
         {
             base.OnPlayerLeftRoom(otherPlayer);
             UpdatePlayerNumber();
+        }
+
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            base.OnPlayerEnteredRoom(newPlayer);
+            UpdatePlayerNumber();
+
         }
 
         private void UpdatePlayerNumber()
