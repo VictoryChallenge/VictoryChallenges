@@ -211,6 +211,17 @@ namespace VictoryChallenge.Controllers.Player
                     _followCam.enabled = false;
                     _introTimeline.stopped += OnStopTimeline;
                 }
+                else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(9))
+                {
+                    nickName = PhotonNetwork.NickName;
+
+
+                    // 카메라 캐싱
+                    _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
+                    _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
+                    _followCam.enabled = false;
+                    _introTimeline.stopped += OnStopTimeline;
+                }
             }
             //if (!_pv.IsMine)
             else

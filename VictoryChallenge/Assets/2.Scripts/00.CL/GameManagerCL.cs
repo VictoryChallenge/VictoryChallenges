@@ -73,7 +73,7 @@ namespace VictoryChallenge.Scripts.CL
                     _maxPlayer = 1;
                     break;
                 case 9:
-                    _maxPlayer = 4;
+                    _maxPlayer = 2;
                     break;
             }
 
@@ -207,7 +207,7 @@ namespace VictoryChallenge.Scripts.CL
         private void ResetList()
         {
             //random하게 불러올 씬 넘버
-            _round2List = new List<int>() { 5, /*6*/ };
+            _round2List = new List<int>() { /*5,*/ 6 };
         }
 
         public void MixScene(int sceneNum)
@@ -217,6 +217,7 @@ namespace VictoryChallenge.Scripts.CL
             switch (sceneNum)
             {
                 case 3:
+                case 9:
                     count = _round2List.Count;
                     for (int i = 0; i < count; i++)
                     {
