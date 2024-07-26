@@ -100,7 +100,7 @@ namespace VictoryChallenge.KJ.Photon
         public override void OnJoinedRoom()                     // 로비(룸)에 들어왔을 때
         {
             _isReady = false;
-            PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable());
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "IsReady", _isReady } });
 
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
