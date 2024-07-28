@@ -898,6 +898,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 1835508154064101466, guid: 689dc6ed80705e845881ad7e539171b7,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422110554337427749, guid: 689dc6ed80705e845881ad7e539171b7,
+        type: 3}
+      propertyPath: jumpEffectobj
+      value: 
+      objectReference: {fileID: 4817136265268201504}
     - target: {fileID: 7094748403621762992, guid: 689dc6ed80705e845881ad7e539171b7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -948,6 +958,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9004056798639626834, guid: 689dc6ed80705e845881ad7e539171b7,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004897125410454206, guid: 689dc6ed80705e845881ad7e539171b7,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -956,6 +976,12 @@ PrefabInstance:
 --- !u!4 &4428197400620901898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7094748403621762992, guid: 689dc6ed80705e845881ad7e539171b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6845895872538227130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4817136265268201504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2150580900684020122, guid: 689dc6ed80705e845881ad7e539171b7,
     type: 3}
   m_PrefabInstance: {fileID: 6845895872538227130}
   m_PrefabAsset: {fileID: 0}

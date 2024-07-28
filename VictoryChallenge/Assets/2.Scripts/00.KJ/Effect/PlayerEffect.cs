@@ -6,6 +6,7 @@ namespace VictoryChallenge.KJ.Effect
     {
         public GameObject runEffectobj;
         public GameObject jumpEffectobj;
+        public float jumpEffectDuration = 0.2f;
 
         void Update()
         {
@@ -22,8 +23,21 @@ namespace VictoryChallenge.KJ.Effect
             // 점프 이펙트
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                jumpEffectobj.SetActive(true);
+                ActiveJumpEffect();
             }
+        }
+
+        private void ActiveJumpEffect()
+        {
+            jumpEffectobj.SetActive(true);
+            Debug.Log($"점프 활성화 : {jumpEffectobj.activeSelf}");
+            Invoke("DeactivateJumpEffect", jumpEffectDuration);
+        }
+
+        private void DeactivateJumpEffect()
+        {
+            jumpEffectobj.SetActive(false);
+            Debug.Log($"점프 비활성화 : {jumpEffectobj.activeSelf}");
         }
     }
 }
