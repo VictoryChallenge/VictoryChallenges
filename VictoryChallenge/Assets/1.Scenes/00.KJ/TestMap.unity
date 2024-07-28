@@ -1826,13 +1826,6 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
-    Iso: 200
-    ShutterSpeed: 0.005
-    Aperture: 16
-    BladeCount: 5
-    Curvature: {x: 2, y: 11}
-    BarrelClipping: 0.25
-    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2587,6 +2580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1267871673}
   - component: {fileID: 1267871672}
+  - component: {fileID: 1267871674}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2622,6 +2616,7 @@ MonoBehaviour:
   spawnPointRed: {fileID: 902632171}
   spawnPointBlue: {fileID: 2098042335}
   spawnInterval: 1
+  obstaclespawn: 0
 --- !u!4 &1267871673
 Transform:
   m_ObjectHideFlags: 0
@@ -2637,6 +2632,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1267871674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267871671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 0
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 574
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!4 &1318967280 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8765100718267458389, guid: d4181248b9031ff44ab6826adab67386,

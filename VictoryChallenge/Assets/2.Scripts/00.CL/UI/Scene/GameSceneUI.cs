@@ -240,6 +240,8 @@ namespace VictoryChallenge.Scripts.CL
             text.gameObject.SetActive(false);
 
             // Àå¾Ö¹°
+            _obstacleManager = FindObjectOfType<ObstacleManager>();
+
             if (_obstacleManager != null)
             {
                 _obstacleManager.obstaclespawn = true;
