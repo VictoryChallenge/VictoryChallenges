@@ -112,6 +112,7 @@ namespace VictoryChallenge.KJ.Photon
                 _isReady = true;
                 PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsReady", _isReady } });
                 Debug.Log("호스트 준비 상태");
+                UpdatePlayerNumber();
             }
 
             Debug.Log("유저 이름 " + PhotonNetwork.NickName);
