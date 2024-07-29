@@ -68,29 +68,6 @@ namespace VictoryChallenge.Controllers.Player
         #endregion
 
         #region 상호 작용
-        // Grab
-        public bool isGrabbing
-        {
-            get => _isGrabbing;
-            set => _isGrabbing = value;
-        }
-
-        private bool _isGrabbing;
-        public virtual bool isGrabbable { get; set; }
-        public virtual Transform grabbableTransform { get; set; }
-        public virtual Rigidbody grabbableRigid { get; set; }
-        public virtual CapsuleCollider grabbableCollider { get; set; }
-        public virtual GameObject holdingObject { get; set; }
-
-        // Holding
-        public bool isHolding
-        {
-            get => _isHolding;
-            set => _isHolding = value;
-        }
-
-        private bool _isHolding;
-
         // Hit
         public virtual bool isDizzy { get; set; }
         public virtual bool isDie { get; set; }
@@ -189,39 +166,6 @@ namespace VictoryChallenge.Controllers.Player
                     _followCam.enabled = false;
                     _introTimeline.stopped += OnStopTimeline;
                 }
-                //else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(5))
-                //{
-                //    nickName = PhotonNetwork.NickName;
-
-
-                //    // 카메라 캐싱
-                //    _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
-                //    _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
-                //    _followCam.enabled = false;
-                //    _introTimeline.stopped += OnStopTimeline;
-                //}
-                //else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(6))
-                //{
-                //    nickName = PhotonNetwork.NickName;
-
-
-                //    // 카메라 캐싱
-                //    _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
-                //    _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
-                //    _followCam.enabled = false;
-                //    _introTimeline.stopped += OnStopTimeline;
-                //}
-                //else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(9))
-                //{
-                //    nickName = PhotonNetwork.NickName;
-
-
-                //    // 카메라 캐싱
-                //    _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
-                //    _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
-                //    _followCam.enabled = false;
-                //    _introTimeline.stopped += OnStopTimeline;
-                //}
             }
             //if (!_pv.IsMine)
             else
@@ -238,7 +182,6 @@ namespace VictoryChallenge.Controllers.Player
         {
             _followCam.enabled = true;
             _introCam.enabled = false;
-            //_missionUI.enabled = false;
         }
 
         private void FixedUpdate()
@@ -273,21 +216,9 @@ namespace VictoryChallenge.Controllers.Player
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);
 
-            if (dizzyCount > 2)
+            if (hitCount > 2)
             {
-                isDie = true;
-            }
-
-            if (!isDie)
-            {
-                if (hitCount > 2)
-                {
-                    isDizzy = true;
-                }
-                else
-                {
-                    isDizzy = false;
-                }
+                isDizzy = true;
             }
             else
             {
@@ -370,12 +301,6 @@ namespace VictoryChallenge.Controllers.Player
         {
             _isHit = isCheck;
             Debug.Log("hitCheck" + _isHit);
-        }
-
-        [PunRPC]
-        public void HoldingCheckRPC(bool isCheck)
-        {
-            _isHolding = isCheck;
         }
 
         [PunRPC]

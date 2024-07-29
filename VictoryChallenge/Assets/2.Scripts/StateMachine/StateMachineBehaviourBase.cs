@@ -20,6 +20,7 @@ namespace VictoryChallenge.StateMachine
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
 
+            Debug.Log("isDirty is " + (bool)animator.GetBool("IsDirty"));
             // 상태 진입을 제대로 했으니 IsDirty 초기화
             animator.SetBool("IsDirty", false);
             _inTransition = false;
