@@ -52,7 +52,7 @@ namespace VictoryChallenge.Customize
 
         private void Start()
         {
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(4) || SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8)
+            if (3 <= SceneManager.GetActiveScene().buildIndex && SceneManager.GetActiveScene().buildIndex <= 5)
             {
                 _isLocal = true;
                 LoadData();

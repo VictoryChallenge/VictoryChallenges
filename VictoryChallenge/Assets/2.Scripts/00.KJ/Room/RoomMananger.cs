@@ -49,7 +49,7 @@ namespace VictoryChallenge.KJ.Room
                     PhotonSub.Instance.OnSceneLoadedForAllPlayers();
                 }
             }
-            else if (scene.buildIndex >= 3 && scene.buildIndex != 4 && scene.buildIndex != 7 && scene.buildIndex != 8)
+            else if (scene.buildIndex >= 6)
             {
                 if (PhotonSub.Instance != null)
                 {

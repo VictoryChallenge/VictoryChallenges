@@ -72,7 +72,7 @@ namespace VictoryChallenge.KJ.Photon
                 Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 9)
+            else if (SceneManager.GetActiveScene().buildIndex >= 6)
             {
                 Debug.Log("클라 플레이어 매니저 생성");
 
@@ -112,6 +112,7 @@ namespace VictoryChallenge.KJ.Photon
                 _isReady = true;
                 PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsReady", _isReady } });
                 Debug.Log("호스트 준비 상태");
+                UpdatePlayerNumber();
             }
 
             Debug.Log("유저 이름 " + PhotonNetwork.NickName);

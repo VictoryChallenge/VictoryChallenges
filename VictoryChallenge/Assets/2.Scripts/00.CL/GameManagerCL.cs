@@ -22,6 +22,7 @@ namespace VictoryChallenge.Scripts.CL
         private bool _isFinished = false;
         private int _nextSceneNum;
         private List<int> _round2List;
+        private List<int> _round3List;
 
         // 커스텀 프로퍼티 한번만 불러오기 위한
         private bool isGameStarted;
@@ -61,19 +62,21 @@ namespace VictoryChallenge.Scripts.CL
             // 제한 인원 설정
             switch (SceneManager.GetActiveScene().buildIndex)
             {
-                case 3:
-                    _maxPlayer = 2;
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    _maxPlayer = 2;
-                    break;
                 case 6:
-                    _maxPlayer = 1;
+                    _maxPlayer = 2;
+                    gameSceneUI.person = maxPlayer;
+                    break;
+                case 7:
+                    _maxPlayer = 2;
+                    gameSceneUI.person = maxPlayer;
+                    break;
+                case 8:
+                    _maxPlayer = 2;
+                    gameSceneUI.person = maxPlayer;
                     break;
                 case 9:
-                    _maxPlayer = 2;
+                    _maxPlayer = 1;
+                    gameSceneUI.person = maxPlayer;
                     break;
             }
 
@@ -83,7 +86,7 @@ namespace VictoryChallenge.Scripts.CL
 
         private void Update()
         {
-            if (_isMoving == true && SceneManager.GetActiveScene().buildIndex != 6)
+            if (_isMoving == true && SceneManager.GetActiveScene().buildIndex < 9)
             {
                 // 2인용 맵에서는 시간안가게
                 _time -= Time.deltaTime;
@@ -128,7 +131,7 @@ namespace VictoryChallenge.Scripts.CL
 
         void SceneLoaded()
         {
-            if (SceneManager.GetActiveScene().buildIndex >= 3 && SceneManager.GetActiveScene().buildIndex != 4)
+            if (SceneManager.GetActiveScene().buildIndex >= 6)
             {
                 Debug.Log("ㅇㅇㅇㅋ제[발");
                 // 플레이어의 씬 로드 상태를 CustomProperties에 설정
@@ -207,7 +210,8 @@ namespace VictoryChallenge.Scripts.CL
         private void ResetList()
         {
             //random하게 불러올 씬 넘버
-            _round2List = new List<int>() { /*5,*/ 6 };
+            _round2List = new List<int>() { 7, 8 };
+            _round3List = new List<int>() { 9 };
         }
 
         public void MixScene(int sceneNum)
@@ -216,8 +220,7 @@ namespace VictoryChallenge.Scripts.CL
             int count = 0;
             switch (sceneNum)
             {
-                case 3:
-                case 9:
+                case 6:
                     count = _round2List.Count;
                     for (int i = 0; i < count; i++)
                     {
@@ -230,6 +233,21 @@ namespace VictoryChallenge.Scripts.CL
 
                     //SceneManager.LoadScene(_round2List[0]);
                     _round2List.RemoveAt(0);
+                    break;
+                case 7:
+                case 8:
+                    count = _round3List.Count;
+                    for (int i = 0; i < count; i++)
+                    {
+                        int rand = Random.Range(0, _round3List.Count);
+                        list.Add(_round3List[rand]);
+                        _round3List.RemoveAt(rand);
+                    }
+                    _round3List = list;
+                    _nextSceneNum = _round3List[0];
+
+                    //SceneManager.LoadScene(_round2List[0]);
+                    _round3List.RemoveAt(0);
                     break;
                 default:
                     break;

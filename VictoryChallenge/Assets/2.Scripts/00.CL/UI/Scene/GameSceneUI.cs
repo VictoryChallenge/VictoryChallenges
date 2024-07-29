@@ -56,30 +56,23 @@ namespace VictoryChallenge.Scripts.CL
             Init();
             // 로그인안하고 씬에서 테스트만 하려면 아래코드 주석해제
             //StartCoroutine(GameStart());
+            gameManager = GameObject.FindObjectOfType<GameManagerCL>();
 
             switch (SceneManager.GetActiveScene().buildIndex)
             {
-                case 3:
-                    round = 1;
-                    person = 2;
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    round = 2;
-                    person = 2;
-                    break;
                 case 6:
+                    round = 1;
+                    break;
+                case 7:
                     round = 2;
-                    person = 1;
+                    break;
+                case 8:
+                    round = 2;
                     break;
                 case 9:
-                    round = 1;
-                    person = 4;
+                    round = 3;
                     break;
             }
-
-            gameManager = GameObject.FindObjectOfType<GameManagerCL>();
 
             #region 장애물
             // 장애물
@@ -228,7 +221,7 @@ namespace VictoryChallenge.Scripts.CL
             isMoving = true;
 
             // 2인용 맵에서는 안보이게
-            if (SceneManager.GetActiveScene().buildIndex != 6)
+            if (SceneManager.GetActiveScene().buildIndex < 9)
             { 
                 personText.gameObject.SetActive(true);
                 clock.gameObject.SetActive(true);
