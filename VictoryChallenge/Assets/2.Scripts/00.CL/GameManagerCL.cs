@@ -86,7 +86,7 @@ namespace VictoryChallenge.Scripts.CL
 
         private void Update()
         {
-            if (_isMoving == true && SceneManager.GetActiveScene().buildIndex <= 9)
+            if (_isMoving == true && SceneManager.GetActiveScene().buildIndex < 9)
             {
                 // 2인용 맵에서는 시간안가게
                 _time -= Time.deltaTime;

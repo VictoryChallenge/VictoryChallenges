@@ -221,7 +221,7 @@ namespace VictoryChallenge.Scripts.CL
             isMoving = true;
 
             // 2인용 맵에서는 안보이게
-            if (SceneManager.GetActiveScene().buildIndex <= 9)
+            if (SceneManager.GetActiveScene().buildIndex < 9)
             { 
                 personText.gameObject.SetActive(true);
                 clock.gameObject.SetActive(true);
