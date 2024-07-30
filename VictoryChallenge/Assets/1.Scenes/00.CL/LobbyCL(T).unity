@@ -8688,7 +8688,6 @@ GameObject:
   - component: {fileID: 649069769}
   - component: {fileID: 649069773}
   - component: {fileID: 649069772}
-  - component: {fileID: 649069771}
   - component: {fileID: 649069770}
   m_Layer: 4
   m_Name: water
@@ -8733,18 +8732,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 178.42398, y: 0, z: 130}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &649069771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649069768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3918ffce9aa529f4fa9413b358cf5621, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &649069772
 MeshRenderer:
   m_ObjectHideFlags: 0
