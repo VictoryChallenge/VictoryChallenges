@@ -133,7 +133,6 @@ namespace VictoryChallenge.Scripts.CL
         {
             if (SceneManager.GetActiveScene().buildIndex >= 6)
             {
-                Debug.Log("ㅇㅇㅇㅋ제[발");
                 // 플레이어의 씬 로드 상태를 CustomProperties에 설정
                 Hashtable props = new Hashtable
                 {
@@ -305,6 +304,10 @@ namespace VictoryChallenge.Scripts.CL
                             StartCoroutine(LeaveRoomAndLoadScene("LoseCL"));
                             yield break;
                         }
+                        // 2인맵이 아니면서 결승선에 들어온 플레이어가 하나뿐일때
+                        if (currentPlayer == 1)
+                            StartCoroutine(LeaveRoomAndLoadScene("WinnerCL"));
+                        // 2인맵이 아니면서 2명 이상 결승선에 들어왔을 때
                         else
                             photonView.RPC("SceneLoad", RpcTarget.AllBuffered, _nextSceneNum);    
                     }
@@ -320,7 +323,8 @@ namespace VictoryChallenge.Scripts.CL
                             yield break;
                         }
 
-                        RoomMananger.Instance.LeaveRoom();
+                        // 결승선에 들어오지 못한 플레이어들은 LOSE 처리
+                        StartCoroutine(LeaveRoomAndLoadScene("LoseCL"));
                     }
                 }
             }
@@ -331,7 +335,6 @@ namespace VictoryChallenge.Scripts.CL
             double timeRemaining = startTime - PhotonNetwork.Time;
             while (timeRemaining > 0)
             {
-                //Debug.Log("Time remaining: " + timeRemaining);
                 yield return new WaitForEndOfFrame();
                 timeRemaining = startTime - PhotonNetwork.Time;
             }

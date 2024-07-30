@@ -72,9 +72,6 @@ namespace VictoryChallenge.Scripts.CL
             _audiosource.volume = volume;
             PlayerPrefs.SetFloat("Volume", volume);  // º¼·ý °ª ÀúÀå
             PlayerPrefs.Save();
-
-            // Debug.Log·Î º¼·ý °ª È®ÀÎ
-            Debug.Log("Volume updated: " + volume + " º¼·ý " + _audiosource.volume);
         }
 
         void UpdateToggleImage(bool isOn)
