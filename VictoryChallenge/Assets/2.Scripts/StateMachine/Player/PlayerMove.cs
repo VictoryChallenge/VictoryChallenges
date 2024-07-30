@@ -38,10 +38,10 @@ namespace VictoryChallenge.StateMachine.Player
                 {
                     return Input.GetKeyDown(KeyCode.T);
                 }},
-                { State.Hit, (animator) =>
-                {
-                    return controller.isHit;
-                }},
+                //{ State.Hit, (animator) =>
+                //{
+                //    return controller.isHit && !controller.isPush;
+                //}},
                 { State.Sliding, (animator) =>
                 {
                     return Input.GetKeyDown(KeyCode.C) && controller.isKeyActive;
@@ -50,9 +50,13 @@ namespace VictoryChallenge.StateMachine.Player
                 {
                     return Input.GetKeyDown(KeyCode.F);
                 }},
-                {    State.Slip, (animator) =>
+                { State.Slip, (animator) =>
                 {
                     return controller.isSlip && !controller.isSliping;
+                }},
+                { State.Dizzy, (animator) =>
+                {
+                    return !controller.isDizzying && controller.isDizzy;
                 }},
             };
         }
