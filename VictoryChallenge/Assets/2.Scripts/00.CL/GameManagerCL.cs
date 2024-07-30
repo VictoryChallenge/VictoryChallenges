@@ -305,10 +305,10 @@ namespace VictoryChallenge.Scripts.CL
                             yield break;
                         }
                         // 2인맵이 아니면서 결승선에 들어온 플레이어가 하나뿐일때
-                        if (currentPlayer == 1)
+                        else if (currentPlayer == 1)
                             StartCoroutine(LeaveRoomAndLoadScene("WinnerCL"));
                         // 2인맵이 아니면서 2명 이상 결승선에 들어왔을 때
-                        else
+                        else if (PhotonNetwork.IsMasterClient)
                             photonView.RPC("SceneLoad", RpcTarget.AllBuffered, _nextSceneNum);    
                     }
                     else 
