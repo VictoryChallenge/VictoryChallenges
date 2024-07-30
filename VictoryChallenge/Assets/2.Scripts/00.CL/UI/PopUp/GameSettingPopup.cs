@@ -31,6 +31,7 @@ namespace VictoryChallenge.Scripts.CL
         void Start()
         {
             Init();
+            Cursor.visible = true;
             RectTransform rectTransform = GetComponent<RectTransform>();
             rectTransform.anchoredPosition = Vector2.zero;
             _audiosource = GameObject.Find("BGM").GetComponent<AudioSource>();
@@ -64,6 +65,7 @@ namespace VictoryChallenge.Scripts.CL
             if (Input.GetKeyDown(KeyCode.Escape)) 
             {
                 ClosePopupUI();
+                Cursor.visible = false;
             }
         }
 

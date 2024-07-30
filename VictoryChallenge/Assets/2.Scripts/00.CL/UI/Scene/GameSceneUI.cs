@@ -53,6 +53,8 @@ namespace VictoryChallenge.Scripts.CL
 
         void Start()
         {
+            Cursor.visible = false;
+
             Init();
             // 로그인안하고 씬에서 테스트만 하려면 아래코드 주석해제
             //StartCoroutine(GameStart());
@@ -415,6 +417,11 @@ namespace VictoryChallenge.Scripts.CL
 
             missionCanvasGroup.alpha = 0;
             mission.gameObject.SetActive(false);
+        }
+
+        private void OnDestroy()
+        {
+            Cursor.visible = true;
         }
     }
 }

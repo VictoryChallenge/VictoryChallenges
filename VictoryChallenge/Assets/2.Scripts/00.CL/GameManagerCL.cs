@@ -41,7 +41,7 @@ namespace VictoryChallenge.Scripts.CL
             get => _time;
             set => _time = value;
         }
-        private float _time = 20;
+        private float _time = 120;
 
         public int currentPlayer 
         { 
@@ -63,7 +63,7 @@ namespace VictoryChallenge.Scripts.CL
             switch (SceneManager.GetActiveScene().buildIndex)
             {
                 case 6:
-                    _maxPlayer = 2;
+                    _maxPlayer = 4;
                     gameSceneUI.person = maxPlayer;
                     break;
                 case 7:
