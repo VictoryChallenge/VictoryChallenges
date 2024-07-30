@@ -3,7 +3,6 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using VictoryChallenge.KJ.Auth;
-using VictoryChallenge.KJ.Menu;
 
 namespace VictoryChallenge.KJ.Photon
 {
