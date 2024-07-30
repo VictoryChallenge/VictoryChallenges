@@ -16,10 +16,6 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
-                { State.Die, (animator) =>
-                {
-                    return controller.isDie;
-                }},
             };
         }
 
@@ -29,14 +25,21 @@ namespace VictoryChallenge.StateMachine.Player
 
             animator.SetInteger("State", (int)State.Dizzy);
             
-            controller.dizzyCount++;
-            
-            if(!controller.isDie) 
-            {
-                controller.hitCount = 0;
-            }
+            //if(!controller.isDie) 
+            //{
+            //    controller.hitCount = 0;
+            //}
             
             controller.isKeyActive = false;
+            controller.isDizzying = true;
+            Debug.Log("dizzyEnter");
+        }
+
+        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            base.OnStateUpdate(animator, stateInfo, layerIndex);
+
+            controller.velocity = Vector3.zero;
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -44,6 +47,11 @@ namespace VictoryChallenge.StateMachine.Player
             base.OnStateExit(animator, stateInfo, layerIndex);
 
             controller.isKeyActive = true;
+
+            controller.isDizzy = false;
+            controller.isDizzying = false;
+
+            Debug.Log("dizzyExit");
         }
     }
 }

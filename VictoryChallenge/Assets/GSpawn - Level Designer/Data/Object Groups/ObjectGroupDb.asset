@@ -72,24 +72,6 @@ MonoBehaviour:
   _objectGroupName: grass
   _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-111587394-0
   _uiSelected: 1
---- !u!114 &-7415429098833550420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
-  m_Name: Rock
-  m_EditorClassIdentifier: 
-  _parentGroup: {fileID: 0}
-  _guid:
-    _guidString: 59b02a3f-bc31-4a40-802a-cb05c5c58fa8
-  _objectGroupName: Rock
-  _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-249119310-0
-  _uiSelected: 1
 --- !u!114 &-6899142982012744621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,24 +288,6 @@ MonoBehaviour:
   _objectGroupName: Rock
   _globalObjectIdString: GlobalObjectId_V1-2-e39e3ca2ec52d764da7ae63a1a648fcf-588286685-0
   _uiSelected: 0
---- !u!114 &-1657736203980220434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
-  m_Name: Obstacle
-  m_EditorClassIdentifier: 
-  _parentGroup: {fileID: 0}
-  _guid:
-    _guidString: dea6c93e-7c2a-4251-a94c-831d515a718f
-  _objectGroupName: Obstacle
-  _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-986057127-0
-  _uiSelected: 0
 --- !u!114 &-1392662643205979743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,24 +331,6 @@ MonoBehaviour:
   scrollOffset: {x: 0, y: 0}
   vertScrollHighValue: 0
   vertScrollLowValue: 0
---- !u!114 &-262574501215136593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
-  m_Name: Ground
-  m_EditorClassIdentifier: 
-  _parentGroup: {fileID: 0}
-  _guid:
-    _guidString: ce212a35-384e-4247-8ff3-80f60632f474
-  _objectGroupName: Ground
-  _globalObjectIdString: GlobalObjectId_V1-2-d3278be2888ac72428ed3f1a42e3291a-847301812-0
-  _uiSelected: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,9 +348,7 @@ MonoBehaviour:
     _serializedKeys:
     - 99c9720ab356a0642a771bea13969a05
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
-    - 8396bb939a95a0245b2656546d865710
     - e39e3ca2ec52d764da7ae63a1a648fcf
-    - d3278be2888ac72428ed3f1a42e3291a
     - 44113e863289d1b4ebd9de3e8282d670
     - b800fbcc83fc83b4b8327454d724edca
     - 34649597e8469d2489b9e43d42e854c3
@@ -428,12 +372,6 @@ MonoBehaviour:
       - {fileID: -4482079793855191522}
       - {fileID: 970104389054106148}
     - _serializedList:
-      - {fileID: 5274929535151896507}
-      - {fileID: 1578579157117131913}
-      - {fileID: -1657736203980220434}
-      - {fileID: -7415429098833550420}
-      - {fileID: 1739317549007672953}
-    - _serializedList:
       - {fileID: -6137928954960009520}
       - {fileID: -8604946886281035299}
       - {fileID: 3219400065927564872}
@@ -441,8 +379,6 @@ MonoBehaviour:
       - {fileID: 8622233685703024741}
       - {fileID: -1735305301273866831}
       - {fileID: 3511448482691847517}
-    - _serializedList:
-      - {fileID: -262574501215136593}
     - _serializedList:
       - {fileID: -6496072030615568441}
     - _serializedList:
@@ -485,24 +421,6 @@ MonoBehaviour:
   _belowGrid: 1
   _aboveGrid: 1
   _onGrid: 1
---- !u!114 &1578579157117131913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
-  m_Name: Fence
-  m_EditorClassIdentifier: 
-  _parentGroup: {fileID: 0}
-  _guid:
-    _guidString: 3ff1c060-dec4-4d6b-8032-914cb9e0d8c5
-  _objectGroupName: Fence
-  _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-523488692-0
-  _uiSelected: 0
 --- !u!114 &1595733064626144845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,24 +438,6 @@ MonoBehaviour:
     _guidString: fcac77e8-8d88-4e57-815a-42a9570ce24f
   _objectGroupName: Tree
   _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-1504201421-0
-  _uiSelected: 0
---- !u!114 &1739317549007672953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
-  m_Name: Box
-  m_EditorClassIdentifier: 
-  _parentGroup: {fileID: 0}
-  _guid:
-    _guidString: 0f56cb36-388a-4628-936b-9fa030cdcc81
-  _objectGroupName: Box
-  _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-1129084643-0
   _uiSelected: 0
 --- !u!114 &2675826118748946544
 MonoBehaviour:
@@ -628,24 +528,6 @@ MonoBehaviour:
     _guidString: c5a6c899-336d-43d0-b3b5-47a5c22f810f
   _objectGroupName: water
   _globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-497870239-0
-  _uiSelected: 0
---- !u!114 &5274929535151896507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e89507e0fc6bfa42a8f0a65a2632bdd, type: 3}
-  m_Name: Land
-  m_EditorClassIdentifier: 
-  _parentGroup: {fileID: 0}
-  _guid:
-    _guidString: 63bf3c7d-2d24-4c49-a5f7-94e52026c3de
-  _objectGroupName: Land
-  _globalObjectIdString: GlobalObjectId_V1-2-8396bb939a95a0245b2656546d865710-1415535552-0
   _uiSelected: 0
 --- !u!114 &8485959223536753481
 MonoBehaviour:

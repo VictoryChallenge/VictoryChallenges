@@ -7,8 +7,8 @@ namespace VictoryChallenge.Controllers.Attackable
 {
     public class PlayerAttackable : MonoBehaviour
     {
-        private bool _isCollisionCheck;
-
+        private bool _isCollisionable;
+        private int _num = 0;
 
         private void Start()
         {
@@ -23,17 +23,28 @@ namespace VictoryChallenge.Controllers.Attackable
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                Debug.Log("isAttacking : " + this.gameObject.GetComponent<CharacterController>().isAttacking);
+                //_isCollisionable = true;
+                //Debug.Log("isAttacking : " + this.gameObject.GetComponent<CharacterController>().isAttacking);
                 // Attack Check
-                if (this.gameObject.GetComponent<CharacterController>().isAttacking)
-                {
-                    // 중복 hit체크 방지
-                    if(other.gameObject.GetComponent<CharacterController>().isHit == false)
-                    {
-                        // 맞은 캐릭터의 hit 애니메이션 조건 = true 설정
-                        other.gameObject.GetComponent<PhotonView>().RPC("HitCheckRPC", RpcTarget.All, true);
-                    }
-                }
+                //if (this.gameObject.GetComponent<CharacterController>().isAttacking)
+                //{
+                //    other.gameObject.GetComponent<CharacterController>().isDizzy = true;
+                // 중복 hit체크 방지
+                //if (other.gameObject.GetComponent<CharacterController>().isHit == false)
+                //{
+                //    // 맞은 캐릭터의 hit 애니메이션 조건 = true 설정
+                //    other.gameObject.GetComponent<PhotonView>().RPC("HitCheckRPC", RpcTarget.All, true);
+                //}
+                //}
+                //if (this.gameObject.GetComponent<CharacterController>().isPush)
+                //{
+                //    _num++;
+                //    if(!other.gameObject.GetComponent<CharacterController>().isDizzy)
+                //    {
+                //        Debug.Log("push : " + _num);
+                //        other.gameObject.GetComponent<CharacterController>().isDizzy = true;
+                //    }
+                //}
             }
         }
 
@@ -41,12 +52,13 @@ namespace VictoryChallenge.Controllers.Attackable
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                // Attack Check
-                if (this.gameObject.GetComponent<CharacterController>().isAttacking)
-                {
-                    // 맞은 캐릭터의 hit 애니메이션 조건 = false 설정
-                    other.gameObject.GetComponent<PhotonView>().RPC("HitCheckRPC", RpcTarget.All, false);
-                }
+                _isCollisionable = false;
+                //// Attack Check
+                //if (this.gameObject.GetComponent<CharacterController>().isAttacking)
+                //{
+                //    // 맞은 캐릭터의 hit 애니메이션 조건 = false 설정
+                //    other.gameObject.GetComponent<PhotonView>().RPC("HitCheckRPC", RpcTarget.All, false);
+                //}
             }
         }
     }
