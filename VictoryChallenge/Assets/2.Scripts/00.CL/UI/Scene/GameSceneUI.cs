@@ -116,7 +116,23 @@ namespace VictoryChallenge.Scripts.CL
             base.Init();
             Bind<TextMeshProUGUI>(typeof(TMPs));
             Bind<Image>(typeof(Images));
-            Managers.Sound.Play("RunBGM1", Define.Sound.BGM);
+
+            switch (SceneManager.GetActiveScene().buildIndex)
+            { 
+                case 6:
+                    Managers.Sound.Play("RunBGM1", Define.Sound.BGM);
+                    break;
+                case 7:
+                case 8:
+                    Managers.Sound.Play("RunBGM2", Define.Sound.BGM);
+                    break;
+                case 9:
+                    Managers.Sound.Play("TestMapBGM", Define.Sound.BGM);
+                    break;
+            }
+
+
+
             AudioSource _audioSource = GameObject.Find("BGM").GetComponent<AudioSource>();
             _audioSource.volume = 0.4f;
 

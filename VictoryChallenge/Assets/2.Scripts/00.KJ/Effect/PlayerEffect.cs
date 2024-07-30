@@ -1,8 +1,10 @@
+using Photon.Pun;
 using UnityEngine;
+using VictoryChallenge.ComponentExtensions;
 
 namespace VictoryChallenge.KJ.Effect
 {
-    public class PlayerEffect : MonoBehaviour
+    public class PlayerEffect : MonoBehaviourPun
     {
         public GameObject runEffectobj;
         public GameObject jumpEffectobj;
@@ -10,6 +12,11 @@ namespace VictoryChallenge.KJ.Effect
 
         void Update()
         {
+            if (!photonView.IsMine)
+            {
+                return;
+            }
+
             // 달리기 이펙트
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -21,7 +28,7 @@ namespace VictoryChallenge.KJ.Effect
             }
 
             // 점프 이펙트
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && this.IsGrounded())
             {
                 ActiveJumpEffect();
             }
