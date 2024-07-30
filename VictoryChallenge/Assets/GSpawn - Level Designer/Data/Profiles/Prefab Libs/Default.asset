@@ -94,10 +94,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -201,10 +199,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -7415429098833550420, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -4482079793855191522, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -31.606358, y: -7.220684, z: 119.89641}
@@ -306,12 +302,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - d3278be2888ac72428ed3f1a42e3291a
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
-    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -46.3899, y: -13.000004, z: 13.037027}
@@ -680,10 +672,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -888,10 +878,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -1059,10 +1047,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -7415429098833550420, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -4482079793855191522, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 69.03331, y: 0.0000038146973, z: 62.784634}
@@ -1432,12 +1418,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - d3278be2888ac72428ed3f1a42e3291a
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
-    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 9.930136, y: 48.223946, z: 69.09006}
@@ -1570,12 +1552,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - d3278be2888ac72428ed3f1a42e3291a
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
-    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 5.8589745, y: 16.751888, z: 31.100592}
@@ -2079,10 +2057,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 0.7685715, y: 17.838665, z: 54.973343}
@@ -2184,12 +2160,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - d3278be2888ac72428ed3f1a42e3291a
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
-    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -21.658516, y: -10.69442, z: 124.55935}
@@ -2464,12 +2436,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - d3278be2888ac72428ed3f1a42e3291a
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
-    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 2.6587396, y: -9.038916, z: 27.587864}
@@ -2942,10 +2910,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -15.741248, y: 0, z: 43.512264}
@@ -2979,10 +2945,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -3370,10 +3334,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -24.935497, y: 1.2208693, z: 87.95085}
@@ -3646,10 +3608,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -3948,10 +3908,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -4117,10 +4075,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: 1578579157117131913, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -4540785700576365603, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -16.712702, y: 0, z: 28.595999}
@@ -4255,10 +4211,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -4362,10 +4316,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -19.464788, y: -3.7130017, z: 251.03261}
@@ -4399,10 +4351,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -4471,10 +4421,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 1.3568251, y: 8.3820095, z: 12.658292}
@@ -4716,12 +4664,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - d3278be2888ac72428ed3f1a42e3291a
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
-    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: 54.426018, y: -6.687991, z: -36.811127}
@@ -4992,10 +4936,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -7415429098833550420, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -4482079793855191522, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -4.434227, y: -5.8500185, z: -28.034729}
@@ -5859,10 +5801,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -6300,10 +6240,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -6.972348, y: 6.2208276, z: 138.65842}
@@ -6337,10 +6275,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -6374,10 +6310,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -6537,10 +6471,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: 1578579157117131913, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -4540785700576365603, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -94.79265, y: 0.0000015902519, z: -83.697105}
@@ -6849,10 +6781,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -7088,12 +7018,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - d3278be2888ac72428ed3f1a42e3291a
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
-    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -18.567114, y: -55.1979, z: 189.9762}
@@ -8421,10 +8347,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -98.25489, y: -0.9080002, z: -34.572075}
@@ -9169,10 +9093,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
@@ -9542,10 +9464,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -24.694836, y: 11.491218, z: 91.6197}
@@ -9984,10 +9904,8 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys:
-    - d3278be2888ac72428ed3f1a42e3291a
-    _serializedValues:
-    - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    _serializedKeys: []
+    _serializedValues: []
   _spawnGuideTransformTRS:
     _position: {x: 420.4445, y: 6.432007, z: 1454.3579}
     _rotation: {x: -0, y: -0.7132521, z: -0, w: -0.70090765}
@@ -10425,10 +10343,8 @@ MonoBehaviour:
     _yaw: 0
     _pitch: 0
   _sceneToObjectGroup:
-    _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
-    _serializedValues:
-    - {fileID: 1739317549007672953, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
+    _serializedKeys: []
+    _serializedValues: []
   _spawnGuideTransformTRS:
     _position: {x: 6.322958, y: 6.874983, z: 83.66405}
     _rotation: {x: -0, y: 0.7253749, z: -0, w: 0.6883541}
@@ -10461,10 +10377,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: 1578579157117131913, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -4540785700576365603, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -14.378681, y: 0.1196537, z: -0.9364412}
@@ -10498,12 +10412,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - d3278be2888ac72428ed3f1a42e3291a
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -262574501215136593, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
-    - {fileID: 5274929535151896507, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -3242385427026738426, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -10.805792, y: 0.9000242, z: 58.8424}
@@ -10996,10 +10906,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -86.1315, y: 0, z: -1.7608852}
@@ -11812,10 +11720,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -5.398473, y: -0.11650562, z: 167.87076}
@@ -11849,10 +11755,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -7415429098833550420, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -4482079793855191522, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -65.7156, y: -12.56094, z: 32.562767}
@@ -12017,10 +11921,8 @@ MonoBehaviour:
     _pitch: 0
   _sceneToObjectGroup:
     _serializedKeys:
-    - 8396bb939a95a0245b2656546d865710
     - 7d47a22b6cee9a34b92b76e6a3d0fca6
     _serializedValues:
-    - {fileID: -1657736203980220434, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
     - {fileID: -1392662643205979743, guid: 537cf2921de94934aae6cb1222de0a77, type: 2}
   _spawnGuideTransformTRS:
     _position: {x: -0, y: 0, z: 0}
