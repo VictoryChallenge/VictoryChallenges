@@ -15,6 +15,7 @@ using VictoryChallenge.KJ.Database;
 using Photon.Pun.Demo.Cockpit;
 using GSpawn;
 using VictoryChallenge.KJ.Spawn;
+using ExitGames.Client.Photon.StructWrapping;
 
 namespace VictoryChallenge.KJ.Photon
 {
@@ -26,8 +27,6 @@ namespace VictoryChallenge.KJ.Photon
 
         [HideInInspector] public bool _isReady = false;
         [HideInInspector] public int stageNum = 3;
-        //private bool _isControllerCreated = false;
-
 
         public static Dictionary<string, int> playerRanks = new Dictionary<string, int>();
         public static Dictionary<string, float> playerTimes = new Dictionary<string, float>();
@@ -35,9 +34,6 @@ namespace VictoryChallenge.KJ.Photon
         private float countdownTime = 10f;
         public static int currentRound = 1;
         private const int maxRounds = 3;
-
-
-
 
         #region Singleton
         public static PhotonSub Instance;
@@ -70,20 +66,30 @@ namespace VictoryChallenge.KJ.Photon
             {
                 Debug.Log("호스트 플레이어 매니저 생성");
 
-                // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작하지만 GetIndexSpawnPoint 함수에서 -1 해서 0번 인덱스부터 접근 가능
-                int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber; 
+                // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작
+                int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+                Debug.Log("ActorNum = " + playerIndex);
                 Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
                 PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 7)
+            else if (SceneManager.GetActiveScene().buildIndex >= 6)
             {
                 Debug.Log("클라 플레이어 매니저 생성");
 
-                // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작하지만 GetIndexSpawnPoint 함수에서 -1 해서 0번 인덱스부터 접근 가능
-                int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber; 
-                Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
-                //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+                if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("PlayerNumber", out int checkNum))
+                {
+                    Debug.Log("checkNum = " + checkNum);
+                    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(checkNum);
+                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
+                }
+                //else
+                //{
+                //    // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작
+                //    int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+                //    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
+                //    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
+                //    //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
+                //}
             }
             else if((SceneManager.GetActiveScene().name == "WinnerCL") || (SceneManager.GetActiveScene().name == "LoseCL"))
             {
@@ -93,6 +99,9 @@ namespace VictoryChallenge.KJ.Photon
 
         public override void OnJoinedRoom()                     // 로비(룸)에 들어왔을 때
         {
+            _isReady = false;
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "IsReady", _isReady } });
+
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 OnSceneLoadedForAllPlayers();
@@ -103,6 +112,7 @@ namespace VictoryChallenge.KJ.Photon
                 _isReady = true;
                 PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsReady", _isReady } });
                 Debug.Log("호스트 준비 상태");
+                UpdatePlayerNumber();
             }
 
             Debug.Log("유저 이름 " + PhotonNetwork.NickName);
@@ -130,7 +140,7 @@ namespace VictoryChallenge.KJ.Photon
         {
             _isReady = !_isReady;
             _text.text = _isReady ? "UnReady" : "Ready";
-            PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsReady", _isReady } });
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "IsReady", _isReady } });
             Debug.Log($"{PhotonNetwork.LocalPlayer.NickName}" + (_isReady ? "준비완료" : "아직 준비완료 안함"));
             CheckAllPlayersReady();
         }
@@ -192,7 +202,7 @@ namespace VictoryChallenge.KJ.Photon
         {
             //방장이 레디 상태인지 확인하고, 레디 상태가 아니면 레디 상태로 설정
             object isReady;
-            if (!PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("IsReady", out isReady) || !(bool)isReady)
+            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("IsReady", out isReady) == false)
             {
                 _isReady = true;
                 PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "IsReady", _isReady } });
@@ -213,7 +223,8 @@ namespace VictoryChallenge.KJ.Photon
         public override void OnMasterClientSwitched(Player newMasterClient)
         {
             base.OnMasterClientSwitched(newMasterClient);
-            UpdateButtonText();
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+                UpdateButtonText();
         }
         #endregion
 
@@ -224,89 +235,35 @@ namespace VictoryChallenge.KJ.Photon
         }
 
 
-
-        public void OnPlayerFinish(string userId, float finishTime)
+        public override void OnPlayerLeftRoom(Player otherPlayer)
         {
-            if (!playerTimes.ContainsKey(userId))
-            {
-                playerTimes[userId] = finishTime;
-                photonView.RPC("FinishMaster", RpcTarget.AllBuffered, userId, finishTime);
+            base.OnPlayerLeftRoom(otherPlayer);
+            UpdatePlayerNumber();
+        }
 
-                if (!isCountdownStarted)
-                {
-                    StartCoroutine(CountdownCoroutine());
-                }
+        public override void OnPlayerEnteredRoom(Player newPlayer)
+        {
+            base.OnPlayerEnteredRoom(newPlayer);
+            UpdatePlayerNumber();
+
+        }
+
+        private void UpdatePlayerNumber()
+        {
+            List<Player> players = new List<Player>(PhotonNetwork.PlayerList);
+            players.Sort((p1, p2) => p1.ActorNumber.CompareTo(p2.ActorNumber));
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                Hashtable props = new Hashtable { { "PlayerNumber", i + 1 } };
+                players[i].SetCustomProperties(props);
+                Debug.Log($"num = {i + 1}");
             }
         }
 
-        [PunRPC]
-        public void FinishMaster(string userId, float finishTime)
+        public override void OnLeftRoom()                   // 로비(룸)에서 떠났으면 호출
         {
-            playerTimes[userId] = finishTime;
-        }
-
-        private bool AllPlayersFinished()
-        {
-            foreach (Player player in PhotonNetwork.PlayerList)
-            {
-                if (!playerTimes.ContainsKey(player.UserId))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private IEnumerator CountdownCoroutine()
-        {
-            float remainingTime = countdownTime;
-            while (remainingTime > 0)
-            {
-                Debug.Log($"Countdown: {remainingTime} seconds remaining");
-                yield return new WaitForSeconds(1f);
-                remainingTime -= 1f;
-            }
-
-            // 10초 후 게임 오버 처리
-            EndGame();
-        }
-
-        private void EndGame()
-        {
-            // 모든 플레이어가 준비되었는지 확인
-            if (!AllPlayersReady())
-            {
-                Debug.LogWarning("모든 플레이어가 준비되지 않았습니다. 결과 씬을 로드할 수 없습니다.");
-                return;
-            }
-
-            // playerTimes 딕셔너리를 시간 순서로 정렬합니다.
-            List<KeyValuePair<string, float>> sortedTimes = new List<KeyValuePair<string, float>>(playerTimes);
-            sortedTimes.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value)); // 시간이 적게 걸린 순서로 정렬
-
-            // 순위 부여 및 RPC를 통해 등수 정보를 모든 클라이언트에게 전달합니다.
-            for (int i = 0; i < sortedTimes.Count; i++)
-            {
-                string userId = sortedTimes[i].Key;
-                playerRanks[userId] = i + 1;
-                photonView.RPC("UpdatePlayerRank", RpcTarget.All, userId, playerRanks[userId]);
-            }
-
-            // 결과 씬으로 이동
-            PhotonNetwork.LoadLevel("VictoryCL");
-        }
-
-
-        [PunRPC]
-        void UpdatePlayerRank(string userId, int rank)
-        {
-            playerRanks[userId] = rank;
-        }
-
-        public static void ResetGame()
-        {
-            playerTimes.Clear();
-            playerRanks.Clear();
+            base.OnLeftRoom();
         }
     }
 }

@@ -56,30 +56,23 @@ namespace VictoryChallenge.Scripts.CL
             Init();
             // 로그인안하고 씬에서 테스트만 하려면 아래코드 주석해제
             //StartCoroutine(GameStart());
+            gameManager = GameObject.FindObjectOfType<GameManagerCL>();
 
             switch (SceneManager.GetActiveScene().buildIndex)
             {
-                case 3:
-                    round = 1;
-                    person = 2;
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    round = 2;
-                    person = 2;
-                    break;
                 case 6:
+                    round = 1;
+                    break;
+                case 7:
                     round = 2;
-                    person = 1;
+                    break;
+                case 8:
+                    round = 2;
                     break;
                 case 9:
-                    round = 1;
-                    person = 4;
+                    round = 3;
                     break;
             }
-
-            gameManager = GameObject.FindObjectOfType<GameManagerCL>();
 
             #region 장애물
             // 장애물
@@ -123,7 +116,23 @@ namespace VictoryChallenge.Scripts.CL
             base.Init();
             Bind<TextMeshProUGUI>(typeof(TMPs));
             Bind<Image>(typeof(Images));
-            Managers.Sound.Play("RunBGM1", Define.Sound.BGM);
+
+            switch (SceneManager.GetActiveScene().buildIndex)
+            { 
+                case 6:
+                    Managers.Sound.Play("RunBGM1", Define.Sound.BGM);
+                    break;
+                case 7:
+                case 8:
+                    Managers.Sound.Play("RunBGM2", Define.Sound.BGM);
+                    break;
+                case 9:
+                    Managers.Sound.Play("TestMapBGM", Define.Sound.BGM);
+                    break;
+            }
+
+
+
             AudioSource _audioSource = GameObject.Find("BGM").GetComponent<AudioSource>();
             _audioSource.volume = 0.4f;
 
@@ -228,7 +237,7 @@ namespace VictoryChallenge.Scripts.CL
             isMoving = true;
 
             // 2인용 맵에서는 안보이게
-            if (SceneManager.GetActiveScene().buildIndex != 6)
+            if (SceneManager.GetActiveScene().buildIndex < 9)
             { 
                 personText.gameObject.SetActive(true);
                 clock.gameObject.SetActive(true);
@@ -240,6 +249,8 @@ namespace VictoryChallenge.Scripts.CL
             text.gameObject.SetActive(false);
 
             // 장애물
+            _obstacleManager = FindObjectOfType<ObstacleManager>();
+
             if (_obstacleManager != null)
             {
                 _obstacleManager.obstaclespawn = true;

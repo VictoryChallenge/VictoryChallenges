@@ -14,30 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scenes/00.CL/LobbyCL(T).unity
     guid: 5a86f1b0c7315a74790d60c4e7cfa233
-  - enabled: 0
-    path: Assets/1.Scenes/00.CL/TestRunCL.unity
-    guid: 13340fd6c0d44104dab4c46fbda77366
-  - enabled: 1
-    path: Assets/1.Scenes/00.CL/JustRun(T)CL.unity
-    guid: 00eafb36de05d6242a4c614457f791cf
-  - enabled: 0
-    path: Assets/1.Scenes/00.CL/JustRunCL.unity
-    guid: e31fee4161bef1349bd5d420ae187958
   - enabled: 1
     path: Assets/1.Scenes/00.CL/CustomizeTutorialCL.unity
     guid: f7edc989cb7eb644a982d4555a3e84a0
-  - enabled: 1
-    path: Assets/1.Scenes/00.CL/JustRun2CL.unity
-    guid: 1825df5dd50d1204eabdd96fe66aa364
-  - enabled: 0
-    path: Assets/1.Scenes/00.GC/SSAP maraton.unity
-    guid: 8396bb939a95a0245b2656546d865710
-  - enabled: 1
-    path: Assets/1.Scenes/00.KJ/TestMap.unity
-    guid: 0172865ba98e8af4a9bac60290725e96
-  - enabled: 0
-    path: Assets/1.Scenes/00.KJ/TestMapHS.unity
-    guid: 0b519fe827652dd4cb1091d7ae84b57f
   - enabled: 1
     path: Assets/1.Scenes/00.CL/WinnerCL.unity
     guid: bc2a62475a66dce4f8157172b467126b
@@ -47,4 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scenes/00.GC/JustRun3.unity
     guid: b800fbcc83fc83b4b8327454d724edca
+  - enabled: 1
+    path: Assets/1.Scenes/00.CL/JustRun(T)CL.unity
+    guid: 00eafb36de05d6242a4c614457f791cf
+  - enabled: 1
+    path: Assets/1.Scenes/00.CL/JustRun2CL.unity
+    guid: 1825df5dd50d1204eabdd96fe66aa364
+  - enabled: 1
+    path: Assets/1.Scenes/00.KJ/TestMap.unity
+    guid: 0172865ba98e8af4a9bac60290725e96
   m_configObjects: {}
