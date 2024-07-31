@@ -26,6 +26,10 @@ namespace VictoryChallenge.StateMachine.Player
                 {
                     return (controller.velocity.magnitude > 0.01f);
                 }},
+                { State.Dizzy, (animator) =>
+                {
+                    return !controller.isDizzying && controller.isDizzy;
+                }},
             };
         }
 
