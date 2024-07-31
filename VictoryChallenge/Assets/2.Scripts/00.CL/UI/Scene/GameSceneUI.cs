@@ -53,6 +53,8 @@ namespace VictoryChallenge.Scripts.CL
 
         void Start()
         {
+            Cursor.visible = false;
+
             Init();
             // 로그인안하고 씬에서 테스트만 하려면 아래코드 주석해제
             //StartCoroutine(GameStart());
@@ -165,12 +167,18 @@ namespace VictoryChallenge.Scripts.CL
             // 옵션팝업 띄우기
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                GameObject go = GameObject.Find("GameSettingPopup");
-                if (go != null)
-                    return;
-                else 
+                if (Managers.UI.IsPopupStackEmpty() == false)
+                {
+                    Managers.UI.ClosePopupUI();
+                    Cursor.visible = false;
+                }
+                else
+                {
+                    // 팝업 스택이 비어 있다면 GameSettingPopup을 표시
                     Managers.UI.ShowPopupUI<GameSettingPopup>();
+                }
             }
+
 
             time = gameManager.time;
             gameManager.isMoving = isMoving;
@@ -415,6 +423,12 @@ namespace VictoryChallenge.Scripts.CL
 
             missionCanvasGroup.alpha = 0;
             mission.gameObject.SetActive(false);
+        }
+
+        private void OnDestroy()
+        {
+            Cursor.visible = true;
+            Managers.UI.CloseAllPopupUI();
         }
     }
 }

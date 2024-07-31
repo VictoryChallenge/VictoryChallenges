@@ -33,7 +33,7 @@ namespace VictoryChallenge.Customize
         private int _hatIndex = 0;
         private int _accessoryIndex = 0;
 
-        private string _userId;
+        private string _userId; 
         private string _shortUID;
         private bool _isLocal;
 
@@ -570,35 +570,39 @@ namespace VictoryChallenge.Customize
                     _earMesh.transform.GetChild(saveObject.earIndex).gameObject.SetActive(true);
                     _accessoryMesh.transform.GetChild(saveObject.accessoryIndex).gameObject.SetActive(true);
                     _hatMesh.transform.GetChild(saveObject.hatIndex).gameObject.SetActive(true);
+                    
+                    _earIndex = saveObject.earIndex;
+                    _accessoryIndex = saveObject.accessoryIndex;
+                    _hatIndex = saveObject.hatIndex;
 
-                    int earMeshCount = _earMesh.transform.childCount;
-                    int accessoryMeshCount = _accessoryMesh.transform.childCount;
-                    int hatMeshCount = _hatMesh.transform.childCount;
+                    //int earMeshCount = _earMesh.transform.childCount;
+                    //int accessoryMeshCount = _accessoryMesh.transform.childCount;
+                    //int hatMeshCount = _hatMesh.transform.childCount;
 
                     // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
-                    for (int i = 0; i < earMeshCount; i++)
-                    {
-                        if (i != saveObject.earIndex)
-                        {
-                            _earMesh.transform.GetChild(i).gameObject.SetActive(false);
-                        }
-                    }
+                    //for (int i = 0; i < earMeshCount; i++)
+                    //{
+                    //    if (i != saveObject.earIndex)
+                    //    {
+                    //        _earMesh.transform.GetChild(i).gameObject.SetActive(false);
+                    //    }
+                    //}
 
-                    for (int i = 0; i < accessoryMeshCount; i++)
-                    {
-                        if (i != saveObject.accessoryIndex)
-                        {
-                            _accessoryMesh.transform.GetChild(i).gameObject.SetActive(false);
-                        }
-                    }
+                    //for (int i = 0; i < accessoryMeshCount; i++)
+                    //{
+                    //    if (i != saveObject.accessoryIndex)
+                    //    {
+                    //        _accessoryMesh.transform.GetChild(i).gameObject.SetActive(false);
+                    //    }
+                    //}
 
-                    for (int i = 0; i < hatMeshCount; i++)
-                    {
-                        if (i != saveObject.hatIndex)
-                        {
-                            _hatMesh.transform.GetChild(i).gameObject.SetActive(false);
-                        }
-                    }
+                    //for (int i = 0; i < hatMeshCount; i++)
+                    //{
+                    //    if (i != saveObject.hatIndex)
+                    //    {
+                    //        _hatMesh.transform.GetChild(i).gameObject.SetActive(false);
+                    //    }
+                    //}
                 }
             });
 
@@ -626,22 +630,22 @@ namespace VictoryChallenge.Customize
 
             // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
 
-            foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
-            {
-                SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
+            //foreach (BodyPartTypeIndex bodyPartTypeIndex in saveObject.bodyPartTypeIndexList)
+            //{
+            //    SkinnedBodyPartData bodyPartData = GetSkinnedBodyPartData(bodyPartTypeIndex.bodyPartType);
 
-                int childCount = bodyPartData.skinnedMeshRenderer.transform.parent.childCount;
+            //    int childCount = bodyPartData.skinnedMeshRenderer.transform.parent.childCount;
 
-                //Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
+            //    //Debug.Log("Partstype = " + bodyPartTypeIndex.bodyPartType + " " + bodyPartTypeIndex.index);
 
-                for (int i = 0; i < childCount; i++)
-                {
-                    if (i != 0)
-                    {
-                        Destroy(bodyPartData.skinnedMeshRenderer.transform.parent.transform.GetChild(i).gameObject);
-                    }
-                }
-            }
+            //    for (int i = 0; i < childCount; i++)
+            //    {
+            //        if (i != 0)
+            //        {
+            //            Destroy(bodyPartData.skinnedMeshRenderer.transform.parent.transform.GetChild(i).gameObject);
+            //        }
+            //    }
+            //}
 
             _earMesh.transform.GetChild(saveObject.earIndex).gameObject.SetActive(true);
             _accessoryMesh.transform.GetChild(saveObject.accessoryIndex).gameObject.SetActive(true);

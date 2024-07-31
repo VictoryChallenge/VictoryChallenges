@@ -89,15 +89,32 @@ namespace VictoryChallenge.Scripts.CL
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                GameObject go = GameObject.Find("GameSettingPopup");
-                if (go != null)
-                    return;
-                else
-                    Managers.UI.ShowPopupUI<GameSettingPopup>();
+                // 채팅 입력 필드가 포커스된 경우 처리
+                GameObject chatInput = GameObject.Find("ChatInput");
+                if (chatInput != null && chatInput.GetComponent<TMP_InputField>().isFocused)
+                {
+                    chatInput.GetComponent<TMP_InputField>().DeactivateInputField();
+                    return; // 더 이상의 처리 방지
+                }
 
-                GameObject gogo = GameObject.Find("ChatInput");
-                if (gogo != null && gogo.GetComponent<TMP_InputField>().isFocused)
-                    gogo.GetComponent<TMP_InputField>().DeactivateInputField();
+                // 팝업 스택이 비어있지 않다면 최상위 팝업 닫기
+                if (Managers.UI.IsPopupStackEmpty() == false)
+                {
+                    Managers.UI.ClosePopupUI();
+                }
+                else
+                {
+                    // 팝업 스택이 비어 있다면 GameSettingPopup을 표시
+                    Managers.UI.ShowPopupUI<GameSettingPopup>();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                if (!Managers.UI.IsPopupUIExists<KeyGuidePopup>())
+                {
+                    Managers.UI.ShowPopupUI<KeyGuidePopup>();
+                }
             }
         }
 
