@@ -17,14 +17,10 @@ namespace VictoryChallenge.StateMachine.Player
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
-                { State.Dizzy, (animator) =>
-                {
-                    return !controller.isDie && controller.isDizzy;
-                }},
-                { State.Die, (animator) =>
-                {
-                    return controller.isDie;
-                }},
+                //{ State.Dizzy, (animator) =>
+                //{
+                //    return controller.isDizzy;
+                //}},
             };
         }
 
@@ -35,15 +31,12 @@ namespace VictoryChallenge.StateMachine.Player
             animator.SetInteger("State", (int)State.Hit);
 
             controller.hitCount++;
-
-            //Debug.Log("hit Count : " + controller.hitCount);
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateExit(animator, stateInfo, layerIndex);
 
-            //controller.isHit = false;
         }
     }
 }

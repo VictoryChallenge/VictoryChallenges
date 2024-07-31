@@ -93,7 +93,6 @@ namespace VictoryChallenge.Scripts.CL
             {
                 inputbool = false;
                 OnInputEndEdit(chatinput.text);
-                Debug.Log("1번비활성");
                 chatinput.DeactivateInputField();
                 chatinput.OnDeselect(null);
                 chatinput.text = string.Empty;
@@ -110,7 +109,6 @@ namespace VictoryChallenge.Scripts.CL
             // 인풋 필드가 포커스를 받지 않은 상태에서 Enter 키를 누르면 인풋 필드 활성화 및 선택
             if (!chatinput.isFocused && Input.GetKeyDown(KeyCode.Return) && inputbool == true)
             {
-                Debug.Log("1번활성");
                 chatinput.ActivateInputField();
                 chatinput.Select();
                 
@@ -377,7 +375,6 @@ namespace VictoryChallenge.Scripts.CL
             if (chatMessages.Count > 30)
             {
                 chatMessages.RemoveRange(0, chatMessages.Count - 30); // 메시지가 30개를 초과하면 오래된 메시지 삭제
-                Debug.Log("dd");
             }
 
             chatDisplay.text = string.Join("\n", chatMessages); // 채팅 메시지를 텍스트로 변환하여 표시

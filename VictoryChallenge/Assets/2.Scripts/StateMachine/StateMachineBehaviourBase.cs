@@ -52,11 +52,14 @@ namespace VictoryChallenge.StateMachine
             if (transitions[newState].Invoke(animator) == false)
                 return false;
 
-            //if(controller._pv.IsMine)
-            //    controller._pv.RPC("ChangeStateRPC", Photon.Pun.RpcTarget.AllBuffered, newState);
+            if(controller._pv.IsMine)
+            {
+                controller._pv.RPC("ChangeStateRPC", Photon.Pun.RpcTarget.AllBuffered, newState);
 
-            animator.SetInteger("State", (int)newState);
-            animator.SetBool("IsDirty", true);
+            }
+
+            //animator.SetInteger("State", (int)newState);
+            //animator.SetBool("IsDirty", true);
             return true;
         }
     }

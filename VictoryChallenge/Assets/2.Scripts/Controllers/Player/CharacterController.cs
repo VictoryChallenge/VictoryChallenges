@@ -68,35 +68,13 @@ namespace VictoryChallenge.Controllers.Player
         #endregion
 
         #region 상호 작용
-        // Grab
-        public bool isGrabbing
-        {
-            get => _isGrabbing;
-            set => _isGrabbing = value;
-        }
-
-        private bool _isGrabbing;
-        public virtual bool isGrabbable { get; set; }
-        public virtual Transform grabbableTransform { get; set; }
-        public virtual Rigidbody grabbableRigid { get; set; }
-        public virtual CapsuleCollider grabbableCollider { get; set; }
-        public virtual GameObject holdingObject { get; set; }
-
-        // Holding
-        public bool isHolding
-        {
-            get => _isHolding;
-            set => _isHolding = value;
-        }
-
-        private bool _isHolding;
-
         // Hit
         public virtual bool isDizzy { get; set; }
         public virtual bool isDie { get; set; }
 
         public virtual int hitCount { get; set; }
         public virtual int dizzyCount { get; set; }
+        public virtual bool isDizzying { get; set; }
 
         // Attack
         public bool isAttacking
@@ -141,6 +119,21 @@ namespace VictoryChallenge.Controllers.Player
         }
 
         private bool _isFinished;
+
+        // Push
+        public bool isPush
+        {
+            get => _isPush;
+            set => _isPush = value;
+        }
+        private bool _isPush;
+
+        public bool isKick
+        {
+            get => _isKick;
+            set => _isKick = value;
+        }
+        private bool _isKick;
         #endregion
 
         #region 카메라
@@ -189,39 +182,6 @@ namespace VictoryChallenge.Controllers.Player
                     _followCam.enabled = false;
                     _introTimeline.stopped += OnStopTimeline;
                 }
-                //else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(5))
-                //{
-                //    nickName = PhotonNetwork.NickName;
-
-
-                //    // 카메라 캐싱
-                //    _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
-                //    _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
-                //    _followCam.enabled = false;
-                //    _introTimeline.stopped += OnStopTimeline;
-                //}
-                //else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(6))
-                //{
-                //    nickName = PhotonNetwork.NickName;
-
-
-                //    // 카메라 캐싱
-                //    _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
-                //    _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
-                //    _followCam.enabled = false;
-                //    _introTimeline.stopped += OnStopTimeline;
-                //}
-                //else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(9))
-                //{
-                //    nickName = PhotonNetwork.NickName;
-
-
-                //    // 카메라 캐싱
-                //    _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
-                //    _introTimeline = GameObject.Find("IntroTimeline").GetComponent<PlayableDirector>();
-                //    _followCam.enabled = false;
-                //    _introTimeline.stopped += OnStopTimeline;
-                //}
             }
             //if (!_pv.IsMine)
             else
@@ -238,7 +198,6 @@ namespace VictoryChallenge.Controllers.Player
         {
             _followCam.enabled = true;
             _introCam.enabled = false;
-            //_missionUI.enabled = false;
         }
 
         private void FixedUpdate()
@@ -250,10 +209,6 @@ namespace VictoryChallenge.Controllers.Player
         {
             if (!_pv.IsMine)
             {
-                //if (transform.IsGrounded())
-                //{
-                //    Debug.Log("Client Ground Collision");
-                //}
                 return;
             }
 
@@ -273,26 +228,14 @@ namespace VictoryChallenge.Controllers.Player
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);
 
-            if (dizzyCount > 2)
-            {
-                isDie = true;
-            }
-
-            if (!isDie)
-            {
-                if (hitCount > 2)
-                {
-                    isDizzy = true;
-                }
-                else
-                {
-                    isDizzy = false;
-                }
-            }
-            else
-            {
-                isDizzy = false;
-            }
+            //if (hitCount > 2)
+            //{
+            //    isDizzy = true;
+            //}
+            //else
+            //{
+            //    isDizzy = false;
+            //}
         }
 
         // Player 이동 
@@ -303,30 +246,15 @@ namespace VictoryChallenge.Controllers.Player
                 return;
             }
 
-            if (!isReverseKey)
-            {
-                // 이동
-                float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
-                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            // 이동
+            float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
-                Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-                transform.Translate(moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
+            Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+            transform.Translate(moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
 
-                if (_velocity != Vector3.zero)
-                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 0.35f);
-            }
-            else
-            {
-                // 이동
-                float targetAngle = Mathf.Atan2(_velocity.x, _velocity.z) * Mathf.Rad2Deg + camTransform.eulerAngles.y;
-                //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-
-                Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-                transform.Translate(-moveDir.normalized * _velocity.magnitude * Time.deltaTime, Space.World);
-
-                if (_velocity != Vector3.zero)
-                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-moveDir), 0.35f);
-            }
+            if (_velocity != Vector3.zero)
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 0.35f);
 
             //transform.position += transform.forward * _velocity.magnitude * Time.fixedDeltaTime;
 
@@ -358,30 +286,24 @@ namespace VictoryChallenge.Controllers.Player
             }
         }
 
+        [PunRPC]
+        public void ChangeStateRPC(State newState)
+        {
+            _animator.SetInteger("State", (int)newState);
+            _animator.SetBool("IsDirty", true);
+        }
+
         //[PunRPC]
-        //public void ChangeStateRPC(State newState)
+        //public void HitCheckRPC(bool isCheck)
         //{
-        //    _animator.SetInteger("State", (int)newState);
-        //    _animator.SetBool("IsDirty", true);
+        //    _isHit = isCheck;
+        //    Debug.Log("hitCheck" + _isHit);
         //}
-
-        [PunRPC]
-        public void HitCheckRPC(bool isCheck)
-        {
-            _isHit = isCheck;
-            Debug.Log("hitCheck" + _isHit);
-        }
-
-        [PunRPC]
-        public void HoldingCheckRPC(bool isCheck)
-        {
-            _isHolding = isCheck;
-        }
 
         [PunRPC]
         public void CustomDataRPC()
         {
-            GetComponentInChildren<PlayerCharacterCustomized>().Load();
+            GetComponentInChildren<PlayerCharacterCustomized>().LoadData();
         }
 
         #region 충돌체크
@@ -392,6 +314,30 @@ namespace VictoryChallenge.Controllers.Player
                 if(_isSlip == false)
                 {
                     _isSlip = true;
+                }
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                if(_isPush)
+                {
+                    if (other.gameObject.GetComponent<CharacterController>().isDizzy == false)
+                    {
+                        other.gameObject.GetComponent<CharacterController>().isDizzy = true;
+                    }
+                }
+
+                if (_isAttacking)
+                {
+                    other.gameObject.GetComponent<CharacterController>().isDizzy = true;
+                }
+
+                if(_isKick)
+                {
+                    other.gameObject.GetComponent<CharacterController>().isDizzy = true;
                 }
             }
         }

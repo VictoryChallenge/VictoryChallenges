@@ -206,105 +206,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offsetY: 2
---- !u!1 &3087896044285557385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6023892632365893803}
-  - component: {fileID: 2028968137114274811}
-  - component: {fileID: 5447334538137276014}
-  m_Layer: 0
-  m_Name: GrabDetector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6023892632365893803
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3087896044285557385}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.11}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8959293427291496906}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2028968137114274811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3087896044285557385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed02e72142a56249aabf50aaddbb1f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!136 &5447334538137276014
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3087896044285557385}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.405267
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: -0, y: 1, z: -0}
---- !u!1 &3208129978150502053
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 203740702475263763}
-  m_Layer: 0
-  m_Name: Grab
-  m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &203740702475263763
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3208129978150502053}
-  serializedVersion: 2
-  m_LocalRotation: {x: 9.1360544e-17, y: -2.8760694e-16, z: 0.0000000074505797, w: 1}
-  m_LocalPosition: {x: 0.19999976, y: -0.6800001, z: -6.8794777e-16}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8472819336437908841}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7542246353077790821
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +271,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -532,10 +440,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7226502690374904862, guid: 92a88890847789b41a8d15ce4f6fa767,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6023892632365893803}
-    - targetCorrespondingSourceObject: {fileID: 7226502690374904862, guid: 92a88890847789b41a8d15ce4f6fa767,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8517715472237453633}
     - targetCorrespondingSourceObject: {fileID: 7226502690374904862, guid: 92a88890847789b41a8d15ce4f6fa767,
         type: 3}
@@ -549,10 +453,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4428197400620901898}
-    - targetCorrespondingSourceObject: {fileID: 7893117191777781949, guid: 92a88890847789b41a8d15ce4f6fa767,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 203740702475263763}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6635162545121551767, guid: 92a88890847789b41a8d15ce4f6fa767,
         type: 3}
@@ -577,11 +477,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6635162545121551767, guid: 92a88890847789b41a8d15ce4f6fa767,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5271859575328088664}
+      addedObject: {fileID: 4136858008383040364}
     - targetCorrespondingSourceObject: {fileID: 6635162545121551767, guid: 92a88890847789b41a8d15ce4f6fa767,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4136858008383040364}
+      addedObject: {fileID: 8378065624393660473}
     - targetCorrespondingSourceObject: {fileID: 1028327763681498058, guid: 92a88890847789b41a8d15ce4f6fa767,
         type: 3}
       insertIndex: -1
@@ -745,8 +645,8 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1149344123134860845}
-  - {fileID: 5271859575328088664}
   - {fileID: 4136858008383040364}
+  - {fileID: 8378065624393660473}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -766,39 +666,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &5271859575328088664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4902354156694710339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 3
-    SynchronizeType: 2
-    Name: State
-  - Type: 4
-    SynchronizeType: 2
-    Name: IsDirty
-  - Type: 1
-    SynchronizeType: 2
-    Name: Horizontal
-  - Type: 1
-    SynchronizeType: 2
-    Name: Vertical
-  - Type: 3
-    SynchronizeType: 2
-    Name: AttackComboStack
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
 --- !u!114 &4136858008383040364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,6 +682,39 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &8378065624393660473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902354156694710339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 3
+    SynchronizeType: 0
+    Name: State
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsDirty
+  - Type: 1
+    SynchronizeType: 2
+    Name: Horizontal
+  - Type: 1
+    SynchronizeType: 2
+    Name: Vertical
+  - Type: 3
+    SynchronizeType: 0
+    Name: AttackComboStack
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &5026949400055832366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6764182167975105274, guid: 92a88890847789b41a8d15ce4f6fa767,
@@ -873,12 +773,6 @@ CapsuleCollider:
   m_Height: 0.14662558
   m_Direction: 1
   m_Center: {x: 0.07, y: -0.009999996, z: 0.00000006692604}
---- !u!4 &8472819336437908841 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7893117191777781949, guid: 92a88890847789b41a8d15ce4f6fa767,
-    type: 3}
-  m_PrefabInstance: {fileID: 1737399962674712020}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8959293427291496906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7226502690374904862, guid: 92a88890847789b41a8d15ce4f6fa767,

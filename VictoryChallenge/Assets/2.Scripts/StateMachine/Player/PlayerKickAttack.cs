@@ -44,6 +44,8 @@ namespace VictoryChallenge.StateMachine.Player
             animator.SetInteger("State", (int)State.KickAttack);
             _colLeftFoot.enabled = true;
             _colRightFoot.enabled = true;
+
+            controller.isKick = true;
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -59,6 +61,8 @@ namespace VictoryChallenge.StateMachine.Player
 
             _colLeftFoot.enabled = false;
             _colRightFoot.enabled = false;
+
+            controller.isKick = false;
         }
     }
 }
