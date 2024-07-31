@@ -167,12 +167,18 @@ namespace VictoryChallenge.Scripts.CL
             // 옵션팝업 띄우기
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                GameObject go = GameObject.Find("GameSettingPopup");
-                if (go != null)
-                    return;
-                else 
+                if (Managers.UI.IsPopupStackEmpty() == false)
+                {
+                    Managers.UI.ClosePopupUI();
+                    Cursor.visible = false;
+                }
+                else
+                {
+                    // 팝업 스택이 비어 있다면 GameSettingPopup을 표시
                     Managers.UI.ShowPopupUI<GameSettingPopup>();
+                }
             }
+
 
             time = gameManager.time;
             gameManager.isMoving = isMoving;
@@ -422,6 +428,7 @@ namespace VictoryChallenge.Scripts.CL
         private void OnDestroy()
         {
             Cursor.visible = true;
+            Managers.UI.CloseAllPopupUI();
         }
     }
 }

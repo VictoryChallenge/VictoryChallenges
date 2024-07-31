@@ -1428,7 +1428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d8715b052a029409585a5daa409904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseCursor: {fileID: 2800000, guid: b2846eb7b9bd91b44ab4193afdb822a0, type: 3}
+  _mouseCursor: {fileID: 2800000, guid: bd5bf18ee3ca5a24f9b097644b502f91, type: 3}
+  _mouseCursor2: {fileID: 2800000, guid: c9bbcf1ccbc5b64418eec313c8862687, type: 3}
 --- !u!1 &981211396
 GameObject:
   m_ObjectHideFlags: 0

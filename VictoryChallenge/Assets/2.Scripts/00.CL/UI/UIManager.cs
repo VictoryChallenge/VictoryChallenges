@@ -104,7 +104,7 @@ namespace VictoryChallenge.Scripts.CL
         /// <param name="name"> 기본값은 null인 string </param>
         /// <returns></returns>
         public T ShowPopupUI<T>(string name = null) where T : UI_Popup
-        {
+        {            
             // 이름이 지정되지 않았을 경우 클래스 이름을 사용
             if (string.IsNullOrEmpty(name))
                 name = typeof(T).Name;
@@ -186,6 +186,30 @@ namespace VictoryChallenge.Scripts.CL
                 {
                     return true;
                 }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 팝업이 하나도 없는지 여부
+        /// </summary>
+        /// <returns></returns>
+        public bool IsPopupStackEmpty()
+        {
+            return _popupStack.Count == 0 ? true : false;
+        }
+
+        /// <summary>
+        /// 특정 팝업이 떠있는지 여부
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public bool IsPopupUIExists<T>() where T : UI_Popup
+        {
+            foreach (var popup in _popupStack)
+            {
+                if (popup.GetType() == typeof(T))
+                    return true;
             }
             return false;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VictoryChallenge.KJ.Room;
 
@@ -58,15 +59,6 @@ namespace VictoryChallenge.Scripts.CL
             GetButton((int)Buttons.Exit).gameObject.AddUIEvent((PointerEventData data) => LeaveRoom());
             GetSlider((int)Sliders.SoundSlider).onValueChanged.AddListener(UpdateVolume);
             GetToggle((int)Toggles.Sound).onValueChanged.AddListener(UpdateToggleImage);
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape)) 
-            {
-                ClosePopupUI();
-                Cursor.visible = false;
-            }
         }
 
         void UpdateVolume(float volume)
