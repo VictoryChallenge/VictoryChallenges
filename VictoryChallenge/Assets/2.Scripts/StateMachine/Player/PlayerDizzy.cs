@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
+using VictoryChallenge.KJ.Effect;
 using CharacterController = VictoryChallenge.Controllers.Player.CharacterController;
 
 namespace VictoryChallenge.StateMachine.Player
@@ -10,9 +12,14 @@ namespace VictoryChallenge.StateMachine.Player
     /// </summary>
     public class PlayerDizzy : StateMachineBehaviourBase
     {
+
+        private PlayerEffect _playerEffect;     // 기절 이페트
+
         public override void Init(CharacterController controller)
         {
             base.Init(controller);
+
+            _playerEffect = controller.GetComponentInChildren<PlayerEffect>();        // 기절 이펙트
 
             transitions = new Dictionary<State, System.Func<Animator, bool>>
             {
@@ -33,6 +40,12 @@ namespace VictoryChallenge.StateMachine.Player
             controller.isKeyActive = false;
             controller.isDizzying = true;
             Debug.Log("dizzyEnter");
+
+            // 기절 이펙트
+            if (_playerEffect != null)
+            {
+                _playerEffect.ActivateDizzyEffect();
+            }
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -52,6 +65,12 @@ namespace VictoryChallenge.StateMachine.Player
             controller.isDizzying = false;
 
             Debug.Log("dizzyExit");
+
+            // 기절 이펙트
+            if (_playerEffect != null)
+            {
+                _playerEffect.DeactivateDizzyEffect();
+            }
         }
     }
 }
