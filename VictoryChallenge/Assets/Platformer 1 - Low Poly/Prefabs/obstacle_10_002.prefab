@@ -76,6 +76,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -5973704133050799030}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a332f4359cf2c844e829de88a9cff310,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5937855916047122403}
   m_SourcePrefab: {fileID: 100100000, guid: a332f4359cf2c844e829de88a9cff310, type: 3}
 --- !u!1 &5698081470893619280 stripped
 GameObject:
@@ -104,3 +108,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1723806, y: 1.3969576, z: 0.19904795}
   m_Center: {x: -0.0000030733645, y: -0.08640006, z: -0.000000007450581}
+--- !u!114 &-5937855916047122403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5698081470893619280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549566ae291a7134485071015c6a234f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  titleAnim: obstacle_10_002
