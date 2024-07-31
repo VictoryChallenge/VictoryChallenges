@@ -20,6 +20,13 @@ namespace VictoryChallenge.KJ.CutScene
         {
             _introCam.enabled = false;
         }
-    }
 
+        private void OnDestroy()
+        {
+            if (_introTimeline != null)
+            {
+                _introTimeline.stopped -= OnStopTimeline;
+            }
+        }
+    }
 }

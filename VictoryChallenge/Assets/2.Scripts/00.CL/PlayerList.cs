@@ -35,7 +35,6 @@ namespace VictoryChallenge.Scripts.CL
             if (PhotonNetwork.InRoom)
             {
                 UpdatePlayerList();
-                Debug.Log("방들");
             }
         }
 
@@ -44,7 +43,6 @@ namespace VictoryChallenge.Scripts.CL
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 UpdatePlayerList();
-                Debug.Log("안되냐?온조인룸");
             }
         }
 

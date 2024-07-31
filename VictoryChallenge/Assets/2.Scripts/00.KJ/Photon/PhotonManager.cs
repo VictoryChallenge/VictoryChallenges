@@ -86,7 +86,7 @@ namespace VictoryChallenge.KJ.Photon
             RoomOptions roomOptions = new RoomOptions()
             {
                 IsVisible = true,
-                MaxPlayers = 4,
+                MaxPlayers = 8,
             };
 
             PhotonNetwork.CreateRoom(roomName, roomOptions, TypedLobby.Default);

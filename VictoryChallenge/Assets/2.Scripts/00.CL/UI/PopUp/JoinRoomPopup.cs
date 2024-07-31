@@ -60,5 +60,10 @@ namespace VictoryChallenge.Scripts.CL
                     break;
             }
         }
+
+        private void OnDestroy()
+        {
+            ClosePopupUI();
+        }
     }
 }

@@ -2823,7 +2823,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1501259516}
   - component: {fileID: 1501259518}
-  - component: {fileID: 1501259519}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -2859,20 +2858,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501259515}
   m_CullTransparentMesh: 1
---- !u!114 &1501259519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501259515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6549ddce4834acd489e3aa4870d37b69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuName: title
-  open: 0
 --- !u!1 &1584179029
 GameObject:
   m_ObjectHideFlags: 0
@@ -3908,7 +3893,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1953834446}
-  - component: {fileID: 1953834449}
   - component: {fileID: 1953834448}
   - component: {fileID: 1953834447}
   - component: {fileID: 1953834450}
@@ -3986,20 +3970,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953834445}
   m_CullTransparentMesh: 1
---- !u!114 &1953834449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953834445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6549ddce4834acd489e3aa4870d37b69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuName: loading
-  open: 1
 --- !u!114 &1953834450
 MonoBehaviour:
   m_ObjectHideFlags: 0

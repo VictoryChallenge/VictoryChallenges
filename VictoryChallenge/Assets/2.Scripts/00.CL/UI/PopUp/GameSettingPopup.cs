@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using VictoryChallenge.KJ.Room;
 
@@ -31,6 +32,7 @@ namespace VictoryChallenge.Scripts.CL
         void Start()
         {
             Init();
+            Cursor.visible = true;
             RectTransform rectTransform = GetComponent<RectTransform>();
             rectTransform.anchoredPosition = Vector2.zero;
             _audiosource = GameObject.Find("BGM").GetComponent<AudioSource>();
@@ -59,22 +61,11 @@ namespace VictoryChallenge.Scripts.CL
             GetToggle((int)Toggles.Sound).onValueChanged.AddListener(UpdateToggleImage);
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape)) 
-            {
-                ClosePopupUI();
-            }
-        }
-
         void UpdateVolume(float volume)
         {
             _audiosource.volume = volume;
             PlayerPrefs.SetFloat("Volume", volume);  // º¼·ý °ª ÀúÀå
             PlayerPrefs.Save();
-
-            // Debug.Log·Î º¼·ý °ª È®ÀÎ
-            Debug.Log("Volume updated: " + volume + " º¼·ý " + _audiosource.volume);
         }
 
         void UpdateToggleImage(bool isOn)
