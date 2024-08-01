@@ -17,5 +17,10 @@ namespace VictoryChallenge.Scripts.CL
         {
             Managers.UI.ClosePopupUI(this);
         }
+
+        private void OnDestroy()
+        {
+            ClosePopupUI();
+        }
     }
 }

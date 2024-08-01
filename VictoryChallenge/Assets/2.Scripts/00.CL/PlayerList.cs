@@ -34,7 +34,8 @@ namespace VictoryChallenge.Scripts.CL
         {
             if (PhotonNetwork.InRoom)
             {
-                UpdatePlayerList();
+                Debug.Log("스타트문 플레이어 리스트 업데이트");
+                Invoke("UpdatePlayerList", 0.25f);
             }
         }
 
@@ -42,14 +43,35 @@ namespace VictoryChallenge.Scripts.CL
         {
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
+                Debug.Log("onjoinedroom 플레이어 리스트 업데이트");
                 UpdatePlayerList();
             }
         }
 
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
+            Debug.Log("onplayerenteredroom 플레이어 리스트 업데이트");
+
             GameObject prefab = newPlayer.NickName == PhotonNetwork.NickName ? playerListPrefab1 : playerListPrefab2;
-            Instantiate(prefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
+            PlayerListItem listItem = Instantiate(prefab, playerListContent).GetComponent<PlayerListItem>();
+            listItem.SetUp(newPlayer);
+
+            //// 0.25초 후에 Refresh 함수를 호출
+            //Invoke(nameof(CallRefresh), 0.4f);
+        }
+
+        // CallRefresh 메서드 추가
+        private void CallRefresh()
+        {
+            // playerListContent 내의 모든 PlayerListItem에 대해 Refresh 호출
+            foreach (Transform child in playerListContent)
+            {
+                PlayerListItem item = child.GetComponent<PlayerListItem>();
+                if (item != null)
+                {
+                    item.Refresh();
+                }
+            }
         }
 
         public void UpdatePlayerList()
@@ -66,7 +88,16 @@ namespace VictoryChallenge.Scripts.CL
             foreach (Player player in players)
             {
                 GameObject prefab = player.NickName == PhotonNetwork.NickName ? playerListPrefab1 : playerListPrefab2;
-                Instantiate(prefab, playerListContent).GetComponent<PlayerListItem>().SetUp(player);
+                PlayerListItem item = Instantiate(prefab, playerListContent).GetComponent<PlayerListItem>();
+                item.SetUp(player);
+            }
+        }
+
+        public void ReadyPlayer()
+        {
+            foreach (Transform child in playerListContent)
+            {
+               child.GetComponent<PlayerListItem>().Refresh();
             }
         }
     }

@@ -18,10 +18,5 @@ namespace VictoryChallenge.Scripts.CL
         {
             base.Init();
         }
-
-        void Update()
-        {
-
-        }
     }
 }

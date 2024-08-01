@@ -16,6 +16,7 @@ using Photon.Pun.Demo.Cockpit;
 using GSpawn;
 using VictoryChallenge.KJ.Spawn;
 using ExitGames.Client.Photon.StructWrapping;
+using VictoryChallenge.KJ.Lobby;
 
 namespace VictoryChallenge.KJ.Photon
 {
@@ -27,13 +28,6 @@ namespace VictoryChallenge.KJ.Photon
 
         [HideInInspector] public bool _isReady = false;
         [HideInInspector] public int stageNum = 3;
-
-        public static Dictionary<string, int> playerRanks = new Dictionary<string, int>();
-        public static Dictionary<string, float> playerTimes = new Dictionary<string, float>();
-        private bool isCountdownStarted = false;
-        private float countdownTime = 10f;
-        public static int currentRound = 1;
-        private const int maxRounds = 3;
 
         #region Singleton
         public static PhotonSub Instance;
@@ -91,7 +85,7 @@ namespace VictoryChallenge.KJ.Photon
                 //    //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
                 //}
             }
-            else if((SceneManager.GetActiveScene().name == "WinnerCL") || (SceneManager.GetActiveScene().name == "LoseCL"))
+            else if ((SceneManager.GetActiveScene().name == "WinnerCL") || (SceneManager.GetActiveScene().name == "LoseCL"))
             {
                 // 결과씬 처리
             }
@@ -114,8 +108,6 @@ namespace VictoryChallenge.KJ.Photon
                 Debug.Log("호스트 준비 상태");
                 UpdatePlayerNumber();
             }
-
-            Debug.Log("유저 이름 " + PhotonNetwork.NickName);
         }
 
         public void UpdateButtonText()
@@ -139,10 +131,9 @@ namespace VictoryChallenge.KJ.Photon
         public void OnReadyClicked()
         {
             _isReady = !_isReady;
-            _text.text = _isReady ? "UnReady" : "Ready";
+            _text.text = _isReady == true ? "UnReady" : "Ready";
             PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "IsReady", _isReady } });
-            Debug.Log($"{PhotonNetwork.LocalPlayer.NickName}" + (_isReady ? "준비완료" : "아직 준비완료 안함"));
-            CheckAllPlayersReady();
+            Debug.Log($"{PhotonNetwork.LocalPlayer.NickName}" + (_isReady == true ? "준비완료" : "아직 준비완료 안함"));
         }
 
         private void CheckAllPlayersReady()
@@ -154,7 +145,13 @@ namespace VictoryChallenge.KJ.Photon
             }
         }
 
-        private bool AllPlayersReady()
+        [PunRPC]
+        private void PlayerListReady()
+        {
+            GameObject.FindObjectOfType<PlayerList>().ReadyPlayer();
+        }
+
+        public bool AllPlayersReady()
         {
             foreach (Player player in PhotonNetwork.PlayerList)
             {
@@ -163,17 +160,17 @@ namespace VictoryChallenge.KJ.Photon
                 {
                     if (!(bool)isReady)
                     {
-                        Debug.Log(player.NickName + "이(가) 아직 준비 안됨");
+                        Debug.Log(player.NickName + "이(가) 아직 준비 안됨(포톤서브)");
                         return false;
                     }
                     else
                     {
-                        Debug.Log(player.NickName + "준비됨");
+                        Debug.Log(player.NickName + "준비됨(포톤서브)");
                     }
                 }
                 else
                 {
-                    Debug.Log(player.NickName + "이(가) 아직 준비 상태가 아님");
+                    Debug.Log(player.NickName + "이(가) 아직 준비 상태가 아님(포톤서브)");
                     return false;
                 }
             }
@@ -184,30 +181,18 @@ namespace VictoryChallenge.KJ.Photon
         {
             base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-            if (changedProps.ContainsKey("PlayerRank"))
-            {
-                string userId = targetPlayer.UserId;
-                int rank = (int)changedProps["PlayerRank"];
-                playerTimes[userId] = rank;
-            }
-
-            if (changedProps.ContainsKey("isReady"))
+            if (changedProps.ContainsKey("IsReady"))
             {
                 Debug.Log(targetPlayer.NickName + "Changed ready state to" + changedProps["IsReady"]);
+                photonView.RPC("PlayerListReady", RpcTarget.AllBuffered);
                 CheckAllPlayersReady();
             }
         }
 
         public void OnStartClicked()
         {
-            //방장이 레디 상태인지 확인하고, 레디 상태가 아니면 레디 상태로 설정
-            object isReady;
-            if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("IsReady", out isReady) == false)
-            {
-                _isReady = true;
-                PhotonNetwork.LocalPlayer.SetCustomProperties(new Hashtable { { "IsReady", _isReady } });
-                Debug.Log("방장이 준비 상태가 아니었으므로 준비 상태로 변경함");
-            }
+            if (PhotonNetwork.IsMasterClient)
+                photonView.RPC("PlayerListReady", RpcTarget.AllBuffered);
 
             if (AllPlayersReady())
             {
@@ -225,6 +210,15 @@ namespace VictoryChallenge.KJ.Photon
             base.OnMasterClientSwitched(newMasterClient);
             if (SceneManager.GetActiveScene().buildIndex == 2)
                 UpdateButtonText();
+
+            object isReady;
+            if (!newMasterClient.CustomProperties.TryGetValue("IsReady", out isReady) || !(bool)isReady)
+            {
+                // 준비 상태가 아니라면 준비 상태로 변경
+                Hashtable props = new Hashtable { { "IsReady", true } };
+                newMasterClient.SetCustomProperties(props);
+                Debug.Log("새로운 방장이 준비 상태가 아니었으므로 준비 상태로 변경함");
+            }
         }
         #endregion
 
