@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Unity.VisualScripting;
+using VictoryChallenge.KJ.Photon;
 
 
 namespace VictoryChallenge.Scripts.CL
@@ -58,6 +59,7 @@ namespace VictoryChallenge.Scripts.CL
         private void Start()
         {
             gameSceneUI = GameObject.FindObjectOfType<GameSceneUI>();
+            PhotonSub.Instance.UpdatePlayerNumber();
 
             // 제한 인원 설정
             switch (SceneManager.GetActiveScene().buildIndex)
@@ -73,6 +75,7 @@ namespace VictoryChallenge.Scripts.CL
                 case 8:
                     _maxPlayer = 2;
                     gameSceneUI.person = maxPlayer;
+                    _time = 150;
                     break;
                 case 9:
                     _maxPlayer = 1;
@@ -350,6 +353,7 @@ namespace VictoryChallenge.Scripts.CL
             Debug.Log("리브룸코루틴이래요");
             yield return null;
             PhotonNetwork.AutomaticallySyncScene = false;    // 마스터(호스트)가 씬을 넘기면 클라이언트들도 같이 넘어감
+            PhotonNetwork.LeaveRoom();
             SceneManager.LoadScene(sceneName);
         }
         #endregion

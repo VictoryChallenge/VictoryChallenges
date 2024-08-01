@@ -11,8 +11,6 @@ namespace VictoryChallenge.Scripts.CL
     {
         void Start()
         {
-            PhotonNetwork.LeaveRoom();
-
             GameObject.Find("Exit").GetComponent<Button>().onClick.AddListener(Exit);
 
             Managers.Sound.Clear();

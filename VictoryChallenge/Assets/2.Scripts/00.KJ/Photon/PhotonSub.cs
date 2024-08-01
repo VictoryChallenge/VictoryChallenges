@@ -232,17 +232,16 @@ namespace VictoryChallenge.KJ.Photon
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
             base.OnPlayerLeftRoom(otherPlayer);
-            UpdatePlayerNumber();
+            //UpdatePlayerNumber();
         }
 
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
             base.OnPlayerEnteredRoom(newPlayer);
             UpdatePlayerNumber();
-
         }
 
-        private void UpdatePlayerNumber()
+        public void UpdatePlayerNumber()
         {
             List<Player> players = new List<Player>(PhotonNetwork.PlayerList);
             players.Sort((p1, p2) => p1.ActorNumber.CompareTo(p2.ActorNumber));
