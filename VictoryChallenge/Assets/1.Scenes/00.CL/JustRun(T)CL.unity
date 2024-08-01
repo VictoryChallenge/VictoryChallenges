@@ -450,7 +450,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: -15.04, y: 0, z: 73.12}
-  _respawnEffect: {fileID: 0}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!114 &68652681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,7 +1107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: -13.73, y: 0, z: 157.5}
-  _respawnEffect: {fileID: 0}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &148431280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2438,7 +2440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: -14.21, y: 5.397324, z: 102.640076}
-  _respawnEffect: {fileID: 0}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &362336545
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2918,7 +2921,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: -19.59, y: -4.174, z: 230.37}
-  _respawnEffect: {fileID: 0}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &455688408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9037,7 +9041,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: -13.89, y: 0, z: 123.19}
-  _respawnEffect: {fileID: 0}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &1255778495
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9512,7 +9517,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: -15.21, y: 0, z: 45.14}
-  _respawnEffect: {fileID: 0}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &1325827559
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15432,7 +15438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _respawnPoint: {x: -16.25, y: 0, z: 190.5}
-  _respawnEffect: {fileID: 0}
+  _respawnEffect: {fileID: 8263428832195714075, guid: a96dad5c46057fa41a6581f9d89465ca,
+    type: 3}
 --- !u!65 &2053799528
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16850,6 +16857,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
