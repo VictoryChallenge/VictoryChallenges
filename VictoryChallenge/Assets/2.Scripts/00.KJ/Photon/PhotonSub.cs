@@ -72,8 +72,8 @@ namespace VictoryChallenge.KJ.Photon
 
                 if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("PlayerNumber", out int checkNum))
                 {
-                    Debug.Log("checkNum = " + checkNum);
-                    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(checkNum);
+                    Debug.Log("checkNum = " + (checkNum - 1));
+                    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(checkNum - 1);
                     PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
                 }
                 //else

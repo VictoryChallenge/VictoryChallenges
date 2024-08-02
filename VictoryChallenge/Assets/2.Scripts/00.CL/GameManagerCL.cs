@@ -288,7 +288,7 @@ namespace VictoryChallenge.Scripts.CL
         #region Coroutine
         private IEnumerator C_RoundEnd()
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3.7f);
 
             if(PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("IsGoaledIn"))
             {
@@ -296,7 +296,7 @@ namespace VictoryChallenge.Scripts.CL
                 {
                     if(isCheck)
                     {
-                        yield return new WaitForSeconds(.5f);
+                        yield return new WaitForSeconds(1.6f);
 
                         // 결승선에 들어온 경우
                         Debug.Log(PhotonNetwork.LocalPlayer.NickName + " has Finish race, IsGoaledIn = " + isCheck);
@@ -308,11 +308,16 @@ namespace VictoryChallenge.Scripts.CL
                             yield break;
                         }
                         // 2인맵이 아니면서 결승선에 들어온 플레이어가 하나뿐일때
-                        else if (currentPlayer == 1)
+                        if (currentPlayer == 1)
+                        {
                             StartCoroutine(LeaveRoomAndLoadScene("WinnerCL"));
+                            yield break;
+                        }
                         // 2인맵이 아니면서 2명 이상 결승선에 들어왔을 때
-                        else if (PhotonNetwork.IsMasterClient)
+                        if (PhotonNetwork.IsMasterClient)
+                        {
                             photonView.RPC("SceneLoad", RpcTarget.AllBuffered, _nextSceneNum);    
+                        }
                     }
                     else 
                     {
@@ -352,7 +357,7 @@ namespace VictoryChallenge.Scripts.CL
         {
             Debug.Log("리브룸코루틴이래요");
             yield return null;
-            PhotonNetwork.AutomaticallySyncScene = false;    // 마스터(호스트)가 씬을 넘기면 클라이언트들도 같이 넘어감
+            //PhotonNetwork.AutomaticallySyncScene = false;    // 마스터(호스트)가 씬을 넘기면 클라이언트들도 같이 넘어감
             PhotonNetwork.LeaveRoom();
             SceneManager.LoadScene(sceneName);
         }
