@@ -205,7 +205,7 @@ namespace VictoryChallenge.Scripts.CL
         public void ChooseFinalWinner()
         {
             //photonView.RPC("RoundEnd", RpcTarget.AllBuffered);
-            RoundEnd();
+            StartCoroutine(C_RoundEnd());
         }
 
         #region Scene
@@ -273,12 +273,6 @@ namespace VictoryChallenge.Scripts.CL
         }
 
         [PunRPC]
-        private void RoundEnd()
-        {
-            StartCoroutine(C_RoundEnd());
-        }
-
-        [PunRPC]
         private void WinnerCount()
         {
             gameSceneUI.winner++;
@@ -288,6 +282,7 @@ namespace VictoryChallenge.Scripts.CL
         #region Coroutine
         private IEnumerator C_RoundEnd()
         {
+            Debug.Log("라운드엔드코루틴.");
             yield return new WaitForSeconds(3.7f);
 
             if(PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("IsGoaledIn"))
