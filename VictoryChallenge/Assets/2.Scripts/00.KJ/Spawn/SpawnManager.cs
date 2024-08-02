@@ -53,9 +53,9 @@ namespace VictoryChallenge.KJ.Spawn
         public Transform GetIndexSpawnPoint(int index)
         {
             // 포뮬러연산 추가 예정
-            //int spawnIndex = index % spawnPoints.Length;
+            int spawnIndex = index % spawnPoints.Length;
             //Debug.Log("spawnPoints.Length = " + spawnPoints.Length + "spawnIndex = " + spawnIndex);
-            return spawnPoints[index].transform;
+            return spawnPoints[spawnIndex].transform;
         }
     }
 }
