@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 444549369}
-  m_IndirectSpecularColor: {r: 0.3279952, g: 0.05544919, b: 0.004095289, a: 1}
+  m_IndirectSpecularColor: {r: 0.69414854, g: 0.75497544, b: 0.7665288, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -296,8 +296,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.446106, y: 1.4897041, z: 13.989964}
-  m_Center: {x: -0.00000059604645, y: 0.017964035, z: -0.03773856}
+  m_Size: {x: 6.732317, y: 1.4897041, z: 13.9899645}
+  m_Center: {x: -0.14310598, y: 0.017964005, z: -0.037738454}
 --- !u!114 &113589765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2443,6 +2443,37 @@ Transform:
   - {fileID: 566150573}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!1 &839214130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 839214131}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &839214131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839214130}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.196, z: 23.447}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024683296}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &897504255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,7 +2533,7 @@ Transform:
   m_GameObject: {fileID: 902632170}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 3}
+  m_LocalPosition: {x: 0, y: -9, z: 0.042}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2797,6 +2828,38 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1024683295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1024683296}
+  m_Layer: 0
+  m_Name: MiddleLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1024683296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024683295}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 839214131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1027806286
@@ -3487,8 +3550,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.446106, y: 1.4897041, z: 13.989964}
-  m_Center: {x: -0.000000834465, y: 0.017964035, z: -0.03773856}
+  m_Size: {x: 6.7153993, y: 1.4897041, z: 13.9899645}
+  m_Center: {x: 0.1346457, y: 0.017964005, z: -0.037738454}
 --- !u!114 &1176397008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3769,12 +3832,15 @@ MonoBehaviour:
   - {fileID: 9202592978034444254, guid: ec7498a1b75c5004aa79353e2793c70c, type: 3}
   - {fileID: 638215343142315439, guid: e0e8bee733916a7449a5cd0d4cda0e27, type: 3}
   - {fileID: 6093480598379660410, guid: efe36acb2b6b00447b97c6111439aecb, type: 3}
+  middleObstaclePrefab: {fileID: 3762435501831168141, guid: b65f7434e5aaebb4a91ccace571101bf,
+    type: 3}
   obstacleSpawnEffectRed: {fileID: 6387957344236907433, guid: e8b49b3a08949124aa63e3285d4fbd9f,
     type: 3}
   obstacleSpawnEffectBlue: {fileID: 2925808470599757538, guid: 7d9fa3c876a2a4d40b628f6fad8d222d,
     type: 3}
   spawnPointRed: {fileID: 902632171}
   spawnPointBlue: {fileID: 2098042335}
+  spawnPointMiddle: {fileID: 839214131}
   spawnInterval: 1
   obstaclespawn: 0
 --- !u!4 &1267871673
@@ -5335,7 +5401,7 @@ Transform:
   m_GameObject: {fileID: 2098042334}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 3}
+  m_LocalPosition: {x: 0, y: -9, z: 0.042}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5350,6 +5416,7 @@ SceneRoots:
   - {fileID: 1267871673}
   - {fileID: 153088429}
   - {fileID: 474842777}
+  - {fileID: 1024683296}
   - {fileID: 1622119986}
   - {fileID: 1417083818}
   - {fileID: 837977018}
