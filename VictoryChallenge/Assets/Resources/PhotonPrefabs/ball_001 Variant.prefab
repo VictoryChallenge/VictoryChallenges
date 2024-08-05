@@ -63,6 +63,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ball_001 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4570893564054277331, guid: a1e5f9b28ecc8624d80a3e57a6ad3775,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570893564054277331, guid: a1e5f9b28ecc8624d80a3e57a6ad3775,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4667758301543552118, guid: a1e5f9b28ecc8624d80a3e57a6ad3775,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4667758301543552118, guid: a1e5f9b28ecc8624d80a3e57a6ad3775,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 5443978788517056204, guid: a1e5f9b28ecc8624d80a3e57a6ad3775,
         type: 3}
       propertyPath: m_LocalScale.x
