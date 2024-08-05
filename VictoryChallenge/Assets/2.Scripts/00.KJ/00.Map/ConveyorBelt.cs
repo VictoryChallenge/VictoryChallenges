@@ -18,7 +18,12 @@ namespace VictoryChallenge.KJ.Map
             {
                 _elapsedTime += Time.deltaTime;
 
-                if (_elapsedTime > 20f)
+                if (_elapsedTime > 30f)
+                {
+                    _conveyorSpeed = 30f;
+                    _obstacleSpeed = 20f;
+                }
+                else if (_elapsedTime > 20f)
                 {
                     _conveyorSpeed = 20f;
                     _obstacleSpeed = 10f;

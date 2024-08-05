@@ -7,10 +7,12 @@ namespace VictoryChallenge.KJ.Map
     public class ObstacleManager : MonoBehaviourPun
     {
         public GameObject[] obstaclePrefabs;
+        public GameObject middleObstaclePrefab;
         public GameObject obstacleSpawnEffectRed;
         public GameObject obstacleSpawnEffectBlue;
         public Transform spawnPointRed;
         public Transform spawnPointBlue;
+        public Transform spawnPointMiddle;
         public float spawnInterval = 1f;
         public bool obstaclespawn = false;
 
@@ -42,6 +44,9 @@ namespace VictoryChallenge.KJ.Map
             GameObject selectPrefabBlue = obstaclePrefabs[randomIndexBlue];
             Instantiate(selectPrefabBlue, spawnPointBlue.position, spawnPointBlue.rotation);
             SpawnEffectBlue(spawnPointBlue.position, spawnPointBlue.rotation);
+
+            GameObject selectedPrefabMiddle = middleObstaclePrefab;
+            Instantiate(selectedPrefabMiddle, spawnPointMiddle.position, spawnPointMiddle.rotation);
         }
 
         private void SpawnEffectRed(Vector3 position, Quaternion rotation)
