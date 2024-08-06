@@ -7,7 +7,6 @@ namespace VictoryChallenge.KJ.Map
     public class ObstacleManager : MonoBehaviourPun
     {
         public GameObject[] obstaclePrefabs;
-        public GameObject obstacleSpawnEffect;
         public Transform spawnPoint;
         public float spawnInterval = 1f;
         public bool obstaclespawn = false;
@@ -30,20 +29,6 @@ namespace VictoryChallenge.KJ.Map
         {
             GameObject selectedPrefabRed = obstaclePrefabs[randomIndex];
             Instantiate(selectedPrefabRed, spawnPoint.position, spawnPoint.rotation);
-            SpawnEffectRed(spawnPoint.position, spawnPoint.rotation);
-        }
-
-        private void SpawnEffectRed(Vector3 position, Quaternion rotation)
-        {
-            if (obstacleSpawnEffect != null)
-            {
-                Instantiate(obstacleSpawnEffect, position, rotation);
-                Debug.Log("레드 이펙트 생성");
-            }
-            else
-            {
-                Debug.Log("빨간색 이펙트 없음");
-            }
         }
     }
 }
