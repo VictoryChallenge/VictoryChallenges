@@ -163,6 +163,7 @@ namespace VictoryChallenge.Controllers.Player
 
         protected virtual void Start()
         {
+            _isFinished = false;
             _followCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
 
             if(_pv.IsMine)
