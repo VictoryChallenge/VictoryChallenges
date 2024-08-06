@@ -252,15 +252,8 @@ namespace VictoryChallenge.Scripts.CL
             if (_conveyorBelt != null)
             {
                 _conveyorBelt.EnableConveyerBelt();
-                Debug.Log("오른쪽 컨베이어 벨트");
+                Debug.Log("컨베이어 벨트");
             }
-
-            if (_conveyorBelt2 != null)
-            {
-                _conveyorBelt2.EnableConveyerBelt();
-                Debug.Log("왼쪽 컨베이어 벨트");
-            }
-
         }
 
         IEnumerator AnimateRoundText(TextMeshProUGUI Text)
@@ -326,13 +319,7 @@ namespace VictoryChallenge.Scripts.CL
             if (_conveyorBelt != null)
             {
                 _conveyorBelt.DisableConveyerBelt();
-                Debug.Log("오른쪽 컨베이어 벨트 disable");
-            }
-
-            if (_conveyorBelt2 != null)
-            {
-                _conveyorBelt2.DisableConveyerBelt();
-                Debug.Log("왼쪽 컨베이어 벨트 disable");
+                Debug.Log("컨베이어 벨트 disable");
             }
 
             Managers.Sound.Play("Whistle", Define.Sound.Effect);
