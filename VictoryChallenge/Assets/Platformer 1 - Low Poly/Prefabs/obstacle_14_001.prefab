@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a1c940372fe54f14e8d593e48600d28c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.159071
+      value: -9.242321
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1c940372fe54f14e8d593e48600d28c,
         type: 3}
@@ -41,27 +41,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a1c940372fe54f14e8d593e48600d28c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 200.33
+      value: 209.19162
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1c940372fe54f14e8d593e48600d28c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9889051
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1c940372fe54f14e8d593e48600d28c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.00000011920929
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1c940372fe54f14e8d593e48600d28c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.14854935
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1c940372fe54f14e8d593e48600d28c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.00000008195639
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1c940372fe54f14e8d593e48600d28c,
         type: 3}
@@ -99,10 +99,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1c940372fe54f14e8d593e48600d28c,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -4435969278207811751}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1c940372fe54f14e8d593e48600d28c,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: -8501504791834783910}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1c940372fe54f14e8d593e48600d28c,
         type: 3}
@@ -112,6 +108,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2567437978201768129}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1c940372fe54f14e8d593e48600d28c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1472852131992412953}
   m_SourcePrefab: {fileID: 100100000, guid: a1c940372fe54f14e8d593e48600d28c, type: 3}
 --- !u!4 &510360995104389104 stripped
 Transform:
@@ -125,28 +125,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 44917126658789403}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &-4435969278207811751
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891424870646754634}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3259346362896294666, guid: a1c940372fe54f14e8d593e48600d28c, type: 3}
 --- !u!95 &-8501504791834783910
 Animator:
   serializedVersion: 5
@@ -204,6 +182,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   titleAnim: Rotation Z-
+--- !u!65 &1472852131992412953
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891424870646754634}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0578759, y: 2, z: 1.0578759}
+  m_Center: {x: 0.0000019073486, y: -0.000007390976, z: -0.0000076293945}
 --- !u!1001 &1765824624324972446
 PrefabInstance:
   m_ObjectHideFlags: 0
