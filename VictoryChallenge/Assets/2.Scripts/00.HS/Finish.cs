@@ -83,7 +83,7 @@ namespace VictoryChallenge.Scripts.HS
                     Debug.Log("들어온 플레이어 수 : " + _rankCount);
                 }
             }
-            // 끝나고 나서 들어왔을 때
+            //// 끝나고 나서 들어왔을 때
             //else
             //{
             //    if (other.gameObject.layer == LayerMask.NameToLayer("Player"))

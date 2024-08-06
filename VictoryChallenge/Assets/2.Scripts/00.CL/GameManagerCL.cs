@@ -207,7 +207,7 @@ namespace VictoryChallenge.Scripts.CL
         {
             if (_roundEnd == null)
             { 
-                StartCoroutine(C_RoundEnd());
+                _roundEnd = StartCoroutine(C_RoundEnd());
             }
         }
 
