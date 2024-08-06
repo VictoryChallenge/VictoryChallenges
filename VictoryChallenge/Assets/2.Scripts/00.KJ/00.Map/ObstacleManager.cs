@@ -8,7 +8,7 @@ namespace VictoryChallenge.KJ.Map
     {
         public GameObject[] obstaclePrefabs;
         public Transform spawnPoint;
-        public float spawnInterval = 1f;
+        public float spawnInterval = 1.5f;
         public bool obstaclespawn = false;
 
         public IEnumerator SpawnObstacles()
