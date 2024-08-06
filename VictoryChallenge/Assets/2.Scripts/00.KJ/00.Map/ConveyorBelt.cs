@@ -27,19 +27,16 @@ namespace VictoryChallenge.KJ.Map
                 {
                     _conveyorSpeed = 20f;
                     _obstacleSpeed = 10f;
-                    Debug.Log($"20초 경과 : {_conveyorSpeed}");
                 }
                 else if (_elapsedTime > 10f)
                 {
                     _conveyorSpeed = 15f;
                     _obstacleSpeed = 12f;
-                    Debug.Log($"10초 경과 : {_conveyorSpeed}");
                 }
                 else
                 {
                     _conveyorSpeed = 10f;
                     _obstacleSpeed = 8f;
-                    Debug.Log($"현재 컨베이어 스피드 : {_conveyorSpeed}");
                 }
             }
 
@@ -47,20 +44,17 @@ namespace VictoryChallenge.KJ.Map
             {
                 _conveyorSpeed = 0f;
                 _obstacleSpeed = 0f;
-                Debug.Log($"현재 컨베이어 스피드 : {_conveyorSpeed}");
             }
         }
 
         public void EnableConveyerBelt()
         {
             _isConveyorEnabled = true;
-            Debug.Log($"시작 : 컨베이어벨트 작동");
         }
 
         public void DisableConveyerBelt()
         {
             _isConveyorEnabled = false;
-            Debug.Log($"시작 : 컨베이어벨트 멈춤");
         }
 
         public void Initialize()
@@ -84,12 +78,10 @@ namespace VictoryChallenge.KJ.Map
                 if (collision.gameObject.CompareTag("Obstacle"))
                 {
                     trans.Translate(moveDirection * _obstacleSpeed, Space.World);
-                    Debug.Log($"장애물 속도 설정: {collision.gameObject.name} with speed {_obstacleSpeed * _correction}");
                 }
                 else
                 {
                     rb.AddForce(forceDirection * (_conveyorSpeed * _correction));
-                    Debug.Log($"플레이어 속도 설정: {collision.gameObject.name} with speed {_conveyorSpeed * _correction}");
                 }
             }
         }

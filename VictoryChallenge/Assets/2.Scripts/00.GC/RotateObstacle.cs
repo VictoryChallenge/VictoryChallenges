@@ -21,7 +21,6 @@ public class RotateObstacle : MonoBehaviour
             { 
                 _playerTransform = collision.transform;
                 _previousRotation = transform.rotation.eulerAngles;
-                Debug.LogError("1");
             }
         }
     }
@@ -42,7 +41,6 @@ public class RotateObstacle : MonoBehaviour
 
                 // 이전 회전 값 업데이트
                 _previousRotation = currentRotation;
-                Debug.LogError("2");
             }
         }
     }
@@ -55,7 +53,6 @@ public class RotateObstacle : MonoBehaviour
             if (playerPhotonView != null && playerPhotonView.IsMine)
             { 
                 _playerTransform = null;
-                Debug.LogError("3");
             }
         }
     }

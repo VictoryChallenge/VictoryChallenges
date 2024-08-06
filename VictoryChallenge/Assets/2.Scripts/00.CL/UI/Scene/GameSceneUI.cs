@@ -49,7 +49,6 @@ namespace VictoryChallenge.Scripts.CL
         // 장애물
         private ObstacleManager _obstacleManager;
         private ConveyorBelt _conveyorBelt;
-        private ConveyorBelt _conveyorBelt2;
 
         void Start()
         {
@@ -80,32 +79,17 @@ namespace VictoryChallenge.Scripts.CL
             // 장애물
             _obstacleManager = FindObjectOfType<ObstacleManager>();
 
-            // 오른쪽 트랙
-            GameObject redPlayerLine = GameObject.Find("Red_Player_Line");
-            if (redPlayerLine != null)
+            // 트랙
+            GameObject Line = GameObject.Find("Line");
+            if (Line != null)
             {
-                Transform trackTransform = redPlayerLine.transform.Find("Track");
+                Transform trackTransform = Line.transform.Find("Track");
                 if (trackTransform != null)
                 {
                     _conveyorBelt = trackTransform.GetComponent<ConveyorBelt>();
                     if (_conveyorBelt != null)
                     {
                         _conveyorBelt.Initialize();
-                    }
-                }
-            }
-
-            // 왼쪽 트랙
-            GameObject bluePlayerLine = GameObject.Find("Blue_Player_Line");
-            if (bluePlayerLine != null)
-            {
-                Transform track2Transform = bluePlayerLine.transform.Find("Track");
-                if (track2Transform != null)
-                {
-                    _conveyorBelt2 = track2Transform.GetComponent<ConveyorBelt>();
-                    if (_conveyorBelt2 != null)
-                    {
-                        _conveyorBelt2.Initialize();
                     }
                 }
             }
@@ -268,15 +252,8 @@ namespace VictoryChallenge.Scripts.CL
             if (_conveyorBelt != null)
             {
                 _conveyorBelt.EnableConveyerBelt();
-                Debug.Log("오른쪽 컨베이어 벨트");
+                Debug.Log("컨베이어 벨트");
             }
-
-            if (_conveyorBelt2 != null)
-            {
-                _conveyorBelt2.EnableConveyerBelt();
-                Debug.Log("왼쪽 컨베이어 벨트");
-            }
-
         }
 
         IEnumerator AnimateRoundText(TextMeshProUGUI Text)
@@ -342,13 +319,7 @@ namespace VictoryChallenge.Scripts.CL
             if (_conveyorBelt != null)
             {
                 _conveyorBelt.DisableConveyerBelt();
-                Debug.Log("오른쪽 컨베이어 벨트 disable");
-            }
-
-            if (_conveyorBelt2 != null)
-            {
-                _conveyorBelt2.DisableConveyerBelt();
-                Debug.Log("왼쪽 컨베이어 벨트 disable");
+                Debug.Log("컨베이어 벨트 disable");
             }
 
             Managers.Sound.Play("Whistle", Define.Sound.Effect);
