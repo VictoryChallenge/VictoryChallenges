@@ -60,7 +60,6 @@ namespace VictoryChallenge.Scripts.CL
         private void Start()
         {
             gameSceneUI = GameObject.FindObjectOfType<GameSceneUI>();
-            PhotonSub.Instance.UpdatePlayerNumber();
 
             // 제한 인원 설정
             switch (SceneManager.GetActiveScene().buildIndex)
@@ -207,7 +206,7 @@ namespace VictoryChallenge.Scripts.CL
         {
             if (_roundEnd == null)
             { 
-                StartCoroutine(C_RoundEnd());
+                _roundEnd = StartCoroutine(C_RoundEnd());
             }
         }
 

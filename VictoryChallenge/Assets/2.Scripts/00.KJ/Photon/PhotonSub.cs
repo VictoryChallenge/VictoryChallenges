@@ -29,6 +29,9 @@ namespace VictoryChallenge.KJ.Photon
         [HideInInspector] public bool _isReady = false;
         [HideInInspector] public int stageNum = 3;
 
+        // Spawn
+        private List<Player> _spawnNumList = new List<Player>();
+
         #region Singleton
         public static PhotonSub Instance;
 
@@ -70,24 +73,12 @@ namespace VictoryChallenge.KJ.Photon
             {
                 Debug.Log("클라 플레이어 매니저 생성");
 
+                //Custom Property Instantiate
                 if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("PlayerNumber", out int checkNum))
                 {
-                    Debug.Log("checkNum = " + (checkNum - 1));
-                    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(checkNum - 1);
+                    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(checkNum);
                     PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
                 }
-                //else
-                //{
-                //    // PhotonNetwork.LocalPlayer.ActorNumber는 1부터 시작
-                //    int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
-                //    Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
-                //    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
-                //    //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
-                //}
-            }
-            else if ((SceneManager.GetActiveScene().name == "WinnerCL") || (SceneManager.GetActiveScene().name == "LoseCL"))
-            {
-                // 결과씬 처리
             }
         }
 
@@ -106,7 +97,6 @@ namespace VictoryChallenge.KJ.Photon
                 _isReady = true;
                 PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "IsReady", _isReady } });
                 Debug.Log("호스트 준비 상태");
-                UpdatePlayerNumber();
             }
         }
 
@@ -142,6 +132,9 @@ namespace VictoryChallenge.KJ.Photon
             {
                 _button.interactable = AllPlayersReady();
                 Debug.Log("모든 플레이어 준비 완료" + _button.interactable);
+
+                // 플레이어 액터넘버 등록
+                ResistPlayerNumber();
             }
         }
 
@@ -232,27 +225,47 @@ namespace VictoryChallenge.KJ.Photon
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
             base.OnPlayerLeftRoom(otherPlayer);
-            //UpdatePlayerNumber();
+
+            StartCoroutine(C_UpdatePlayerNumber());
         }
 
-        public override void OnPlayerEnteredRoom(Player newPlayer)
+        public void ResistPlayerNumber()
         {
-            base.OnPlayerEnteredRoom(newPlayer);
-            UpdatePlayerNumber();
-        }
+            // 커스텀 프로퍼티 등록
+            _spawnNumList = new List<Player>(PhotonNetwork.PlayerList);
 
-        public void UpdatePlayerNumber()
-        {
-            List<Player> players = new List<Player>(PhotonNetwork.PlayerList);
-            players.Sort((p1, p2) => p1.ActorNumber.CompareTo(p2.ActorNumber));
-
-            for (int i = 0; i < players.Count; i++)
+            for (int i = 0; i < _spawnNumList.Count; i++)
             {
-                Hashtable props = new Hashtable { { "PlayerNumber", i + 1 } };
-                players[i].SetCustomProperties(props);
-                Debug.Log($"num = {i + 1}");
+                Hashtable props = new Hashtable { { "PlayerNumber", i } };
+                _spawnNumList[i].SetCustomProperties(props);
+                Debug.Log($"List {_spawnNumList[i]}'s ActorNumber = {_spawnNumList[i].ActorNumber}, PlayerNumber = {i}");
+                // List = #01 "111"s ActorNumber = 1, #02 "222"s ActorNumber = 2, #03 "333"s ActorNumber = 3 ...
             }
         }
+
+        IEnumerator C_UpdatePlayerNumber()
+        {
+            // 커스텀 프로퍼티 갱신
+            _spawnNumList = new List<Player>(PhotonNetwork.PlayerList);
+
+            //for (int i = 0; i < _spawnNumList.Count; i++)
+            //{
+            //    Debug.Log($"After Removed List! List {_spawnNumList[i]}'s ActorNumber = {_spawnNumList[i].ActorNumber}");
+            //    // List = #01 "111"s ActorNumber = 1, #02 "222"s ActorNumber = 2, #03 "333"s ActorNumber = 3 ...
+            //}
+
+            _spawnNumList.Sort((p1, p2) => p1.ActorNumber.CompareTo(p2.ActorNumber));
+
+            for (int i = 0; i < _spawnNumList.Count; i++)
+            {
+                Hashtable props = new Hashtable { { "PlayerNumber", i } };
+                _spawnNumList[i].SetCustomProperties(props);
+                //Debug.Log($"List Update! {_spawnNumList[i]}'s ActorNumber = {_spawnNumList[i].ActorNumber}, PlayerNumber = {i}");
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+
 
         public override void OnLeftRoom()                   // 로비(룸)에서 떠났으면 호출
         {
