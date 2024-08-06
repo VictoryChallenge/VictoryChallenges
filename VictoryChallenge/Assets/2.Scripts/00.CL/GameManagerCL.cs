@@ -55,6 +55,7 @@ namespace VictoryChallenge.Scripts.CL
         private int _maxPlayer;
 
         private GameSceneUI gameSceneUI;
+        private Coroutine _roundEnd;
 
         private void Start()
         {
@@ -204,8 +205,10 @@ namespace VictoryChallenge.Scripts.CL
 
         public void ChooseFinalWinner()
         {
-            //photonView.RPC("RoundEnd", RpcTarget.AllBuffered);
-            StartCoroutine(C_RoundEnd());
+            if (_roundEnd == null)
+            { 
+                StartCoroutine(C_RoundEnd());
+            }
         }
 
         #region Scene

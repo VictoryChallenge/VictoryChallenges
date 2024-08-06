@@ -28,11 +28,6 @@ namespace VictoryChallenge.Scripts.HS
             _gameSCeneUI = FindObjectOfType<GameSceneUI>();
         }
 
-        void Update()
-        {
-            
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             // 카운트가 끝나기 전에 들어왔을 때
@@ -89,57 +84,29 @@ namespace VictoryChallenge.Scripts.HS
                 }
             }
             // 끝나고 나서 들어왔을 때
-            else
-            {
-                if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-                {
-                    if (!other.gameObject.GetComponent<CharacterController>().isFinished)
-                    {
-                        // 각자 플레이어의 shortUID -> DB에 있는 shortUID에 접근해서 jsonData를 받아오기
-                        //string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
+            //else
+            //{
+            //    if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            //    {
+            //        if (!other.gameObject.GetComponent<CharacterController>().isFinished)
+            //        {
+            //            // 각자 플레이어의 shortUID -> DB에 있는 shortUID에 접근해서 jsonData를 받아오기
+            //            //string userShortUID = other.gameObject.GetComponent<CharacterController>().shortUID;
 
 
-                        //RankManager.Instance.Register(userShortUID, _rankCount);
+            //            //RankManager.Instance.Register(userShortUID, _rankCount);
 
-                        // DB 연동 순위
-                        PhotonView photonView = other.GetComponent<PhotonView>();
-                        // 본인 플레이어만 true 값으로 갱신
-                        if (photonView.IsMine)
-                        {
-                            _gameManager.OnGoaledInCheck(false);
-                        }
-                    }
-                    Debug.Log("들어온 플레이어 수 : " + _rankCount);
-                }
-            }
+            //            // DB 연동 순위
+            //            PhotonView photonView = other.GetComponent<PhotonView>();
+            //            // 본인 플레이어만 true 값으로 갱신
+            //            if (photonView.IsMine)
+            //            {
+            //                _gameManager.OnGoaledInCheck(false);
+            //            }
+            //        }
+            //        Debug.Log("들어온 플레이어 수 : " + _rankCount);
+            //    }
+            //}
         }
-
-        IEnumerator C_FinishCount()
-        {
-            bool isCheck = true;
-            _countText.enabled = true;
-            _countText.text = _maxCount.ToString();
-
-            while (isCheck)
-            {
-                yield return new WaitForSeconds(1f);
-                _maxCount--;
-                _countText.text = _maxCount.ToString();
-
-                if (_maxCount == 0)
-                {
-                    isCheck = false;
-                    _countText.text = "Game Over";
-                    _gameManager.GetComponent<GameManagerCL>().ChooseFinalWinner();
-                }
-            }
-        }
-
-        [PunRPC]
-        public void StartCount()
-        {
-            StartCoroutine(C_FinishCount());
-        }
-
     }
 }
