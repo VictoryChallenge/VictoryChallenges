@@ -1,0 +1,164 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3120482203770645834
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2773302746275070085, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_Name
+      value: ObstacleWall Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773302746275070085, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773302746275070085, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258091048586910271, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258091048586910271, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258091048586910271, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258091048586910271, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258091048586910271, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258091048586910271, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258091048586910271, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258091048586910271, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258091048586910271, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258091048586910271, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967165597035718086, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_DirtyAABB
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967165597035718086, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967165597035718086, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 1.190574
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967165597035718086, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: -0.00000037252903
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967165597035718086, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 3.0471325
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967165597035718086, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 1.2354311
+      objectReference: {fileID: 0}
+    - target: {fileID: 6967165597035718086, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 0.39372504
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5959788915557150539, guid: 0ba25ab1b9991824e8a14f282776fcd2, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2773302746275070085, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8144387306099650256}
+    - targetCorrespondingSourceObject: {fileID: 2773302746275070085, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4295298364496911875}
+  m_SourcePrefab: {fileID: 100100000, guid: 0ba25ab1b9991824e8a14f282776fcd2, type: 3}
+--- !u!1 &951084358938799567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2773302746275070085, guid: 0ba25ab1b9991824e8a14f282776fcd2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3120482203770645834}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8144387306099650256
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951084358938799567}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.094265, y: 2.4708622, z: 0.7874501}
+  m_Center: {x: -0.00000011920929, y: 1.190574, z: -0.00000037252903}
+--- !u!114 &4295298364496911875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951084358938799567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c66b6a2059f89414eaeae7f058456ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minYPoisition: -5
