@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2434803878444123885}
   - component: {fileID: 8518984762314540860}
   - component: {fileID: 906654499046344626}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Obstacle2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,6 +199,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_002
       objectReference: {fileID: 0}
+    - target: {fileID: 989292113855784754, guid: de305790f2a825e48bb67e7df39532ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 989292113855784754, guid: de305790f2a825e48bb67e7df39532ec,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8664172298050107120, guid: de305790f2a825e48bb67e7df39532ec, type: 3}
     m_RemovedGameObjects: []
@@ -288,6 +298,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: box_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 989292113855784754, guid: de305790f2a825e48bb67e7df39532ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 989292113855784754, guid: de305790f2a825e48bb67e7df39532ec,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8664172298050107120, guid: de305790f2a825e48bb67e7df39532ec, type: 3}
@@ -379,6 +399,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: box_002
       objectReference: {fileID: 0}
+    - target: {fileID: 989292113855784754, guid: de305790f2a825e48bb67e7df39532ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 989292113855784754, guid: de305790f2a825e48bb67e7df39532ec,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8664172298050107120, guid: de305790f2a825e48bb67e7df39532ec, type: 3}
     m_RemovedGameObjects: []
@@ -468,6 +498,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: box_002
+      objectReference: {fileID: 0}
+    - target: {fileID: 989292113855784754, guid: de305790f2a825e48bb67e7df39532ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 989292113855784754, guid: de305790f2a825e48bb67e7df39532ec,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8664172298050107120, guid: de305790f2a825e48bb67e7df39532ec, type: 3}
