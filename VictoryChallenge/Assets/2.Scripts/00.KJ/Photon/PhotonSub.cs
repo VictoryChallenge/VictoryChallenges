@@ -226,6 +226,11 @@ namespace VictoryChallenge.KJ.Photon
         {
             base.OnPlayerLeftRoom(otherPlayer);
 
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            { 
+                CheckAllPlayersReady();
+            }
+
             StartCoroutine(C_UpdatePlayerNumber());
         }
 

@@ -1046,7 +1046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dec470841579844a7144985a252c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countText: {fileID: 0}
 --- !u!65 &184765847
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5824,6 +5823,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1023073775}
+    - targetCorrespondingSourceObject: {fileID: 9180454338071341551, guid: 954b28ec7efa051429c11ee7f64df7f9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1023073776}
   m_SourcePrefab: {fileID: 100100000, guid: 954b28ec7efa051429c11ee7f64df7f9, type: 3}
 --- !u!1 &1023073773 stripped
 GameObject:
@@ -5873,6 +5876,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.7739341, y: 0.24166217, z: 0.8794919}
   m_Center: {x: 0.00000023841858, y: -0.031113926, z: -0.0000076293945}
+--- !u!114 &1023073776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023073773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 377
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1030067348
 GameObject:
   m_ObjectHideFlags: 0
@@ -9269,6 +9294,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1557938335}
+    - targetCorrespondingSourceObject: {fileID: 9180454338071341551, guid: 954b28ec7efa051429c11ee7f64df7f9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1557938337}
   m_SourcePrefab: {fileID: 100100000, guid: 954b28ec7efa051429c11ee7f64df7f9, type: 3}
 --- !u!1 &1557938334 stripped
 GameObject:
@@ -9309,7 +9338,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dec470841579844a7144985a252c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countText: {fileID: 0}
+--- !u!114 &1557938337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557938334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 34
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!4 &1572118860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4945312487114774359, guid: 6aa560996c9730c488734adc13c5a8bd,
