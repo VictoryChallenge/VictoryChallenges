@@ -1154,7 +1154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dec470841579844a7144985a252c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countText: {fileID: 0}
 --- !u!65 &106028420
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5250,7 +5249,7 @@ PrefabInstance:
     - target: {fileID: 5306779286324481485, guid: 023b346950df8934fb119351e2b99b67,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6645,7 +6644,7 @@ PrefabInstance:
     - target: {fileID: 1034908969043860483, guid: 15258258bbef9874cbd793a9d728c91b,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8816,7 +8815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dec470841579844a7144985a252c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countText: {fileID: 0}
 --- !u!1 &1130930537
 GameObject:
   m_ObjectHideFlags: 0
@@ -12360,7 +12358,7 @@ PrefabInstance:
     - target: {fileID: 1034908969043860483, guid: 15258258bbef9874cbd793a9d728c91b,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12695,7 +12693,7 @@ PrefabInstance:
     - target: {fileID: 935523767434643759, guid: 31b4d5b1a479f20458d0b659cee3902f,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1592399877591827910, guid: 31b4d5b1a479f20458d0b659cee3902f,
         type: 3}
@@ -16969,7 +16967,7 @@ PrefabInstance:
     - target: {fileID: 5913777466788126718, guid: 3f56d9a0a3aaa064eb06ba20a20b6b01,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
