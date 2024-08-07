@@ -3236,7 +3236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 6367241647960627080, guid: caa2ae7a67928164e98c4089383f47a7, type: 3}
+  - {fileID: 6548050740585736933, guid: caa2ae7a67928164e98c4089383f47a7, type: 3}
   - {fileID: 7538525062624847831, guid: 4c17cb7bb82d83b4e9315efa7798c2a4, type: 3}
   - {fileID: 5025198258848248301, guid: e03582ea3d02aa44b8c95688ee8f3b84, type: 3}
   - {fileID: 2380061684828125695, guid: e1fea762e67e5fd49be408a0845f54cd, type: 3}
@@ -3437,7 +3437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dec470841579844a7144985a252c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countText: {fileID: 0}
 --- !u!114 &1417083820
 MonoBehaviour:
   m_ObjectHideFlags: 0
