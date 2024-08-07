@@ -49,6 +49,7 @@ namespace VictoryChallenge.KJ.Manager
             /*FirebaseAuth.DefaultInstance.CurrentUser.UserId;*/
             string userId = UIDHelper.GenerateShortUID(RestAPIAuth.Instance.UserId);
             //Debug.Log("userId : " + userId);
+            Quaternion rotation = Quaternion.LookRotation(Vector3.forward);
             controller = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerWithCam"), /*spawnPoint.position, spawnPoint.rotation,*/transform.position, transform.rotation, 0, new object[] { userId });
             controller.GetComponentInChildren<CharacterController>().shortUID = userId;
         }
