@@ -4797,6 +4797,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 661481559762769146, guid: 231e7065ec4cf4e48a26d7b9058cb54e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7564267341073110199, guid: 231e7065ec4cf4e48a26d7b9058cb54e, type: 3}
     - {fileID: -6663550571499934080, guid: 231e7065ec4cf4e48a26d7b9058cb54e, type: 3}
