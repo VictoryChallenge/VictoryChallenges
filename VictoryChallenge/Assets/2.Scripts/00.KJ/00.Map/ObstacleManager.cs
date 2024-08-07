@@ -27,8 +27,8 @@ namespace VictoryChallenge.KJ.Map
         [PunRPC]
         private void SpawnRandomObstacles(int randomIndex)
         {
-            GameObject selectedPrefabRed = obstaclePrefabs[randomIndex];
-            Instantiate(selectedPrefabRed, spawnPoint.position, spawnPoint.rotation);
+            GameObject selectedPrefab = obstaclePrefabs[randomIndex];
+            Instantiate(selectedPrefab, spawnPoint.position, selectedPrefab.transform.rotation);
         }
     }
 }
