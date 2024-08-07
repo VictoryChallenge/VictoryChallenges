@@ -3236,11 +3236,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 6548050740585736933, guid: caa2ae7a67928164e98c4089383f47a7, type: 3}
-  - {fileID: 7538525062624847831, guid: 4c17cb7bb82d83b4e9315efa7798c2a4, type: 3}
+  - {fileID: 6028700761205208311, guid: f92df87cfed210949a2947e715ea5f32, type: 3}
+  - {fileID: 8265621425693443930, guid: 94eedbc4e6eb0a94a8cc39294b0952f9, type: 3}
   - {fileID: 5025198258848248301, guid: e03582ea3d02aa44b8c95688ee8f3b84, type: 3}
   - {fileID: 2380061684828125695, guid: e1fea762e67e5fd49be408a0845f54cd, type: 3}
   - {fileID: 951084358938799567, guid: 40518815e4c16ba4894c09ec2252e092, type: 3}
+  - {fileID: 5092932888793872413, guid: 4c6705f75f5a57a4cb13181177c232e0, type: 3}
   spawnPoint: {fileID: 482388120}
   spawnInterval: 1.5
   obstaclespawn: 0
