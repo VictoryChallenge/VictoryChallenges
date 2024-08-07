@@ -63,6 +63,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: unicorn_001 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 9138106139163567850, guid: d8b2c843b12d2c04cb9ea6ef9ebf4081,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138106139163567850, guid: d8b2c843b12d2c04cb9ea6ef9ebf4081,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6847265709254252684, guid: d8b2c843b12d2c04cb9ea6ef9ebf4081, type: 3}
     m_RemovedGameObjects: []

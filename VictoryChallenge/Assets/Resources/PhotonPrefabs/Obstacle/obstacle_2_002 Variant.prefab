@@ -63,6 +63,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: obstacle_2_002 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1758789730192030330, guid: 170c2eb1c07c5af46a9338ce797fd957,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758789730192030330, guid: 170c2eb1c07c5af46a9338ce797fd957,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -4452642248850830928, guid: 170c2eb1c07c5af46a9338ce797fd957, type: 3}
     m_RemovedGameObjects: []
