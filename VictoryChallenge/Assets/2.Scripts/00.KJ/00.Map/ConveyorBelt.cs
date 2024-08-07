@@ -69,7 +69,6 @@ namespace VictoryChallenge.KJ.Map
         {
             Rigidbody rb = collision.rigidbody;
             Transform trans = collision.transform;
-            Debug.Log(rb.name);
 
             if (rb != null)
             {
