@@ -65,7 +65,7 @@ namespace VictoryChallenge.Scripts.CL
             switch (SceneManager.GetActiveScene().buildIndex)
             {
                 case 6:
-                    _maxPlayer = 4;
+                    _maxPlayer = 2;
                     gameSceneUI.person = maxPlayer;
                     break;
                 case 7:

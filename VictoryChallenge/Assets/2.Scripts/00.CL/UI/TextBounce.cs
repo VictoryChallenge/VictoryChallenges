@@ -20,33 +20,32 @@ namespace VictoryChallenge.Scripts.CL
 
         IEnumerator BounceText()
         {
-            while (true)
+            // 'loading...'의 각 글자 애니메이션 시작
+            for (int i = 0; i < textLetters.Length; i++)
             {
-                // 'loading...'의 각 글자 애니메이션 시작
-                for (int i = 0; i < textLetters.Length; i++)
-                {
-                    coroutines[i] = StartCoroutine(BounceLetter(textLetters[i], i * delayBetweenLetters));
-                    yield return new WaitForSeconds(delayBetweenLetters);
-                }
-
-                // 모든 애니메이션이 끝나길 기다림
-                yield return new WaitForSeconds(animationDuration * 2 + (textLetters.Length - 1) * delayBetweenLetters);
-
-                // 모든 애니메이션 코루틴을 중지
-                for (int i = 0; i < textLetters.Length; i++)
-                {
-                    if (coroutines[i] != null)
-                    {
-                        StopCoroutine(coroutines[i]);
-                        coroutines[i] = null;
-                    }
-                    // 글자의 위치를 원래대로 재설정
-                    textLetters[i].transform.localPosition = new Vector3(textLetters[i].transform.localPosition.x, 0, textLetters[i].transform.localPosition.z);
-                }
-
-                // 다음 루프를 시작하기 전에 잠시 대기
-                yield return new WaitForSeconds(0.2f);
+                coroutines[i] = StartCoroutine(BounceLetter(textLetters[i], i * delayBetweenLetters));
+                yield return new WaitForSeconds(delayBetweenLetters);
             }
+
+            // 모든 애니메이션이 끝나길 기다림
+            yield return new WaitForSeconds(animationDuration * 2 + (textLetters.Length - 1) * delayBetweenLetters);
+
+            // 모든 애니메이션 코루틴을 중지
+            for (int i = 0; i < textLetters.Length; i++)
+            {
+                if (coroutines[i] != null)
+                {
+                    StopCoroutine(coroutines[i]);
+                    coroutines[i] = null;
+                }
+                // 글자의 위치를 원래대로 재설정
+                textLetters[i].transform.localPosition = new Vector3(textLetters[i].transform.localPosition.x, 0, textLetters[i].transform.localPosition.z);
+            }
+
+            // 다음 루프를 시작하기 전에 잠시 대기
+            yield return new WaitForSeconds(0.05f);
+
+            gameObject.SetActive(false);
         }
 
         IEnumerator BounceLetter(TextMeshProUGUI letter, float delay)
@@ -64,6 +63,7 @@ namespace VictoryChallenge.Scripts.CL
                 yield return null;
             }
 
+            letter.transform.localPosition = targetPosition; // 위치 강제 설정
             elapsedTime = 0f;
 
             while (elapsedTime < animationDuration)
@@ -72,6 +72,8 @@ namespace VictoryChallenge.Scripts.CL
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
+
+            letter.transform.localPosition = originalPosition; // 위치 강제 설정
         }
 
         private void OnDisable()
