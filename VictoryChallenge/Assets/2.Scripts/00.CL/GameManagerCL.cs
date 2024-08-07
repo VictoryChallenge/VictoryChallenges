@@ -161,6 +161,11 @@ namespace VictoryChallenge.Scripts.CL
                         // 이미 게임이 시작되지 않았는지 확인
                         if (!isGameStarted)
                         {
+                            Controllers.Player.CharacterController[] cc = GameObject.FindObjectsOfType<Controllers.Player.CharacterController>();
+                            foreach (Controllers.Player.CharacterController c in cc)
+                            {
+                                c.isKeyActive = false;
+                            }
                             isGameStarted = true;
                             double startTime = PhotonNetwork.Time + 1f;
                             photonView.RPC("StartGame", RpcTarget.All, startTime);

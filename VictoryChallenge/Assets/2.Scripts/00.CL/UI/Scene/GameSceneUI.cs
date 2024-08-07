@@ -94,7 +94,6 @@ namespace VictoryChallenge.Scripts.CL
                 }
             }
             #endregion
-
         }
 
         public override void Init()
@@ -195,7 +194,6 @@ namespace VictoryChallenge.Scripts.CL
             Controllers.Player.CharacterController[] cc = GameObject.FindObjectsOfType<Controllers.Player.CharacterController>();
             foreach (Controllers.Player.CharacterController c in cc)
             {
-                c.isKeyActive = false;
                 yield return c.StartCoroutine(c.C_IntroCutSceneStart());
             }
 
