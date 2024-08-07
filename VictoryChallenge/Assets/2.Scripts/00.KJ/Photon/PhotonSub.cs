@@ -67,8 +67,7 @@ namespace VictoryChallenge.KJ.Photon
                 int playerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
                 Debug.Log("ActorNum = " + playerIndex);
                 Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(playerIndex);
-                Quaternion rotation = Quaternion.LookRotation(Vector3.forward);
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, rotation);
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
             }
             else if (SceneManager.GetActiveScene().buildIndex >= 6)
             {
@@ -78,8 +77,7 @@ namespace VictoryChallenge.KJ.Photon
                 if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue("PlayerNumber", out int checkNum))
                 {
                     Transform spawnPoint = SpawnManager.Instance.GetIndexSpawnPoint(checkNum);
-                    Quaternion rotation = Quaternion.LookRotation(Vector3.forward);
-                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, rotation);
+                    PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), spawnPoint.position, Quaternion.identity);
                 }
             }
         }

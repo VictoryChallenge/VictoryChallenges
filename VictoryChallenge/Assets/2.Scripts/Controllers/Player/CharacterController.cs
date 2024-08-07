@@ -165,6 +165,7 @@ namespace VictoryChallenge.Controllers.Player
         {
             _isFinished = false;
             _followCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
+            transform.localRotation = Quaternion.LookRotation(Vector3.forward);
 
             if(_pv.IsMine)
             {
@@ -228,15 +229,6 @@ namespace VictoryChallenge.Controllers.Player
 
             _animator.SetFloat("Horizontal", _velocity.x);
             _animator.SetFloat("Vertical", _velocity.z);
-
-            //if (hitCount > 2)
-            //{
-            //    isDizzy = true;
-            //}
-            //else
-            //{
-            //    isDizzy = false;
-            //}
         }
 
         // Player 이동 
