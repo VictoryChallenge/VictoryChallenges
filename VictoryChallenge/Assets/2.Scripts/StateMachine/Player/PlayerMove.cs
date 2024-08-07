@@ -32,7 +32,7 @@ namespace VictoryChallenge.StateMachine.Player
                 }},
                 { State.KickAttack, (animator) =>
                 {
-                    return Input.GetKeyDown(KeyCode.Mouse1) && controller.isKeyActive;
+                    return Input.GetKeyDown(KeyCode.Mouse1) && controller.isKeyActive && !controller.isLobby;
                 }},
                 { State.Dance, (animator) =>
                 {
@@ -44,7 +44,7 @@ namespace VictoryChallenge.StateMachine.Player
                 //}},
                 { State.Sliding, (animator) =>
                 {
-                    return Input.GetKeyDown(KeyCode.LeftControl) && controller.isKeyActive;
+                    return Input.GetKeyDown(KeyCode.LeftControl) && controller.isKeyActive && !controller.isLobby;
                 }},                
                 { State.Push, (animator) =>
                 {

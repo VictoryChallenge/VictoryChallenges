@@ -68,6 +68,8 @@ namespace VictoryChallenge.Controllers.Player
         #endregion
 
         #region 상호 작용
+        public virtual bool isLobby { get; set; }
+
         // Hit
         public virtual bool isDizzy { get; set; }
         public virtual bool isDie { get; set; }
@@ -165,18 +167,18 @@ namespace VictoryChallenge.Controllers.Player
         {
             _isFinished = false;
             _followCam = transform.Find("VCam_Perspective").GetComponent<CinemachineVirtualCamera>();
-            transform.localRotation = Quaternion.LookRotation(Vector3.forward);
 
             if(_pv.IsMine)
             {
                 if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(2))
                 {
                     nickName = PhotonNetwork.NickName;
+                    isLobby = true;
                 }
                 else if (SceneManager.GetActiveScene().buildIndex >= 6)
                 {
                     nickName = PhotonNetwork.NickName;
-
+                    isLobby = false;
 
                     // 카메라 캐싱
                     _introCam = GameObject.Find("IntroCam").GetComponent<CinemachineVirtualCamera>();
@@ -225,6 +227,7 @@ namespace VictoryChallenge.Controllers.Player
             else
             {
                 _velocity = Vector3.zero;
+                transform.rotation = Quaternion.LookRotation(Vector3.forward);
             }
 
             _animator.SetFloat("Horizontal", _velocity.x);
