@@ -1154,7 +1154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dec470841579844a7144985a252c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countText: {fileID: 0}
 --- !u!65 &106028420
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8816,7 +8815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dec470841579844a7144985a252c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _countText: {fileID: 0}
 --- !u!1 &1130930537
 GameObject:
   m_ObjectHideFlags: 0
@@ -16969,7 +16967,7 @@ PrefabInstance:
     - target: {fileID: 5913777466788126718, guid: 3f56d9a0a3aaa064eb06ba20a20b6b01,
         type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
