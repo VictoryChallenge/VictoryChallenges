@@ -575,34 +575,34 @@ namespace VictoryChallenge.Customize
                     _accessoryIndex = saveObject.accessoryIndex;
                     _hatIndex = saveObject.hatIndex;
 
-                    //int earMeshCount = _earMesh.transform.childCount;
-                    //int accessoryMeshCount = _accessoryMesh.transform.childCount;
-                    //int hatMeshCount = _hatMesh.transform.childCount;
+                    int earMeshCount = _earMesh.transform.childCount;
+                    int accessoryMeshCount = _accessoryMesh.transform.childCount;
+                    int hatMeshCount = _hatMesh.transform.childCount;
 
-                    // Customizing 한 인덱스의 게임 오브젝트 말고 삭제
-                    //for (int i = 0; i < earMeshCount; i++)
-                    //{
-                    //    if (i != saveObject.earIndex)
-                    //    {
-                    //        _earMesh.transform.GetChild(i).gameObject.SetActive(false);
-                    //    }
-                    //}
+                    //Customizing 한 인덱스의 게임 오브젝트 말고 삭제
+                    for (int i = 0; i < earMeshCount; i++)
+                    {
+                        if (i != saveObject.earIndex)
+                        {
+                            _earMesh.transform.GetChild(i).gameObject.SetActive(false);
+                        }
+                    }
 
-                    //for (int i = 0; i < accessoryMeshCount; i++)
-                    //{
-                    //    if (i != saveObject.accessoryIndex)
-                    //    {
-                    //        _accessoryMesh.transform.GetChild(i).gameObject.SetActive(false);
-                    //    }
-                    //}
+                    for (int i = 0; i < accessoryMeshCount; i++)
+                    {
+                        if (i != saveObject.accessoryIndex)
+                        {
+                            _accessoryMesh.transform.GetChild(i).gameObject.SetActive(false);
+                        }
+                    }
 
-                    //for (int i = 0; i < hatMeshCount; i++)
-                    //{
-                    //    if (i != saveObject.hatIndex)
-                    //    {
-                    //        _hatMesh.transform.GetChild(i).gameObject.SetActive(false);
-                    //    }
-                    //}
+                    for (int i = 0; i < hatMeshCount; i++)
+                    {
+                        if (i != saveObject.hatIndex)
+                        {
+                            _hatMesh.transform.GetChild(i).gameObject.SetActive(false);
+                        }
+                    }
                 }
             });
 
