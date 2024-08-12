@@ -22,11 +22,17 @@ public class ChangeMouseCursor : MonoBehaviour
 
         _hotspot = _adjustHotspot;
 
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.SetCursor(_mouseCursor, _hotspot, CursorMode.ForceSoftware);
     }
 
     private void Update()
     {
+        if (Cursor.lockState != CursorLockMode.Confined)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+
         // 마우스 왼쪽 버튼을 눌렀을 때 커서 변경
         if (Input.GetMouseButtonDown(0))
         {

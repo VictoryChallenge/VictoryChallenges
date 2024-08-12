@@ -68,7 +68,6 @@ namespace VictoryChallenge.Scripts.CL
             GetButton((int)Buttons.StartGame).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 1));
             GetButton((int)Buttons.Register).gameObject.AddUIEvent((PointerEventData data) => OnButtonClicked(data, 2));
             RestAPIAuth.Instance.confirmLoginText = GetTextMeshPro((int)TMPs.ConfirmText);
-            RestAPIAuth.Instance.warningLoginText = GetTextMeshPro((int)TMPs.ErrorText);
         }
 
         public void OnButtonClicked(PointerEventData data, int a)

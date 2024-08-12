@@ -33,6 +33,7 @@ namespace VictoryChallenge.Scripts.CL
         {
             Init();
             Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
             RectTransform rectTransform = GetComponent<RectTransform>();
             rectTransform.anchoredPosition = Vector2.zero;
             _audiosource = GameObject.Find("BGM").GetComponent<AudioSource>();

@@ -7,10 +7,10 @@ namespace VictoryChallenge.Scripts.CL
     public class TextBounce : MonoBehaviour
     {
         public TextMeshProUGUI[] textLetters; // loading...을 이루는 모든 글자들
-        public float bounceHeight = 20f;
-        public float animationDuration = 0.3f;
-        public float delayBetweenLetters = 0.1f;
-        private Coroutine[] coroutines;
+        float bounceHeight = 20f;
+        float animationDuration = 0.2f;
+        float delayBetweenLetters = 0.07f;
+        Coroutine[] coroutines;
 
         void OnEnable()
         {

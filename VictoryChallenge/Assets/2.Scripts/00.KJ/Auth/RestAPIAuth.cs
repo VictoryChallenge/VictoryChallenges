@@ -37,7 +37,6 @@ namespace VictoryChallenge.KJ.Auth
         [Tooltip("로그인에 필요한 UI")]
         [HideInInspector] public TMP_InputField email;              // 로그인 이메일 입력 필드                     
         [HideInInspector] public TMP_InputField password;           // 로그인 비밀번호 입력 필드                     
-        [HideInInspector] public TMP_Text warningLoginText;         // 로그인 실패 메세지 표시                 
         [HideInInspector] public TMP_Text confirmLoginText;         // 로그인 성공 메세지 표시                  
 
         [Header("Register")]
@@ -46,7 +45,6 @@ namespace VictoryChallenge.KJ.Auth
         [HideInInspector] public TMP_InputField emailRegister;      // 회원가입 이메일 입력 필드                  
         [HideInInspector] public TMP_InputField passwordRegister;   // 회원가입 비밀번호 입력 필드                  
         [HideInInspector] public TMP_InputField passwordCheck;      // 비밀번호 체크                 
-        [HideInInspector] public TMP_Text warningRegisterText;      // 회원가입 실패 메세지 표시                  
         [HideInInspector] public TMP_Text confirmRegisterText;      // 회원가입 성공 메세지 표시
 
         #region 로그인
@@ -151,6 +149,9 @@ namespace VictoryChallenge.KJ.Auth
                                 case "MISSING_EMAIL":
                                     message = "이메일을 입력해주세요";
                                     break;
+                                case "INVALID_LOGIN_CREDENTIALS":
+                                    message = "아이디와 비밀번호를 다시 확인해주세요.";
+                                    break;
                                 case "EMAIL_EXISTS":
                                     message = "이 이메일은 이미 사용 중입니다.";
                                     break;
@@ -187,7 +188,8 @@ namespace VictoryChallenge.KJ.Auth
                     }
 
                     /* 오류 메세지 UI에 출력 및 콜백 메서드 호출 */
-                    warningLoginText.text = message;
+                    confirmLoginText.color = Color.red;
+                    confirmLoginText.text = message;
                     onLoginCompleted?.Invoke(false);
                     return;
                 }
@@ -255,7 +257,8 @@ namespace VictoryChallenge.KJ.Auth
                     /* 중복 로그인 확인 */
                     if (userData.isLoggedIn)
                     {
-                        warningLoginText.text = " 이미 접속중인 아이디 입니다.";
+                        confirmLoginText.color = Color.red;
+                        confirmLoginText.text = " 이미 접속중인 아이디 입니다.";
                         onLoginCompleted?.Invoke(false);
                         return;
                     }
@@ -516,11 +519,13 @@ namespace VictoryChallenge.KJ.Auth
             /* 가입 정보가 비었을 때 */
             if (string.IsNullOrWhiteSpace(_username))
             {
-                warningRegisterText.text = "닉네임을 입력해주세요.";
+                confirmRegisterText.color = Color.red;
+                confirmRegisterText.text = "닉네임을 입력해주세요.";
             }
             else if (passwordRegister.text != passwordCheck.text)
             {
-                warningRegisterText.text = "비밀번호가 일치하지 않습니다.";
+                confirmRegisterText.color = Color.red;
+                confirmRegisterText.text = "비밀번호가 일치하지 않습니다.";
             }
             else
             {
@@ -575,8 +580,14 @@ namespace VictoryChallenge.KJ.Auth
 
                                 switch (errorCode)
                                 {
+                                    case "INVALID_EMAIL":
+                                        message = "잘못된 이메일입니다.";
+                                        break;
                                     case "EMAIL_EXISTS":
                                         message = "이메일이 이미 사용중입니다.";
+                                        break;
+                                    case "MISSING_PASSWORD":
+                                        message = "비밀번호를 입력해주세요.";
                                         break;
                                     case "INVALID_PASSWORD":
                                         message = "잘못된 비밀번호입니다.";
@@ -610,7 +621,8 @@ namespace VictoryChallenge.KJ.Auth
                             }
                         }
 
-                        warningRegisterText.text = message;
+                        confirmRegisterText.color = Color.red;
+                        confirmRegisterText.text = message;
                         isRequestCompleted = true;      // 요청 여부 true
                         return;
                     }
@@ -646,7 +658,7 @@ namespace VictoryChallenge.KJ.Auth
                         if (profileErr != null)
                         {
                             Debug.LogError($"프로필 업데이트 중 오류 발생 : {profileErr.Message}");
-                            warningRegisterText.text = "프로필 업데이트 중 오류 발생";
+                            confirmRegisterText.text = "프로필 업데이트 중 오류 발생";
                         }
                         else
                         {
@@ -663,8 +675,8 @@ namespace VictoryChallenge.KJ.Auth
                             DBManager.Instance.WriteUserData(shortUID, jsonData, customData);
 
                             Debug.Log("회원가입이 성공적으로 이루어졌습니다." + newUser.userName);
+                            confirmRegisterText.color = Color.green;
                             confirmRegisterText.text = "회원가입이 성공적으로 이루어졌습니다.";
-                            warningRegisterText.text = "";
                         }
                         isRequestCompleted = true;
                     });
